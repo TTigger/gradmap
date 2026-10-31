@@ -1,0 +1,50 @@
+# 116 簡章尚未公告、也還沒收到可用參考資料的學校
+# 每次查核後更新 checked 日期；簡章一公告就移到 data/schools/<id>.yaml
+checked: "2026-10-31"
+schools:
+  - id: nthu
+    name: 國立清華大學
+    short: 清大
+    site: https://adms.site.nthu.edu.tw/p/412-1207-3103.php?Lang=zh-tw
+    note: 招生網頁內容由 JavaScript 載入，自動抓取失敗，需改用瀏覽器查核
+  - id: nycu
+    name: 國立陽明交通大學
+    short: 陽明交大
+    site: https://exam.nycu.edu.tw/ma-me.html
+    note: 網頁仍為 115 年度（115 年度報名 114/12/9–12/16）
+  - id: ncku
+    name: 國立成功大學
+    short: 成大
+    site: https://adms-acad.ncku.edu.tw/
+    note: 招生網頁內容由 JavaScript 載入，需改用瀏覽器查核
+  - id: nsysu
+    name: 國立中山大學
+    short: 中山
+    site: https://exam-acad.nsysu.edu.tw/
+    note: 115 年度報名為 114/12/2–12/17；115 簡章 https://exam-acad.nsysu.edu.tw/file_space/aca_master/115499751.pdf（待下載核對）
+  - id: ccu
+    name: 國立中正大學
+    short: 中正
+    site: https://www.ccu.edu.tw/
+    note: 尚未找到招生網頁
+  - id: ntust
+    name: 國立臺灣科技大學
+    short: 台科大
+    site: https://www.admission.ntust.edu.tw/
+    note: 往年一般考試約 12 月初開放報名
+  - id: ntut
+    name: 國立臺北科技大學
+    short: 北科大
+    site: https://graduate.ntut.edu.tw/
+    note: 官方公告「116學年度研究所碩士班入學招生簡章，預定115年11月中下旬公告」
+    note_src: https://graduate.ntut.edu.tw/p/406-1135-156925,r2829.php?Lang=zh-tw
+  - id: ntpu
+    name: 國立臺北大學
+    short: 北大
+    site: https://new.ntpu.edu.tw/admission/ntpu
+    note: 尚未查到 116 年度公告
+  - id: ntou
+    name: 國立臺灣海洋大學
+    short: 海大
+    site: https://admission.ntou.edu.tw/Default.aspx?u=4
+    note: 往年 11 月中旬公告簡章、12/1 開始報名

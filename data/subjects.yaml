@@ -1,0 +1,27 @@
+# 標準科目表：各校試卷名稱都對應回這些代碼
+# aliases 收錄各校簡章實際出現過的寫法，遇到新寫法就補上
+subjects:
+  LA:
+    name: 線性代數
+    aliases: [線代]
+  DM:
+    name: 離散數學
+    aliases: [離散]
+  DS:
+    name: 資料結構
+    aliases: []
+  ALG:
+    name: 演算法
+    aliases: []
+  CO:
+    name: 計算機組織
+    aliases: [計算機結構]
+  OS:
+    name: 作業系統
+    aliases: []
+  EN:
+    name: 英文
+    aliases: []
+  SEC:
+    name: 資訊安全
+    aliases: [資安概論]

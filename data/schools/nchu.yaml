@@ -1,0 +1,72 @@
+id: nchu
+name: 國立中興大學
+short: 中興
+year: 116
+exam_type: 一般考試
+status: verified
+brochure:
+  title: 國立中興大學116學年度碩士班考試入學招生簡章
+  url: https://recruit.nchu.edu.tw/grade-exam/master/116/116M_PAPER.pdf
+  verified: "2026-10-31"
+  page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」
+fee: { amount: 1500, note: 每報考一個系組各自報名、各自繳費, src: "p7 / 3" }
+
+schedule:
+  - { type: register, start: "2026-11-24T09:00", end: "2026-12-08T17:00", label: 網路報名、上傳審查資料, src: "p3 / 4" }
+  - { type: payment, start: "2026-11-24T09:00", end: "2026-12-08T23:59", label: 繳費, note: "ATM 至 23:59；第一銀行臨櫃至 15:30", src: "p3 / 4" }
+  - { type: admit_card, start: "2027-01-15T09:00", label: 開放列印准考證, src: "p3 / 4" }
+  - { type: exam, start: "2027-02-02", label: 筆試, src: "p3 / 4" }
+  - { type: result, start: "2027-03-03", label: 放榜（資工屬第1梯次）, src: "p42 / 38" }
+  - { type: regrade, start: "2027-03-03", end: "2027-03-05", label: 成績複查（郵戳為憑）, src: "p3 / 4" }
+  - { type: enroll, start: "2027-03-08T09:00", end: "2027-03-15T17:00", label: 正取生網路報到＋備取生入學意願登記, src: "p3 / 4",
+      note: 正取、備取都要在期限內登記，否則取消資格，學校不另行通知 }
+  - { type: waitlist, start: "2027-03-17", label: 公告新生名單及遞補順序名單, src: "p3 / 4" }
+  - { type: enroll, start: "2027-04-21", end: "2027-04-22", label: 新生報到繳驗證件, src: "p3 / 4" }
+
+programs:
+  - id: nchu-csie
+    name: 資訊工程學系碩士班
+    kind: main
+    url: https://cs.nchu.edu.tw
+    groups:
+      - id: nchu-csie-a
+        name: 甲組（資訊工程）
+        code: "891"
+        quota: { general: 31 }
+        quota_note: 含「半導體、AI、機械領域擴充名額」3名，實際名額依教育部核定結果為準
+        quota_src: "p42 / 38"
+        exam_day: "2027-02-02"
+        papers:
+          - { name: 計算機組織與作業系統, covers: [CO, OS], weight_x: 1.0, period: "第1節 08:10–09:50" }
+          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0, period: "第2節 10:30–12:10" }
+          - { name: 離散數學與線性代數, covers: [DM, LA], weight_x: 1.0, period: "第3節 13:40–15:20" }
+        second_stage: 無
+        tie_break: [資料結構與演算法, 計算機組織與作業系統, 離散數學與線性代數]
+        calculator: 不得使用（考科無※標記）
+      - id: nchu-csie-b
+        name: 乙組（AI資安）
+        code: "892"
+        quota: { general: 4 }
+        quota_note: 為教育部「智慧科技(AI)及資訊安全碩士人才計畫」外加名額
+        quota_src: "p42 / 38"
+        exam_day: "2027-02-02"
+        papers:
+          - { name: 離散數學與線性代數, covers: [DM, LA], weight_x: 1.0, period: "第3節 13:40–15:20" }
+          - { name: 資訊系統（作業系統、演算法、資料結構、資安概論）, covers: [OS, ALG, DS, SEC], weight_x: 1.0, period: "第4節 16:00–17:40" }
+        second_stage: 無
+        tie_break: [離散數學與線性代數, 資訊系統]
+        notes:
+          - 入學後須修人工智慧或資訊安全相關課程，畢業論文須為AI或資安領域
+        calculator: 不得使用（考科無※標記）
+    notes:
+      - 甲、乙組的「離散數學與線性代數」都排在第3節，實際上無法兩組都到考
+      - 非相關科系錄取者須補修基礎課程
+
+rules:
+  zero_score: 筆試科目中有一科為零分者，不予錄取（缺考以零分計）
+  zero_score_src: "p10 / 6"
+  min_standard: 招生委員會訂定最低錄取標準，未達者雖有名額亦不予錄取
+  tie_break_general: 總成績相同時依各系同分參酌順序逐科比較
+
+near_kin:
+  - { name: 資料科學與資訊計算研究所, note: 待確認考科與名額 }

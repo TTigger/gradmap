@@ -1,0 +1,87 @@
+id: ncu
+name: 國立中央大學
+short: 中央
+year: 116
+exam_type: 一般考試
+status: verified
+brochure:
+  title: 國立中央大學116學年度碩士班考試入學招生簡章
+  url: https://admission.ncu.edu.tw/static/file/24/1024/img/458/455320457.pdf
+  verified: "2026-10-31"
+  page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」
+fee:
+  amount: 1300
+  note: 資工類聯合招生選1個志願1,300元；選2個（含）以上1,700元
+  src: "p14"
+
+joint_admission:
+  name: 聯合招生類：資工類
+  rule: >-
+    一次筆試可選填多個志願（有排序），依志願序分發；在某志願正取後，
+    取消後面志願的正取與備取資格，保留前面志願的備取資格。錄取後只能擇一報到。
+  src: "p13"
+
+schedule:
+  - { type: register, start: "2026-11-17T09:00", end: "2026-11-26T15:30", label: 網路報名及繳費, src: "p2" }
+  - { type: upload, end: "2026-11-26T17:00", label: 報名資格審查資料上傳（僅同等學力、境外學歷等需要）, src: "p2" }
+  - { type: other, start: "2026-12-10", label: 報名資格審查結果／報名人數公告, src: "p2" }
+  - { type: admit_card, start: "2026-12-16T10:00", label: 開放列印准考證, src: "p2" }
+  - { type: venue, start: "2027-01-27", label: 試場分配表公告, src: "p2" }
+  - { type: exam, start: "2027-01-29", label: 筆試（資工類）, src: "p8 / 4" }
+  - { type: result, start: "2027-02-18T16:00", label: 初試放榜（資工無複試）, src: "p2" }
+  - { type: regrade, start: "2027-02-18", end: "2027-02-24", label: 成績複查, src: "p2" }
+  - { type: waitlist, end: "2027-03-05", label: 備取意願調查回覆表寄出截止（郵戳為憑）, src: "p30 / 26",
+      note: 沒寄回視同放棄備取資格 }
+  - { type: enroll, start: "2027-03-15", end: "2027-03-19", label: 正取生報到, src: "p30 / 26" }
+
+programs:
+  - id: ncu-csie
+    name: 資訊工程學系碩士班
+    kind: main
+    url: http://www.csie.ncu.edu.tw
+    groups:
+      - id: ncu-csie-general
+        name: 不分組（一般生）
+        quota: { general: 50 }
+        quota_src: "p30 / 26"
+        exam_day: "2027-01-29"
+        papers: &ncu_papers
+          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0, period: "第一節 09:30–11:10" }
+          - { name: 離散數學與線性代數, covers: [DM, LA], weight_x: 1.0, period: "第二節 12:35–14:15" }
+          - { name: 作業系統與計算機組織, covers: [OS, CO], weight_x: 1.0, period: "第三節 15:00–16:40" }
+        scoring: 各科原始分數滿分100分，乘以權重後加總（取到小數第二位）
+        second_stage: 無複試
+        tie_break: &ncu_tie [資料結構與演算法, 離散數學與線性代數, 作業系統與計算機組織]
+        calculator: 不得使用計算器
+  - id: ncu-csie-se
+    name: 資訊工程學系軟體工程碩士班
+    kind: main
+    note: 屬資工類聯合招生，同一次筆試、可填志願
+    groups:
+      - id: ncu-csie-se-general
+        name: 不分組（一般生）
+        quota: { general: 1 }
+        quota_src: "p30 / 26"
+        exam_day: "2027-01-29"
+        papers: *ncu_papers
+        second_stage: 無複試
+        tie_break: *ncu_tie
+  - id: ncu-csie-ai
+    name: 資訊工程學系AI碩士班
+    kind: main
+    note: 屬資工類聯合招生，同一次筆試、可填志願
+    groups:
+      - id: ncu-csie-ai-general
+        name: 不分組（一般生）
+        quota: { general: 1 }
+        quota_src: "p30 / 26"
+        exam_day: "2027-01-29"
+        papers: *ncu_papers
+        second_stage: 無複試
+        tie_break: *ncu_tie
+
+rules:
+  zero_score: 初、複試任一考科成績為零分或缺考者，即使總成績達錄取標準仍不予錄取
+  zero_score_src: "p22"
+  min_standard: 最低錄取標準由各招生系所訂定，未達者雖有缺額亦不予錄取
+  scoring_general: 總成績＝各科原始分數先乘權重再加總

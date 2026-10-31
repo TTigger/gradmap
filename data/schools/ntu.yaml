@@ -1,0 +1,75 @@
+id: ntu
+name: 國立臺灣大學
+short: 台大
+year: 116
+exam_type: 一般考試
+status: pending          # 116 簡章尚未公告
+status_note: 116 學年度碩士班考試簡章尚未公告（2026-10-31 查核）；115 年度於 114/11/12 公告。以下系所資料為 115 年度參考
+reference_year: 115
+brochure:
+  title: 國立臺灣大學115學年度碩士班招生簡章（參考）
+  url: https://exam.aca.ntu.edu.tw/grab/Brochure/main.aspx
+  verified: "2026-10-31"
+  page_note: 台大簡章按系所分檔，src 寫「檔名」
+fee: { amount: 1500, note: 115 年度筆試及審查報名費, src: "ntu-schedule", year: 115 }
+
+schedule:
+  - { type: register, start: "2025-12-02T09:00", end: "2025-12-09T23:59", label: 繳費及報名（115 年度）, src: "ntu-schedule", year: 115 }
+  - { type: exam, start: "2026-02-01", end: "2026-02-02", label: 筆試（115 年度）, src: "ntu-schedule", year: 115 }
+  - { type: result, start: "2026-03-09T12:00", label: 第1梯次放榜（115 年度）, src: "ntu-schedule", year: 115 }
+  - { type: enroll, start: "2026-03-30T10:00", end: "2026-04-01T23:59", label: 正、備取生網路報到（115 年度）, src: "ntu-schedule", year: 115 }
+
+programs:
+  - id: ntu-csie
+    name: 資訊工程學系碩士班與人工智慧碩士班聯合招生
+    kind: main
+    url: https://www.csie.ntu.edu.tw
+    groups:
+      - id: ntu-csie-905
+        name: 聯合招生（905A 資工碩士班／905B 人工智慧碩士班）
+        code: "905"
+        quota: { general: 66 }
+        quota_note: 正取 66、備取 75；其中資工碩士班 60（備取 60）、人工智慧碩士班 6（備取 15）。最多選兩個志願，依總分及志願序分所錄取
+        quota_src: "ntu-905"
+        year: 115
+        papers:
+          - { name: 英文(A), covers: [EN], weight_pct: 10, note: 以100分命題，成績以10%計算 }
+          - { name: 數學(A)（含線性代數、離散數學）, covers: [LA, DM] }
+          - { name: 計算機結構與作業系統, covers: [CO, OS] }
+          - { name: 資料結構與演算法, covers: [DS, ALG] }
+        papers_note: 筆試佔100%；只明列英文以10%計算，其餘三科比例簡章未明列
+        second_stage: 無（審查、口試皆 0%）
+        tie_break: [數學(A), 計算機結構與作業系統, 資料結構與演算法]
+  - id: ntu-inm
+    name: 資訊網路與多媒體研究所碩士班
+    kind: near_kin
+    url: https://www.inm.ntu.edu.tw
+    groups:
+      - id: ntu-inm-914
+        name: 不分組
+        code: "914"
+        quota: { general: 18 }
+        quota_note: 正取 18、備取 18
+        quota_src: "ntu-914"
+        year: 115
+        papers:
+          - { name: 英文(A), covers: [EN], weight_pct: 10, note: 以100分命題，成績以10%計算 }
+          - { name: 計算機結構與作業系統, covers: [CO, OS] }
+          - { name: 資料結構與演算法, covers: [DS, ALG] }
+        papers_note: 不考數學；其餘兩科比例簡章未明列
+        second_stage: 無
+  - id: ntu-ee-sec
+    name: 電機工程學系資訊安全碩士班
+    kind: near_kin
+    review_only: true
+    groups:
+      - id: ntu-ee-sec-904
+        name: 不分組
+        code: "904"
+        quota: { general: 12 }
+        quota_note: 正取 12、備取 30
+        quota_src: "ntu-904"
+        year: 115
+        papers: []
+        papers_note: ⚠️ 書面審查佔100%，不考筆試
+        second_stage: 無

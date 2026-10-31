@@ -1,0 +1,8 @@
+# 簡章原檔與抽出的文字留在本機（檔案大、可重新下載），repo 只存 SHA256SUMS 和資料檔裡的來源網址
+sources/**/*.pdf
+sources/**/text/
+node_modules/
+dist/
+.DS_Store
+src/generated/
+public/gradmap.ics

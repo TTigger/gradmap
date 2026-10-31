@@ -1,0 +1,60 @@
+id: ntnu
+name: 國立臺灣師範大學
+short: 台師大
+year: 116
+exam_type: 一般考試
+status: verified
+brochure:
+  title: 國立臺灣師範大學116學年度碩士班招生簡章
+  url: https://www.aa.ntnu.edu.tw/uploads/bulletin_file/file/6ad5bee9843f751d488c4a71/116%E7%A2%A9%E5%A3%AB%E7%8F%AD%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0.pdf
+  published: "2026-10-20"
+  verified: "2026-10-31"
+  page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」
+fee: { amount: 1300, note: 一階段考試報名費, src: "p9 / 2" }
+
+schedule:
+  - { type: register, start: "2026-11-10T09:00", end: "2026-11-20T17:00", label: 網路報名, src: "p2 / i" }
+  - { type: payment, start: "2026-11-10T09:00", end: "2026-11-20T23:59", label: 繳費, note: 截止時間為晚上12時, src: "p2 / i" }
+  - { type: upload, start: "2026-11-10T09:00", end: "2026-11-21T17:00", label: 上傳資料, src: "p2 / i" }
+  - { type: admit_card, start: "2026-12-24", end: "2027-03-07", label: 准考證列印, src: "p2 / i" }
+  - { type: venue, start: "2027-01-21", label: 試場公告, src: "p2 / i" }
+  - { type: exam, start: "2027-01-26", label: 筆試, src: "p2 / i" }
+  - { type: result, start: "2027-03-18", label: 放榜（資工屬第二階段放榜）, src: "p6 / v",
+      note: 全校日程寫第一階段 2/25、第二階段 3/18；一覽表中資工系勾在 3/18 }
+  - { type: regrade, start: "2027-03-18", end: "2027-03-21", label: 成績複查, src: "p2 / i" }
+  - { type: enroll, start: "2027-03-22", end: "2027-03-25", label: 正取生報到, src: "p2 / i" }
+  - { type: waitlist, start: "2027-04-09", label: 第一次遞補公告（之後每週五公告）, src: "p2 / i" }
+
+programs:
+  - id: ntnu-csie
+    name: 資訊工程學系碩士班
+    kind: main
+    url: https://www.csie.ntnu.edu.tw
+    groups:
+      - id: ntnu-csie-general
+        name: 不分組
+        quota: { general: 50, in_service: 0 }
+        quota_src: "p44 / 37"
+        exam_day: "2027-01-26"
+        papers:
+          - { name: 軟體基礎（含資料結構、演算法）, covers: [DS, ALG], weight_pct: 34, period: "第一節 08:10–09:40" }
+          - { name: 計算機系統（含計算機結構、作業系統）, covers: [CO, OS], weight_pct: 33, period: "第二節 10:10–11:40" }
+          - { name: 數學基礎（含線性代數、離散數學）, covers: [LA, DM], weight_pct: 33, period: "第三節 13:10–14:40" }
+        papers_note: 系所頁只列「考試節次一、二、三」；各節時間取自附件5 考試時間表（p88 / 81）
+        scoring: 各科滿分100分，依「佔錄取總分百分比」計算總分
+        second_stage: 無複試
+        tie_break: [軟體基礎, 計算機系統, 數學基礎]
+        calculator: 全部科目不得使用計算機
+        notes:
+          - 錄取後須於116學年度第1學期註冊入學，不得保留入學資格（服兵役除外）
+          - 入學後須通過系定外語能力檢定才能畢業
+          - 甄試缺額可由本項考試備取生遞補
+
+rules:
+  zero_score: 考試成績有一科（含）以上為零分者，不予錄取（缺考以零分計）
+  zero_score_src: "p15 / 8"
+  min_standard: 由招生委員會訂定各系所最低錄取標準，未達者雖有名額亦不予錄取
+  tie_break_general: 總成績相同時依系所同分參酌順序，成績較高者優先
+
+near_kin:
+  - { name: 資訊教育研究所, quota: 10, note: 偏教育領域，待確認考科後決定是否列為近親所 }
