@@ -18,7 +18,7 @@ schedule:
   - { type: register, start: "2026-11-24T09:00", end: "2026-12-08T15:00", label: 網路報名登錄資料, src: "p2" }
   - { type: other, start: "2026-12-28T14:00", label: 報名資格審核結果公告, src: "p2" }
   - { type: exam, start: "2027-02-01", label: 筆試（資工三科都在2/1）, src: "p165" }
-  - { type: result, start: "2027-02-25T14:00", label: 放榜（資工屬第一梯次）, src: "p103" }
+  - { type: result, start: "2027-02-25T14:00", label: 放榜（資工屬第一梯次）, src: "p18；p103 列資工為第一梯次" }
   - { type: regrade, end: "2027-03-04", label: 成績複查截止, src: "p2" }
   - { type: enroll, end: "2027-04-13T17:00", label: 正、備取生上網登記報到意願截止, src: "p2" }
   - { type: waitlist, start: "2027-05-04", label: 公告錄取生報到及遞補結果, src: "p2" }
@@ -60,3 +60,10 @@ programs:
 
 near_kin:
   - { name: 資訊安全碩士學位學程, code: "8621", note: 筆試只有計算機數學（2/1 第二節），其他項目待確認 }
+
+venue: { city: 臺北, place: 政治大學（臺北市文山區指南路二段64號）, src: "p16" }
+waitlist_info:
+  alert: 正取、備取生都要在 4/13 17:00 前上網登記報到意願，逾時不受理
+  how: 5/4 公告錄取生報到及遞補結果；7/21 已報到正取生與可遞補備取生現場驗證
+  where: { label: 政大招生專區, url: "https://www.nccu.edu.tw/p/406-1000-24245,r125.php?Lang=zh-tw" }
+  src: "p2"

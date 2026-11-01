@@ -1,0 +1,128 @@
+# 全部收錄學校的總表：別名（給搜尋用）、各類官方資料的位置（給每週排程查核用）
+# links.kind：admission 招生網站 / brochure 簡章 / stats 歷年統計 / dept 系所網站 / past_exam 考古題
+# watch：排程查核時要注意的事（內部用，建置時會拿掉，不會出現在網站上）
+schools:
+  - id: ntu
+    name: 國立臺灣大學
+    short: 台大
+    aliases: [臺大, 台灣大學, 臺灣大學, NTU]
+    links:
+      - { label: 碩士班一般考試（簡章、報名人數、錄取情況一覽表）, url: "https://www.aca.ntu.edu.tw/w/aca/LocalAdmissionClass_21072014071675661", kind: admission }
+      - { label: 簡章下載, url: "https://exam.aca.ntu.edu.tw/grab/Brochure/main", kind: brochure }
+      - { label: 歷年報名人數與錄取情況（同一頁下方）, url: "https://www.aca.ntu.edu.tw/w/aca/LocalAdmissionClass_21072014071675661", kind: stats }
+      - { label: 資工系, url: "https://www.csie.ntu.edu.tw", kind: dept }
+      - { label: 臺大考古題, url: "https://exam.lib.ntu.edu.tw/graduate", kind: past_exam }
+    watch: 116 簡章約 11 月中公告（115 年度為 114/11/12）。錄取情況一覽表約 4 月公告，含最低錄取分數與備取人數。
+
+  - id: nthu
+    name: 國立清華大學
+    short: 清大
+    aliases: [清華, 清華大學, NTHU]
+    links:
+      - { label: 招生策略中心 碩士班考試, url: "https://adms.site.nthu.edu.tw/p/412-1207-3103.php?Lang=zh-tw", kind: admission }
+    watch: 網頁內容由 JavaScript 載入，要用瀏覽器查。舊年度統計檔名格式為 adms.site.nthu.edu.tw/var/file/207/1207/img/342/MX_<年度>NUM.pdf（只到 99 年度），新年度位置待找。
+
+  - id: nycu
+    name: 國立陽明交通大學
+    short: 陽明交大
+    aliases: [交大, 陽交大, 陽明交通, 交通大學, NYCU]
+    links:
+      - { label: 碩士班考試入學（簡章、報名人數統計表、榜單）, url: "https://exam.nycu.edu.tw/ma-me.html", kind: admission }
+      - { label: 資工系, url: "https://www.cs.nycu.edu.tw", kind: dept }
+    watch: 伺服器沒有送完整憑證鏈，curl 要加 --cacert sources/certs/bundle-with-twca.pem（系統根憑證＋TWCA 中繼憑證，仍完整驗證）。檔案網址 /apfiles/action.aspx?id=… 是包裝頁，實際檔案是 /apfiles/getFile.aspx?type=1&id=…。資訊聯招統計表只公布聯招總數，不分所。
+
+  - id: ncku
+    name: 國立成功大學
+    short: 成大
+    aliases: [成功大學, NCKU]
+    links:
+      - { label: 招生組, url: "https://adms-acad.ncku.edu.tw/", kind: admission }
+    watch: 網頁內容由 JavaScript 載入，要用瀏覽器查。資訊聯招＝資訊工程學系＋人工智慧科技碩士學位學程。
+
+  - id: ntnu
+    name: 國立臺灣師範大學
+    short: 台師大
+    aliases: [師大, 臺師大, 台灣師範大學, 臺灣師範大學, NTNU]
+    links:
+      - { label: 招生專區, url: "https://www.aa.ntnu.edu.tw/zh_tw/admission", kind: admission }
+      - { label: 碩士班報考人數一覽表（歷年）, url: "https://www.aa.ntnu.edu.tw/zh_tw/Statistics01/Enrollment01/applicants_master", kind: stats }
+      - { label: 資工系, url: "https://www.csie.ntnu.edu.tw", kind: dept }
+    watch: 檔案連結是閱讀器頁（/xhr/announcements/file/…），實際 PDF 在 /uploads/bulletin_file/file/…。只公布報考人數，錄取人數與分數未找到。
+
+  - id: nccu
+    name: 國立政治大學
+    short: 政大
+    aliases: [政治大學, NCCU]
+    links:
+      - { label: 116 碩士班招生簡章, url: "https://www.nccu.edu.tw/p/406-1000-24245,r125.php?Lang=zh-tw", kind: brochure }
+      - { label: 資工系, url: "https://www.cs.nccu.edu.tw/", kind: dept }
+    watch: 報名人數統計表放在 impis.nccu.edu.tw/upload/68/doc/…（每年路徑不同，用網頁搜尋「碩士班招生考試報名人數統計表」）。115 年度起系名由資訊科學系改為資訊工程學系。
+
+  - id: ncu
+    name: 國立中央大學
+    short: 中央
+    aliases: [中央大學, 中大, NCU]
+    links:
+      - { label: 招生資訊網 碩士班考試, url: "https://admission.ncu.edu.tw/p/412-1024-2360.php", kind: admission }
+      - { label: 資工系, url: "http://www.csie.ncu.edu.tw", kind: dept }
+    watch: 網站改版，舊統計檔（files/system/files/57142/碩考統計資料/…）已 404，新位置待找（可能在「歷史資料」分頁，內容由 JavaScript 載入）。檔案伺服器擋程式下載，要用瀏覽器。
+
+  - id: nchu
+    name: 國立中興大學
+    short: 中興
+    aliases: [中興大學, 興大, NCHU]
+    links:
+      - { label: 碩士班考試, url: "https://recruit.nchu.edu.tw/grade-exam/master/index-master.aspx?examc=B", kind: admission }
+      - { label: 招生統計資料（碩士班考試入學）, url: "http://www.oaa.nchu.edu.tw/zh-tw/recruit-download/download-list.117", kind: stats }
+      - { label: 資工系, url: "https://cs.nchu.edu.tw", kind: dept }
+      - { label: 中興招生考試歷屆試題, url: "https://histud.nchu.edu.tw:8082/", kind: past_exam }
+    watch: 統計表（<年度>SAT_M.pdf）有名額、報名、正取、註冊人數，以系為單位（甲乙組合計），不含分數。
+
+  - id: nsysu
+    name: 國立中山大學
+    short: 中山
+    aliases: [中山大學, NSYSU]
+    links:
+      - { label: 招生資訊網, url: "https://exam-acad.nsysu.edu.tw/", kind: admission }
+      - { label: 資工系, url: "https://cse.nsysu.edu.tw", kind: dept }
+    watch: 115 簡章 https://exam-acad.nsysu.edu.tw/file_space/aca_master/115499751.pdf。官方碩士班考試統計未找到。
+
+  - id: ccu
+    name: 國立中正大學
+    short: 中正
+    aliases: [中正大學, CCU]
+    links:
+      - { label: 學校首頁, url: "https://www.ccu.edu.tw/", kind: admission }
+    watch: 尚未找到招生網頁與統計。
+
+  - id: ntust
+    name: 國立臺灣科技大學
+    short: 台科大
+    aliases: [臺科大, 台灣科技大學, 臺灣科技大學, 台科, NTUST]
+    links:
+      - { label: 招生資訊網, url: "https://www.admission.ntust.edu.tw/", kind: admission }
+    watch: 往年一般考試約 12 月初報名。官方統計未找到。
+
+  - id: ntut
+    name: 國立臺北科技大學
+    short: 北科大
+    aliases: [北科, 臺北科大, 台北科大, 臺北科技大學, NTUT]
+    links:
+      - { label: 研究所招生, url: "https://graduate.ntut.edu.tw/", kind: admission }
+    watch: 官方公告 116 簡章「預定 115 年 11 月中下旬公告」。官方統計未找到。
+
+  - id: ntpu
+    name: 國立臺北大學
+    short: 北大
+    aliases: [臺北大學, 台北大學, NTPU]
+    links:
+      - { label: 招生資訊, url: "https://new.ntpu.edu.tw/admission/ntpu", kind: admission }
+    watch: 簡章放在 cms-carrier.ntpu.edu.tw/uploads/…。114 年度資工系一般考試名額 13 名（簡章暫列）。官方統計未找到。
+
+  - id: ntou
+    name: 國立臺灣海洋大學
+    short: 海大
+    aliases: [海洋大學, 臺灣海洋大學, 台灣海洋大學, NTOU]
+    links:
+      - { label: 招生資訊, url: "https://admission.ntou.edu.tw/Default.aspx?u=4", kind: admission }
+    watch: 往年 11 月中旬公告簡章、12/1 開始報名。官方統計未找到。

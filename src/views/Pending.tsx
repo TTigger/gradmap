@@ -20,7 +20,7 @@ export default function Pending({ data }: { data: Data }) {
           </li>
         ))}
         {data.pending.schools.map((s) => (
-          <li key={s.id}>
+          <li key={s.id} data-focus={`pd-${s.id}`}>
             <div className="p-head"><b>{s.name}</b></div>
             <p>{s.note}</p>
             <a href={s.site} target="_blank" rel="noreferrer">招生網站 ↗</a>

@@ -1,0 +1,24 @@
+school: ntu
+sources:
+  a113: { title: 113學年度碩士班招生錄取情況一覽表, url: "https://www.aca.ntu.edu.tw/WebUPD/aca/LocalAdmissionClass/113%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%A2%A9%E5%A3%AB%E7%8F%AD%E6%8B%9B%E7%94%9F%E9%8C%84%E5%8F%96%E6%83%85%E6%B3%81%E4%B8%80%E8%A6%BD%E8%A1%A8.pdf", grade: A, checked: "2026-11-01" }
+  a114: { title: 114學年度碩士班招生錄取情況一覽表, url: "https://www.aca.ntu.edu.tw/WebUPD/aca/LocalAdmissionClass/114%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%A2%A9%E5%A3%AB%E7%8F%AD%E6%8B%9B%E7%94%9F%E9%8C%84%E5%8F%96%E6%83%85%E6%B3%81%E4%B8%80%E8%A6%BD%E8%A1%A8(2).pdf", grade: A, checked: "2026-11-01" }
+  a115: { title: 115學年度碩士班招生錄取情況一覽表, url: "https://www.aca.ntu.edu.tw/WebUPD/aca/LocalAdmissionClass/%E9%99%84%E4%BB%B63_115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%A2%A9%E5%A3%AB%E7%8F%AD%E6%8B%9B%E7%94%9F%E9%8C%84%E5%8F%96%E6%83%85%E6%B3%81%E4%B8%80%E8%A6%BD%E8%A1%A8.pdf", grade: A, checked: "2026-11-01" }
+# 名額＝簡章名額；正取＝錄取人數（含甄試流用、同分增額）；錄取率為台大表上的數字（錄取÷報名）
+# 最低錄取分數是各系所加權後的總分，配分每年可能不同，跨年度比較要小心
+records:
+  - { main: true, year: 115, program: 資工系＋AI 碩士班聯招, group: "905（合計）", quota: 66, applicants: 1243, admitted: 67, waitlist: 75, src: a115 p6, note: 甄試流用後名額 67 }
+  - { year: 115, program: 資工系＋AI 碩士班聯招, group: 905A 資訊工程學系, quota: 60, admitted: 61, waitlist: 60, min_score: 221.2, src: a115 p6, note: 聯招只公布合計報名人數 }
+  - { year: 115, program: 資工系＋AI 碩士班聯招, group: 905B 人工智慧, quota: 6, admitted: 6, waitlist: 15, min_score: 220.6, src: a115 p6 }
+  - { year: 115, program: 網媒所（近親所）, group: "914", quota: 18, applicants: 323, admitted: 18, waitlist: 18, min_score: 150.2, src: a115 p6 }
+  - { year: 115, program: 電機系資訊安全碩士班（近親所）, group: "904", quota: 12, applicants: 99, admitted: 12, waitlist: 18, min_score: 84.4, src: a115 p6, note: 115 年度簡章為書面審查 100%（不考筆試），分數為審查成績 }
+  - { main: true, year: 114, program: 資工系＋AI 碩士班聯招, group: "905", quota: 58, applicants: 1375, admitted: 58, waitlist: 75, min_score: 190.8, src: a114 p6 }
+  - { year: 114, program: 網媒所（近親所）, group: "914", quota: 18, applicants: 287, admitted: 19, waitlist: 18, min_score: 114.8, src: a114, note: 同分增額錄取 1 名 }
+  - { year: 114, program: 電機系資訊安全碩士班（近親所）, group: "904", quota: 12, applicants: 97, admitted: 13, waitlist: 30, min_score: 84.05, src: a114 p6, note: 甄試流用後名額 13 }
+  - { main: true, year: 113, program: 資訊工程學系, group: "905", quota: 60, applicants: 1684, admitted: 60, waitlist: 60, min_score: 159.6, src: a113 p6, note: 113 年度資工、AI 分開招生；114 起合併聯招，報名數含 AI，跨年比較要注意 }
+  - { year: 113, program: 資工系人工智慧碩士班, group: "906", quota: 6, applicants: 31, admitted: 6, waitlist: 4, min_score: 62.88, src: a113 p6 }
+  - { year: 113, program: 網媒所（近親所）, group: "915", quota: 17, applicants: 441, admitted: 17, waitlist: 5, min_score: 85.0, src: a113 p6 }
+  - { year: 113, program: 電機系資訊安全碩士班（近親所）, group: "904", quota: 12, applicants: 81, admitted: 12, waitlist: 30, min_score: 86.04, src: a113 p6 }
+# published：給使用者看的一句話（官方公開了什麼）；todo：給排程查核看的待辦，不會出現在網站上
+published: 台大每年公布「碩士班招生錄取情況一覽表」，含報名、名額、錄取、備取與最低錄取分數。
+todo:
+  - 116 年度錄取情況一覽表約 4 月公告

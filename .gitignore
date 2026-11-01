@@ -6,3 +6,7 @@ dist/
 .DS_Store
 src/generated/
 public/gradmap.ics
+logs/
+.worktrees/
+public/ics/
+.vercel/

@@ -1,12 +1,14 @@
 import type { Data } from "../types";
 import { rows, weightLabel } from "../lib";
+import type { Sel } from "../lib";
 
 const COLS = ["LA", "DM", "DS", "ALG", "CO", "OS", "EN", "SEC"];
 
-export default function Matrix({ data, nearKin }: { data: Data; nearKin: boolean }) {
+export default function Matrix({ data, nearKin, sel }: { data: Data; nearKin: boolean; sel: Sel }) {
   const examOf = (r: { school: { status: string; schedule: { type: string; start?: string }[] }; group: { exam_day?: string } }) =>
     (r.school.status === "verified" ? "0" : "1") + (r.group.exam_day ?? r.school.schedule.find((e) => e.type === "exam")?.start ?? "9");
   const list = rows(data, nearKin)
+    .filter((r) => sel(r.school.id))
     .filter((r) => r.group.papers.length > 0 || r.program.review_only)
     .sort((a, b) => examOf(a).localeCompare(examOf(b)));
   // 同校有多個班別（例：中央資工／軟工／AI）時，顯示班別名而不是組別名
@@ -17,12 +19,12 @@ export default function Matrix({ data, nearKin }: { data: Data; nearKin: boolean
         每格顯示「該科所在試卷的配分」。同一列中顏色相同的格子＝同一張考卷（例：中央的資結和演算法是同一張卷，權重 ×1）。滑鼠移到格子上可看試卷名稱和節次。
       </p>
       <div className="table-wrap">
-        <table className="mx">
+        <table className="mx freeze">
           <thead>
             <tr>
               <th>學校／組別</th>
               {COLS.map((c) => (
-                <th key={c} title={data.subjects[c]?.name}>
+                <th key={c} title={data.subjects[c]?.name} data-focus={`mxc-${c}`}>
                   <span className="mx-code">{c}</span>
                   <span className="mx-name">{data.subjects[c]?.name}</span>
                 </th>
@@ -31,7 +33,7 @@ export default function Matrix({ data, nearKin }: { data: Data; nearKin: boolean
           </thead>
           <tbody>
             {list.map(({ school: s, program: p, group: g }) => (
-              <tr key={g.id} className={s.status === "pending" ? "ref" : ""}>
+              <tr key={g.id} data-focus={`mx-${g.id}`} className={s.status === "pending" ? "ref" : ""}>
                 <td className="who">
                   <div className="school">
                     {s.short}

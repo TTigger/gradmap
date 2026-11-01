@@ -1,0 +1,15 @@
+school: nchu
+sources:
+  s113: { title: 國立中興大學113學年度碩士班招生資訊統計, url: "http://www.oaa.nchu.edu.tw/_run.php?work=down&file=61bdb394251d5b6001ae5a2cd09f70d46b771724.pdf&name=113SAT_M.pdf", grade: A, checked: "2026-11-01" }
+  s114: { title: 國立中興大學114學年度碩士班招生資訊統計, url: "http://www.oaa.nchu.edu.tw/_run.php?work=down&file=dd0147adece07309fbd69a1714326cf182a6a556.pdf&name=114SAT_M.pdf", grade: A, checked: "2026-11-01" }
+# 中興統計以「系」為單位（甲乙組合計），只取「考試入學」欄；正取人數含甄試回流名額
+records:
+  - { main: true, year: 114, program: 資訊工程學系, group: 甲乙組合計, quota: 26, applicants: 1931, admitted: 32, src: s114 p4, note: 名額為核定考試名額，另有擴充、外加名額（全系擴充 4、外加 10，未拆分甄試／考試） }
+  - { year: 114, program: 資料科學與資訊計算研究所（近親所）, quota: 7, applicants: 81, admitted: 9, src: s114 p3, note: 另有在職生名額 1、報名 3 }
+  - { year: 113, program: 資料科學與資訊計算研究所（近親所）, quota: 7, applicants: 65, admitted: 10, src: s113 p2, note: 考試名額 7＋擴充 2；另有在職生名額 1、報名 2 }
+  - { main: true, year: 113, program: 資訊工程學系, group: 甲乙組合計, quota: 26, applicants: 1429, admitted: 32, src: s113 p4, note: 考試名額 26＋擴充 2＋外加 4 }
+# published：給使用者看的一句話（官方公開了什麼）；todo：給排程查核看的待辦，不會出現在網站上
+published: 中興每年公布「碩士班招生資訊統計」（名額、報名、正取、註冊），以系為單位、不含分數；115 年度還沒公布。
+todo:
+  - 115 年度統計（<年度>SAT_M.pdf，官方統計頁目前到 114）
+

@@ -7,11 +7,6 @@ schools:
     short: 清大
     site: https://adms.site.nthu.edu.tw/p/412-1207-3103.php?Lang=zh-tw
     note: 招生網頁內容由 JavaScript 載入，自動抓取失敗，需改用瀏覽器查核
-  - id: nycu
-    name: 國立陽明交通大學
-    short: 陽明交大
-    site: https://exam.nycu.edu.tw/ma-me.html
-    note: 網頁仍為 115 年度（115 年度報名 114/12/9–12/16）
   - id: ncku
     name: 國立成功大學
     short: 成大

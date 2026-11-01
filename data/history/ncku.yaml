@@ -1,0 +1,11 @@
+school: ncku
+sources:
+  n115: { title: 成大碩招近1.8萬人冠全國！AI、半導體新興領域熱度爆表（1111 產經新聞網）, url: "https://www.1111.com.tw/news/jobns/163866", grade: B, checked: "2026-11-01" }
+records:
+  - { main: true, year: 115, program: 資訊聯招（資工系＋人工智慧科技碩士學位學程）, applicants: 1956, src: n115, note: 新聞稿數字，非官方統計表 }
+# published：給使用者看的一句話（官方公開了什麼）；todo：給排程查核看的待辦，不會出現在網站上
+published: 目前只找到新聞稿的數字（第三方），還沒找到成大官方的統計表。
+todo:
+  - 官方報名人數統計表 113–115（招生組網頁由 JavaScript 載入，要用瀏覽器找）
+  - 名額、錄取人數、最低錄取分數
+

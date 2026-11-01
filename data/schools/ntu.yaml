@@ -73,3 +73,5 @@ programs:
         papers: []
         papers_note: ⚠️ 書面審查佔100%，不考筆試
         second_stage: 無
+
+venue: { city: 臺北／臺南, place: 報名時選臺北或臺南考區（115 年度）, src: "ntu-schedule", year: 115, choose: true }

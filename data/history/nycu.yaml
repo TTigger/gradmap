@@ -1,0 +1,16 @@
+school: nycu
+sources:
+  r114: { title: 國立陽明交通大學114學年度碩士班考試入學、碩士在職專班招生報考人數統計, url: "https://exam.nycu.edu.tw/apfiles/action.aspx?id=5ad64c3c-e577-4c31-8e16-3fe6666ff79a", grade: A, checked: "2026-11-01" }
+  r115: { title: 國立陽明交通大學115學年度碩士班考試入學、碩士在職專班招生報考人數統計表, url: "https://exam.nycu.edu.tw/apfiles/action.aspx?id=d9102005-66f8-4631-a33e-e392a53ccc47", grade: A, checked: "2026-11-01" }
+  n115: { title: 陽明交大碩招增2成！AI半導體領軍 錄取率僅2%（1111 產經新聞網）, url: "https://www.1111.com.tw/news/jobns/163757", grade: B, checked: "2026-11-01" }
+records:
+  - { main: true, year: 115, program: 資訊聯招（代碼 810）, group: 合計, applicants: 2350, src: r115 p4, note: 官方表只列聯招總數，不分所；聯招含資科工、網工、多媒體、數據、資安及台南三所 }
+  - { year: 115, program: 資訊聯招－資訊科學與工程研究所, quota: 56, applicants: 2167, src: n115, note: 新聞稿數字；官方統計表不分所，無法核對 }
+  - { year: 115, program: 智能系統研究所碩士班聯招（近親所，只書審）, quota: 10, applicants: 391, src: r115 p4 }
+  - { main: true, year: 114, program: 資訊聯招（代碼 810）, group: 合計, applicants: 1751, src: r114 p4 }
+  - { year: 114, program: 智能系統研究所碩士班聯招（近親所）, applicants: 336, src: r114 p4 }
+# published：給使用者看的一句話（官方公開了什麼）；todo：給排程查核看的待辦，不會出現在網站上
+published: 陽明交大公布「報考人數統計表」，資訊聯招只列合計、不分所；錄取只有榜單，沒有分數統計。
+todo:
+  - 113 年度報名人數統計表（官方頁 114 學年度以前的檔案已不在頁面上，需另找）
+  - 下載方式：curl --cacert sources/certs/bundle-with-twca.pem（伺服器沒有送完整憑證鏈，補上 TWCA 中繼憑證後可正常驗證）

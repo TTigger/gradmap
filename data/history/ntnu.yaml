@@ -1,0 +1,21 @@
+school: ntnu
+sources:
+  r113: { title: 113學年度碩士班招生考試資審合格人數, url: "https://www.aa.ntnu.edu.tw/uploads/bulletin_file/file/6ac45ae7843f754d46b1bd83/113%E7%A2%A9-%E8%B3%87%E5%AF%A9%E5%90%88%E6%A0%BC%E4%BA%BA%E6%95%B8_%E5%85%AC%E5%91%8A%E7%94%A8_.pdf", grade: A, checked: "2026-11-01" }
+  r114: { title: 114學年度碩士班招生考試報考人數統計, url: "https://www.aa.ntnu.edu.tw/uploads/bulletin_file/file/6ac45aa5843f754d46b1bd45/114%E7%A2%A9-%E5%A0%B1%E8%80%83%E4%BA%BA%E6%95%B8%E7%B5%B1%E8%A8%88%E5%85%AC%E5%91%8A.pdf", grade: A, checked: "2026-11-01" }
+  r115: { title: 115學年度碩士班招生考試報考人數統計, url: "https://www.aa.ntnu.edu.tw/uploads/bulletin_file/file/6ac45a6b843f754d46b1bd25/115%E7%A2%A9-%E5%A0%B1%E8%80%83%E4%BA%BA%E6%95%B8%E7%B5%B1%E8%A8%88%E5%85%AC%E5%91%8A.pdf", grade: A, checked: "2026-11-01" }
+records:
+  - { main: true, year: 115, program: 資訊工程學系, applicants: 381, src: r115 p2 }
+  - { year: 115, program: AI 跨域應用研究所（近親所，只書審＋口試）, applicants: 111, src: r115 }
+  - { year: 115, program: 資訊教育研究所（近親所）, group: AI教育與數位學習組, applicants: 22, src: r115 }
+  - { year: 115, program: 資訊教育研究所（近親所）, group: 學習科學與學習科技組, applicants: 5, src: r115 }
+  - { main: true, year: 114, program: 資訊工程學系, applicants: 985, src: r114 }
+  - { year: 114, program: AI 跨域應用研究所（近親所）, applicants: 70, src: r114 }
+  - { year: 114, program: 資訊教育研究所（近親所）, applicants: 21, src: r114 }
+  - { main: true, year: 113, program: 資訊工程學系, applicants: 406, src: r113, note: 113 年度公布的是「資審合格人數」 }
+  - { year: 113, program: AI 跨域應用研究所（近親所）, applicants: 41, src: r113, note: 資審合格人數 }
+  - { year: 113, program: 資訊教育研究所（近親所）, applicants: 12, src: r113, note: 資審合格人數 }
+# published：給使用者看的一句話（官方公開了什麼）；todo：給排程查核看的待辦，不會出現在網站上
+published: 台師大只公布各系所的報考人數，沒有公布錄取人數與分數。
+todo:
+  - 113–115 名額可從當年簡章補
+

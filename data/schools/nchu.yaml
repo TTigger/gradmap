@@ -70,3 +70,11 @@ rules:
 
 near_kin:
   - { name: 資料科學與資訊計算研究所, note: 待確認考科與名額 }
+
+venue: { city: 臺中／臺北, place: 報名時選考區：臺中考區（中興校本部及附近學校）或臺北考區（臺北市內學校），報名後不能改, src: "p10 / 6", choose: true }
+waitlist_info:
+  alert: 正取、備取生都要在 3/8–3/15 上網登記入學意願，學校不另通知，沒登記就取消資格
+  how: 3/17 公告【新生名單】及【遞補順序名單】；之後有人放棄，依遞補順序名單遞補並在系所網頁公告
+  where: { label: 中興招生資訊網, url: "https://recruit.nchu.edu.tw/" }
+  deadline: 遞補至 116 學年度第 1 學期開始上課日
+  src: "p3 / 4；p14"

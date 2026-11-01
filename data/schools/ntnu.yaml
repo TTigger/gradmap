@@ -49,6 +49,22 @@ programs:
           - 錄取後須於116學年度第1學期註冊入學，不得保留入學資格（服兵役除外）
           - 入學後須通過系定外語能力檢定才能畢業
           - 甄試缺額可由本項考試備取生遞補
+  - id: ntnu-aica
+    name: AI 跨域應用研究所
+    kind: near_kin
+    review_only: true
+    url: https://www.ciai.ntnu.edu.tw/
+    groups:
+      - id: ntnu-aica-general
+        name: 不分組
+        quota: { general: 18 }
+        quota_src: "p79 / 72"
+        papers: []
+        papers_note: ⚠️ 不考筆試：初試資料審查 50%（研究計畫、推薦函、自傳等），複試口試 50%（116/2/27–28）
+        second_stage: 口試 50%，116/2/27–2/28（以學院網站公告為準）
+        tie_break: [口試, 資料審查]
+        notes:
+          - 招收各領域背景（跨域），缺額可與綠能科技與永續治理研究所互相流用
 
 rules:
   zero_score: 考試成績有一科（含）以上為零分者，不予錄取（缺考以零分計）
@@ -58,3 +74,10 @@ rules:
 
 near_kin:
   - { name: 資訊教育研究所, quota: 10, note: 偏教育領域，待確認考科後決定是否列為近親所 }
+
+venue: { city: 臺北, place: 臺北考區（本次集中筆試只設臺北考區）, src: "p1；p8" }
+waitlist_info:
+  how: 第一次遞補公告 116/4/9，之後如有缺額每週五公告、隔週一二報到
+  where: { label: 台師大碩士班招生專區, url: "https://enroll.itc.ntnu.edu.tw/Enroll/MsEntry" }
+  deadline: 遞補至 116 學年度第 1 學期上課開始日前
+  src: "p2 / i"

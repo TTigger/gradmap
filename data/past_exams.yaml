@@ -1,0 +1,87 @@
+# 考古題索引：各校「碩士班考試」官方考古題的位置（多半是圖書館，由教務處提供，不含解答）
+# years：確認過的資工所年度（學年度）；空的代表頁面要自己查、我們還沒確認
+# unsure：範圍內還沒確認的年度
+# access：online 線上下載 / onsite 只有館內紙本 / database 資料庫查詢 / unknown
+# 只列考試入學（筆試）試題；甄試、轉學考不列
+checked: "2026-11-01"
+schools:
+  - school: ntu
+    url: https://exam.lib.ntu.edu.tw/graduate/term/82
+    label: 臺大圖書館考古題・資訊工程學研究所
+    access: online
+    years: [98, 115]
+    note: 115 年起收在「資訊工程學系人工智慧研究所」（資工、AI 聯招）；97 年以前在舊版考古題網站
+    extra: [{ label: 115 聯招試題, url: "https://exam.lib.ntu.edu.tw/graduate/term/1381" }]
+  - school: nthu
+    url: https://www.lib.nthu.edu.tw/library/department/lrs/exam/eecs/cs.html
+    label: 清華圖書館考古題・資訊工程學系
+    access: unknown
+    note: 圖書館只放近五年試題，部分科目標示「不公開」；可下載的年度請點連結查看
+  - school: nycu
+    url: https://www.cs.nycu.edu.tw/admission/graduate?locale=zh
+    label: 陽明交大資工系招生頁（考古題說明）
+    access: onsite
+    note: 交大校區考古題不提供線上瀏覽或下載；標示 O 的紙本試題可在圖書館內影印
+  - school: ncku
+    url: https://exam.lib.ncku.edu.tw/master_subject.php?department_code=EC24
+    label: 成大圖書館考古題・資訊聯招碩士班
+    access: online
+    years: [103, 115]
+    note: 103 年起資工系併入資訊聯招；76–102 年的試題在「資訊工程系」頁面
+    extra: [{ label: 102 年以前（資訊工程系）, url: "https://exam.lib.ncku.edu.tw/master_subject.php?department_code=OD12" }]
+  - school: nccu
+    url: https://www.lib.nccu.edu.tw/p/426-1000-3.php?Lang=zh-tw
+    label: 政大圖書館考古題（選「資訊學院」「碩士班」）
+    access: online
+    note: 依學院、系所、學年度打包成 PDF；資訊科學系的年度請在頁面選「資訊學院」「碩士班」查看
+  - school: ntnu
+    url: https://www.lib.ntnu.edu.tw/collections/collection_02.jsp?id=D2BFE8E8-226A-0C6E-895E-7FD896B1EAC6
+    label: 師大圖書館考古題・碩士班理學院
+    access: online
+    years: [99, 115]
+    unsure: [100]
+    note: 資訊工程學系列在「理學院」下；100 年請點連結確認；95 年以前名稱為「資訊工程研究所」
+  - school: ncu
+    url: https://rapid.lib.ncu.edu.tw/cexamn/EC02.html
+    label: 中央圖書館考古題・資訊工程學系
+    access: online
+    years: [83, 115]
+    note: 93 年起為現行三科（資料結構與演算法、作業系統與計算機組織、離散數學與線性代數）；英文試題自 93 年起不提供
+  - school: nchu
+    url: http://histud.nchu.edu.tw:8082/PastExamsSearch
+    label: 中興招生考試歷屆試題資料庫
+    access: database
+    note: 只提供近 5 年；部分試題出題者未授權公開。在頁面選「資訊工程學系」查詢
+  - school: nsysu
+    url: https://lis.nsysu.edu.tw/p/412-1001-6014.php?Lang=zh-tw
+    label: 中山圖資處・碩士班考古題（工學院 資訊工程學系）
+    access: online
+    years: [87, 115]
+  - school: ccu
+    url: https://cs.ccu.edu.tw/p/404-1094-6488.php?Lang=zh-tw
+    label: 中正資工系・歷屆考古題（碩士班考試）
+    access: online
+    years: [108, 115]
+    note: 每年一個壓縮檔
+  - school: ntust
+    url: https://library.ntust.edu.tw/p/404-1049-102336.php?Lang=zh-tw
+    label: 台科大圖書館・資訊工程系考古題
+    access: online
+    years: [88, 115]
+    note: 98 年起只考「資訊工程概論」「計算機數學」兩科，和其他學校分科方式不同
+  - school: ntut
+    url: https://library.ntut.edu.tw/p/405-1024-108738,c15236.php
+    label: 北科大圖書館・資訊工程系碩士班
+    access: online
+    years: [106, 115]
+    note: 考「計算機概論」「程式設計」兩科
+  - school: ntpu
+    url: https://library.ntpu.edu.tw/multiplehtml/ac25779bd9b54d81a6af5b46ea0c7f97
+    label: 北大圖書館考古題・碩士一般入學
+    access: unknown
+    note: 在「碩士一般入學」列表中找資訊工程學系，年度請點連結查看
+  - school: ntou
+    url: https://academics.ntou.edu.tw/history.aspx
+    label: 海大教務處・招生考試考古題
+    access: unknown
+    note: 在頁面選「碩士班考試」與年度查詢資訊工程學系

@@ -1,0 +1,7 @@
+school: ntust
+sources: {}
+records: []
+# published：給使用者看的一句話（官方公開了什麼）；todo：給排程查核看的待辦，不會出現在網站上
+published: 目前沒有找到官方公開的碩士班考試統計。
+todo:
+  - 找官方「碩士班考試 報名人數統計」或「錄取統計」：113–115 報名人數、名額、錄取人數、備取人數、最低錄取分數。位置提示見 data/registry.yaml 的 watch。
