@@ -22,7 +22,8 @@ schools:
     name: 國立中正大學
     short: 中正
     site: https://exams.ccu.edu.tw/p/403-1032-2821.php?Lang=zh-tw
-    note: 116 學年度碩士班考試入學簡章尚未公告。
+    note: 官方預定日程（仍以簡章為準）：11/6 公告簡章，11/26–12/8 報名（資料上傳至 12/9），116/1/27 筆試，3/12 放榜，4/8–4/9 正取生報到。
+    note_src: https://exams.ccu.edu.tw/var/file/32/1032/img/1165/116schedule.pdf
   - id: ntust
     name: 國立臺灣科技大學
     short: 台科大
