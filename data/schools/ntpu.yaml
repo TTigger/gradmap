@@ -1,0 +1,59 @@
+id: ntpu
+name: 國立臺北大學
+short: 北大
+year: 116
+exam_type: 碩士班一般入學考試
+status: verified
+brochure:
+  title: 國立臺北大學116學年度碩士班一般入學考試招生簡章
+  url: https://cms-carrier.ntpu.edu.tw/uploads/116_V4_1_0d4d1a073f.pdf
+  published: "2026-10-29"
+  verified: "2026-11-01"
+  page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」；115/10/30 勘誤（中文系科目、第13頁表頭）已併入此版，資工系不受影響
+fee: { amount: 1500, note: 每一系所組（通訊系、電機系為 900 元）, src: "p10 / 9" }
+
+schedule:
+  - { type: register, start: "2026-11-18T10:00", end: "2026-12-02T13:00", label: 網路報考系統登錄, src: "p4 / 3" }
+  - { type: payment, start: "2026-11-18T10:00", end: "2026-12-02T15:30", label: 繳交報名費, src: "p4 / 3" }
+  - { type: upload, start: "2026-11-18T10:00", end: "2026-12-02T23:59", label: 上傳報考資料, note: 同等學力、境外學歷、在職生等才需要上傳, src: "p4 / 3" }
+  - { type: admit_card, start: "2027-01-08T10:00", label: 自行列印准考證明, src: "p4 / 3" }
+  - { type: venue, start: "2027-01-19", label: 試場及座位公告, src: "p4 / 3" }
+  - { type: exam, start: "2027-02-13", label: 筆試（資工系只考 2/13）, note: 全校筆試 2/13–2/14, src: "p7 / 6" }
+  - { type: result, start: "2027-03-09T12:00", label: 放榜（資工屬第一梯次）, src: "p52 / 51" }
+  - { type: regrade, start: "2027-03-09T12:00", end: "2027-03-18T17:00", label: 成績複查（第一梯次）, src: "p4 / 3" }
+  - { type: enroll, start: "2027-03-25T12:00", end: "2027-04-08T17:00", label: 正取生上網填報到資料、備取生填候補意願, src: "p4 / 3" }
+  - { type: waitlist, start: "2027-04-13", label: 備取生候補名單公告, src: "p22 / 21" }
+  - { type: enroll, end: "2027-04-15", label: 正取生通訊報到, src: "p4 / 3" }
+  - { type: waitlist, start: "2027-04-20", label: 第一次遞補公告（之後依簡章日期，最後一次 8/10）, src: "p22 / 21" }
+
+programs:
+  - id: ntpu-csie
+    name: 資訊工程學系碩士班
+    kind: main
+    url: https://www.csie.ntpu.edu.tw
+    groups:
+      - id: ntpu-csie-general
+        name: 不分組
+        quota: { general: 13 }
+        quota_src: "p52 / 51"
+        quota_note: 甄試缺額得於本項考試補足
+        exam_day: "2027-02-13"
+        papers:
+          - { name: 資料結構與演算法, covers: [DS, ALG], weight_pct: 50, period: "第2節 12:50–14:30" }
+          - { name: 線性代數與離散數學, covers: [LA, DM], weight_pct: 50, period: "第3節 15:20–17:00" }
+        papers_note: 只考兩科，不考計算機組織、作業系統；簡章寫「線性代數與離散數學（各佔50%）」，總成績＝兩科原始分數各乘 1
+        scoring: 總成績＝線性代數與離散數學原始分數×1＋資料結構與演算法原始分數×1
+        second_stage: 無面試
+        tie_break: [資料結構與演算法, 線性代數與離散數學]
+        calculator: 筆試一律不得使用計算機
+        notes:
+          - 在三峽校區上課
+          - 基礎課程「資料結構」不計入畢業學分，經系核定可免修
+
+venue: { city: 新北三峽, place: 三峽校區（新北市三峽區大學路151號；報考人數多時可能增加地點，以網路公告為準）, src: "p18 / 17" }
+waitlist_info:
+  alert: 正取生與備取生都要在 3/25 12:00–4/8 17:00 上網填寫（正取：報到資料；備取：候補意願），沒填視同放棄
+  how: 4/13 公告備取生候補名單；正取生 4/15 前通訊報到後，有缺額依候補名單遞補，第一次遞補 4/20 公告、4/29 前通訊報到（郵戳為憑），最後一次網路公告為 8/10
+  where: { label: 北大碩士班一般入學考試, url: "https://new.ntpu.edu.tw/admission/ntpu" }
+  deadline: 遞補至 116 學年度第 1 學期開始上課日
+  src: "p21 / 20；p22 / 21；p4 / 3"

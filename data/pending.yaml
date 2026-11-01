@@ -35,11 +35,6 @@ schools:
     site: https://graduate.ntut.edu.tw/
     note: 官方公告「116學年度研究所碩士班入學招生簡章，預定115年11月中下旬公告」
     note_src: https://graduate.ntut.edu.tw/p/406-1135-156925,r2829.php?Lang=zh-tw
-  - id: ntpu
-    name: 國立臺北大學
-    short: 北大
-    site: https://new.ntpu.edu.tw/admission/ntpu
-    note: 尚未查到 116 年度公告
   - id: ntou
     name: 國立臺灣海洋大學
     short: 海大
