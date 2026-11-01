@@ -5,6 +5,10 @@ Deadlines, exam dates, quotas, subjects and score weights for 14 national univer
 
 > 資工所「考試入學」資訊儀表板：報名日程、名額、考科、計分比例，每一筆都附官方簡章頁碼。
 
+🔗 **Live site 網站：<https://gradmap-red.vercel.app>**
+
+[![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-black?logo=vercel)](https://gradmap-red.vercel.app)
+
 ---
 
 ## Features 功能
@@ -43,7 +47,7 @@ npm run dev        # YAML → src/generated/data.json, then Vite dev server
 npm run build      # validate data + type-check + build to dist/
 ```
 
-Requires Node 18+. Data lives in YAML; the site is a static Vite + React build, deployed on Vercel.
+Requires Node 18+. Data lives in YAML; the site is a static Vite + React build, deployed on Vercel — every push to `main` goes live automatically（推送到 main 會自動部署）.
 
 ## Project layout 資料夾結構
 
