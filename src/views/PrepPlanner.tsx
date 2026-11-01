@@ -1,3 +1,4 @@
+import Icon from "../Icon";
 import { useEffect, useState } from "react";
 import type { Data, Row } from "../types";
 import { rows, type Sel } from "../lib";
@@ -49,11 +50,11 @@ export default function PrepPlanner({ data, nearKin, sel, go }: { data: Data; ne
       </div>
       <div className="pp-result">
         <div>
-          <h4>✅ 考科完全涵蓋 <span className="pp-n">{ok.length}</span></h4>
+          <h4><Icon name="check" className="ok" /> 考科完全涵蓋 <span className="pp-n">{ok.length}</span></h4>
           {ok.length ? ok.map((r) => <Chip key={r.group.id} r={r} />) : <p className="hint">目前沒有。</p>}
         </div>
         <div>
-          <h4>➕ 只差一科 <span className="pp-n">{one.length}</span></h4>
+          <h4><Icon name="plus" /> 只差一科 <span className="pp-n">{one.length}</span></h4>
           {one.length ? one.map((r) => <Chip key={r.group.id} r={r} extra={name(miss(r)[0])} />) : <p className="hint">目前沒有。</p>}
         </div>
         {more.length > 0 && (

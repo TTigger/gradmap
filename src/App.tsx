@@ -1,3 +1,4 @@
+import Icon from "./Icon";
 import { useEffect, useMemo, useRef, useState } from "react";
 import raw from "./generated/data.json";
 import type { Data } from "./types";
@@ -136,6 +137,27 @@ export default function App() {
   }, [tab]);
 
   return (
+    <>
+    <nav className="lnav" aria-label="分頁">
+      <div className="lnav-in">
+        <span className="lnav-brand">上岸地圖 <span className="en">GradMap</span></span>
+        <div className={`tabs-wrap ${tabFade.l ? "fade-l" : ""} ${tabFade.r ? "fade-r" : ""}`}>
+          <div className="tabs" role="tablist" ref={tabsRef} onScroll={updFade}>
+            {TABS.map((t) => (
+              <button
+                key={t.id}
+                role="tab"
+                aria-selected={tab === t.id}
+                className={tab === t.id ? "tab on" : "tab"}
+                onClick={() => { setTab(t.id); window.scrollTo({ top: 0 }); }}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </nav>
     <div className="app">
       <header className="top">
         <div className="brand">
@@ -157,7 +179,7 @@ export default function App() {
             return (
               <div key={i} className={`next-item ${i === 0 ? "first" : ""} ${u.kind}`}>
                 <div className="next-days">
-                  {d === 0 ? "今天" : <><b>{d}</b> 天</>}
+                  {d === 0 ? <b>今天</b> : <><b>{d}</b> 天</>}
                 </div>
                 <div className="next-text">
                   <span className="pill">{u.school.short}</span> {u.text}
@@ -175,14 +197,14 @@ export default function App() {
 
       {changes.length > 0 && (
         <section className="changes" aria-label="簡章更正">
-          <b>⚠️ 最近的簡章更正</b>
+          <b><Icon name="warn" /> 最近的簡章更正</b>
           <ul>
             {changes.map((c, i) => (
               <li key={i}>
                 {lastSeen && c.date > lastSeen && <span className="badge new">新</span>}
                 <span className="pill">{c.school.short}</span> {fmtDayW(c.date)}：{c.what}
                 {c.before && <small>（原：{c.before}{c.after ? ` → ${c.after}` : ""}）</small>}
-                <a href={c.school.brochure.url} target="_blank" rel="noreferrer" className="src"> 來源 {c.src} ↗</a>
+                <a href={c.school.brochure.url} target="_blank" rel="noreferrer" className="src"> 來源 {c.src}<Icon name="out" /></a>
               </li>
             ))}
           </ul>
@@ -205,40 +227,20 @@ export default function App() {
           </select>
           {(school !== "all" || phase !== "all") && (
             <button className="chipbtn on" onClick={() => { setSchool("all"); setPhase("all"); }} title="清除篩選">
-              {[schoolName, phase !== "all" && PHASES[phase].label].filter(Boolean).join("・")} ✕
+              {[schoolName, phase !== "all" && PHASES[phase].label].filter(Boolean).join("・")} <Icon name="close" />
             </button>
           )}
-        </div>
-      </div>
-
-      <nav className="toolbar">
-        <div className={`tabs-wrap ${tabFade.l ? "fade-l" : ""} ${tabFade.r ? "fade-r" : ""}`}>
-        <div className="tabs" role="tablist" ref={tabsRef} onScroll={updFade}>
-          {TABS.map((t) => (
-            <button
-              key={t.id}
-              role="tab"
-              aria-selected={tab === t.id}
-              className={tab === t.id ? "tab on" : "tab"}
-              onClick={() => setTab(t.id)}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
-        </div>
-        <div className="tools">
           <label className="toggle">
-            <input type="checkbox" checked={nearKin} onChange={(e) => setNearKin(e.target.checked)} />
+            <input type="checkbox" role="switch" checked={nearKin} onChange={(e) => setNearKin(e.target.checked)} />
             顯示近親所
           </label>
           <IcsMenu data={data} mine={mine} />
         </div>
-      </nav>
+      </div>
 
       <main>
         {mineOnly && mine.length > 0 && school === "all" && (
-          <p className="scope-note">★ 只顯示我的志願：{data.registry.filter((r) => mine.includes(r.id)).map((r) => r.short).join("、")}
+          <p className="scope-note"><Icon name="star" fill /> 只顯示我的志願：{data.registry.filter((r) => mine.includes(r.id)).map((r) => r.short).join("、")}
             <button className="linkbtn" onClick={() => setMineOnly(false)}>顯示全部</button></p>
         )}
         {tab === "timeline" && <Timeline data={data} now={now} school={school} sel={sel} phase={phase} />}
@@ -260,6 +262,7 @@ export default function App() {
         <p>資料建置：{new Date(data.generated).toLocaleString("zh-TW", { hour12: false })}</p>
       </footer>
     </div>
+    </>
   );
 }
 

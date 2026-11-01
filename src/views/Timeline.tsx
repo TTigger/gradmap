@@ -1,3 +1,4 @@
+import Icon from "../Icon";
 import type { Data, School } from "../types";
 import { TYPE_META, fmtWhen, toDate, fmtDay, fmtDayW, fmtMD, phaseOk, changesAt, changeTip, type Phase, type Sel } from "../lib";
 
@@ -44,7 +45,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
       if (school !== "all" ? examDays[i].s.id !== school && examDays[j].s.id !== school : !(sel(examDays[i].s.id) && sel(examDays[j].s.id))) continue;
       const diff = (+toDate(examDays[j].day) - +toDate(examDays[i].day)) / DAY;
       const a = examDays[i].s, b = examDays[j].s;
-      if (diff === 0) warnings.push(`⚠️ ${a.short}、${b.short} 同一天考試（${fmtDay(examDays[i].day)}），只能選一間`);
+      if (diff === 0) warnings.push(`${a.short}、${b.short} 同一天考試（${fmtDay(examDays[i].day)}），只能選一間`);
       else if (diff === 1) {
         const ca = a.venue?.city, cb = b.venue?.city;
         let tip = "";
@@ -134,7 +135,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
 
       {warnings.length > 0 && (
         <ul className="warn">
-          {warnings.map((w) => <li key={w}>{w}</li>)}
+          {warnings.map((w) => <li key={w}><Icon name="warn" /> {w}</li>)}
         </ul>
       )}
 

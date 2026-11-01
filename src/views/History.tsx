@@ -1,3 +1,4 @@
+import Icon from "../Icon";
 import type { Data, HistoryRecord, HistorySchool } from "../types";
 import { fmtMD, type Sel } from "../lib";
 import TrendChart from "./TrendChart";
@@ -67,7 +68,7 @@ export default function History({ data, sel, go }: { data: Data; sel: Sel; go: (
                   <td className="pub">
                     {h?.published ?? "還沒整理。"}
                     {!has && r.links.filter((l) => l.kind === "admission").slice(0, 1).map((l) => (
-                      <a key={l.url} href={l.url} target="_blank" rel="noreferrer"> 招生網站 ↗</a>
+                      <a key={l.url} href={l.url} target="_blank" rel="noreferrer"> 招生網站<Icon name="out" /></a>
                     ))}
                   </td>
                 </tr>
@@ -124,7 +125,7 @@ export default function History({ data, sel, go }: { data: Data; sel: Sel; go: (
                         <td>
                           {src ? (
                             <a href={src.url} target="_blank" rel="noreferrer" title={src.title}>
-                              <span className={`grade g${src.grade}`}>{src.grade}</span> {x.src.slice(sid.length).trim() || "原始資料"} ↗
+                              <span className={`grade g${src.grade}`}>{src.grade}</span> {x.src.slice(sid.length).trim() || "原始資料"}<Icon name="out" />
                             </a>
                           ) : x.src}
                           {src?.checked && <span className="verified"> 查證 {fmtMD(src.checked)}</span>}

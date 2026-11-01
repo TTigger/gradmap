@@ -1,3 +1,4 @@
+import Icon from "../Icon";
 import type { Data, School } from "../types";
 import { TYPE_META, fmtWhen, toDate, type Sel } from "../lib";
 
@@ -24,7 +25,7 @@ export default function After({ data, now, sel }: { data: Data; now: Date; sel: 
           return (
             <article key={s.id} className={`after ${ref ? "ref" : ""}`} data-focus={`af-${s.id}`}>
               <h3>{s.name}{ref && <span className="badge ref">{s.reference_year} 參考</span>}</h3>
-              {w?.alert && <p className="after-alert">⚠️ {w.alert}</p>}
+              {w?.alert && <p className="after-alert"><Icon name="warn" /> {w.alert}</p>}
               <ul className="after-ev">
                 {evs.map((e, i) => {
                   const past = +toDate(e.end ?? e.start!) < +now;
@@ -41,7 +42,7 @@ export default function After({ data, now, sel }: { data: Data; now: Date; sel: 
                 <div className="after-how">
                   <p>{w.how}</p>
                   {w.deadline && <p className="hint">遞補截止：{w.deadline}</p>}
-                  {w.where && <a href={w.where.url} target="_blank" rel="noreferrer">{w.where.label} ↗</a>}
+                  {w.where && <a href={w.where.url} target="_blank" rel="noreferrer">{w.where.label}<Icon name="out" /></a>}
                   <span className="hint"> · 簡章 {w.src}</span>
                 </div>
               ) : (

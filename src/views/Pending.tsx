@@ -1,3 +1,4 @@
+import Icon from "../Icon";
 import type { Data } from "../types";
 
 export default function Pending({ data }: { data: Data }) {
@@ -16,15 +17,15 @@ export default function Pending({ data }: { data: Data }) {
               <span className="badge ref">已有 {s.reference_year} 參考資料</span>
             </div>
             <p>{s.status_note}</p>
-            <a href={s.brochure.url} target="_blank" rel="noreferrer">{s.brochure.title} ↗</a>
+            <a href={s.brochure.url} target="_blank" rel="noreferrer">{s.brochure.title}<Icon name="out" /></a>
           </li>
         ))}
         {data.pending.schools.map((s) => (
           <li key={s.id} data-focus={`pd-${s.id}`}>
             <div className="p-head"><b>{s.name}</b></div>
             <p>{s.note}</p>
-            <a href={s.site} target="_blank" rel="noreferrer">招生網站 ↗</a>
-            {s.note_src && <> · <a href={s.note_src} target="_blank" rel="noreferrer">公告來源 ↗</a></>}
+            <a href={s.site} target="_blank" rel="noreferrer">招生網站<Icon name="out" /></a>
+            {s.note_src && <> · <a href={s.note_src} target="_blank" rel="noreferrer">公告來源<Icon name="out" /></a></>}
           </li>
         ))}
       </ul>

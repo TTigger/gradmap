@@ -1,3 +1,4 @@
+import Icon from "../Icon";
 import type { Data, PastExam } from "../types";
 import { fmtMD, type Sel } from "../lib";
 
@@ -47,8 +48,8 @@ export default function PastExams({ data, sel }: { data: Data; sel: Sel }) {
                 })}
                 <td className="nowrap">{x.years ? `${x.years[0]}–${x.years[1]}` : "—"}</td>
                 <td className="pe-note">
-                  <a href={x.url} target="_blank" rel="noreferrer">{x.label} ↗</a>
-                  {x.extra?.map((e) => <a key={e.url} href={e.url} target="_blank" rel="noreferrer" className="pe-extra">{e.label} ↗</a>)}
+                  <a href={x.url} target="_blank" rel="noreferrer">{x.label}<Icon name="out" /></a>
+                  {x.extra?.map((e) => <a key={e.url} href={e.url} target="_blank" rel="noreferrer" className="pe-extra">{e.label}<Icon name="out" /></a>)}
                   {x.note && <div className="hint">{x.note}</div>}
                 </td>
               </tr>

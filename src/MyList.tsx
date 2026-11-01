@@ -1,3 +1,4 @@
+import Icon from "./Icon";
 import { useState } from "react";
 import type { Data } from "./types";
 import Popover from "./Popover";
@@ -9,7 +10,7 @@ export default function MyList({ data, mine, setMine, mineOnly, setMineOnly }: {
   const toggle = (id: string) => setMine(mine.includes(id) ? mine.filter((x) => x !== id) : [...mine, id]);
   const on = mineOnly && mine.length > 0;
   return (
-    <Popover className={`btn mylist-btn ${on ? "on" : ""}`} label={<>★ 我的志願{mine.length > 0 && <b>{mine.length}</b>}</>}>
+    <Popover className={`btn mylist-btn ${on ? "on" : ""}`} label={<><Icon name="star" fill={mine.length > 0} /> 我的志願{mine.length > 0 && <b>{mine.length}</b>}</>}>
       {() => (
         <div className="mylist">
           <label className="mylist-only">

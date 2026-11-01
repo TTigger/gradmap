@@ -1,3 +1,4 @@
+import Icon from "./Icon";
 import { useState } from "react";
 import type { Data } from "./types";
 import Popover from "./Popover";
@@ -38,7 +39,7 @@ export default function IcsMenu({ data, mine }: { data: Data; mine: string[] }) 
             下載我的志願（{mineV.length} 校）
           </button>
           {mine.length > 0 && mineV.length < mine.length && <p className="hint">志願中有 {mine.length - mineV.length} 校簡章還沒公告，公告後再下載一次。</p>}
-          {!mine.length && <p className="hint">先在「★ 我的志願」勾選學校。</p>}
+          {!mine.length && <p className="hint">先在「我的志願」勾選學校。</p>}
           <ul>
             <Row path="gradmap.ics" label="全部已查證學校" />
             {verified.map((s) => <Row key={s.id} path={`ics/${s.id}.ics`} label={s.short} />)}

@@ -1,3 +1,4 @@
+import Icon from "../Icon";
 import { useState } from "react";
 import type { Data, Row } from "../types";
 import { rows, findEvent, fmtDay, fmtWhen, fmtMD, weightLabel, changesAt, changeTip, type Sel } from "../lib";
@@ -57,7 +58,7 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                   <td className="who">
                     <div className="school">
                       <button className={`star ${star ? "on" : ""}`} title={star ? "從我的志願移除" : "加入我的志願"} aria-pressed={star}
-                        onClick={() => setMine(star ? mine.filter((x) => x !== s.id) : [...mine, s.id])}>{star ? "★" : "☆"}</button>
+                        onClick={() => setMine(star ? mine.filter((x) => x !== s.id) : [...mine, s.id])}><Icon name="star" fill={star} /></button>
                       {s.short}
                       {ref && <span className="badge ref">{s.reference_year} 參考</span>}
                       {p.kind === "near_kin" && <span className="badge nk">近親所</span>}
@@ -66,16 +67,16 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                     <div className="prog">{p.name}</div>
                     {g.name !== "—" && <div className="grp">{g.name}{g.code && <span className="code"> #{g.code}</span>}</div>}
                     {p.exclusive_groups && <div className="hint">各組不得同時報考</div>}
-                    {ch.length > 0 && <div className="badge changed" title={changeTip(ch)}>⚠️ {fmtMD(ch[0].date)} 有更正</div>}
+                    {ch.length > 0 && <div className="badge changed" title={changeTip(ch)}><Icon name="warn" /> {fmtMD(ch[0].date)} 有更正</div>}
                     <div className="verified">{ref ? `${s.reference_year} 簡章` : "簡章"}查證 {fmtMD(s.brochure.verified)}</div>
                   </td>
                   <td className="num">
                     <b>{g.quota.general ?? "—"}</b>
                     {g.quota_note && <div className="hint">{g.quota_note}</div>}
                   </td>
-                  <td className="nowrap">{reg ? fmtWhen(reg) : "—"}</td>
+                  <td className="nowrap">{reg ? fmtWhen(reg).split(" – ").map((x, i) => <div key={i}>{i ? "– " : ""}{x}</div>) : "—"}</td>
                   <td className="nowrap">{g.exam_day ? fmtDay(g.exam_day) : exam?.start ? fmtWhen(exam) : "—"}
-                    {s.venue && <div className="hint" title={s.venue.place}>📍 {s.venue.city}{s.venue.choose ? "（可選）" : ""}</div>}</td>
+                    {s.venue && <div className="hint" title={s.venue.place}><Icon name="pin" /> {s.venue.city}{s.venue.choose ? "（可選）" : ""}</div>}</td>
                   <td className="nowrap">{res?.start ? fmtDay(res.start) : "—"}</td>
                   <td>
                     {g.papers.length === 0 && <span className="hint">{g.papers_note ?? "待整理"}</span>}
