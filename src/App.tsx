@@ -266,6 +266,7 @@ export default function App() {
           每筆資料都附官方簡章頁碼（例：<code>p42 / 38</code> = PDF 第 42 頁／簡章印刷頁 38）。
           資料以各校最新公告為準。
         </p>
+        <p>本站使用 Vercel 匿名流量統計（不使用 cookie、不追蹤個人），只用來了解網站使用情況。</p>
         <p>資料建置：{new Date(data.generated).toLocaleString("zh-TW", { hour12: false })}</p>
       </footer>
     </div>
