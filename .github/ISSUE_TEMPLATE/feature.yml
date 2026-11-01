@@ -1,0 +1,13 @@
+name: Feature / UI 功能建議
+description: Suggest a feature or report a layout problem｜功能建議或版面問題
+labels: ["feature"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help 需要什麼
+    validations: { required: true }
+  - type: input
+    id: device
+    attributes:
+      label: Device / browser (for UI issues) 裝置與瀏覽器
