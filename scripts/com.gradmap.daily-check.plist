@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!-- 每週日 09:07 執行 GradMap 每週查核。安裝：scripts/schedule.sh install；移除：scripts/schedule.sh uninstall -->
+<!-- 每天 09:07 執行 GradMap 每日查核。安裝：scripts/schedule.sh install；移除：scripts/schedule.sh uninstall -->
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.gradmap.weekly-check</string>
+  <string>com.gradmap.daily-check</string>
   <key>ProgramArguments</key>
   <array>
     <string>/bin/zsh</string>
-    <string>__ROOT__/scripts/weekly-check.sh</string>
+    <string>__ROOT__/scripts/daily-check.sh</string>
   </array>
   <key>StartCalendarInterval</key>
   <dict>
-    <key>Weekday</key>
-    <integer>0</integer>
     <key>Hour</key>
     <integer>9</integer>
     <key>Minute</key>

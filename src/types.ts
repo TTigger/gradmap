@@ -72,7 +72,7 @@ export interface School {
   waitlist_info?: { alert?: string; how: string; where?: { label: string; url: string }; deadline?: string; src: string };
 }
 
-/** 簡章更正、日程異動的紀錄（每週查核發現變動時新增） */
+/** 簡章更正、日程異動的紀錄（每日查核發現變動時新增） */
 export interface Change {
   date: string; // 發現／公告變動的日期
   where: string; // schedule.<type>、group:<組別 id>、fee、school

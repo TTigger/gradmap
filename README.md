@@ -5,9 +5,9 @@ Deadlines, exam dates, quotas, subjects and score weights for 14 national univer
 
 > 資工所「考試入學」資訊儀表板：報名日程、名額、考科、計分比例，每一筆都附官方簡章頁碼。
 
-🔗 **Live site 網站：<https://gradmap-red.vercel.app>**
+🔗 **Live site 網站：<https://gradmap-tw.vercel.app>**
 
-[![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-black?logo=vercel)](https://gradmap-red.vercel.app)
+[![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-black?logo=vercel)](https://gradmap-tw.vercel.app)
 
 ---
 
@@ -65,16 +65,17 @@ scripts/
   build-data.mjs         YAML → JSON + .ics, with validation
   verify-src.mjs         cross-check data against brochure text
   extract.sh             PDF → per-page text (local only)
-  weekly-check.sh        weekly re-check on branch check/<date>
-  schedule.sh            install / uninstall / run the weekly job (macOS launchd)
+  daily-check.sh         daily re-check on branch check/<date>, auto-publish if checks pass
+  schedule.sh            install / uninstall / run the daily job (macOS launchd)
 sources/<year>/SHA256SUMS  fingerprints of the brochures used (PDFs stay local)
-docs/                    decisions, research logs, weekly-check instructions
+docs/                    decisions, research logs, daily-check instructions (DAILY_CHECK.md)
 ```
 
-## Weekly check 每週查核
+## Daily check 每日查核
 
-`scripts/schedule.sh install` runs a check every Sunday 09:07 (2026-11-15 → 2027-04-30) on a separate branch `check/<date>`; the report lands in `docs/research/`. Merge after review.
-每週日自動在 `check/<日期>` 分支查新公告、補歷年數據，檢查後再合併到 main。
+`scripts/schedule.sh install` runs a check every day at 09:07 (2026-11-02 → 2027-04-30). It looks for newly published 116 brochures and corrections on a branch `check/<date>`. Changes go live automatically **only if** they touch data files only, `npm run build` passes, and `verify-src.mjs` finds every date / quota / weight on its cited brochure page; otherwise the branch is kept for manual review. Sundays also refresh history stats, past exams and resource links.
+
+每天自動查新簡章與更正公告。只改資料檔、建置通過、簡章頁碼全數核對成功，才會自動推上 main 並更新網站；否則留在分支等人工確認。週日另外補歷年數據、考古題與備考連結。
 
 ## Contributing 回報錯誤
 
