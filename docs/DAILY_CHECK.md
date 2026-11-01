@@ -18,6 +18,9 @@
 ## 每次要做的事（依優先順序）
 
 1. **116 簡章**：讀 `data/pending.yaml` 與 `data/registry.yaml`。對每所還沒查證的學校，到 registry 列的招生網站看 116 學年度碩士班考試入學簡章是否公告。
+   - **先看 registry 該校的 `watch`**：有些學校的招生頁由 JavaScript 載入或有防火牆（清大、成大），watch 裡寫了改用哪個來源（系網公告頁、WebSearch 關鍵字）。被防火牆擋的網址不要重試、不要偽裝瀏覽器，改用替代來源；都找不到就寫進報告「需要人工處理」。
+   - 簡章還沒出、但學校公布了官方「預定日程」：把日期寫進 `pending.yaml` 該校的 `note`（給使用者看的一句話，註明「仍以簡章為準」），`note_src` 放官方檔案網址，PDF 存到 `sources/116/` 並更新 SHA256SUMS。
+   - `pending.yaml` 的 `note` 會顯示在網站上，只寫使用者看得懂的事，不寫抓取失敗、JavaScript 等內部狀況（那些寫在 registry 的 `watch`）。
    - 公告了：下載 PDF 到 `sources/116/<id>.pdf`，用 `scripts/extract.sh 116` 抽文字，依照現有 `data/schools/ntnu.yaml` 的格式建立 `data/schools/<id>.yaml`（status: verified），並從 `pending.yaml` 移除。
    - 每個日期、名額、考科、比例、同分參酌都要附簡章頁碼（`p<PDF頁> / <印刷頁>`）。
    - **資工所依實際內容判斷，不看名稱**；近親所標 `kind: near_kin`。
@@ -39,6 +42,8 @@
 5. **考古題索引**（`data/past_exams.yaml`，只在 full 模式）：每年 8–9 月各校圖書館會上架新一年的試題。確認連結還有效、把 `years` 的上限往後延；`unsure` 或沒有 `years` 的學校，用瀏覽器打開確認資工所的年度後補上。只收碩士班考試（筆試）試題。
 6. **考場與遞補規則**：新簡章公告時，同時填 `venue`（考區、地點、頁碼；可選考區的加 `choose: true`）和 `waitlist_info`（`alert` 寫「沒做就放棄資格」的動作，`how` 寫遞補方式，`where` 寫公告網址，`src` 寫頁碼）。
 7. 執行 `npm run data`，必須通過檢查；有新增或修改 116 簡章資料時，再執行 `node scripts/verify-src.mjs`（自動核對每個日期、名額、比例是否真的出現在標註的簡章頁），找不到的項目要打開 PDF 確認或修正頁碼。
+
+- 不要修改 `data/last_check.yaml`（排程自己寫入查核時間）。
 
 ## 查證規則
 

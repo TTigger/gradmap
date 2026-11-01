@@ -74,8 +74,8 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
 
       <div className="tl" role="table" aria-label="各校時間軸">
         <div className="tl-head" role="row">
-          <div className="tl-name" />
-          <div className="tl-track">
+          <div className="tl-name" role="columnheader"><span className="sr-only">學校</span></div>
+          <div className="tl-track" role="columnheader" aria-label="月份">
             {months.map((mo) => (
               <span key={mo.label + mo.left} className="tl-month" style={{ left: `${mo.left}%` }}>{mo.label}</span>
             ))}
@@ -84,7 +84,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
         {sorted.map((s) => (
           <div className="tl-row" role="row" key={s.id} data-focus={`tl-${s.id}`}>
             <div className="tl-name" role="rowheader">{s.short}</div>
-            <div className="tl-track">
+            <div className="tl-track" role="cell">
               {months.map((mo) => <span key={mo.left} className="tl-grid" style={{ left: `${mo.left}%` }} />)}
               {todayLeft >= 0 && todayLeft <= 100 && <span className="tl-today" style={{ left: `${todayLeft}%` }} />}
               {s === sorted[0] && todayLeft >= 0 && todayLeft <= 100 && (
@@ -142,7 +142,8 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
       {examDays.filter((x) => sel(x.s.id)).length > 0 && (
         <div className="trip">
           <h3 className="sec-h">考試行程與考場</h3>
-          <table className="trip-t">
+          <div className="table-wrap">
+          <table className="trip-t freeze">
             <tbody>
               {examDays.filter((x) => sel(x.s.id)).map((x, i, arr) => {
                 const gap = i ? (+toDate(x.day) - +toDate(arr[i - 1].day)) / DAY : null;
@@ -158,6 +159,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
               })}
             </tbody>
           </table>
+          </div>
           <p className="hint">只列 116 已查證的學校。確切試場多半在考前幾天公告、印在准考證上。</p>
         </div>
       )}

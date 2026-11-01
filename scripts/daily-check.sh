@@ -24,6 +24,25 @@ BRANCH="check/$TODAY"
 WT=".worktrees/check-$TODAY"
 
 notify() { osascript -e "display notification \"$1\" with title \"GradMap 每日查核\"" || true; }
+# 寫入查核時間（網站標頭會顯示）
+write_stamp() { printf 'at: "%s"\nresult: "%s"\n' "$(date +%Y-%m-%dT%H:%M)" "$2" > "$1/data/last_check.yaml"; }
+# 只推送查核時間（沒有變動，或新資料沒通過檢查時）；以 GitHub 上的 main 為基礎，不帶其他修改
+stamp_only() {
+  local tmp="$ROOT/.worktrees/stamp-$TODAY"
+  git -C "$ROOT" worktree add -q --detach "$tmp" origin/main >> "$LOG" 2>&1 || return 1
+  write_stamp "$tmp" "$1"
+  git -C "$tmp" add data/last_check.yaml && git -C "$tmp" commit -qm "查核 $TODAY：$1" >> "$LOG" 2>&1 \
+    && git -C "$tmp" push -q origin HEAD:main >> "$LOG" 2>&1 || echo "查核時間推送失敗" >> "$LOG"
+  git -C "$ROOT" worktree remove --force "$tmp" >> "$LOG" 2>&1 || true
+  sync_local
+}
+# 本機 main 沒有未提交的修改時，跟 GitHub 同步
+sync_local() {
+  git -C "$ROOT" fetch -q origin main >> "$LOG" 2>&1 || true
+  if [[ "$(git -C "$ROOT" branch --show-current)" == main && -z "$(git -C "$ROOT" status --porcelain --untracked-files=no)" ]]; then
+    git -C "$ROOT" merge -q --ff-only origin/main >> "$LOG" 2>&1 || true
+  fi
+}
 cleanup() { cd "$ROOT"; git worktree remove --force "$WT" >> "$LOG" 2>&1 || true; git branch -D "$BRANCH" >> "$LOG" 2>&1 || true; }
 
 if git show-ref --quiet "refs/heads/$BRANCH"; then
@@ -48,7 +67,7 @@ fi
 rsync -a --ignore-existing "sources/" "$ROOT/sources/"
 
 if [[ -z "$(git log --oneline origin/main..HEAD)" ]]; then
-  echo "沒有變更" >> "$LOG"; cleanup; exit 0
+  echo "沒有變更" >> "$LOG"; cleanup; stamp_only "無變動"; exit 0
 fi
 
 # 三道檢查：只能動資料、報告與來源指紋；建置驗證；簡章頁碼核對
@@ -61,16 +80,15 @@ bad_files=$(git diff --name-only origin/main..HEAD | grep -vE '^(data/|docs/rese
 SUMMARY=$(git log -1 --format=%s)
 if [[ -n "$fail" ]]; then
   echo "未上線：$fail" >> "$LOG"
+  cd "$ROOT"; stamp_only "有新公告，人工確認中"
   notify "有新資料但未上線（$fail），請看分支 $BRANCH"
   exit 0
 fi
 
+write_stamp "." "已更新"
+git add data/last_check.yaml && git commit -qm "查核 $TODAY：記錄查核時間" >> "$LOG" 2>&1
 if git push -q origin "HEAD:main" >> "$LOG" 2>&1; then
-  # 本機 main 沒有未提交的修改時，順便同步
-  cd "$ROOT"
-  if [[ "$(git branch --show-current)" == main && -z "$(git status --porcelain --untracked-files=no)" ]]; then
-    git merge -q --ff-only "$BRANCH" >> "$LOG" 2>&1 || true
-  fi
+  cd "$ROOT"; sync_local
   ALERT=$( { sed -n '/需要你注意/,/^## 新增/p' "$WT/docs/research/checks/$TODAY.md" 2>/dev/null | grep -c '^- '; } || true )
   ALERT=${ALERT:-0}
   cleanup

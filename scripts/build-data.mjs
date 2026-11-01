@@ -98,7 +98,11 @@ if (errors.length) {
 // 排程用的內部註記（todo、watch）不放進網站
 for (const h of history) delete h.todo;
 for (const r of registry) delete r.watch;
-const out = { generated: new Date().toISOString(), subjects, schools, pending, registry, history, resources, pastExams };
+// 每日查核最近一次的時間與結果（排程寫入；還沒跑過就沒有）
+const lastCheckPath = path.join(root, "data/last_check.yaml");
+const lastCheck = fs.existsSync(lastCheckPath) ? yaml.load(fs.readFileSync(lastCheckPath, "utf8")) : null;
+if (lastCheck && !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(lastCheck.at ?? "")) { console.error("last_check.yaml: at 格式應為 YYYY-MM-DDTHH:MM"); process.exit(1); }
+const out = { generated: new Date().toISOString(), lastCheck, subjects, schools, pending, registry, history, resources, pastExams };
 fs.mkdirSync(path.join(root, "src/generated"), { recursive: true });
 fs.writeFileSync(path.join(root, "src/generated/data.json"), JSON.stringify(out, null, 2));
 

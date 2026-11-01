@@ -1,27 +1,28 @@
 # 116 簡章尚未公告、也還沒收到可用參考資料的學校
 # 每次查核後更新 checked 日期；簡章一公告就移到 data/schools/<id>.yaml
-checked: "2026-10-31"
+checked: "2026-11-01"
 schools:
   - id: nthu
     name: 國立清華大學
     short: 清大
     site: https://adms.site.nthu.edu.tw/p/412-1207-3103.php?Lang=zh-tw
-    note: 招生網頁內容由 JavaScript 載入，自動抓取失敗，需改用瀏覽器查核
+    note: 116 學年度碩士班考試入學簡章尚未公告。
   - id: ncku
     name: 國立成功大學
     short: 成大
     site: https://adms-acad.ncku.edu.tw/
-    note: 招生網頁內容由 JavaScript 載入，需改用瀏覽器查核
+    note: 116 學年度碩士班考試入學簡章尚未公告。
   - id: nsysu
     name: 國立中山大學
     short: 中山
-    site: https://exam-acad.nsysu.edu.tw/
-    note: 115 年度報名為 114/12/2–12/17；115 簡章 https://exam-acad.nsysu.edu.tw/file_space/aca_master/115499751.pdf（待下載核對）
+    site: https://oaa.nsysu.edu.tw/
+    note: 官方預定日程（仍以簡章為準）：11/11 公告簡章，12/1–12/16 報名，116/2/3 筆試，放榜一階段 3/5、二階段 3/24。
+    note_src: https://oaa.nsysu.edu.tw/static/file/3/1003/attach/28/pta_246397_7587552_11872.pdf
   - id: ccu
     name: 國立中正大學
     short: 中正
-    site: https://www.ccu.edu.tw/
-    note: 尚未找到招生網頁
+    site: https://exams.ccu.edu.tw/p/403-1032-2821.php?Lang=zh-tw
+    note: 116 學年度碩士班考試入學簡章尚未公告。
   - id: ntust
     name: 國立臺灣科技大學
     short: 台科大

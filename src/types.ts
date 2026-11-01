@@ -93,6 +93,8 @@ export interface PendingSchool {
 
 export interface Data {
   generated: string;
+  /** 每日查核最近一次：at 為台灣時間 YYYY-MM-DDTHH:MM */
+  lastCheck: { at: string; result: string } | null;
   subjects: Record<string, { name: string; aliases: string[] }>;
   schools: School[];
   pending: { checked: string; schools: PendingSchool[] };

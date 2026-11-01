@@ -68,7 +68,8 @@ body {
 a { color: var(--link); text-decoration: none; }
 a:hover { text-decoration: underline; }
 a .ico { width: .9em; height: .9em; margin-left: 2px; vertical-align: -.08em; }
-code { font-size: .88em; background: var(--fill); padding: 1px 6px; border-radius: 6px; }
+code { font-size: .88em; color: var(--text); background: var(--fill); padding: 1px 6px; border-radius: 6px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .ico { width: 1em; height: 1em; flex: none; vertical-align: -.14em; }
 :focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 60%, transparent); outline-offset: 2px; border-radius: 6px; }
 input[type="checkbox"] { accent-color: var(--link); width: 16px; height: 16px; margin: 0; }
@@ -96,6 +97,8 @@ input[type="checkbox"] { accent-color: var(--link); width: 16px; height: 16px; m
 .top h1 { margin: 0; font-size: 40px; line-height: 1.1; font-weight: 600; letter-spacing: -.02em; }
 .top .en { color: var(--text-3); font-weight: 600; }
 .sub { margin: 8px 0 0; color: var(--text-2); font-size: 17px; }
+.checked { display: flex; gap: 8px; align-items: center; margin: 10px 0 0; color: var(--text-2); font-size: 13px; }
+.checked-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--c-result); flex: none; }
 .stats { display: flex; gap: 28px; color: var(--text-2); font-size: 13px; }
 .stats span { display: flex; flex-direction: column; }
 .stats b { color: var(--text); font-size: 28px; font-weight: 600; line-height: 1.1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
@@ -315,6 +318,8 @@ tr.ref td { opacity: .72; }
 .freeze th:first-child, .freeze td:first-child { position: sticky; left: 0; z-index: 1; background: var(--surface); }
 .freeze td:first-child { box-shadow: 8px 0 8px -8px rgba(0, 0, 0, .15); }
 .freeze th:first-child { z-index: 2; }
+/* 兩層表頭：第二層的第一格不是學校欄，不凍結 */
+.freeze thead tr + tr th:first-child { position: static; box-shadow: none; }
 tr.ref td.who { opacity: 1; }
 tr.ref td.who > * { opacity: .72; }
 
@@ -486,9 +491,13 @@ tr.flash td { animation: flash 2.2s ease-out; }
   .next-days b { font-size: 28px; }
   .finder { flex-direction: column; align-items: stretch; }
   .search { flex: none; }
-  .filters select { flex: 1; }
-  .filters .pop { flex: 1; }
-  .filters .pop > .btn { width: 100%; justify-content: center; }
+  .filters select { flex: 1 1 0; min-width: 0; font-size: 15px; padding-left: 14px; }
+  .filters > .pop:first-child { flex: 1 1 0; }
+  .filters > .pop:first-child > .btn { width: 100%; justify-content: center; padding-left: 10px; padding-right: 10px; }
+  /* 第二行：顯示近親所＋行事曆 */
+  .filters > .chipbtn { order: 8; }
+  .filters > .toggle { order: 9; flex: 1 0 55%; padding-left: 4px; }
+  .filters > .pop:last-child { order: 10; }
   .card { padding: 18px 16px; border-radius: var(--radius-s); }
   .sec-h { font-size: 20px; margin-top: 32px; }
   .hist h3, .res-group h3 { font-size: 20px; }

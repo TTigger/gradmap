@@ -163,6 +163,12 @@ export default function App() {
         <div className="brand">
           <h1>上岸地圖 <span className="en">GradMap</span></h1>
           <p className="sub">資工所資訊儀表板 · 116 學年度考試入學</p>
+          {data.lastCheck && (
+            <p className="checked">
+              <span className="checked-dot" aria-hidden="true" />
+              每日自動查核・最近一次 {fmtDayW(data.lastCheck.at.slice(0, 10))} {data.lastCheck.at.slice(11)}・{data.lastCheck.result}
+            </p>
+          )}
         </div>
         <div className="stats">
           <span><b>{verified}</b> 校已查證</span>
@@ -239,6 +245,7 @@ export default function App() {
       </div>
 
       <main>
+        <h2 className="sr-only">{TABS.find((t) => t.id === tab)?.label}</h2>
         {mineOnly && mine.length > 0 && school === "all" && (
           <p className="scope-note"><Icon name="star" fill /> 只顯示我的志願：{data.registry.filter((r) => mine.includes(r.id)).map((r) => r.short).join("、")}
             <button className="linkbtn" onClick={() => setMineOnly(false)}>顯示全部</button></p>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f5f5f7"/>
+  <g transform="translate(96 96) scale(.1875)">
+    <rect width="512" height="512" rx="112" fill="#0071e3"/>
+    <path d="M120 352l96-112 64 64 112-152" stroke="#fff" stroke-width="44" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="392" cy="152" r="30" fill="#fff"/>
+  </g>
+  <g font-family="PingFang TC, Helvetica Neue, sans-serif" fill="#1d1d1f">
+    <text x="96" y="300" font-size="96" font-weight="600" letter-spacing="-2">上岸地圖 <tspan fill="#86868b">GradMap</tspan></text>
+    <text x="96" y="380" font-size="40" fill="#1d1d1f">資工所考試入學資訊儀表板</text>
+    <text x="96" y="446" font-size="30" fill="#6e6e73">報名日程・名額・考科配分・考古題・放榜遞補</text>
+    <text x="96" y="540" font-size="28" fill="#0066cc">每筆資料附官方簡章頁碼 ・ gradmap-tw.vercel.app</text>
+  </g>
+</svg>
