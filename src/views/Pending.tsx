@@ -1,9 +1,24 @@
 import Icon from "../Icon";
 import type { Data } from "../types";
+import { fmtMD } from "../lib";
 
 export default function Pending({ data }: { data: Data }) {
   const refs = data.schools.filter((s) => s.status === "pending");
+  const out = data.schools.filter((s) => s.status !== "pending");
   return (
+    <>
+    <section className="card">
+      <p className="lead">已公告的 116 學年度考試入學簡章（點名稱開啟學校官方檔案）。</p>
+      <ul className="pending">
+        {out.map((s) => (
+          <li key={s.id}>
+            <div className="p-head"><b>{s.name}</b></div>
+            <a href={s.brochure.url} target="_blank" rel="noreferrer">{s.brochure.title}<Icon name="out" /></a>
+            <p className="verified">{s.brochure.published && `${fmtMD(s.brochure.published)} 公告・`}查證 {fmtMD(s.brochure.verified)}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
     <section className="card">
       <p className="lead">
         下列學校的 116 學年度考試入學簡章還沒公告（最後查核：{data.pending.checked}）。
@@ -30,5 +45,6 @@ export default function Pending({ data }: { data: Data }) {
         ))}
       </ul>
     </section>
+    </>
   );
 }

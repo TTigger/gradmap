@@ -68,7 +68,7 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                     {g.name !== "—" && <div className="grp">{g.name}{g.code && <span className="code"> #{g.code}</span>}</div>}
                     {p.exclusive_groups && <div className="hint">各組不得同時報考</div>}
                     {ch.length > 0 && <div className="badge changed" title={changeTip(ch)}><Icon name="warn" /> {fmtMD(ch[0].date)} 有更正</div>}
-                    <div className="verified">{ref ? `${s.reference_year} 簡章` : "簡章"}查證 {fmtMD(s.brochure.verified)}</div>
+                    <div className="verified"><a href={s.brochure.url} target="_blank" rel="noreferrer" title={s.brochure.title}>{ref ? `${s.reference_year} 簡章` : "簡章"}<Icon name="out" /></a>・查證 {fmtMD(s.brochure.verified)}</div>
                   </td>
                   <td className="num">
                     <b>{g.quota.general ?? "—"}</b>

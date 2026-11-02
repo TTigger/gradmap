@@ -515,3 +515,6 @@ tr.flash td { animation: flash 2.2s ease-out; }
   .mylist-grid { grid-template-columns: repeat(3, 1fr); }
   .tools .pop-panel.right { right: 0; }
 }
+
+.verified a { color: var(--link); text-decoration: none; display: inline-flex; align-items: center; gap: 2px; }
+.verified a:hover { text-decoration: underline; }

@@ -169,7 +169,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
         <div className="sched-grid">
           {sorted.map((s) => (
             <div key={s.id} className="sched">
-              <h3>{s.name} <small className="verified">查證 {fmtMD(s.brochure.verified)}</small></h3>
+              <h3>{s.name} <small className="verified"><a href={s.brochure.url} target="_blank" rel="noreferrer" title={s.brochure.title}>{s.status === "pending" ? `${s.reference_year} 簡章` : "簡章"}<Icon name="out" /></a>・查證 {fmtMD(s.brochure.verified)}</small></h3>
               <ul>
                 {s.schedule.map((e, i) => show(e.type) && (
                   <li key={i} className={changesAt(s, `schedule.${e.type}`, now).length ? "changed" : ""} title={changeTip(changesAt(s, `schedule.${e.type}`, now)) || undefined}>
