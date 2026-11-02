@@ -84,5 +84,11 @@ Found a wrong date or number? Open an issue with the **school, field, and the of
 
 ## Disclaimer 免責聲明
 
-Always confirm with the official brochure before registering. This site is an independent aggregation and is not affiliated with any university.
-報名前請以各校官方簡章為準；本站為獨立整理，與各校無關。
+This is an independent, unofficial compilation by an individual and is not affiliated with any university. Data may contain errors or be out of date and is provided "as is", without warranty. Always confirm with each university's official brochure and announcements before registering or taking exams.
+本站為個人整理、非官方網站，與各校無關。資料可能有誤或過時，依現狀提供、不負擔保；報名與應考請以各校簡章及公告為準。
+
+## License 授權
+
+- Code: [MIT](LICENSE)
+- Data (`data/`): [CC BY-NC 4.0](LICENSE-DATA) — free for non-commercial use with credit ("GradMap, https://gradmap-tw.vercel.app"); commercial use requires permission.
+- 程式碼採 MIT；`data/` 資料採 CC BY-NC 4.0：非商業使用請標示出處，商業使用（含收費課程、付費服務）須事先取得同意。各校簡章原檔屬各校所有，本 repo 不轉載，只附官方連結。

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!-- 每天 12:10、17:40 執行 GradMap 每日查核。安裝：scripts/schedule.sh install；移除：scripts/schedule.sh uninstall -->
+<!-- 範本：__ROOT__ 由 scripts/schedule.sh install 換成專案路徑。每天 12:10、17:40 執行 GradMap 每日查核。安裝：scripts/schedule.sh install；移除：scripts/schedule.sh uninstall -->
 <plist version="1.0">
 <dict>
   <key>Label</key>

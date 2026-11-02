@@ -12,7 +12,8 @@ mkdir -p "$ROOT/logs"
 
 case "${1:-status}" in
   install)
-    cp "$ROOT/scripts/$NAME.plist" "$DEST"
+    # 範本裡的 __ROOT__ 換成這台電腦上的專案路徑（repo 裡不寫死個人路徑）
+    sed "s#__ROOT__#$ROOT#g" "$ROOT/scripts/$NAME.plist" > "$DEST"
     launchctl bootout "gui/$(id -u)/$NAME" 2>/dev/null || true
     launchctl bootstrap "gui/$(id -u)" "$DEST"
     echo "已安裝：每天 12:10、17:40 執行（2026-11-02 起，週日中午做完整查核）" ;;

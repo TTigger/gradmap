@@ -279,8 +279,9 @@ export default function App() {
       <footer className="foot">
         <p>
           每筆資料都附官方簡章頁碼（例：<code>p42 / 38</code> = PDF 第 42 頁／簡章印刷頁 38）。
-          資料以各校最新公告為準。
         </p>
+        <p><b>本站為個人整理、非官方網站，資料可能有誤，報名與應考請以各校簡章及公告為準。</b></p>
+        <p>資料採 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hant" target="_blank" rel="noreferrer">CC BY-NC 4.0</a> 授權：非商業使用請標示出處「GradMap」，商業使用須事先同意。</p>
         <p>本站使用 Vercel 匿名流量統計（不使用 cookie、不追蹤個人），只用來了解網站使用情況。</p>
         <p>資料建置：{new Date(data.generated).toLocaleString("zh-TW", { hour12: false })}</p>
       </footer>
