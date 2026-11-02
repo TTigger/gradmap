@@ -26,6 +26,7 @@ for (const s of schools) {
     if (!e.src) errors.push(`${s.id}: 日程「${e.label}」沒有來源頁碼`);
   }
   for (const p of s.programs ?? []) {
+    if (p.review_only && !p.review_method) errors.push(`${s.id}: ${p.name} 設了 review_only，要寫 review_method（例："書審 100%"、"書審 50%＋口試 50%"）`);
     for (const g of p.groups ?? []) {
       for (const paper of g.papers ?? []) {
         for (const c of paper.covers ?? []) {
@@ -102,7 +103,21 @@ for (const r of registry) delete r.watch;
 const lastCheckPath = path.join(root, "data/last_check.yaml");
 const lastCheck = fs.existsSync(lastCheckPath) ? yaml.load(fs.readFileSync(lastCheckPath, "utf8")) : null;
 if (lastCheck && !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(lastCheck.at ?? "")) { console.error("last_check.yaml: at 格式應為 YYYY-MM-DDTHH:MM"); process.exit(1); }
-const out = { generated: new Date().toISOString(), lastCheck, subjects, schools, pending, registry, history, resources, pastExams };
+const updatesPath = path.join(root, "data/updates.yaml");
+const updates = fs.existsSync(updatesPath) ? yaml.load(fs.readFileSync(updatesPath, "utf8")) ?? [] : [];
+{
+  const ids = new Set([...schools.map((s) => s.id), ...(pending.schools ?? []).map((s) => s.id)]);
+  const bad = [];
+  for (const u of updates) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(u.date ?? "")) bad.push(`updates.yaml: 日期格式應為 YYYY-MM-DD（${u.text}）`);
+    if (!["new", "change", "info"].includes(u.kind)) bad.push(`updates.yaml: kind 只能是 new／change／info（${u.text}）`);
+    if (!u.text) bad.push("updates.yaml: 有一筆沒有 text");
+    for (const id of u.schools ?? []) if (!ids.has(id)) bad.push(`updates.yaml: 未知學校 ${id}`);
+  }
+  if (bad.length) { console.error(bad.join("\n")); process.exit(1); }
+  updates.sort((a, b) => b.date.localeCompare(a.date));
+}
+const out = { generated: new Date().toISOString(), lastCheck, updates, subjects, schools, pending, registry, history, resources, pastExams };
 fs.mkdirSync(path.join(root, "src/generated"), { recursive: true });
 fs.writeFileSync(path.join(root, "src/generated/data.json"), JSON.stringify(out, null, 2));
 

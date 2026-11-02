@@ -53,6 +53,7 @@ programs:
     name: AI 跨域應用研究所
     kind: near_kin
     review_only: true
+    review_method: "書審 50%＋口試 50%"
     url: https://www.ciai.ntnu.edu.tw/
     groups:
       - id: ntnu-aica-general

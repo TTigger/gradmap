@@ -158,6 +158,7 @@ programs:
     name: 產學創新研究學院 智能系統研究所碩士班聯招（代碼 850）
     kind: near_kin
     review_only: true
+    review_method: "書審 100%"
     url: https://iais.nycu.edu.tw/
     exclusive_groups: false
     notes: [四組合計 10 名，可選 1–4 個志願；正取生 115/3/16 在新竹光復校區報到]

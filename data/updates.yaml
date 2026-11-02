@@ -1,0 +1,8 @@
+# 網站「最近更新」：給使用者看的更新紀錄，新的在最上面。
+# kind：new＝新增一所學校的 116 簡章資料（比較表會標「新加入」7 天）／change＝簡章更正／info＝其他（預定日程、招生方式異動）
+# schools：相關學校 id（可省略）；text：一句使用者看得懂的話
+- { date: "2026-11-02", kind: info, schools: [ntust], text: 台科大資工碩士班 116 學年度起不考筆試，改為審查＋口試（學校預先公告） }
+- { date: "2026-11-01", kind: new, schools: [ntpu], text: 新增北大 116 簡章資料（11/18 開始報名、2/13 筆試） }
+- { date: "2026-11-01", kind: info, schools: [ccu], text: 中正公布預定日程：11/6 公告簡章、11/26 開始報名 }
+- { date: "2026-11-01", kind: info, schools: [nsysu], text: 中山公布預定日程：11/11 公告簡章、12/1 開始報名 }
+- { date: "2026-10-31", kind: info, schools: [ntnu, ncu, nccu, nchu], text: 收錄台師大、中央、政大、中興 116 簡章資料 }

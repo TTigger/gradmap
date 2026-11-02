@@ -10,6 +10,9 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
 }) {
   const [sort, setSort] = useState<SortKey>("exam");
   const list = rows(data, nearKin).filter((r) => sel(r.school.id));
+  // 7 天內新加入的學校標「新加入」
+  const since = new Date(now.getTime() - 7 * 86400000).toISOString().slice(0, 10);
+  const fresh = new Set(data.updates.filter((u) => u.kind === "new" && u.date >= since).flatMap((u) => u.schools ?? []));
 
   const examOf = (r: Row) => r.group.exam_day ?? findEvent(r.school, "exam")?.start ?? "9999";
   const deadlineOf = (r: Row) => findEvent(r.school, "register")?.end ?? "9999";
@@ -60,11 +63,13 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                       <button className={`star ${star ? "on" : ""}`} title={star ? "從我的志願移除" : "加入我的志願"} aria-pressed={star}
                         onClick={() => setMine(star ? mine.filter((x) => x !== s.id) : [...mine, s.id])}><Icon name="star" fill={star} /></button>
                       {s.short}
+                      {fresh.has(s.id) && <span className="badge new">新加入</span>}
                       {ref && <span className="badge ref">{s.reference_year} 參考</span>}
                       {p.kind === "near_kin" && <span className="badge nk">近親所</span>}
-                      {p.review_only && <span className="badge warn">只書審</span>}
+                      {p.review_only && <span className="badge warn">不考筆試</span>}
                     </div>
                     <div className="prog">{p.name}</div>
+                    {p.review_only && <div className="hint">{p.review_method}</div>}
                     {g.name !== "—" && <div className="grp">{g.name}{g.code && <span className="code"> #{g.code}</span>}</div>}
                     {p.exclusive_groups && <div className="hint">各組不得同時報考</div>}
                     {ch.length > 0 && <div className="badge changed" title={changeTip(ch)}><Icon name="warn" /> {fmtMD(ch[0].date)} 有更正</div>}

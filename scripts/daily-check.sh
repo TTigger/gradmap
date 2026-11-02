@@ -55,17 +55,18 @@ cleanup() { cd "$ROOT"; git worktree remove --force "$WT" >> "$LOG" 2>&1 || true
 if git show-ref --quiet "refs/heads/$BRANCH"; then
   echo "這個時段已經跑過（分支 $BRANCH 已存在）" >> "$LOG"; exit 0
 fi
-echo "=== $(date +%H:%M) 開始（$MODE）===" >> "$LOG"
+echo "=== $(date +%H:%M) 開始（${MODE}）===" >> "$LOG"
 
 # 以 GitHub 上最新的 main 為基礎
 git fetch -q origin main >> "$LOG" 2>&1
+BASE=$(git rev-parse origin/main)
 git worktree add -b "$BRANCH" "$WT" origin/main >> "$LOG" 2>&1
 ln -s "$ROOT/node_modules" "$WT/node_modules"
 # 已下載的原始檔不進 git，直接共用
 rsync -a --ignore-existing "$ROOT/sources/" "$WT/sources/"
 
 cd "$WT"
-if ! claude -p "請依照 docs/DAILY_CHECK.md 執行今天（$TODAY）$(date +%H:%M) 的查核，模式：$MODE。" \
+if ! claude -p "請依照 docs/DAILY_CHECK.md 執行今天（${TODAY}）$(date +%H:%M) 的查核，模式：${MODE}。" \
     --permission-mode acceptEdits \
     --allowedTools "Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(curl:*),Bash(mutool:*),Bash(python3 scripts/*),Bash(scripts/extract.sh:*),Bash(npm run data),Bash(node scripts/verify-src.mjs),Bash(git add:*),Bash(git commit:*),Bash(git status),Bash(git diff:*),Bash(shasum:*),Bash(ls:*),Bash(mkdir:*),Bash(file:*),Bash(grep:*),Bash(head:*),Bash(tail:*),Bash(cat:*),Bash(wc:*),Bash(sort:*),Bash(uniq:*),Bash(jq:*),Bash(sed -n:*),Bash(diff:*),Bash(date:*)" \
     >> "$LOG" 2>&1; then
@@ -90,7 +91,7 @@ SUMMARY=$(git log -1 --format=%s)
 if [[ -n "$fail" ]]; then
   echo "未上線：$fail" >> "$LOG"
   cd "$ROOT"; stamp_only "有新公告，人工確認中"
-  notify "有新資料但未上線（$fail），請看分支 $BRANCH"
+  notify "有新資料但未上線（${fail}），請看分支 $BRANCH"
   exit 0
 fi
 
@@ -100,8 +101,14 @@ if git push -q origin "HEAD:main" >> "$LOG" 2>&1; then
   cd "$ROOT"; sync_local
   ALERT=$( { sed -n '/需要你注意/,/^## 新增/p' "$WT/docs/research/checks/$TODAY.md" 2>/dev/null | grep -c '^- '; } || true )
   ALERT=${ALERT:-0}
+  # 新加入的學校：提醒人工複查（自動核對只能確認數字有出處，不能確認沒漏掉規定）
+  NEW_SCHOOLS=""
+  for f in $(git -C "$WT" diff --name-only --diff-filter=A "$BASE"..HEAD -- data/schools/); do
+    NEW_SCHOOLS+="$(sed -n 's/^short: *//p' "$WT/$f")（${${f:t}%.yaml}） "
+  done
   cleanup
+  if [[ -n "$NEW_SCHOOLS" ]]; then notify "新增學校：${NEW_SCHOOLS}建議複查（開 Claude 說「複查 <學校>」）"; fi
   if [[ "$ALERT" != 0 ]]; then notify "網站已更新，有 $ALERT 項需要你注意：$SUMMARY"; else notify "網站已更新：$SUMMARY"; fi
 else
-  notify "推送失敗，資料留在分支 $BRANCH，請看 log"
+  notify "推送失敗，資料留在分支 ${BRANCH}，請看 log"
 fi

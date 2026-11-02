@@ -24,7 +24,8 @@
    - 公告了：下載 PDF 到 `sources/116/<id>.pdf`，用 `scripts/extract.sh 116` 抽文字，依照現有 `data/schools/ntnu.yaml` 的格式建立 `data/schools/<id>.yaml`（status: verified），並從 `pending.yaml` 移除。
    - 每個日期、名額、考科、比例、同分參酌都要附簡章頁碼（`p<PDF頁> / <印刷頁>`）。
    - **資工所依實際內容判斷，不看名稱**；近親所標 `kind: near_kin`。
-   - **今年改成只書審（不考筆試）的系所要設 `review_only: true`，並在報告最上面特別寫出來。**
+   - **不考筆試的系所要設 `review_only: true`，並寫 `review_method`（照簡章寫實際評分方式，例：`"書審 100%"`、`"書審 50%＋口試 50%"`），在報告最上面特別寫出來。**
+   - **網站「最近更新」**：新增學校、寫入預定日程、招生方式異動時，在 `data/updates.yaml` 最上面加一筆（kind：new／change／info；text 是一句使用者看得懂的話，例：「新增中正 116 簡章資料（11/26 開始報名、1/27 筆試）」）。
 2. **已查證學校的更正公告**：看各校招生網站有沒有「簡章更正」「日程異動」公告。有的話：
    - 改 `data/schools/<id>.yaml` 裡的欄位（日期、名額、考科…），並更新 `brochure.verified`。
    - **同時在該檔最後的 `changes:` 新增一筆**，網站會在首頁「最近的簡章更正」與對應欄位標出變動（45 天內）：
@@ -33,7 +34,7 @@
        - { date: "2026-11-20", where: schedule.register, what: 報名截止延到 11/25, before: "11/20 17:00", after: "11/25 17:00", src: "更正公告 p1" }
      ```
      `where` 只能是 `schedule.<日程類型>`（register／payment／upload／exam／result／enroll…）、`group:<組別 id>`、`fee` 或 `school`。
-   - 在報告「⚠️ 需要你注意」列出。
+   - 在報告「⚠️ 需要你注意」列出，並在 `data/updates.yaml` 加一筆 kind: change。
 3. **歷年數據**（只在 full 模式）：讀 `data/history/*.yaml` 的 `todo` 清單（只給排程看，不會出現在網站），逐項到 registry 的連結或招生網站找官方檔案（報名人數、錄取情況、最低錄取分數）。下載的檔案放 `sources/history/<id>/`。
    - 找到就補進 `records`（每筆附 `src: <來源id> p<頁>`），來源加 `checked: "<今天>"`；資工本所那一列加 `main: true`（會畫進趨勢圖）。
    - 補完把該項從 `todo` 移除，並更新 `published`（給使用者看的一句話：這所學校公開了什麼）。`published` 不要寫內部操作細節（網站結構、下載失敗、檔案路徑）。
@@ -68,3 +69,10 @@
 ```
 
 最後 `git add -A && git commit`，訊息寫「查核 <日期>：<一句摘要>」（這句會出現在 macOS 通知上）。
+
+## 人工複查（使用者說「複查 <學校>」時）
+排程新增學校後會通知使用者建議複查。複查時開啟 `sources/116/<id>.pdf`，逐項對照 `data/schools/<id>.yaml`：
+1. 每個日期、時間、名額、考科、配分、同分參酌、報名費、考場是否和簡章一致。
+2. 有沒有漏掉的規定：必須上網填資料或回傳意願（沒做視同放棄）、備取遞補方式、二階段／口試、不可使用計算機、限報一組、在職生或同等學力的特別規定。
+3. 系所判斷：資工本所或近親所是否正確；不考筆試的 `review_method` 是否照簡章。
+4. 有錯就修正、跑 `npm run data` 與 `node scripts/verify-src.mjs`，在 `docs/DECISIONS.md` 或報告記錄複查結果。

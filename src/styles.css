@@ -518,3 +518,12 @@ tr.flash td { animation: flash 2.2s ease-out; }
 
 .verified a { color: var(--link); text-decoration: none; display: inline-flex; align-items: center; gap: 2px; }
 .verified a:hover { text-decoration: underline; }
+
+/* 最近更新 */
+.updates { background: var(--surface); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; font-size: 15px; }
+.updates ul { margin: 6px 0 0; padding: 0; list-style: none; }
+.updates li { display: flex; gap: 12px; padding: 3px 0; }
+.updates .u-date { flex: none; min-width: 42px; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.updates details { margin-top: 4px; }
+.updates summary { cursor: pointer; color: var(--link); font-size: 13px; }
+.updates .badge.new { margin-right: 6px; }

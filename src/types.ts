@@ -49,6 +49,7 @@ export interface Program {
   notes?: string[];
   stub?: boolean;
   review_only?: boolean;
+  review_method?: string;
   exclusive_groups?: boolean;
   groups: Group[];
 }
@@ -95,6 +96,7 @@ export interface Data {
   generated: string;
   /** 每日查核最近一次：at 為台灣時間 YYYY-MM-DDTHH:MM */
   lastCheck: { at: string; result: string } | null;
+  updates: { date: string; kind: "new" | "change" | "info"; schools?: string[]; text: string }[];
   subjects: Record<string, { name: string; aliases: string[] }>;
   schools: School[];
   pending: { checked: string; schools: PendingSchool[] };

@@ -62,6 +62,7 @@ programs:
     name: 電機工程學系資訊安全碩士班
     kind: near_kin
     review_only: true
+    review_method: "書審 100%"
     groups:
       - id: ntu-ee-sec-904
         name: 不分組

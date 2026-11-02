@@ -45,7 +45,7 @@ export default function Matrix({ data, nearKin, sel }: { data: Data; nearKin: bo
                   </div>
                 </td>
                 {p.review_only ? (
-                  <td colSpan={COLS.length} className="mx-review">只書審，不考筆試</td>
+                  <td colSpan={COLS.length} className="mx-review">不考筆試：{p.review_method}</td>
                 ) : (
                   COLS.map((c) => {
                     const idx = g.papers.findIndex((pp) => pp.covers.includes(c));

@@ -11,7 +11,7 @@ import PastExams from "./views/PastExams";
 import After from "./views/After";
 import PrepPlanner from "./views/PrepPlanner";
 import Resources from "./views/Resources";
-import { daysUntil, fmtDay, fmtDayW, fmtTime, makeSel, nextDeadlines, PHASES, recentChanges, type Phase } from "./lib";
+import { daysUntil, fmtDay, fmtDayW, fmtMD, fmtTime, makeSel, nextDeadlines, PHASES, recentChanges, type Phase } from "./lib";
 import Timeline from "./views/Timeline";
 import Calendar from "./views/Calendar";
 import Compare from "./views/Compare";
@@ -201,6 +201,21 @@ export default function App() {
         </section>
       )}
 
+      {data.updates.length > 0 && (
+        <section className="updates" aria-label="最近更新">
+          <b>最近更新</b>
+          <ul>
+            {data.updates.slice(0, 3).map((u, i) => <UpdateItem key={i} u={u} lastSeen={lastSeen} />)}
+          </ul>
+          {data.updates.length > 3 && (
+            <details>
+              <summary>全部更新紀錄（{data.updates.length}）</summary>
+              <ul>{data.updates.slice(3).map((u, i) => <UpdateItem key={i} u={u} lastSeen={lastSeen} />)}</ul>
+            </details>
+          )}
+        </section>
+      )}
+
       {changes.length > 0 && (
         <section className="changes" aria-label="簡章更正">
           <b><Icon name="warn" /> 最近的簡章更正</b>
@@ -278,4 +293,13 @@ export default function App() {
 function toLocal(d: Date): string {
   const t = new Date(d.getTime() + 8 * 3600000);
   return t.toISOString().slice(0, 16);
+}
+
+function UpdateItem({ u, lastSeen }: { u: Data["updates"][number]; lastSeen: string }) {
+  return (
+    <li>
+      <span className="u-date">{fmtMD(u.date)}</span>
+      <span>{lastSeen && u.date > lastSeen && <span className="badge new">新</span>}{u.text}</span>
+    </li>
+  );
 }

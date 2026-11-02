@@ -87,9 +87,9 @@ export function buildIndex(data: Data): Entry[] {
     out.push({
       kind: "系所組",
       title: `${s.short} ${p.name}${g.name !== "—" ? " " + g.name : ""}`,
-      sub: [g.quota.general != null ? `名額 ${g.quota.general}` : "", p.kind === "near_kin" ? "近親所" : "", p.review_only ? "只書審" : ""].filter(Boolean).join(" · ") || "考科待整理",
+      sub: [g.quota.general != null ? `名額 ${g.quota.general}` : "", p.kind === "near_kin" ? "近親所" : "", p.review_only ? `不考筆試（${p.review_method}）` : ""].filter(Boolean).join(" · ") || "考科待整理",
       sort: "2" + s.short,
-      text: [schoolWords(s.id), p.name, g.name, g.code ?? "", subj, p.kind === "near_kin" ? "近親所" : "", p.review_only ? "書審 只書審" : ""].join(" "),
+      text: [schoolWords(s.id), p.name, g.name, g.code ?? "", subj, p.kind === "near_kin" ? "近親所" : "", p.review_only ? `不考筆試 書審 只書審 ${p.review_method ?? ""}` : ""].join(" "),
       target: { tab: "compare", focusId: `cmp-${g.id}` },
     });
   }
