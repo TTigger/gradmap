@@ -73,7 +73,7 @@ docs/                    decisions, research logs, daily-check instructions (DAI
 
 ## Daily check 每日查核
 
-`scripts/schedule.sh install` runs a check every day at 09:07 (2026-11-02 → 2027-04-30). It looks for newly published 116 brochures and corrections on a branch `check/<date>`. Changes go live automatically **only if** they touch data files only, `npm run build` passes, and `verify-src.mjs` finds every date / quota / weight on its cited brochure page; otherwise the branch is kept for manual review. Sundays also refresh history stats, past exams and resource links.
+`scripts/schedule.sh install` runs a check every day at 12:10 and 17:40 Taiwan time (2026-11-02 → 2027-04-30) and posts a macOS notification with the result. It looks for newly published 116 brochures and corrections on a branch `check/<date>-<time>`. Changes go live automatically **only if** they touch data files only, `npm run build` passes, and `verify-src.mjs` finds every date / quota / weight on its cited brochure page; otherwise the branch is kept for manual review. Sunday's midday run also refreshes history stats, past exams and resource links. A GitHub Actions watchdog (`.github/workflows/check-watchdog.yml`) fails at 21:00 if no check ran that day, which triggers GitHub's failure email.
 
 每天自動查新簡章與更正公告。只改資料檔、建置通過、簡章頁碼全數核對成功，才會自動推上 main 並更新網站；否則留在分支等人工確認。週日另外補歷年數據、考古題與備考連結。
 

@@ -2,7 +2,7 @@
 # 每日查核：在獨立的 git worktree 開分支 check/<日期>，讓 Claude 依 docs/DAILY_CHECK.md 查新公告與更正。
 # 有改資料、而且通過三道檢查（只動資料檔、npm run build、verify-src）→ 自動推到 GitHub main，Vercel 會自動更新網站。
 # 沒通過 → 留在分支、不上線，跳通知請人看。
-# 由 launchd（scripts/com.gradmap.daily-check.plist）每天 09:07 觸發；也可以手動執行 scripts/schedule.sh run。
+# 由 launchd（scripts/com.gradmap.daily-check.plist）每天 12:10、17:40 觸發；也可以手動執行 scripts/schedule.sh run。
 set -eu
 export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
@@ -10,8 +10,9 @@ ROOT="${0:A:h:h}"
 TODAY=$(date +%Y-%m-%d)
 START="2026-11-02"   # 從這天開始
 END="2027-04-30"     # 考季結束後自動停止
-# 週日做完整查核（歷年數據、考古題、備考連結），其他天只查新簡章與更正
-[[ $(date +%u) == 7 ]] && MODE=full || MODE=quick
+SLOT=$(date +%H%M)
+# 週日中午那次做完整查核（歷年數據、考古題、備考連結），其他只查新簡章與更正
+[[ $(date +%u) == 7 && $(date +%H) -lt 15 ]] && MODE=full || MODE=quick
 
 if [[ "$TODAY" < "$START" || "$TODAY" > "$END" ]] && [[ "${FORCE:-}" != 1 ]]; then
   exit 0
@@ -20,18 +21,18 @@ fi
 cd "$ROOT"
 mkdir -p logs
 LOG="$ROOT/logs/check-$TODAY.log"
-BRANCH="check/$TODAY"
-WT=".worktrees/check-$TODAY"
+BRANCH="check/$TODAY-$SLOT"
+WT=".worktrees/check-$TODAY-$SLOT"
 
 notify() { osascript -e "display notification \"$1\" with title \"GradMap 每日查核\"" || true; }
 # 寫入查核時間（網站標頭會顯示）
 write_stamp() { printf 'at: "%s"\nresult: "%s"\n' "$(date +%Y-%m-%dT%H:%M)" "$2" > "$1/data/last_check.yaml"; }
 # 只推送查核時間（沒有變動，或新資料沒通過檢查時）；以 GitHub 上的 main 為基礎，不帶其他修改
 stamp_only() {
-  local tmp="$ROOT/.worktrees/stamp-$TODAY"
+  local tmp="$ROOT/.worktrees/stamp-$TODAY-$SLOT"
   git -C "$ROOT" worktree add -q --detach "$tmp" origin/main >> "$LOG" 2>&1 || return 1
   write_stamp "$tmp" "$1"
-  git -C "$tmp" add data/last_check.yaml && git -C "$tmp" commit -qm "查核 $TODAY：$1" >> "$LOG" 2>&1 \
+  git -C "$tmp" add data/last_check.yaml && git -C "$tmp" commit -qm "查核 $TODAY $(date +%H:%M)：$1" >> "$LOG" 2>&1 \
     && git -C "$tmp" push -q origin HEAD:main >> "$LOG" 2>&1 || echo "查核時間推送失敗" >> "$LOG"
   git -C "$ROOT" worktree remove --force "$tmp" >> "$LOG" 2>&1 || true
   sync_local
@@ -46,8 +47,9 @@ sync_local() {
 cleanup() { cd "$ROOT"; git worktree remove --force "$WT" >> "$LOG" 2>&1 || true; git branch -D "$BRANCH" >> "$LOG" 2>&1 || true; }
 
 if git show-ref --quiet "refs/heads/$BRANCH"; then
-  echo "今天已經跑過（分支 $BRANCH 已存在）" >> "$LOG"; exit 0
+  echo "這個時段已經跑過（分支 $BRANCH 已存在）" >> "$LOG"; exit 0
 fi
+echo "=== $(date +%H:%M) 開始（$MODE）===" >> "$LOG"
 
 # 以 GitHub 上最新的 main 為基礎
 git fetch -q origin main >> "$LOG" 2>&1
@@ -57,7 +59,7 @@ ln -s "$ROOT/node_modules" "$WT/node_modules"
 rsync -a --ignore-existing "$ROOT/sources/" "$WT/sources/"
 
 cd "$WT"
-if ! claude -p "請依照 docs/DAILY_CHECK.md 執行今天（$TODAY）的查核，模式：$MODE。" \
+if ! claude -p "請依照 docs/DAILY_CHECK.md 執行今天（$TODAY）$(date +%H:%M) 的查核，模式：$MODE。" \
     --permission-mode acceptEdits \
     --allowedTools "Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(curl:*),Bash(mutool:*),Bash(python3 scripts/*),Bash(scripts/extract.sh:*),Bash(npm run data),Bash(node scripts/verify-src.mjs),Bash(git add:*),Bash(git commit:*),Bash(git status),Bash(git diff:*),Bash(shasum:*),Bash(ls:*),Bash(mkdir:*),Bash(file:*),Bash(grep:*),Bash(head:*),Bash(tail:*),Bash(cat:*),Bash(wc:*),Bash(sort:*),Bash(uniq:*),Bash(jq:*),Bash(sed -n:*),Bash(diff:*),Bash(date:*)" \
     >> "$LOG" 2>&1; then
@@ -67,7 +69,8 @@ fi
 rsync -a --ignore-existing "sources/" "$ROOT/sources/"
 
 if [[ -z "$(git log --oneline origin/main..HEAD)" ]]; then
-  echo "沒有變更" >> "$LOG"; cleanup; stamp_only "無變動"; exit 0
+  echo "沒有變更" >> "$LOG"; cleanup; stamp_only "無變動"
+  notify "$(date +%H:%M) 查核完成：今日無變動"; exit 0
 fi
 
 # 三道檢查：只能動資料、報告與來源指紋；建置驗證；簡章頁碼核對
@@ -86,7 +89,7 @@ if [[ -n "$fail" ]]; then
 fi
 
 write_stamp "." "已更新"
-git add data/last_check.yaml && git commit -qm "查核 $TODAY：記錄查核時間" >> "$LOG" 2>&1
+git add data/last_check.yaml && git commit -qm "查核 $TODAY $(date +%H:%M)：記錄查核時間" >> "$LOG" 2>&1
 if git push -q origin "HEAD:main" >> "$LOG" 2>&1; then
   cd "$ROOT"; sync_local
   ALERT=$( { sed -n '/需要你注意/,/^## 新增/p' "$WT/docs/research/checks/$TODAY.md" 2>/dev/null | grep -c '^- '; } || true )
