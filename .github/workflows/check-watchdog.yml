@@ -1,5 +1,5 @@
 # 每晚 21:00（台灣時間）確認今天的每日查核有跑。
-# 沒跑（例如 Mac 整天關機）這個工作就會失敗，GitHub 會寄失敗通知信給 repo 擁有者。
+# 沒跑（例如 Mac 整天關機）這個工作就會失敗：手機推播（ntfy）＋GitHub 寄失敗通知信給 repo 擁有者。
 name: Daily check watchdog
 on:
   schedule:
@@ -14,12 +14,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: 今天有查核紀錄嗎
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: |
           today=$(TZ=Asia/Taipei date +%Y-%m-%d)
           if [[ "$today" < "2026-11-02" || "$today" > "2027-04-30" ]]; then echo "不在查核期間"; exit 0; fi
           at=$(sed -n 's/^at: "\(.*\)"$/\1/p' data/last_check.yaml)
           echo "最近一次查核：$at"
           if [[ "${at:0:10}" != "$today" ]]; then
-            echo "::error::今天（$today）沒有查核紀錄，最近一次是 $at。請確認 Mac 有開機，或手動執行 scripts/schedule.sh run。"
+            msg="今天（$today）沒有查核紀錄，最近一次是 $at。請確認 Mac 有開機，或手動執行 scripts/schedule.sh run。"
+            echo "::error::$msg"
+            if [[ -n "$NTFY_TOPIC" ]]; then
+              jq -n --arg t "$NTFY_TOPIC" --arg m "$msg" '{topic:$t,title:"GradMap 查核沒跑",message:$m,priority:4}' \
+                | curl -sS -m 15 -o /dev/null -H "Content-Type: application/json" -d @- https://ntfy.sh || true
+            fi
             exit 1
           fi

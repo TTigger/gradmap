@@ -24,7 +24,13 @@ LOG="$ROOT/logs/check-$TODAY.log"
 BRANCH="check/$TODAY-$SLOT"
 WT=".worktrees/check-$TODAY-$SLOT"
 
-notify() { osascript -e "display notification \"$1\" with title \"GradMap 每日查核\"" || true; }
+# 通知：Mac 右上角＋手機（ntfy；主題名稱放在不進 git 的 .env.ntfy）
+NTFY_TOPIC=""; [[ -f "$ROOT/.env.ntfy" ]] && source "$ROOT/.env.ntfy"
+notify() {
+  osascript -e "display notification \"$1\" with title \"GradMap 每日查核\"" || true
+  [[ -n "$NTFY_TOPIC" ]] && jq -n --arg t "$NTFY_TOPIC" --arg m "$1" '{topic:$t,title:"GradMap 每日查核",message:$m,click:"https://gradmap-tw.vercel.app"}' \
+    | curl -sS -m 15 -o /dev/null -H "Content-Type: application/json" -d @- https://ntfy.sh || true
+}
 # 寫入查核時間（網站標頭會顯示）
 write_stamp() { printf 'at: "%s"\nresult: "%s"\n' "$(date +%Y-%m-%dT%H:%M)" "$2" > "$1/data/last_check.yaml"; }
 # 只推送查核時間（沒有變動，或新資料沒通過檢查時）；以 GitHub 上的 main 為基礎，不帶其他修改
