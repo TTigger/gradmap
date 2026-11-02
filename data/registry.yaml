@@ -101,7 +101,7 @@ schools:
     aliases: [臺科大, 台灣科技大學, 臺灣科技大學, 台科, NTUST]
     links:
       - { label: 招生資訊網, url: "https://www.admission.ntust.edu.tw/", kind: admission }
-    watch: 往年一般考試約 12 月初報名。官方統計未找到。
+    watch: 往年一般考試約 12 月初報名。官方統計未找到。網頁抓取工具連不上時改用 curl（curl 可正常完整驗證憑證）。
 
   - id: ntut
     name: 國立臺北科技大學

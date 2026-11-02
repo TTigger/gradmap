@@ -59,7 +59,7 @@ rsync -a --ignore-existing "$ROOT/sources/" "$WT/sources/"
 cd "$WT"
 if ! claude -p "請依照 docs/DAILY_CHECK.md 執行今天（$TODAY）的查核，模式：$MODE。" \
     --permission-mode acceptEdits \
-    --allowedTools "Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(curl:*),Bash(mutool:*),Bash(python3 scripts/*),Bash(scripts/extract.sh:*),Bash(npm run data),Bash(node scripts/verify-src.mjs),Bash(git add:*),Bash(git commit:*),Bash(git status),Bash(git diff:*),Bash(shasum:*),Bash(ls:*),Bash(mkdir:*),Bash(file:*)" \
+    --allowedTools "Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(curl:*),Bash(mutool:*),Bash(python3 scripts/*),Bash(scripts/extract.sh:*),Bash(npm run data),Bash(node scripts/verify-src.mjs),Bash(git add:*),Bash(git commit:*),Bash(git status),Bash(git diff:*),Bash(shasum:*),Bash(ls:*),Bash(mkdir:*),Bash(file:*),Bash(grep:*),Bash(head:*),Bash(tail:*),Bash(cat:*),Bash(wc:*),Bash(sort:*),Bash(uniq:*),Bash(jq:*),Bash(sed -n:*),Bash(diff:*),Bash(date:*)" \
     >> "$LOG" 2>&1; then
   notify "查核執行失敗，請看 logs/check-$TODAY.log"; exit 1
 fi

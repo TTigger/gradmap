@@ -50,7 +50,7 @@
 - 只採用官方來源（grade A）當網站上的正式資料；新聞、補習班數字只能放在 history 並標 grade B，或放 resources。
 - 數字一律打開原始 PDF 核對；表格版面複雜時用 `mutool draw -r 90 -o x.png file.pdf <頁>` 轉成圖片看。
 - 搜尋摘要裡的數字不能直接用。
-- 不可以關閉 TLS 憑證檢查，也不要偽裝瀏覽器繞過網站的阻擋。伺服器沒送完整憑證鏈時（例：陽明交大），用 `curl --cacert sources/certs/bundle-with-twca.pem` 補上中繼憑證，仍是完整驗證。抓不到就記在報告的「需要人工處理」。
+- 不可以關閉 TLS 憑證檢查，也不要偽裝瀏覽器繞過網站的阻擋。伺服器沒送完整憑證鏈時（例：陽明交大），用 `curl --cacert sources/certs/bundle-with-twca.pem` 補上中繼憑證，仍是完整驗證。網頁抓取工具（WebFetch）失敗時，先用 curl 再試一次（可搭配 grep、head、jq、mutool 讀內容）。抓不到就記在報告的「需要人工處理」。
 - 不要 push、不要部署、不要動 main（推送由排程在檢查通過後執行）。
 
 ## 報告
