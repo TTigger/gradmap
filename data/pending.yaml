@@ -28,7 +28,8 @@ schools:
     name: 國立臺灣科技大學
     short: 台科大
     site: https://www.admission.ntust.edu.tw/
-    note: 往年一般考試約 12 月初開放報名
+    note: 學校已預先公告：資工系碩士班自 116 學年度起不考筆試，改為「審查」＋「口試」（115 學年度考資訊工程概論、計算機數學）。報名日期與名額以簡章為準，往年約 12 月初報名。
+    note_src: "https://www.admission.ntust.edu.tw/p/406-1052-145986,r1536.php?Lang=zh-tw"
   - id: ntut
     name: 國立臺北科技大學
     short: 北科大
