@@ -1,9 +1,10 @@
-# 每晚 21:00（台灣時間）確認今天的每日查核有跑。
+# 每晚約 21:17（台灣時間）確認當天的每日查核有跑。
+# GitHub 排程可能延遲好幾小時（11/2 那次拖到隔天 06:16），所以檢查日期用「現在往前 13 小時」那天，延遲到隔天中午前都不會誤報。
 # 沒跑（例如 Mac 整天關機）這個工作就會失敗：手機推播（ntfy）＋GitHub 寄失敗通知信給 repo 擁有者。
 name: Daily check watchdog
 on:
   schedule:
-    - cron: "0 13 * * *"   # UTC 13:00 = 台灣 21:00
+    - cron: "17 13 * * *"   # UTC 13:17 = 台灣 21:17（避開整點，GitHub 整點最塞）
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,12 +18,12 @@ jobs:
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: |
-          today=$(TZ=Asia/Taipei date +%Y-%m-%d)
+          today=$(TZ=Asia/Taipei date -d '-13 hours' +%Y-%m-%d)   # 要檢查的那天
           if [[ "$today" < "2026-11-02" || "$today" > "2027-04-30" ]]; then echo "不在查核期間"; exit 0; fi
           at=$(sed -n 's/^at: "\(.*\)"$/\1/p' data/last_check.yaml)
           echo "最近一次查核：$at"
           if [[ "${at:0:10}" != "$today" ]]; then
-            msg="今天（$today）沒有查核紀錄，最近一次是 $at。請確認 Mac 有開機，或手動執行 scripts/schedule.sh run。"
+            msg="${today} 沒有查核紀錄，最近一次是 $at。請確認 Mac 有開機，或手動執行 scripts/schedule.sh run。"
             echo "::error::$msg"
             if [[ -n "$NTFY_TOPIC" ]]; then
               jq -n --arg t "$NTFY_TOPIC" --arg m "$msg" '{topic:$t,title:"GradMap 查核沒跑",message:$m,priority:4}' \
