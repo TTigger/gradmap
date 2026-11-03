@@ -1,0 +1,82 @@
+id: ntust
+name: 國立臺灣科技大學
+short: 台科大
+year: 116
+exam_type: 碩士班招生（一般考試）
+status: verified
+brochure:
+  title: 國立臺灣科技大學116學年度碩士班招生簡章
+  url: https://www.admission.ntust.edu.tw/var/file/52/1052/img/2674/143224768.pdf
+  published: "2026-11-03"
+  verified: "2026-11-03"
+  page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」；p2 重要日程表沒有印刷頁碼。資工系不考筆試，所以日程不列全校筆試日（116/1/25）
+fee: { amount: 1500, note: 每一系所組；進入口試者另繳口試費 500 元, src: "p6 / 2" }
+
+schedule:
+  - { type: register, start: "2026-11-27T09:00", end: "2026-12-10T17:00", label: 網路報名, src: "p2 / 日程表" }
+  - { type: payment, start: "2026-11-27T09:00", end: "2026-12-10T23:59", label: 繳報名費, note: 12/10 下午3:30以後只能用網路銀行或ATM轉帳, src: "p2 / 日程表" }
+  - { type: upload, start: "2026-11-27T09:00", end: "2026-12-11T17:00", label: 推薦信及審查資料上傳, note: 不受理紙本郵寄, src: "p2 / 日程表" }
+  - { type: other, start: "2026-12-24", label: 報名資格審查結果公告, src: "p2 / 日程表" }
+  - { type: admit_card, start: "2027-01-18", label: 開放列印准考證, src: "p2 / 日程表" }
+  - { type: other, start: "2027-02-15T11:00", label: 公告合於口試名單及口試時間（審查前段直接錄取者免口試）, note: 口試費 500 元要在 2/18 晚上12時前繳, src: "p2 / 日程表" }
+  - { type: exam, start: "2027-02-19", end: "2027-02-21", label: 口試（資工系不考筆試）, note: 實際日期時間由系所自訂、2/15 公告；口試只在台科大校內, src: "p2 / 日程表" }
+  - { type: regrade, start: "2027-03-02", end: "2027-03-03", label: 口試成績複查, note: 有口試系所組的審查成績複查是 2/15–2/16, src: "p2 / 日程表" }
+  - { type: result, start: "2027-03-12T11:00", label: 放榜, src: "p2 / 日程表" }
+  - { type: enroll, start: "2027-03-12T11:00", end: "2027-03-23T15:00", label: 正取生網路報到、備取生登記遞補意願, src: "p2 / 日程表" }
+  - { type: waitlist, start: "2027-03-25T14:00", label: 公告完成報到名單及備取生可遞補名單, src: "p2 / 日程表" }
+
+programs:
+  - id: ntust-csie
+    name: 資訊工程系碩士班
+    kind: main
+    review_only: true
+    review_method: "口試 50%＋審查 50%"
+    url: https://www.csie.ntust.edu.tw/
+    groups:
+      - id: ntust-csie-general
+        name: 不分組
+        code: "1500"
+        quota: { general: 55 }
+        quota_src: "p34 / 30"
+        quota_note: 名額暫列，以教育部核定為準；甄試缺額會併入本項名額
+        papers: []
+        papers_note: ⚠️ 不考筆試：口試 50%＋審查 50%。審查資料：個人基本資料表、大學歷年成績單（含名次證明）、其他有助審查文件（如 CPE 成績、英文能力證明、著作、獲獎、社團）
+        second_stage: 審查成績前段（名額 50% 以內）直接錄取、免口試；其餘名額由審查成績擇優參加口試（116/2/19–2/21，時間 2/15 公告）
+        tie_break: [口試, 審查]
+        notes:
+          - 115 學年度考資訊工程概論、計算機數學；116 學年度起取消筆試
+          - 進入口試者要在 2/18 晚上12時前繳口試費 500 元，沒繳視同放棄口試資格（p6 / 2）
+          - 審查資料缺繳或零分不得參加口試；口試缺考或零分不予錄取
+  - id: ntust-ai
+    name: 人工智慧跨域科技研究所碩士班
+    kind: near_kin
+    review_only: true
+    review_method: "審查 60%＋口試 40%"
+    url: https://innc.ntust.edu.tw/
+    groups:
+      - id: ntust-ai-general
+        name: 不分組
+        code: "5200"
+        quota: { general: 14 }
+        quota_src: "p48 / 44"
+        papers: []
+        papers_note: ⚠️ 不考筆試：審查 60%＋口試 40%（審查資料含自傳、研究方向與進修計畫、推薦信至少 1 封）
+        second_stage: 審查成績前段（名額 50% 以內）得直接錄取、免口試；其餘依審查成績擇優通知口試
+        tie_break: [審查, 口試]
+        notes:
+          - 得不足額錄取
+          - 入學後不得轉至本校其他學院系所；指導教授須為本所專任教師
+
+rules:
+  zero_score: 筆試任一科缺考或原始成績未達最低錄取標準、審查資料全部未上傳或零分、口試缺考或零分或未具口試資格者，總成績不予核計、不予錄取
+  zero_score_src: "p12 / 8"
+  min_standard: 招生委員會訂定最低錄取標準，得不足額錄取；不足額錄取的系所組不列備取
+  tie_break_general: 總成績相同時依系所組同分參酌順序（簡章「按上列科目前面之編號順序」）
+
+venue: { city: 臺北, place: 資工系不考筆試；口試只在台科大校內（臺北市大安區基隆路4段43號），時間地點 2/15 公告, src: "p11 / 7" }
+waitlist_info:
+  alert: 正取生要在 3/12 11:00–3/23 15:00 上網報到並上傳報到資料；備取生同期間要上網登記遞補意願，沒做視同放棄
+  how: 3/25 14:00 公告完成報到名單及可遞補名單；之後有缺額時網路公告可遞補名單並寄 E-mail，不寄紙本，依時限上網報到
+  where: { label: 台科大入學資訊網, url: "https://www.admission.ntust.edu.tw/" }
+  deadline: 最後一批可遞補名單在 116 學年度第 1 學期上課開始日前三個工作天公告，遞補報到至上課開始日
+  src: "p13 / 9；p14 / 10；p15 / 11"

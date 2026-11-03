@@ -1,6 +1,6 @@
 # 116 簡章尚未公告、也還沒收到可用參考資料的學校
 # 每次查核後更新 checked 日期；簡章一公告就移到 data/schools/<id>.yaml
-checked: "2026-11-01"
+checked: "2026-11-03"
 schools:
   - id: nthu
     name: 國立清華大學
@@ -24,12 +24,6 @@ schools:
     site: https://exams.ccu.edu.tw/p/403-1032-2821.php?Lang=zh-tw
     note: 官方預定日程（仍以簡章為準）：11/6 公告簡章，11/26–12/8 報名（資料上傳至 12/9），116/1/27 筆試；只考筆試的系所 3/12 放榜、4/8–4/9 正取生報到，有複試的系所 4/16 放榜。
     note_src: https://exams.ccu.edu.tw/var/file/32/1032/img/1165/116schedule.pdf
-  - id: ntust
-    name: 國立臺灣科技大學
-    short: 台科大
-    site: https://www.admission.ntust.edu.tw/
-    note: 學校已預先公告：資工系碩士班自 116 學年度起不考筆試，改為「審查」＋「口試」（115 學年度考資訊工程概論、計算機數學）。報名日期與名額以簡章為準，往年約 12 月初報名。
-    note_src: "https://www.admission.ntust.edu.tw/p/406-1052-145986,r1536.php?Lang=zh-tw"
   - id: ntut
     name: 國立臺北科技大學
     short: 北科大
