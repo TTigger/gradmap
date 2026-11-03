@@ -1,13 +1,23 @@
 # GradMap 上岸地圖
 
 **A verified dashboard for Taiwan's CS graduate school entrance exams (資工所考試入學).**
-Deadlines, exam dates, quotas, subjects and score weights for 14 national universities — every number links back to the page of the official admission brochure it came from.
+Deadlines, exam dates, quotas, subjects and score weights from each school's official admission brochure — every number links back to the page it came from.
 
 > 資工所「考試入學」資訊儀表板：報名日程、名額、考科、計分比例，每一筆都附官方簡章頁碼。
 
 🔗 **Live site 網站：<https://gradmap-tw.vercel.app>**
 
-[![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-black?logo=vercel)](https://gradmap-tw.vercel.app)
+[![Deployed on Vercel](https://img.shields.io/badge/deployed%20on-Vercel-black?logo=vercel)](https://gradmap-tw.vercel.app)
+[![Daily check watchdog](https://github.com/TTigger/gradmap/actions/workflows/check-watchdog.yml/badge.svg)](https://github.com/TTigger/gradmap/actions/workflows/check-watchdog.yml)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
+[![Data: CC BY-NC 4.0](https://img.shields.io/badge/data-CC%20BY--NC%204.0-lightgrey)](LICENSE-DATA)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/hero-dark.png">
+  <img alt="GradMap timeline: registration countdowns, recent updates, and each school's registration, exam and result dates on one timeline" src="docs/images/hero-light.png">
+</picture>
+
+<sub>Screenshot from November 2026; the live site has the latest data. 截圖為 2026 年 11 月畫面，最新資料以網站為準。</sub>
 
 ---
 
@@ -26,7 +36,35 @@ Deadlines, exam dates, quotas, subjects and score weights for 14 national univer
 | 🔔 | **Change markers** — brochure corrections highlighted for 45 days | 簡章更正標記 |
 
 Scope 範圍: **exam-based admission only** (no 甄試/推甄). Near-kin programs (網媒、網工、資安…) are included, labeled, and can be hidden.
+
 Schools 學校: 台大、清大、陽明交大、成大、政大、台師大、中央、中興、中山、中正、台科大、北科大、台北大學、海大.
+A school appears once its 116 brochure is published and checked; until then the site shows last year's (115) data marked as reference, or lists it under 待公告 (awaiting brochure). The site header shows the current count.
+簡章公布並核對後才收錄；還沒公布的學校標「115 參考」或列在「待公告」，目前數量以網站上方顯示為準。
+
+<table>
+<tr>
+<td width="55%" valign="top">
+
+**Compare table 比較表** — quotas, papers, weights, tie-breakers and fees side by side; programs without a written exam are flagged.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/compare-dark.png">
+  <img alt="Compare table with quotas, registration and exam dates, paper weights, tie-breakers and fees" src="docs/images/compare-light.png">
+</picture>
+
+</td>
+<td width="45%" valign="top">
+
+**Prep planner 一份準備能報幾校** — tick the subjects you study; see every program whose papers you fully cover, or miss by one.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/planner-dark.png">
+  <img alt="Prep planner: selected subjects and the programs they fully cover or miss by one subject" src="docs/images/planner-light.png">
+</picture>
+
+</td>
+</tr>
+</table>
 
 ## Data trust 資料可信度
 
@@ -67,8 +105,10 @@ scripts/
   extract.sh             PDF → per-page text (local only)
   daily-check.sh         daily re-check on branch check/<date>, auto-publish if checks pass
   schedule.sh            install / uninstall / run the daily job (macOS launchd)
+  screenshots.mjs        README screenshots, light + dark (headless Chrome)
 sources/<year>/SHA256SUMS  fingerprints of the brochures used (PDFs stay local)
 docs/                    decisions, research logs, daily-check instructions (DAILY_CHECK.md)
+docs/images/             README screenshots
 ```
 
 ## Daily check 每日查核
