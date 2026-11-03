@@ -6,10 +6,10 @@ exam_type: 碩士班一般入學考試
 status: verified
 brochure:
   title: 國立臺北大學116學年度碩士班一般入學考試招生簡章
-  url: https://cms-carrier.ntpu.edu.tw/uploads/116_V4_1_0d4d1a073f.pdf
+  url: https://cms-carrier.ntpu.edu.tw/uploads/116_V_c240d75c94.pdf
   published: "2026-10-29"
-  verified: "2026-11-01"
-  page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」；115/10/30 勘誤（中文系科目、第13頁表頭）已併入此版，資工系不受影響
+  verified: "2026-11-03"
+  page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」；115/10/30 勘誤（中文系科目、第13頁表頭）與 115/11/3 修訂（電機系甄試考生沿用審查資料的說明）已併入此版，資工系不受影響
 fee: { amount: 1500, note: 每一系所組（通訊系、電機系為 900 元）, src: "p10 / 9" }
 
 schedule:

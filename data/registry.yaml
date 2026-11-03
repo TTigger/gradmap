@@ -118,7 +118,7 @@ schools:
     links:
       - { label: 招生資訊, url: "https://new.ntpu.edu.tw/admission/ntpu", kind: admission }
       - { label: 資工系, url: "https://www.csie.ntpu.edu.tw", kind: dept }
-    watch: 招生頁 new.ntpu.edu.tw 由 JavaScript 載入，但資料來源是公開 JSON，可直接 curl：https://cms-carrier.ntpu.edu.tw/sections?name=/admission/碩士班一般入學（content 欄有簡章公告日期、報名期間、簡章 PDF 連結；updatedAt 變了就代表有更新）。簡章勘誤、相關公告看 https://new.ntpu.edu.tw/oaa/admission-news?tag=碩士班一般入學（需瀏覽器）。116 簡章 115/10/29 公告、10/30 勘誤（不影響資工）。官方統計未找到。
+    watch: 招生頁 new.ntpu.edu.tw 由 JavaScript 載入，但資料來源是公開 JSON，可直接 curl：https://cms-carrier.ntpu.edu.tw/sections?name=/admission/碩士班一般入學（content 欄有簡章公告日期、報名期間、簡章 PDF 連結；updatedAt 變了就代表有更新）。簡章勘誤、相關公告看 https://new.ntpu.edu.tw/oaa/admission-news?tag=碩士班一般入學（需瀏覽器）。116 簡章 115/10/29 公告、10/30 勘誤、11/3 修訂（電機系說明文字，PDF 換新網址、舊網址 404；都不影響資工）。簡章網址會隨修訂改變，以 cms-carrier JSON 裡的連結為準。官方統計未找到。
 
   - id: ntou
     name: 國立臺灣海洋大學
