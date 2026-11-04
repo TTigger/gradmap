@@ -28,8 +28,12 @@ for (const s of schools) {
   for (const p of s.programs ?? []) {
     if (p.review_only && !p.review_method) errors.push(`${s.id}: ${p.name} 設了 review_only，要寫 review_method（例："書審 100%"、"書審 50%＋口試 50%"）`);
     for (const g of p.groups ?? []) {
-      for (const paper of g.papers ?? []) {
-        for (const c of paper.covers ?? []) {
+      g.papers ??= [];
+      for (const paper of g.papers) {
+        // 綜合科目（如「計算機概論」）可以不對應單一科目代碼；網站一律當成空陣列處理
+        if (paper.covers != null && !Array.isArray(paper.covers)) errors.push(`${g.id}: ${paper.name} 的 covers 要是陣列`);
+        paper.covers ??= [];
+        for (const c of paper.covers) {
           if (!subjects[c]) errors.push(`${g.id}: 未知科目代碼 ${c}`);
         }
       }

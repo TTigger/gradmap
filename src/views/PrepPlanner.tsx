@@ -18,7 +18,10 @@ export default function PrepPlanner({ data, nearKin, sel, go }: { data: Data; ne
   const toggle = (c: string) => setHave(have.includes(c) ? have.filter((x) => x !== c) : [...have, c]);
 
   const all = rows(data, nearKin).filter((r) => sel(r.school.id));
-  const written = all.filter((r) => r.group.papers.length > 0);
+  // 有綜合科目（沒對應單一科目代碼，例如「計算機概論」）的組別無法逐科比對，另外列出
+  const broad = (r: Row) => r.group.papers.filter((p) => p.covers.length === 0).map((p) => p.name);
+  const written = all.filter((r) => r.group.papers.length > 0 && broad(r).length === 0);
+  const general = all.filter((r) => r.group.papers.length > 0 && broad(r).length > 0);
   const reviewOnly = all.filter((r) => r.program.review_only);
   const need = (r: Row) => [...new Set(r.group.papers.flatMap((p) => p.covers))];
   const miss = (r: Row) => need(r).filter((c) => !have.includes(c));
@@ -64,6 +67,12 @@ export default function PrepPlanner({ data, nearKin, sel, go }: { data: Data; ne
             {more.map((r) => <Chip key={r.group.id} r={r} extra={miss(r).map(name).join("、")} />)}
           </details>
         )}
+        {general.length > 0 && (
+          <details>
+            <summary>考綜合科目，無法逐科比對（{general.length}）</summary>
+            {general.map((r) => <Chip key={r.group.id} r={r} note={`考${broad(r).join("、")}`} />)}
+          </details>
+        )}
         {reviewOnly.length > 0 && (
           <details>
             <summary>不考筆試（書審，部分加口試）（{reviewOnly.length}）</summary>
@@ -71,7 +80,7 @@ export default function PrepPlanner({ data, nearKin, sel, go }: { data: Data; ne
           </details>
         )}
       </div>
-      <p className="hint">只計算已整理考科的學校（116 已查證＋參考年度）。簡章還沒公告的學校不在內；台科大、北科大等考「資工概論」「計算機概論」類綜合科目的學校，整理後也會列進來。</p>
+      <p className="hint">只計算已整理考科的學校（116 已查證＋參考年度）。簡章還沒公告的學校不在內。考「計算機概論」這類綜合科目的組別，範圍涵蓋多科、無法逐科比對，另外列在「考綜合科目」。</p>
     </section>
   );
 }
