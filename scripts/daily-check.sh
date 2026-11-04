@@ -1,6 +1,6 @@
 #!/bin/zsh
 # 每日查核：在獨立的 git worktree 開分支 check/<日期>，讓 Claude 依 docs/DAILY_CHECK.md 查新公告與更正。
-# 有改資料、而且通過三道檢查（只動資料檔、npm run build、verify-src）→ 自動推到 GitHub main，Vercel 會自動更新網站。
+# 有改資料、而且通過四道檢查（只動資料檔、npm run build、verify-src、網頁實際打開每個分頁）→ 自動推到 GitHub main，Vercel 會自動更新網站。
 # 沒通過 → 留在分支、不上線，跳通知請人看。
 # 由 launchd（scripts/com.gradmap.daily-check.plist）每天 12:10、17:40 觸發；也可以手動執行 scripts/schedule.sh run。
 set -eu
@@ -80,12 +80,13 @@ if [[ -z "$(git log --oneline origin/main..HEAD)" ]]; then
   notify "$(date +%H:%M) 查核完成：今日無變動"; exit 0
 fi
 
-# 三道檢查：只能動資料、報告與來源指紋；建置驗證；簡章頁碼核對
+# 四道檢查：只能動資料、報告與來源指紋；建置驗證；簡章頁碼核對；網頁每個分頁打得開（11/4 曾因資料缺欄位整頁空白）
 fail=""
 bad_files=$(git diff --name-only origin/main..HEAD | grep -vE '^(data/|docs/research/|sources/.*SHA256SUMS$)' || true)
 [[ -n "$bad_files" ]] && fail="改到資料以外的檔案：$bad_files"
 [[ -z "$fail" ]] && { npm run build >> "$LOG" 2>&1 || fail="建置檢查沒通過"; }
 [[ -z "$fail" ]] && { node scripts/verify-src.mjs >> "$LOG" 2>&1 || fail="簡章頁碼核對有找不到的項目"; }
+[[ -z "$fail" ]] && { node scripts/smoke.mjs >> "$LOG" 2>&1 || fail="網頁打開會出錯或空白"; }
 
 SUMMARY=$(git log -1 --format=%s)
 if [[ -n "$fail" ]]; then

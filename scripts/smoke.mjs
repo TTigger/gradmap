@@ -1,0 +1,58 @@
+// 上線前的網頁冒煙測試：用本機 Chrome 無頭模式打開建置好的網站（dist/）每一個分頁，
+// 有 JavaScript 錯誤或畫面是空的就失敗（exit 1）。
+// 用法：npm run build && node scripts/smoke.mjs
+import { spawn } from "node:child_process";
+import { mkdtempSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+
+const CHROME = process.env.CHROME ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const TABS = ["timeline", "calendar", "compare", "matrix", "history", "past", "after", "resources", "pending"];
+const PORT = 4300 + Math.floor(Math.random() * 500);
+const DEBUG = PORT + 1000;
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const server = spawn("npx", ["vite", "preview", "--port", String(PORT), "--strictPort"], { stdio: "ignore" });
+const profile = mkdtempSync(join(tmpdir(), "gm-smoke-"));
+const chrome = spawn(CHROME, ["--headless=new", `--remote-debugging-port=${DEBUG}`, "--no-first-run", `--user-data-dir=${profile}`, "about:blank"], { stdio: "ignore" });
+const cleanup = () => { try { chrome.kill(); } catch {} try { server.kill(); } catch {} try { rmSync(profile, { recursive: true, force: true }); } catch {} };
+
+async function main() {
+  // 等網站與 Chrome 都起來
+  for (let i = 0; i < 60; i++) { try { await fetch(`http://localhost:${PORT}/`); break; } catch { await sleep(250); } }
+  let targets;
+  for (let i = 0; i < 60; i++) { try { targets = await (await fetch(`http://127.0.0.1:${DEBUG}/json/list`)).json(); break; } catch { await sleep(250); } }
+  if (!targets) throw new Error("Chrome 沒有啟動");
+
+  const ws = new WebSocket(targets.find((t) => t.type === "page").webSocketDebuggerUrl);
+  await new Promise((r) => ws.addEventListener("open", r));
+  let id = 0; const pending = new Map(); let errors = [];
+  ws.addEventListener("message", (e) => {
+    const m = JSON.parse(e.data);
+    if (m.id && pending.has(m.id)) { pending.get(m.id)(m); pending.delete(m.id); }
+    if (m.method === "Runtime.exceptionThrown") errors.push(m.params.exceptionDetails.exception?.description?.split("\n")[0] ?? m.params.exceptionDetails.text);
+  });
+  const send = (method, params = {}) => new Promise((r) => { const i = ++id; pending.set(i, r); ws.send(JSON.stringify({ id: i, method, params })); });
+  await send("Runtime.enable"); await send("Page.enable");
+
+  const failed = [];
+  for (const tab of TABS) {
+    errors = [];
+    await send("Page.navigate", { url: `http://localhost:${PORT}/?smoke=${Date.now()}#${tab}` });
+    await sleep(1500);
+    const r = await send("Runtime.evaluate", { expression: "document.getElementById('root')?.innerText.trim().length ?? 0", returnByValue: true });
+    const len = r.result?.result?.value ?? 0;
+    const ok = errors.length === 0 && len > 200;
+    console.log(`${ok ? "OK  " : "FAIL"} #${tab}  ${len} 字${errors.length ? "  錯誤：" + errors.join(" | ") : ""}`);
+    if (!ok) failed.push(tab);
+  }
+  ws.close();
+  if (failed.length) { console.error(`網頁測試失敗：${failed.join(", ")}`); return 1; }
+  console.log("網頁測試通過");
+  return 0;
+}
+
+let code = 1;
+try { code = await main(); } catch (e) { console.error("網頁測試無法執行：" + e.message); }
+cleanup();
+process.exit(code);

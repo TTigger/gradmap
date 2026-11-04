@@ -6,7 +6,7 @@
 
 找出各校新公告的官方資料，查證後更新 `data/`。排程會開一個獨立的分支（`check/<日期>`），你只要在這個分支修改並 commit。
 
-**你的修改會自動上線**：排程在你結束後檢查三件事——只改了 `data/`、`docs/research/`、`sources/**/SHA256SUMS`；`npm run build` 通過；`node scripts/verify-src.mjs` 全部找得到。三項都過就直接推到 main、網站自動更新。所以：
+**你的修改會自動上線**：排程在你結束後檢查三件事——只改了 `data/`、`docs/research/`、`sources/**/SHA256SUMS`；`npm run build` 通過；`node scripts/verify-src.mjs` 全部找得到；網頁每個分頁實際打開不出錯（`scripts/smoke.mjs`）。四項都過就直接推到 main、網站自動更新。所以：
 - 寧可不改，也不要寫沒有核對過的數字。不確定的寫進報告「需要人工處理」，不要寫進資料。
 - 不要改網站程式（`src/`、`scripts/`）。
 
