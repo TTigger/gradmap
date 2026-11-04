@@ -1,12 +1,7 @@
 # 116 簡章尚未公告、也還沒收到可用參考資料的學校
 # 每次查核後更新 checked 日期；簡章一公告就移到 data/schools/<id>.yaml
-checked: "2026-11-03"
+checked: "2026-11-04"
 schools:
-  - id: nthu
-    name: 國立清華大學
-    short: 清大
-    site: https://adms.site.nthu.edu.tw/p/412-1207-3106.php?Lang=zh-tw
-    note: 116 學年度碩士班考試入學簡章尚未公告。
   - id: ncku
     name: 國立成功大學
     short: 成大

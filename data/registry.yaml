@@ -20,7 +20,7 @@ schools:
     aliases: [清華, 清華大學, NTHU]
     links:
       - { label: 招生策略中心 碩士班考試, url: "https://adms.site.nthu.edu.tw/p/412-1207-3106.php?Lang=zh-tw", kind: admission }
-    watch: 碩士班一般考試「碩考_最新公告」完整列表可直接讀取（伺服器端產生）：https://adms.site.nthu.edu.tw/p/403-1207-1259-1.php?Lang=zh-tw （頁面 /p/412-1207-3106.php 上的小列表是 JavaScript 載入，直接呼叫 /app/index.php 會被學校防火牆擋，不可繞過）。2026-11-01 最新公告仍是 115 學年度備取遞補。清大碩士班說明：理學院部分系所與電機領域（含工科丁）走台聯大聯招。116 台聯大聯招簡章（10/30 公告，sources/116/ust.pdf）只有化學、物理、電機、文化研究四類＋清大天文所，沒有資工類，清大資工所不在其中；資工所看清大自己的碩士班考試簡章。舊年度統計檔名格式為 adms.site.nthu.edu.tw/var/file/207/1207/img/342/MX_<年度>NUM.pdf（只到 99 年度），新年度位置待找。
+    watch: 碩士班一般考試「碩考_最新公告」完整列表可直接讀取（伺服器端產生）：https://adms.site.nthu.edu.tw/p/403-1207-1259-1.php?Lang=zh-tw （頁面 /p/412-1207-3106.php 上的小列表是 JavaScript 載入，直接呼叫 /app/index.php 會被學校防火牆擋，不可繞過）。116 簡章 115/11/04 公告（公告 /p/406-1207-317484,r1259.php，PDF /var/file/207/1207/img/813069005.pdf；sources/116/nthu.pdf），更正公告看同一個「碩考_最新公告」列表。清大碩士班說明：理學院部分系所與電機領域（含工科丁）走台聯大聯招。116 台聯大聯招簡章（10/30 公告，sources/116/ust.pdf）只有化學、物理、電機、文化研究四類＋清大天文所，沒有資工類，清大資工所不在其中；資工所看清大自己的碩士班考試簡章。舊年度統計檔名格式為 adms.site.nthu.edu.tw/var/file/207/1207/img/342/MX_<年度>NUM.pdf（只到 99 年度），新年度位置待找。
 
   - id: nycu
     name: 國立陽明交通大學
