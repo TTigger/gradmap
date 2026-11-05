@@ -109,7 +109,7 @@ schools:
     aliases: [北科, 臺北科大, 台北科大, 臺北科技大學, NTUT]
     links:
       - { label: 研究所招生, url: "https://graduate.ntut.edu.tw/", kind: admission }
-    watch: 官方公告 116 簡章「預定 115 年 11 月中下旬公告」。官方統計未找到。
+    watch: 116 簡章 115/11/05 公告（研究所招生首頁公告列表，公告 /p/406-1135-158470,r2829.php，PDF /var/file/135/1135/img/4117/801990773.pdf；sources/116/ntut.pdf）。更正公告看 https://graduate.ntut.edu.tw/ 首頁公告列表（可直接 curl）。電子系甲組（計算機工程）、電機系戊組（計算機科學）列在 near_kin 未展開。官方統計未找到。
 
   - id: ntpu
     name: 國立臺北大學

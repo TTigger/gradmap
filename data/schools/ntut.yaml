@@ -1,0 +1,106 @@
+id: ntut
+name: 國立臺北科技大學
+short: 北科大
+year: 116
+exam_type: 研究所碩士班入學招生（一般考試）
+status: verified
+brochure:
+  title: 國立臺北科技大學116學年度研究所碩士班入學招生簡章
+  url: https://graduate.ntut.edu.tw/var/file/135/1135/img/4117/801990773.pdf
+  url_note: 公告頁 https://graduate.ntut.edu.tw/p/406-1135-158470,r2829.php?Lang=zh-tw
+  published: "2026-11-05"
+  verified: "2026-11-05"
+  page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」（這份簡章兩者相同）
+fee: { amount: 1500, note: 每一系所組分別繳費；低收入戶全免（限報一個系所組）；面試不另收費, src: "p10 / 10" }
+
+schedule:
+  - { type: register, start: "2026-12-01T09:00", end: "2026-12-10T17:00", label: 網路報名, note: 報名時要選臺北考區或高雄分區，送出後不能改, src: "p15 / 15" }
+  - { type: payment, start: "2026-12-01T09:00", end: "2026-12-10T23:59", label: 繳報名費, note: 逾時未繳視同放棄報名, src: "p15 / 15" }
+  - { type: upload, start: "2026-12-01T09:00", end: "2026-12-11T12:00", label: 上傳審查資料（資工所只考筆試不用傳；人工智慧、資安學程要傳）, note: 不受理郵寄紙本, src: "p15 / 15" }
+  - { type: other, start: "2027-01-20", label: 審查系所初試成績、面試名單公告（人工智慧、資安學程）, src: "p15 / 15" }
+  - { type: admit_card, start: "2027-02-02", label: 開放列印准考證, src: "p15 / 15" }
+  - { type: venue, start: "2027-02-15", label: 公告各分區試場分配表, src: "p15 / 15" }
+  - { type: exam, start: "2027-02-21", label: 筆試（資工所：計算機概論、程式設計）, note: 面試系所在 2/16–2/20 間由系所自訂（人工智慧學程 2/17、資安學程 2/19）, src: "p15 / 15" }
+  - { type: regrade, start: "2027-03-11", end: "2027-03-12", label: 總成績查詢、成績複查（3/12 前限時掛號寄出）, src: "p15 / 15" }
+  - { type: result, start: "2027-03-23", label: 放榜（另以掛號寄正備取通知）, src: "p15 / 15" }
+  - { type: waitlist, start: "2027-03-23T12:00", end: "2027-04-09T17:00", label: 備取生上網登錄就讀意願（沒登錄視同放棄）, src: "p15 / 15" }
+  - { type: enroll, start: "2027-04-01", label: 正取生本人親自報到（4/1–4/2）, note: 不就讀者 4/2 前寄放棄錄取資格切結書, src: "p15 / 15" }
+  - { type: waitlist, start: "2027-04-14", label: 公告備取生第一梯次遞補名單（4/20 遞補報到）, src: "p15 / 15" }
+
+programs:
+  - id: ntut-csie
+    name: 資訊工程系碩士班
+    kind: main
+    url: https://csie.ntut.edu.tw
+    groups:
+      - id: ntut-csie-general
+        name: 不分組
+        code: "2300"
+        quota: { general: 36 }
+        quota_src: "p37 / 37"
+        exam_day: "2027-02-21"
+        papers:
+          - { name: 計算機概論, weight_pct: 50, period: "第一節 13:00–14:40" }
+          - { name: 程式設計, weight_pct: 50, period: "第二節 15:30–17:10" }
+        papers_note: 總成績為兩科筆試成績平均；不需上傳審查資料、沒有面試。節次時間見考試日期及時間（p23 / 23）
+        scoring: 兩科筆試成績平均
+        second_stage: 無複試
+        tie_break: [計算機概論, 程式設計]
+        calculator: 各科都可帶一般工程型計算器（不限廠牌型號）
+        notes:
+          - 筆試只有 1 天，下午考：資工所第一節 13:00–14:40、第二節 15:30–17:10（p23 / 23）
+          - 甄試缺額會併入本項名額；同分且仍無法比較時可能另辦口試（p24 / 24；p25 / 25）
+  - id: ntut-ai
+    name: 人工智慧科技碩士學位學程
+    kind: near_kin
+    review_only: true
+    review_method: "書審篩選＋面試 100%"
+    url: https://ifirst.ntut.edu.tw/
+    groups:
+      - id: ntut-ai-general
+        name: 不分組
+        code: "7100"
+        quota: { general: 21 }
+        quota_src: "p57 / 57"
+        papers: []
+        papers_note: ⚠️ 不考筆試：初試資料審查擇優參加複試，總成績只看面試（複試 100%）。審查資料：學歷證明、歷年成績單、名次證明、自傳（含研究興趣、讀書計畫及研究計畫），不用推薦函
+        second_stage: 面試 116/2/17（名單、時間地點 1/20 公告，只在北科大校內）
+        tie_break: [資料審查]
+        notes:
+          - 限中華民國國籍
+  - id: ntut-isec
+    name: 資訊安全碩士學位學程
+    kind: near_kin
+    review_only: true
+    review_method: "書審 50%＋面試 50%"
+    url: https://ifirst.ntut.edu.tw/
+    groups:
+      - id: ntut-isec-general
+        name: 不分組
+        code: "7200"
+        quota: { general: 16 }
+        quota_src: "p58 / 58"
+        papers: []
+        papers_note: ⚠️ 不考筆試：初試資料審查 50%，擇優參加複試面試 50%。審查資料：學歷證明、歷年成績單、名次證明、自傳（含研究興趣、讀書計畫及研究計畫），不用推薦函
+        second_stage: 面試 116/2/19（名單、時間地點 1/20 公告，只在北科大校內）
+        tie_break: [面試]
+        notes:
+          - 限中華民國國籍
+
+rules:
+  zero_score: 審查資料未上傳或零分、面試缺考或零分、筆試任一科缺考者，不予錄取
+  zero_score_src: "p25 / 25"
+  min_standard: 招生委員會訂定各系所組最低錄取標準，未達者雖有名額亦不予錄取
+  tie_break_general: 總成績相同時依系所「考試方式」欄科目編號順序比較，另有規定者從其規定；仍同分可另辦口試決定
+
+near_kin:
+  - { name: 電子工程系碩士班甲組（計算機工程）, quota: 14, note: 電子系的計算機工程組；筆試計算機概論 50%＋資料審查 50%（p36 / 36），未列入比較 }
+  - { name: 電機工程系碩士班戊組（計算機科學）, quota: 8, note: 電機系的計算機科學組；筆試數位邏輯設計或資料結構二選一 50%＋資料審查 50%（p16 / 16），未列入比較 }
+
+venue: { city: 臺北／高雄, place: 報名時選臺北考區（臺北市內洽借學校）或高雄分區（高雄高工），送出後不能改；試場分配表 2/15 公告。面試只在北科大校內, src: "p23 / 23", choose: true }
+waitlist_info:
+  alert: 備取生要在 3/23 12:00–4/9 17:00 上網登錄就讀意願，沒登錄視同放棄遞補資格；正取生 4/1–4/2 要本人親自報到
+  how: 4/8 公告正取生報到後缺額，4/14 公告第一梯次遞補名單、4/20 遞補報到；之後的遞補在招生網站公告並以掛號通知，開學前 4 天起改用電話、簡訊、email 聯繫（3 次聯絡不到以棄權論）
+  where: { label: 北科大碩士班入學招生網站, url: "https://graduate.ntut.edu.tw/" }
+  deadline: 遞補至 116 學年度第 1 學期開學日
+  src: "p26 / 26"

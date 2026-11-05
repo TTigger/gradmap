@@ -1,6 +1,6 @@
 # 116 簡章尚未公告、也還沒收到可用參考資料的學校
 # 每次查核後更新 checked 日期；簡章一公告就移到 data/schools/<id>.yaml
-checked: "2026-11-04"
+checked: "2026-11-05"
 schools:
   - id: ncku
     name: 國立成功大學
@@ -19,12 +19,6 @@ schools:
     site: https://exams.ccu.edu.tw/p/403-1032-2821.php?Lang=zh-tw
     note: 官方預定日程（仍以簡章為準）：11/6 公告簡章，11/26–12/8 報名（資料上傳至 12/9），116/1/27 筆試；只考筆試的系所 3/12 放榜、4/8–4/9 正取生報到，有複試的系所 4/16 放榜。
     note_src: https://exams.ccu.edu.tw/var/file/32/1032/img/1165/116schedule.pdf
-  - id: ntut
-    name: 國立臺北科技大學
-    short: 北科大
-    site: https://graduate.ntut.edu.tw/
-    note: 官方公告「116學年度研究所碩士班入學招生簡章，預定115年11月中下旬公告」
-    note_src: https://graduate.ntut.edu.tw/p/406-1135-156925,r2829.php?Lang=zh-tw
   - id: ntou
     name: 國立臺灣海洋大學
     short: 海大
