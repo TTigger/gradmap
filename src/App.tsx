@@ -1,4 +1,5 @@
 import Icon from "./Icon";
+import { Analytics } from "@vercel/analytics/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import raw from "./generated/data.json";
 import type { Data } from "./types";
@@ -32,6 +33,24 @@ const TABS = [
   { id: "pending", label: "待公告" },
 ] as const satisfies readonly { id: TabId; label: string }[];
 
+
+// 流量統計開關：網址加 ?analytics=off 之後，這台裝置的瀏覽不計入統計（站長排除自己用）；?analytics=on 恢復
+const ANALYTICS_KEY = "gm.analyticsOff";
+function readAnalyticsOff(): boolean {
+  try {
+    const url = new URL(location.href);
+    const q = url.searchParams.get("analytics");
+    if (q === "off") localStorage.setItem(ANALYTICS_KEY, "1");
+    if (q === "on") localStorage.removeItem(ANALYTICS_KEY);
+    if (q != null) {
+      url.searchParams.delete("analytics");
+      history.replaceState(null, "", url.pathname + url.search + url.hash);
+    }
+    return localStorage.getItem(ANALYTICS_KEY) === "1";
+  } catch { return false; }
+}
+const analyticsOff = readAnalyticsOff();
+const dropIfOff = (e: { type: "pageview" | "event"; url: string }) => (analyticsOff ? null : e);
 
 function load<T>(key: string, fallback: T): T {
   try {
@@ -276,6 +295,7 @@ export default function App() {
         {tab === "pending" && <Pending data={data} />}
       </main>
 
+      <Analytics route="/[tab]" path={`/${tab}`} beforeSend={dropIfOff} />
       <footer className="foot">
         <p>
           每筆資料都附官方簡章頁碼（例：<code>p42 / 38</code> = PDF 第 42 頁／簡章印刷頁 38）。
@@ -288,7 +308,7 @@ export default function App() {
           <a href="https://github.com/TTigger/gradmap/issues/new/choose" target="_blank" rel="noreferrer">GitHub Issues</a>。
         </p>
         <p>資料採 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hant" target="_blank" rel="noreferrer">CC BY-NC 4.0</a> 授權：非商業使用請標示出處「GradMap」，商業使用須事先同意。</p>
-        <p>本站使用 Vercel 匿名流量統計（不使用 cookie、不追蹤個人），只用來了解網站使用情況。</p>
+        <p>本站使用 Vercel 匿名流量統計（不使用 cookie、不追蹤個人），只用來了解網站使用情況與各分頁的瀏覽次數。{analyticsOff && "（這台裝置已設定不計入統計）"}</p>
         <p>資料建置：{new Date(data.generated).toLocaleString("zh-TW", { hour12: false })}</p>
       </footer>
     </div>
