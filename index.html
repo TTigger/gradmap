@@ -24,6 +24,33 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="上岸地圖 GradMap：資工所考試入學資訊儀表板" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "上岸地圖 GradMap",
+            "alternateName": "GradMap",
+            "url": "https://gradmap-tw.vercel.app/",
+            "inLanguage": "zh-Hant-TW",
+            "description": "資工所考試入學資訊儀表板：報名日程、名額、考科與計分方式、考古題、放榜遞補，每筆資料附官方簡章頁碼。"
+          },
+          {
+            "@type": "Dataset",
+            "name": "資工所碩士班考試入學資料（GradMap）",
+            "description": "台灣各校資訊工程相關研究所碩士班考試入學的報名與考試日程、招生名額、考科配分、考古題位置與放榜遞補資料，每筆附官方簡章出處與頁碼。",
+            "url": "https://gradmap-tw.vercel.app/",
+            "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+            "isAccessibleForFree": true,
+            "inLanguage": "zh-Hant-TW",
+            "spatialCoverage": "Taiwan",
+            "creator": { "@type": "Person", "name": "TTigger", "url": "https://github.com/TTigger" },
+            "distribution": { "@type": "DataDownload", "encodingFormat": "application/yaml", "contentUrl": "https://github.com/TTigger/gradmap/tree/main/data" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

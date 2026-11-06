@@ -44,9 +44,9 @@ export default function PastExams({ data, sel }: { data: Data; sel: Sel }) {
                 <td className="nowrap"><span className={`acc a-${x.access}`}>{ACCESS[x.access]}</span></td>
                 {COLS.map((y) => {
                   const h = has(x, y);
-                  return <td key={y} className="c"><span className={`pe-${h}`}>{h === "yes" ? "●" : h === "no" ? "—" : "?"}</span></td>;
+                  return <td key={y} className="c" data-label={y}><span className={`pe-${h}`}>{h === "yes" ? "●" : h === "no" ? "—" : "?"}</span></td>;
                 })}
-                <td className="nowrap">{x.years ? `${x.years[0]}–${x.years[1]}` : "—"}</td>
+                <td className="nowrap pe-range" data-label="收錄範圍">{x.years ? `${x.years[0]}–${x.years[1]}` : "—"}</td>
                 <td className="pe-note">
                   <a href={x.url} target="_blank" rel="noreferrer">{x.label}<Icon name="out" /></a>
                   {x.extra?.map((e) => <a key={e.url} href={e.url} target="_blank" rel="noreferrer" className="pe-extra">{e.label}<Icon name="out" /></a>)}

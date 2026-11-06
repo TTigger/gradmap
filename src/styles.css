@@ -536,6 +536,17 @@ tr.flash td { animation: flash 2.2s ease-out; }
   .cmp td:nth-child(5) { order: 5; } .cmp td:nth-child(6) { order: 6; } .cmp td:nth-child(7) { order: 7; }
   .cmp td.who { order: 0; }
   .cmp td.num > b { font-size: 22px; }
+  /* 考古題表：手機改成一校一張卡片（年度五格一列、官方連結直接看得到） */
+  .pe, .pe tbody { display: block; min-width: 0; }
+  .pe thead { display: none; }
+  .pe tr { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px 8px; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); }
+  .pe td, .pe.freeze td:first-child { display: block; min-width: 0 !important; width: auto; padding: 0; border: 0; position: static; box-shadow: none; background: none; }
+  .pe td.who { grid-column: 1 / 4; }
+  .pe td.who + td { grid-column: 4 / 6; justify-self: end; }
+  .pe td.c[data-label]::before { content: attr(data-label); display: block; font-size: 12px; color: var(--text-3); }
+  .pe td.pe-range { grid-column: 1 / -1; font-size: 13px; color: var(--text-2); }
+  .pe td.pe-range::before { content: attr(data-label) "："; }
+  .pe td.pe-note { grid-column: 1 / -1; }
   .trip-t, .trip-t tbody { display: block; }
   .trip-t tr { display: grid; grid-template-columns: auto 1fr; column-gap: 14px; padding: 12px 0; border-top: 1px solid var(--line); }
   .trip-t td, .trip-t.freeze td:first-child { padding: 0; border: 0; position: static; box-shadow: none; background: none; }
