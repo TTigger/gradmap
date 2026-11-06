@@ -16,11 +16,11 @@
   --accent: #0071e3;
   --link: #0066cc;
   --accent-soft: rgba(0, 113, 227, .08);
-  --c-register: #0071e3;
+  --c-register: #0062c3;
   --c-exam: #d70015;
-  --c-result: #1e7b34;
+  --c-result: #1a6e2e;
   --c-enroll: #8944ab;
-  --c-muted: #86868b;
+  --c-muted: #6e6e73;
   --warn-bg: #fff5e6;
   --warn-text: #b25000;
   --p0: #eaf2fd; --p1: #fdecee; --p2: #e8f5ec; --p3: #f3ecf8; --p4: #fdf2e3;
@@ -240,7 +240,8 @@ ul.warn li { padding: 2px 0; }
 .tl-bar em { position: absolute; top: 13px; left: 0; font-style: normal; font-size: 12px; color: var(--text-2); white-space: nowrap; }
 .tl-mark { position: absolute; top: 19px; width: 12px; height: 12px; margin-left: -6px; cursor: help; }
 .tl-mark.diamond { transform: rotate(45deg); border-radius: 2px; }
-.tl-mark.diamond em { position: absolute; transform: rotate(-45deg); top: -20px; left: -14px; font-style: normal; font-size: 12px; font-weight: 600; color: var(--c-exam); white-space: nowrap; }
+/* 菱形本身旋轉 45°，標籤在旋轉後的座標裡往左上移，才會落在菱形正上方 */
+.tl-mark.diamond em { position: absolute; top: -7px; left: -7px; transform: translate(-50%, -50%) rotate(-45deg); font-style: normal; font-size: 12px; font-weight: 600; color: var(--c-exam); white-space: nowrap; }
 .tl-mark.dot { border-radius: 50%; }
 .tl-mark.dot em { position: absolute; top: 14px; left: -10px; font-style: normal; font-size: 12px; color: var(--c-result); white-space: nowrap; }
 

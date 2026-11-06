@@ -13,6 +13,7 @@ const shots = [
   { name: "hero", hash: "timeline", w: 1280, clip: { top: 0, height: 1090 } },
   { name: "compare", hash: "compare", w: 1280, clip: { sel: "main section.card, main .card", height: 560 } },
   { name: "planner", hash: "matrix", w: 1280, clip: { sel: "section.pp" } },
+  { name: "mobile", hash: "compare", w: 390, mobile: true, clip: { sel: "table.cmp", height: 780 } },
 ];
 
 const chrome = spawn("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",

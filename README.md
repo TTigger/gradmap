@@ -34,6 +34,7 @@ Deadlines, exam dates, quotas, subjects and score weights from each school's off
 | 📬 | **Results & waitlist** — deadlines you lose your place for missing | 放榜・遞補：不做就喪失資格的期限 |
 | 📈 | **History (113–115)** — applicants, admitted, minimum scores from official statistics | 歷年數據：報名、錄取、最低錄取分數 |
 | 🔔 | **Change markers** — brochure corrections highlighted for 45 days | 簡章更正標記 |
+| 📱 | **Phone-friendly** — the compare table becomes one card per program; works in light and dark mode | 手機好讀：比較表在手機上改成一個系所一張卡片，支援深色模式 |
 
 Scope 範圍: **exam-based admission only** (no 甄試/推甄). Near-kin programs (網媒、網工、資安…) are included, labeled, and can be hidden.
 
@@ -60,6 +61,26 @@ A school appears once its 116 brochure is published and checked; until then the 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/planner-dark.png">
   <img alt="Prep planner: selected subjects and the programs they fully cover or miss by one subject" src="docs/images/planner-light.png">
+</picture>
+
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td width="38%" valign="top">
+
+**On your phone 手機版** — each program is a card: quota, fee, dates, papers and tie-breakers, no sideways scrolling.
+
+手機上每個系所一張卡片，名額、報名費、日期、考科一次看完，不用左右滑。
+
+</td>
+<td width="62%" valign="top">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/mobile-dark.png">
+  <img alt="Compare table on a phone: one card per program with quota, fee, registration, exam and result dates, papers and tie-breakers" src="docs/images/mobile-light.png" width="300">
 </picture>
 
 </td>
@@ -106,7 +127,7 @@ scripts/
   extract.sh             PDF → per-page text (local only)
   daily-check.sh         daily re-check on branch check/<date>, auto-publish if checks pass
   schedule.sh            install / uninstall / run the daily job (macOS launchd)
-  screenshots.mjs        README screenshots, light + dark (headless Chrome)
+  screenshots.mjs        README screenshots (desktop + phone), light + dark (headless Chrome)
 sources/<year>/SHA256SUMS  fingerprints of the brochures used (PDFs stay local)
 docs/                    decisions, research logs, daily-check instructions (DAILY_CHECK.md)
 docs/images/             README screenshots
@@ -116,12 +137,12 @@ docs/images/             README screenshots
 
 `scripts/schedule.sh install` runs a check every day at 12:10 and 17:40 Taiwan time (2026-11-02 → 2027-04-30) and posts the result as a macOS notification and a phone push (ntfy; topic kept in the untracked `.env.ntfy`). It looks for newly published 116 brochures and corrections on a branch `check/<date>-<time>`. Changes go live automatically **only if** they touch data files only, `npm run build` passes, `verify-src.mjs` finds every date / quota / weight on its cited brochure page, and every tab of the built site opens without errors in headless Chrome (`scripts/smoke.mjs`); otherwise the branch is kept for manual review. Sunday's midday run also refreshes history stats, past exams and resource links. A GitHub Actions watchdog (`.github/workflows/check-watchdog.yml`) fails around 21:17 if no check ran that day, which triggers GitHub's failure email.
 
-每天自動查新簡章與更正公告。只改資料檔、建置通過、簡章頁碼全數核對成功，才會自動推上 main 並更新網站；否則留在分支等人工確認。週日另外補歷年數據、考古題與備考連結。
+每天自動查新簡章與更正公告。只改資料檔、建置通過、簡章頁碼全數核對成功、網站每個分頁都能正常打開，才會自動推上 main 並更新網站；否則留在分支等人工確認。週日另外補歷年數據、考古題與備考連結。
 
 ## Contributing 回報錯誤
 
-Found a wrong date or number? Open an issue with the **school, field, and the official source (URL + page)**. Only grade-A sources change data.
-發現資料有誤，請開 issue 並附上官方來源網址與頁碼。
+Found a wrong date or number? [Report a data error](https://github.com/TTigger/gradmap/issues/new?template=data-error.yml) with the **school, field, and the official source (URL + page)**. Only grade-A sources change data. Other ideas: [open an issue](https://github.com/TTigger/gradmap/issues/new/choose).
+發現資料有誤，請用[資料錯誤回報表單](https://github.com/TTigger/gradmap/issues/new?template=data-error.yml)，附上官方來源網址與頁碼；其他建議請[開 issue](https://github.com/TTigger/gradmap/issues/new/choose)。
 
 ## Disclaimer 免責聲明
 
