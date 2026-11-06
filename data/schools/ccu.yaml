@@ -1,0 +1,85 @@
+id: ccu
+name: 國立中正大學
+short: 中正
+year: 116
+exam_type: 碩士班考試入學
+status: verified
+brochure:
+  title: 國立中正大學116學年度碩士班招生簡章
+  url: https://exams.ccu.edu.tw/var/file/32/1032/img/1131/s1_anno116.pdf
+  url_note: 公告頁 https://exams.ccu.edu.tw/p/406-1032-97276,r2821.php?Lang=zh-tw ；簡章下載頁 https://exams.ccu.edu.tw/var/file/32/1032/img/1131/s1_announce.html
+  published: "2026-11-06"
+  verified: "2026-11-06"
+  page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」；p2 重要日程表、p7 報名費繳費方式說明沒有印刷頁碼
+fee: { amount: 1300, note: 一階段收費，複試不另收費；每組繳費帳號只能報一個系所組, src: "p7 / 繳費說明" }
+
+schedule:
+  - { type: register, start: "2026-11-26T09:00", end: "2026-12-08T17:00", label: 網路報名（填完報名表還要按「資料確認」才算完成）, note: 只繳費沒填報名資料視同未報名、不能考筆試；確認後不能改系所、考區、身分別, src: "p2 / 日程表" }
+  - { type: payment, start: "2026-11-26T09:00", end: "2026-12-08T16:30", label: 取得繳費帳號並繳報名費（取號至 12/8 16:00）, note: 繳費入帳要 10–15 分鐘才能接著報名, src: "p2 / 日程表" }
+  - { type: upload, start: "2026-11-26T09:00", end: "2026-12-09T17:00", label: 上傳審查資料（只有無筆試系所要傳；資工所不用）, src: "p2 / 日程表" }
+  - { type: admit_card, start: "2027-01-19", end: "2027-01-27", label: 自行下載列印筆試准考證（不寄發）, src: "p2 / 日程表" }
+  - { type: exam, start: "2027-01-27", label: 筆試（資工所：數學、軟體設計、計算機系統）, note: 嘉義考區（中正大學）或臺北考區（政治大學）, src: "p2 / 日程表" }
+  - { type: result, start: "2027-03-12", label: 放榜（第二次榜示：只考筆試的系所，含資工所）, src: "p2 / 日程表" }
+  - { type: regrade, start: "2027-03-16T17:00", label: 筆試成績複查申請截止（上網申請）, src: "p2 / 日程表" }
+  - { type: waitlist, start: "2027-03-18T09:00", end: "2027-03-22T17:00", label: 正、備取生上網登記報到意願（沒登記視同放棄）, src: "p2 / 日程表" }
+  - { type: other, start: "2027-03-25", label: 公告「可報到考生名單」與「待遞補名單」, src: "p2 / 日程表" }
+  - { type: enroll, start: "2027-04-08", end: "2027-04-09", label: 可報到名單內的正、備取生到系所現場驗證、報到（擇一日）, src: "p2 / 日程表" }
+
+programs:
+  - id: ccu-cs
+    name: 資訊工程學系碩士班
+    kind: main
+    url: https://cs.ccu.edu.tw/
+    groups:
+      - id: ccu-cs-general
+        name: 不分組
+        code: "4000"
+        quota: { general: 26, in_service: 2 }
+        quota_src: "p41 / 29"
+        exam_day: "2027-01-27"
+        papers:
+          - { name: 數學（線性代數、離散數學）, covers: [LA, DM], period: "第二節 10:10–11:40" }
+          - { name: 軟體設計（程式設計、資料結構、計算方法）, covers: [DS], period: "第三節 13:10–14:40" }
+          - { name: 計算機系統（計算機結構、作業系統）, covers: [CO, OS], period: "第四節 15:30–17:00" }
+        papers_note: 三科專業科目合佔總成績 100%（簡章沒有分列各科比例），沒有英文、沒有複試。在職生代碼 4005。節次見筆試時間表（p93 / 81）
+        scoring: 三科筆試合佔 100%
+        second_stage: 無複試
+        tie_break: [專業科目二, 專業科目一]
+        calculator: 可帶不具儲存程式功能的計算器（＋－×÷、％、√、M、三角函數、對數、指數）（p95 / 83）
+        notes:
+          - 同分參酌簡章原文寫「一、專業科目二 二、專業科目一」，沒有說明對應哪一科
+          - 在職生要有與資工性質相關工作年資累計滿 2 年（p41 / 29）
+          - 甄試備取遞補截止（116/2/15）後的缺額會併入本項名額（p96 / 84）
+  - id: ccu-ee-ce
+    name: 電機工程學系碩士班計算機工程組
+    kind: near_kin
+    review_only: true
+    review_method: "書審 100%"
+    url: https://ee.ccu.edu.tw/
+    groups:
+      - id: ccu-ee-ce-general
+        name: 計算機工程組
+        code: "4130"
+        quota: { general: 8 }
+        quota_src: "p44 / 32"
+        papers: []
+        papers_note: ⚠️ 不考筆試、沒有口試：書面審查 100%。審查資料：最高學歷歷年成績單（含名次證明）、自傳、研究計畫、其他有利資料；12/9 17:00 前上傳一份 PDF（15MB 內）
+        second_stage: 無複試；第一次榜示 116/2/24
+        tie_break: [書面審查]
+
+rules:
+  zero_score: 任一科缺考、零分或不予計分，或口試未達系所規定者，即使總成績達最低錄取標準也不錄取
+  zero_score_src: "p96 / 84"
+  min_standard: 招生委員會於榜示前訂定一般生與在職生的最低錄取標準（可以不同），未達者雖有名額亦不錄取；達標人數不足時不足額錄取、不列備取
+  tie_break_general: 依各系所「總成績同分參酌之順序」逐項比較；正取最後一名或遞補最後一名仍同分則增額錄取
+
+near_kin:
+  - { name: 電機工程學系碩士班信號與智慧計算組, quota: 9, note: 只書審（審查），未列入比較（p43 / 31） }
+
+venue: { city: 嘉義／臺北, place: 報名時選嘉義考區（中正大學，嘉義縣民雄鄉）或臺北考區（政治大學，臺北市文山區），報名資料確認後不能改；試場配置圖考前一週公告, src: "p91 / 79", choose: true }
+waitlist_info:
+  alert: 正、備取生都要在 3/18 09:00–3/22 17:00 上網登記報到意願，沒登記或登記無意願視同放棄；在可報到名單內的要 4/8 或 4/9 到系所現場驗證報到
+  how: 3/25 公告「可報到考生名單」與「待遞補名單」（名單之後不再更新）；有缺額時由系所依待遞補名單順序通知，備取生要自己上系所網頁查遞補狀況並保持聯絡暢通
+  where: { label: 中正大學招生資訊網・碩士班考試, url: "https://exams.ccu.edu.tw/p/403-1032-2821.php?Lang=zh-tw" }
+  deadline: 遞補至 116 學年度第一學期開始上課日
+  src: "p98 / 86；p99 / 87；p3 / 日程表"

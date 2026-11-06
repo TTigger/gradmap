@@ -93,7 +93,7 @@ schools:
     aliases: [中正大學, CCU]
     links:
       - { label: 招生資訊網・碩士班考試, url: "https://exams.ccu.edu.tw/p/403-1032-2821.php?Lang=zh-tw", kind: admission }
-    watch: 招生網站 https://exams.ccu.edu.tw/（首頁公告可直接讀取），碩士班考試頁 /p/403-1032-2821.php。116 各項招生預定時程表 /var/file/32/1032/img/1165/116schedule.pdf（sources/116/ccu-schedule.pdf）：碩士班簡章預定 115/11/06 公告。首頁另有「碩士班甄試報名人數公告」signup_no_gp<年度>.pdf，考試入學可能有對應檔，可試 signup_no_<代碼><年度>.pdf 系列。官方統計未找到。
+    watch: 招生網站 https://exams.ccu.edu.tw/（首頁公告可直接讀取），碩士班考試頁 /p/403-1032-2821.php（「碩士班考試最新消息」列表可直接 curl，更正公告看這裡）。116 簡章 115/11/06 公告（公告 /p/406-1032-97276,r2821.php，簡章下載頁 /var/file/32/1032/img/1131/s1_announce.html，整份 PDF /var/file/32/1032/img/1131/s1_anno116.pdf；sources/116/ccu.pdf）。電機系計算機工程組只書審，列為 near_kin；信號與智慧計算組列在 near_kin 未展開。考試頁另有「碩士班歷年報名人數(111-115)」連結，full 模式可補歷年數據。首頁另有「碩士班甄試報名人數公告」signup_no_gp<年度>.pdf，考試入學可能有對應檔，可試 signup_no_<代碼><年度>.pdf 系列。官方統計未找到。
 
   - id: ntust
     name: 國立臺灣科技大學
