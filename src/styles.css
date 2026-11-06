@@ -316,7 +316,8 @@ tr.ref td { opacity: .72; }
 .star { border: 0; background: none; padding: 0 6px 0 0; font-size: 17px; line-height: 1; color: var(--text-3); cursor: pointer; vertical-align: -2px; }
 .star.on { color: #f5a623; }
 
-/* 凍結第一欄 */
+/* 凍結第一欄（separate 才能讓固定欄的框線跟著畫出來；collapse 在 Chrome 會被蓋掉） */
+.freeze { border-collapse: separate; border-spacing: 0; }
 .freeze th:first-child, .freeze td:first-child { position: sticky; left: 0; z-index: 1; background: var(--surface); }
 .freeze td:first-child { box-shadow: 8px 0 8px -8px rgba(0, 0, 0, .15); }
 .freeze th:first-child { z-index: 2; }
@@ -358,6 +359,8 @@ tr.flash td { animation: flash 2.2s ease-out; }
 /* ---------- 歷年數據 ---------- */
 .hist { padding: 28px 0 8px; border-top: 1px solid var(--line); margin-top: 28px; }
 .hist h3 { margin: 0 0 10px; font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
+.mx-broad { margin-top: 4px; font-size: 12px; color: var(--text-2); }
+.mx-broad b { color: var(--text); font-weight: 600; }
 .hist-t { min-width: 820px; }
 .hist-t td.num { position: relative; }
 .hist-t td.num > b { font-weight: 600; }
@@ -517,6 +520,7 @@ tr.flash td { animation: flash 2.2s ease-out; }
   .mylist-grid { grid-template-columns: repeat(3, 1fr); }
   .tools .pop-panel.right { right: 0; }
   /* 考試行程表：手機上日期＋學校一行，考場另起一行佔滿寬度 */
+  .mx td.mx-review { text-align: left; }
   /* 比較表：手機上改成一個系所一張卡片 */
   .cmp, .cmp tbody { display: block; min-width: 0; }
   .cmp thead { display: none; }

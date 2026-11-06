@@ -43,6 +43,9 @@ export default function Matrix({ data, nearKin, sel }: { data: Data; nearKin: bo
                   <div className="grp">
                     {p.kind === "near_kin" || p.name.includes("聯合") || multiProgram(s.id) ? p.name.replace(/^資訊工程學系/, "資工系 ") : g.name}
                   </div>
+                  {!p.review_only && g.papers.filter((pp) => pp.covers.length === 0).map((pp) => (
+                    <div key={pp.name} className="mx-broad" title={pp.period}>另考 {pp.name} <b>{weightLabel(pp)}</b></div>
+                  ))}
                 </td>
                 {p.review_only ? (
                   <td colSpan={COLS.length} className="mx-review">不考筆試：{p.review_method}</td>
@@ -65,7 +68,7 @@ export default function Matrix({ data, nearKin, sel }: { data: Data; nearKin: bo
           </tbody>
         </table>
       </div>
-      <p className="hint">「—」代表簡章沒有明列比例；政大「加重計分」欄空白，推定三科等權重。</p>
+      <p className="hint">「—」代表簡章沒有明列比例；「另考」是範圍較廣、無法對應到單一科目的考科（例如計算機概論），列在學校名稱下方。政大「加重計分」欄空白，推定三科等權重。</p>
     </section>
   );
 }
