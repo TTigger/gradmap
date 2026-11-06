@@ -360,6 +360,9 @@ tr.flash td { animation: flash 2.2s ease-out; }
 /* ---------- 歷年數據 ---------- */
 .hist { padding: 28px 0 8px; border-top: 1px solid var(--line); margin-top: 28px; }
 .hist h3 { margin: 0 0 10px; font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
+.regst { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 6px; white-space: nowrap; }
+.regst.open { background: color-mix(in srgb, var(--c-register) 14%, var(--surface)); color: var(--c-register); }
+.regst.closed { background: var(--fill); color: var(--text-2); }
 .mx-broad { margin-top: 4px; font-size: 12px; color: var(--text-2); }
 .mx-broad b { color: var(--text); font-weight: 600; }
 .hist-t { min-width: 820px; }

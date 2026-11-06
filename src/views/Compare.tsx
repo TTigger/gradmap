@@ -1,7 +1,7 @@
 import Icon from "../Icon";
 import { useState } from "react";
 import type { Data, Row } from "../types";
-import { rows, findEvent, fmtDay, fmtWhen, fmtMD, weightLabel, changesAt, changeTip, type Sel } from "../lib";
+import { rows, findEvent, fmtDay, fmtWhen, fmtMD, fmtTime, weightLabel, changesAt, changeTip, regStatus, type Sel } from "../lib";
 
 type SortKey = "exam" | "deadline" | "quota" | "school";
 
@@ -56,6 +56,7 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
               const ref = s.status === "pending";
               const ch = changesAt(s, [`group:${g.id}`, "schedule.register", "schedule.exam", "schedule.result", "fee", "school"], now);
               const star = mine.includes(s.id);
+              const rs = regStatus(s, now);
               return (
                 <tr key={g.id} data-focus={`cmp-${g.id}`} className={`${p.kind === "near_kin" ? "nk" : ""} ${ref ? "ref" : ""}`}>
                   <td className="who">
@@ -79,7 +80,9 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                     <b>{g.quota.general ?? "—"}</b>
                     {g.quota_note && <div className="hint">{g.quota_note}</div>}
                   </td>
-                  <td className="nowrap" data-label="報名">{reg ? fmtWhen(reg).split(" – ").map((x, i) => <div key={i}>{i ? "– " : ""}{x}</div>) : "—"}</td>
+                  <td className="nowrap" data-label="報名">{reg ? fmtWhen(reg).split(" – ").map((x, i) => <div key={i}>{i ? "– " : ""}{x}</div>) : "—"}
+                    {rs?.state === "open" && <div className="regst open">報名中・{rs.days === 0 ? `今天 ${fmtTime(rs.end)} 截止` : `${rs.days} 天後截止`}</div>}
+                    {rs?.state === "closed" && <div className="regst closed">報名已截止</div>}</td>
                   <td className="nowrap" data-label="考試">{g.exam_day ? fmtDay(g.exam_day) : exam?.start ? fmtWhen(exam) : "—"}
                     {s.venue && <div className="hint" title={s.venue.place}><Icon name="pin" /> {s.venue.city}{s.venue.choose ? "（可選）" : ""}</div>}</td>
                   <td className="nowrap" data-label="放榜">{res?.start ? fmtDay(res.start) : "—"}</td>

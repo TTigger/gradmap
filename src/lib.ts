@@ -102,6 +102,17 @@ export function daysUntil(when: Date, now: Date): number {
   return Math.round((+b - +a) / 86400000);
 }
 
+/** 報名狀態：報名期間內回傳距截止幾天（以日曆天計），截止後回傳 closed；還沒開始或沒有日期回傳 null */
+export function regStatus(s: School, now: Date): { state: "open"; days: number; end: string } | { state: "closed" } | null {
+  if (s.status !== "verified") return null;
+  const reg = s.schedule.find((e) => e.type === "register");
+  if (!reg?.start || !reg.end) return null;
+  const a = toDate(reg.start), b = toDate(reg.end);
+  if (now < a) return null;
+  if (now > b) return { state: "closed" };
+  return { state: "open", days: daysUntil(b, now), end: reg.end };
+}
+
 /** 節點篩選：把細的日程類型歸成四大類 */
 export const PHASES = {
   all: { label: "全部節點", types: [] as string[] },
