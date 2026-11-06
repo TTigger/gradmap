@@ -76,7 +76,7 @@ schools:
       - { label: 招生統計資料（碩士班考試入學）, url: "http://www.oaa.nchu.edu.tw/zh-tw/recruit-download/download-list.117", kind: stats }
       - { label: 資工系, url: "https://cs.nchu.edu.tw", kind: dept }
       - { label: 中興招生考試歷屆試題, url: "https://histud.nchu.edu.tw:8082/", kind: past_exam }
-    watch: 招生網 recruit.nchu.edu.tw 的 .aspx 頁有時整個卡住不回應（2026-11-01 程式和瀏覽器都打不開），靜態 PDF（/grade-exam/master/116/…）仍可下載。卡住時改看資工系「招生公告(碩博)」https://cs.nchu.edu.tw/p/403-1002-62.php?Lang=zh-tw（可直接讀取，會轉貼更正與遞補公告），並在報告註明招生網無法連線。統計表（<年度>SAT_M.pdf）有名額、報名、正取、註冊人數，以系為單位（甲乙組合計），不含分數。
+    watch: 更正公告看招生網碩士班考試頁的公告列表（curl 可讀，連結 NewsDetail-master.aspx?categoryc=1&examc=B&postid=B000xx；公告內文直接在頁面上）。115/11/04 有一則 116 簡章更正（postid=B00002）：有招在職生且要上傳審查資料的系所，在職生要繳工作年資證明；影響森林系甲組、生科系甲乙丙組、資料科學與資訊計算所（新增規定）及土壤、工業與智慧科技、半導體與綠色科技（只加備註），資工系沒有變動。招生網 recruit.nchu.edu.tw 的 .aspx 頁有時整個卡住不回應（2026-11-01 程式和瀏覽器都打不開），靜態 PDF（/grade-exam/master/116/…）仍可下載。卡住時改看資工系「招生公告(碩博)」https://cs.nchu.edu.tw/p/403-1002-62.php?Lang=zh-tw（可直接讀取，會轉貼更正與遞補公告），並在報告註明招生網無法連線。統計表（<年度>SAT_M.pdf）有名額、報名、正取、註冊人數，以系為單位（甲乙組合計），不含分數。
 
   - id: nsysu
     name: 國立中山大學
