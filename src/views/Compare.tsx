@@ -75,15 +75,15 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                     {ch.length > 0 && <div className="badge changed" title={changeTip(ch)}><Icon name="warn" /> {fmtMD(ch[0].date)} 有更正</div>}
                     <div className="verified"><a href={s.brochure.url} target="_blank" rel="noreferrer" title={s.brochure.title}>{ref ? `${s.reference_year} 簡章` : "簡章"}<Icon name="out" /></a>・查證 {fmtMD(s.brochure.verified)}</div>
                   </td>
-                  <td className="num">
+                  <td className="num" data-label="名額">
                     <b>{g.quota.general ?? "—"}</b>
                     {g.quota_note && <div className="hint">{g.quota_note}</div>}
                   </td>
-                  <td className="nowrap">{reg ? fmtWhen(reg).split(" – ").map((x, i) => <div key={i}>{i ? "– " : ""}{x}</div>) : "—"}</td>
-                  <td className="nowrap">{g.exam_day ? fmtDay(g.exam_day) : exam?.start ? fmtWhen(exam) : "—"}
+                  <td className="nowrap" data-label="報名">{reg ? fmtWhen(reg).split(" – ").map((x, i) => <div key={i}>{i ? "– " : ""}{x}</div>) : "—"}</td>
+                  <td className="nowrap" data-label="考試">{g.exam_day ? fmtDay(g.exam_day) : exam?.start ? fmtWhen(exam) : "—"}
                     {s.venue && <div className="hint" title={s.venue.place}><Icon name="pin" /> {s.venue.city}{s.venue.choose ? "（可選）" : ""}</div>}</td>
-                  <td className="nowrap">{res?.start ? fmtDay(res.start) : "—"}</td>
-                  <td>
+                  <td className="nowrap" data-label="放榜">{res?.start ? fmtDay(res.start) : "—"}</td>
+                  <td data-label="筆試科目與配分">
                     {g.papers.length === 0 && <span className="hint">{g.papers_note ?? "待整理"}</span>}
                     <ul className="papers">
                       {g.papers.map((paper) => (
@@ -105,10 +105,10 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                       </details>
                     )}
                   </td>
-                  <td>
+                  <td data-label="同分參酌">
                     {g.tie_break ? <ol className="tie">{g.tie_break.map((t) => <li key={t}>{t}</li>)}</ol> : "—"}
                   </td>
-                  <td className="num">
+                  <td className="num" data-label="報名費">
                     {s.fee ? `$${s.fee.amount.toLocaleString()}` : "—"}
                     {s.fee?.note && <div className="hint">{s.fee.note}</div>}
                   </td>
