@@ -155,6 +155,17 @@ export default function App() {
     return () => window.removeEventListener("resize", updFade);
   }, [tab]);
 
+  // 分頁列鍵盤操作（WAI-ARIA tabs）：左右方向鍵、Home、End 切換並移動焦點
+  const onTabKey = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    const i = TABS.findIndex((t) => t.id === tab);
+    const j = e.key === "ArrowRight" ? (i + 1) % TABS.length : e.key === "ArrowLeft" ? (i - 1 + TABS.length) % TABS.length
+      : e.key === "Home" ? 0 : e.key === "End" ? TABS.length - 1 : -1;
+    if (j < 0) return;
+    e.preventDefault();
+    setTab(TABS[j].id);
+    requestAnimationFrame(() => document.getElementById(`tab-${TABS[j].id}`)?.focus());
+  };
+
   return (
     <>
     <nav className="lnav" aria-label="分頁">
@@ -165,10 +176,14 @@ export default function App() {
             {TABS.map((t) => (
               <button
                 key={t.id}
+                id={`tab-${t.id}`}
                 role="tab"
                 aria-selected={tab === t.id}
+                aria-controls="panel"
+                tabIndex={tab === t.id ? 0 : -1}
                 className={tab === t.id ? "tab on" : "tab"}
                 onClick={() => { setTab(t.id); window.scrollTo({ top: 0 }); }}
+                onKeyDown={onTabKey}
               >
                 {t.label}
               </button>
@@ -278,7 +293,7 @@ export default function App() {
         </div>
       </div>
 
-      <main>
+      <main id="panel" role="tabpanel" aria-labelledby={`tab-${tab}`}>
         <h2 className="sr-only">{TABS.find((t) => t.id === tab)?.label}</h2>
         {mineOnly && mine.length > 0 && school === "all" && (
           <p className="scope-note"><Icon name="star" fill /> 只顯示我的志願：{data.registry.filter((r) => mine.includes(r.id)).map((r) => r.short).join("、")}
