@@ -31,7 +31,7 @@
   --chev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2386868b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E");
   color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #000000; --surface: #1c1c1e; --surface-2: #2c2c2e; --fill: rgba(255, 255, 255, .08);
     --text: #f5f5f7; --text-2: #a1a1a6; --text-3: #8e8e93; --line: #38383a; --line-2: #48484a;
@@ -397,7 +397,7 @@ tr.flash td { animation: flash 2.2s ease-out; }
 
 /* 趨勢圖：顏色依 dataviz 參考色盤（淺色／深色各自驗證過） */
 .trend { margin: 4px 0 8px; --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a; --series-4: #eda100; --series-5: #e87ba4; --series-6: #6250d6; }
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .trend { --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500; --series-5: #d55181; --series-6: #9085e9; }
 }
 :root[data-theme="dark"] .trend { --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500; --series-5: #d55181; --series-6: #9085e9; }
@@ -567,3 +567,23 @@ tr.flash td { animation: flash 2.2s ease-out; }
 .updates details { margin-top: 4px; }
 .updates summary { cursor: pointer; color: var(--link); font-size: 13px; }
 .updates .badge.new { margin-right: 6px; }
+
+/* 列印：一律淺色、拿掉操作用的按鈕與篩選列，卡片不跨頁切開 */
+@media print {
+  @page { margin: 12mm; }
+  body { background: #fff; }
+  .lnav, .finder, .filters, .scope-note, .sortbar, .star, .lnk, .next, .updates { display: none !important; }
+  main#panel > h2.sr-only { position: static; width: auto; height: auto; margin: 0 0 8px; clip: auto; overflow: visible; white-space: normal; font-size: 20px; font-weight: 600; }
+  .card { box-shadow: none; border: 1px solid var(--line); }
+  .table-wrap { overflow: visible; }
+  tr, .card > ul > li { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+  /* 寬表格縮到紙張寬度內（紙上不能左右滑） */
+  .mx, .hist-t, .cov { min-width: 0 !important; width: 100%; font-size: 11px; }
+  .mx th, .mx td, .hist-t th, .hist-t td, .cov th, .cov td { padding: 5px 3px; }
+  .mx td.who, .hist-t td.who { min-width: 0 !important; }
+  .cov td.who { min-width: 0 !important; white-space: nowrap; font-size: 13px; }
+  .freeze td:first-child, .freeze th:first-child { position: static !important; box-shadow: none !important; }
+  .mx-cell b { font-size: 12px; }
+}
