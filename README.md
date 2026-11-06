@@ -34,7 +34,8 @@ Deadlines, exam dates, quotas, subjects and score weights from each school's off
 | 📬 | **Results & waitlist** — deadlines you lose your place for missing | 放榜・遞補：不做就喪失資格的期限 |
 | 📈 | **History (113–115)** — applicants, admitted, minimum scores from official statistics | 歷年數據：報名、錄取、最低錄取分數 |
 | 🔔 | **Change markers** — brochure corrections highlighted for 45 days | 簡章更正標記 |
-| 📱 | **Phone-friendly** — the compare table becomes one card per program; works in light and dark mode | 手機好讀：比較表在手機上改成一個系所一張卡片，支援深色模式 |
+| 🔗 | **Link to one program** — the 🔗 button next to a school copies a link that opens the compare table at that program | 單一系所連結：比較表學校名稱旁的連結按鈕，複製後打開會直接捲到該系所組 |
+| 📱 | **Phone-friendly** — the compare table and past-exam index become one card per program; works in light and dark mode | 手機好讀：比較表、考古題在手機上改成一張張卡片，支援深色模式 |
 
 Scope 範圍: **exam-based admission only** (no 甄試/推甄). Near-kin programs (網媒、網工、資安…) are included, labeled, and can be hidden.
 

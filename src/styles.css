@@ -316,6 +316,9 @@ tr.ref td { opacity: .72; }
 .tie { margin: 0; padding-left: 18px; font-size: 13px; color: var(--text-2); }
 .star { border: 0; background: none; padding: 0 6px 0 0; font-size: 17px; line-height: 1; color: var(--text-3); cursor: pointer; vertical-align: -2px; }
 .star.on { color: #f5a623; }
+.lnk { border: 0; background: none; padding: 2px 4px; margin-left: 2px; color: var(--text-3); cursor: pointer; vertical-align: -2px; font-size: 15px; line-height: 1; border-radius: 6px; }
+.lnk:hover { color: var(--link); background: var(--fill); }
+.lnk-ok { font-size: 12px; font-weight: 600; color: var(--c-result); }
 
 /* 凍結第一欄（separate 才能讓固定欄的框線跟著畫出來；collapse 在 Chrome 會被蓋掉） */
 .freeze { border-collapse: separate; border-spacing: 0; }

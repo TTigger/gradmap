@@ -70,7 +70,7 @@ function save(key: string, v: unknown) {
 
 export default function App() {
   const [tab, setTab] = useState<TabId>(() => {
-    const h = location.hash.slice(1) as TabId;
+    const h = location.hash.slice(1).split(":")[0] as TabId;
     return TABS.some((t) => t.id === h) ? h : load<TabId>("gm.tab", "timeline");
   });
   const [nearKin, setNearKin] = useState<boolean>(() => load("gm.nearKin", true));
@@ -87,6 +87,8 @@ export default function App() {
   const [mine, setMine] = useState<string[]>(() => shared ?? load("gm.mine", []));
   const [mineOnly, setMineOnly] = useState<boolean>(() => (shared?.length ? true : load("gm.mineOnly", false)));
   const [focus, setFocus] = useState<{ id?: string; date?: string; n: number }>({ n: 0 });
+  // 開站時的網址 #（下面切分頁的 effect 會把它改寫成 #分頁，所以先記下來）
+  const [initialHash] = useState(() => location.hash);
   const now = useMemo(() => new Date(), []);
   // 上次來的時間：用來標出「你上次來之後」才出現的更正
   const [lastSeen] = useState<string>(() => load("gm.lastSeen", ""));
@@ -130,14 +132,25 @@ export default function App() {
     history.replaceState(null, "", `#${tab}`);
   }, [tab]);
   useEffect(() => save("gm.nearKin", nearKin), [nearKin]);
-  // 直接改網址的 #（例：分享 #compare 連結）也能切分頁
+  // 直接改網址的 #（例：分享 #compare 連結）也能切分頁；
+  // #compare:cmp-<組別 id> 這種單一系所連結會再捲到該列並閃一下
   useEffect(() => {
-    const h = () => {
-      const id = location.hash.slice(1) as TabId;
-      if (TABS.some((t) => t.id === id)) setTab(id);
+    const h = (hash = location.hash) => {
+      const [id, target] = hash.slice(1).split(":") as [TabId, string | undefined];
+      if (!TABS.some((t) => t.id === id)) return;
+      if (!target) { setTab(id); return; }
+      const gid = target.replace(/^(cmp|mx)-/, "");
+      if (data.schools.some((s) => s.programs.some((p) => p.kind === "near_kin" && p.groups.some((g) => g.id === gid)))) setNearKin(true);
+      // 清掉篩選，避免目標被藏起來
+      setSchool("all");
+      setMineOnly(false);
+      setTab(id);
+      setFocus((f) => ({ id: target, n: f.n + 1 }));
     };
-    window.addEventListener("hashchange", h);
-    return () => window.removeEventListener("hashchange", h);
+    h(initialHash);
+    const onHash = () => h();
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
   const upcoming = nextDeadlines(data, now, 4, sel);

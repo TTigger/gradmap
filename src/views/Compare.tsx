@@ -9,6 +9,15 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
   data: Data; now: Date; nearKin: boolean; sel: Sel; mine: string[]; setMine: (v: string[]) => void;
 }) {
   const [sort, setSort] = useState<SortKey>("exam");
+  // 單一系所組連結：#compare:cmp-<組別 id>，打開會捲到該列
+  const [copied, setCopied] = useState<string | null>(null);
+  const copyLink = (gid: string) => {
+    const url = `${location.origin}${location.pathname}#compare:cmp-${gid}`;
+    navigator.clipboard?.writeText(url).then(() => {
+      setCopied(gid);
+      setTimeout(() => setCopied((c) => (c === gid ? null : c)), 1600);
+    }, () => window.prompt("複製這個連結", url));
+  };
   const list = rows(data, nearKin).filter((r) => sel(r.school.id));
   // 7 天內新加入的學校標「新加入」
   const since = new Date(now.getTime() - 7 * 86400000).toISOString().slice(0, 10);
@@ -64,6 +73,8 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                       <button className={`star ${star ? "on" : ""}`} title={star ? "從我的志願移除" : "加入我的志願"} aria-pressed={star}
                         onClick={() => setMine(star ? mine.filter((x) => x !== s.id) : [...mine, s.id])}><Icon name="star" fill={star} /></button>
                       {s.short}
+                      <button className="lnk" title="複製這個系所組的連結" aria-label={`複製${s.short}${p.name}${g.name !== "—" ? g.name : ""}的連結`}
+                        onClick={() => copyLink(g.id)}>{copied === g.id ? <span className="lnk-ok">已複製</span> : <Icon name="link" />}</button>
                       {fresh.has(s.id) && <span className="badge new">新加入</span>}
                       {ref && <span className="badge ref">{s.reference_year} 參考</span>}
                       {p.kind === "near_kin" && <span className="badge nk">近親所</span>}
