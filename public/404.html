@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>找不到這個頁面｜上岸地圖 GradMap</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root { --bg: #f5f5f7; --surface: #fff; --text: #1d1d1f; --text-2: #6e6e73; --link: #0062c3; --fill: #f0f0f3; }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #000; --surface: #1c1c1e; --text: #f5f5f7; --text-2: #a1a1a6; --link: #2997ff; --fill: #2c2c2e; }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; background: var(--bg); color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.6; }
+      main { width: 100%; max-width: 520px; background: var(--surface); border-radius: 18px; padding: 32px 28px; }
+      .code { font-size: 15px; color: var(--text-2); margin: 0; }
+      h1 { font-size: 26px; margin: 4px 0 8px; }
+      p { margin: 0 0 16px; color: var(--text-2); }
+      .home { display: inline-block; padding: 10px 18px; border-radius: 980px; background: #0062c3; color: #fff; text-decoration: none; font-weight: 600; }
+      ul { list-style: none; padding: 0; margin: 20px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+      li a { display: inline-block; padding: 6px 12px; border-radius: 8px; background: var(--fill); color: var(--text); text-decoration: none; font-size: 15px; }
+      li a:hover, .home:hover { opacity: .85; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="code">404</p>
+      <h1>找不到這個頁面</h1>
+      <p>網址可能打錯了，或這個頁面已經不存在。上岸地圖只有一頁，各分頁在網址的 # 後面（例：gradmap-tw.vercel.app/#compare）。</p>
+      <a class="home" href="/">回到上岸地圖</a>
+      <ul aria-label="直接前往分頁">
+        <li><a href="/#timeline">時間軸</a></li>
+        <li><a href="/#calendar">行事曆</a></li>
+        <li><a href="/#compare">比較表</a></li>
+        <li><a href="/#matrix">考科</a></li>
+        <li><a href="/#history">歷年數據</a></li>
+        <li><a href="/#past">考古題</a></li>
+        <li><a href="/#after">放榜・遞補</a></li>
+        <li><a href="/#resources">備考情報</a></li>
+        <li><a href="/#pending">待公告</a></li>
+      </ul>
+    </main>
+  </body>
+</html>
