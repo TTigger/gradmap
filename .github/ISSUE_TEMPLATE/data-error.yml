@@ -6,7 +6,8 @@ body:
     id: school
     attributes:
       label: School / program 學校與系所組
-      placeholder: e.g. 中央 資工 甲組
+      description: Tip — the 🔗 button next to a school in the compare table copies a link to that program｜可貼上比較表學校名稱旁 🔗 按鈕複製的系所連結
+      placeholder: e.g. 中央 資工 甲組, or https://gradmap-tw.vercel.app/#compare:cmp-…
     validations: { required: true }
   - type: input
     id: field

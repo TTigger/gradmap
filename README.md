@@ -26,7 +26,7 @@ Deadlines, exam dates, quotas, subjects and score weights from each school's off
 | | English | 中文 |
 |---|---|---|
 | 🗓 | **Timeline & calendar** — registration, exam, results and enrollment dates, with weekday and conflict warnings | 時間軸與月曆：報名、考試、放榜、報到，標星期幾與撞期提醒 |
-| 📊 | **Compare table** — quotas, papers, weights and tie-breakers across schools | 比較表：名額、試卷、配分、同分參酌 |
+| 📊 | **Compare table** — quotas, papers, weights and tie-breakers across schools, with live registration status (open · N days left / closed) | 比較表：名額、試卷、配分、同分參酌，報名期間顯示「報名中・N 天後截止」 |
 | 🧮 | **Prep planner** — tick the subjects you study, see which programs you can apply to | 一份準備能報幾校：勾選準備科目，列出考科完全涵蓋／只差一科的組別 |
 | ★ | **My list** — pick schools, see total fees, share via link, export `.ics` | 我的志願：報名費合計、分享連結、匯出行事曆 |
 | 📍 | **Itinerary** — exam venues and back-to-back travel warnings | 考場與行程：連考、跨縣市提醒 |
@@ -35,7 +35,10 @@ Deadlines, exam dates, quotas, subjects and score weights from each school's off
 | 📈 | **History (113–115)** — applicants, admitted, minimum scores from official statistics | 歷年數據：報名、錄取、最低錄取分數 |
 | 🔔 | **Change markers** — brochure corrections highlighted for 45 days | 簡章更正標記 |
 | 🔗 | **Link to one program** — the 🔗 button next to a school copies a link that opens the compare table at that program | 單一系所連結：比較表學校名稱旁的連結按鈕，複製後打開會直接捲到該系所組 |
+| ⏳ | **Countdown** — the next registration opening, deadline or exam for each school, with 今天 on the day itself | 倒數：各校下一個開放報名／截止／考試，當天標「今天」 |
 | 📱 | **Phone-friendly** — the compare table and past-exam index become one card per program; works in light and dark mode | 手機好讀：比較表、考古題在手機上改成一張張卡片，支援深色模式 |
+| 🖨 | **Print / PDF** — prints in light colors without buttons and filters; wide tables fit the page | 列印／存 PDF：淺色、去掉按鈕與篩選、寬表格縮到紙寬 |
+| ⌨️ | **Accessible** — arrow keys switch tabs, contrast meets WCAG AA, screen-reader labels | 無障礙：方向鍵切換分頁、文字對比符合 AA、螢幕報讀標籤 |
 
 Scope 範圍: **exam-based admission only** (no 甄試/推甄). Near-kin programs (網媒、網工、資安…) are included, labeled, and can be hidden.
 
@@ -107,7 +110,7 @@ npm run dev        # YAML → src/generated/data.json, then Vite dev server
 npm run build      # validate data + type-check + build to dist/
 ```
 
-Requires Node 18+. Data lives in YAML; the site is a static Vite + React build, deployed on Vercel — every push to `main` goes live automatically（推送到 main 會自動部署）.
+Requires Node 18+ to build; `scripts/smoke.mjs` and `scripts/screenshots.mjs` need Node 22+ (built-in WebSocket) and Google Chrome. Data lives in YAML; the site is a static Vite + React build, deployed on Vercel — every push to `main` goes live automatically（推送到 main 會自動部署）.
 
 ## Project layout 資料夾結構
 
