@@ -292,7 +292,7 @@ tbody tr:last-child td { border-bottom: 0; }
 .nowrap { white-space: nowrap; }
 .cmp { min-width: 1080px; }
 .cmp td:nth-child(4), .cmp td:nth-child(5) { min-width: 92px; }
-.cmp td:nth-child(2) { min-width: 120px; }
+.cmp td:nth-child(2) { min-width: 100px; }
 .cmp td:nth-child(2) .hint { text-align: left; }
 .cmp td.nowrap .hint { white-space: normal; }
 .cmp .who { min-width: 180px; }
@@ -303,9 +303,9 @@ tbody tr:last-child td { border-bottom: 0; }
 .who .grp { font-size: 13px; color: var(--text-2); }
 .code { font-size: 12px; color: var(--text-3); }
 tr.ref td { opacity: .72; }
-.cmp td:nth-child(6) { min-width: 290px; }
+.cmp td:nth-child(6) { min-width: 248px; }
 .cmp td { padding-left: 10px; padding-right: 10px; }
-.cmp td:nth-child(7) { min-width: 140px; }
+.cmp td:nth-child(7) { min-width: 124px; }
 .cmp td:last-child { min-width: 104px; }
 .cmp td .hint .ico { color: var(--text-3); }
 .more { margin-top: 6px; }
