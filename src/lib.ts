@@ -42,6 +42,11 @@ export function fmtTime(s: string): string {
 
 export function fmtWhen(e: ScheduleEvent): string {
   const one = (s: string) => `${fmtDay(s)}${fmtTime(s) ? " " + fmtTime(s) : ""}`;
+  // 同一天：7/21（三） 10:00–14:00，不重複日期
+  if (e.start && e.end && e.start.slice(0, 10) === e.end.slice(0, 10)) {
+    const a = fmtTime(e.start), b = fmtTime(e.end);
+    return a && b ? `${fmtDay(e.start)} ${a}–${b}` : one(e.start);
+  }
   if (e.start && e.end) return `${one(e.start)} – ${one(e.end)}`;
   if (e.end) return `${one(e.end)} 前`;
   return one(e.start!);
@@ -80,18 +85,23 @@ export function verifiedEvents(data: Data): FlatEvent[] {
 }
 
 /** 每校下一個重要節點（開放報名 → 報名截止 → 考試），依時間排序 */
+/** 只有日期（沒有時間）的事件，整天都算「還沒過」：考試當天仍顯示「今天 考試」 */
+function untilOf(s: string): Date {
+  return s.length <= 10 ? new Date(+toDate(s) + 86400000 - 1) : toDate(s);
+}
+
 export function nextDeadlines(data: Data, now: Date, n = 4, sel: (id: string) => boolean = () => true) {
   const perSchool: { when: Date; text: string; school: School; kind: "open" | "close" | "exam" }[] = [];
   for (const s of data.schools.filter((x) => x.status === "verified" && sel(x.id))) {
     const reg = s.schedule.find((e) => e.type === "register");
     const exam = s.schedule.find((e) => e.type === "exam");
     const cands = [
-      reg?.start && { when: toDate(reg.start), text: "開放報名", kind: "open" as const },
-      reg?.end && { when: toDate(reg.end), text: "報名截止", kind: "close" as const },
-      exam?.start && { when: toDate(exam.start), text: "考試", kind: "exam" as const },
-    ].filter(Boolean) as { when: Date; text: string; kind: "open" | "close" | "exam" }[];
-    const next = cands.filter((c) => c.when >= now).sort((a, b) => +a.when - +b.when)[0];
-    if (next) perSchool.push({ ...next, school: s });
+      reg?.start && { when: toDate(reg.start), until: untilOf(reg.start), text: "開放報名", kind: "open" as const },
+      reg?.end && { when: toDate(reg.end), until: untilOf(reg.end), text: "報名截止", kind: "close" as const },
+      exam?.start && { when: toDate(exam.start), until: untilOf(exam.start), text: "考試", kind: "exam" as const },
+    ].filter(Boolean) as { when: Date; until: Date; text: string; kind: "open" | "close" | "exam" }[];
+    const next = cands.filter((c) => c.until >= now).sort((a, b) => +a.when - +b.when)[0];
+    if (next) perSchool.push({ when: next.when, text: next.text, kind: next.kind, school: s });
   }
   return perSchool.sort((a, b) => +a.when - +b.when).slice(0, n);
 }
