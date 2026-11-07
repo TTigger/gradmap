@@ -2,6 +2,7 @@ import Icon from "../Icon";
 import type { Data, HistoryRecord, HistorySchool } from "../types";
 import { fmtMD, type Sel } from "../lib";
 import TrendChart from "./TrendChart";
+import { useCopyLink } from "../useCopyLink";
 
 const fmtN = (n?: number) => (n == null ? "—" : n.toLocaleString());
 const YEARS = [115, 114, 113];
@@ -20,6 +21,7 @@ function cov(h: HistorySchool | undefined, year: number, key: "applicants" | "ad
 const METRICS = [["applicants", "報名"], ["admitted", "錄取"], ["min_score", "分數"]] as const;
 
 export default function History({ data, sel, go }: { data: Data; sel: Sel; go: (id: string) => void }) {
+  const [copied, copyLink] = useCopyLink("history");
   const list = data.registry.filter((r) => sel(r.id));
   const histOf = (id: string) => data.history.find((h) => h.school === id);
   const withData = list.filter((r) => (histOf(r.id)?.records.length ?? 0) > 0);
@@ -84,7 +86,11 @@ export default function History({ data, sel, go }: { data: Data; sel: Sel; go: (
         const recs = [...h.records].sort((a, b) => b.year - a.year || Number(!!b.main) - Number(!!a.main));
         return (
           <div key={r.id} className="hist" data-focus={`hd-${r.id}`}>
-            <h3>{r.name}</h3>
+            <h3>
+              {r.name}
+              <button className="lnk" title="複製這所學校歷年數據的連結" aria-label={`複製${r.short}歷年數據的連結`}
+                onClick={() => copyLink(`hd-${r.id}`)}>{copied === `hd-${r.id}` ? <span className="lnk-ok">已複製</span> : <Icon name="link" />}</button>
+            </h3>
             <div className="table-wrap">
               <table className="hist-t freeze">
                 <thead>
