@@ -1,11 +1,13 @@
 import Icon from "../Icon";
 import type { Data, School } from "../types";
 import { TYPE_META, fmtWhen, toDate, type Sel } from "../lib";
+import { useCopyLink } from "../useCopyLink";
 
 const TYPES = ["result", "regrade", "enroll", "waitlist"] as const;
 
 /** 放榜後：各校放榜、報到、備取遞補的日期與規則 */
 export default function After({ data, now, sel }: { data: Data; now: Date; sel: Sel }) {
+  const [copied, copyLink] = useCopyLink("after");
   const schools = data.schools.filter((s) => sel(s.id));
   const first = (s: School) => s.schedule.find((e) => e.type === "result")?.start ?? "9999";
   const sorted = [...schools].sort((a, b) =>
@@ -24,7 +26,12 @@ export default function After({ data, now, sel }: { data: Data; now: Date; sel: 
           const w = s.waitlist_info;
           return (
             <article key={s.id} className={`after ${ref ? "ref" : ""}`} data-focus={`af-${s.id}`}>
-              <h3>{s.name}{ref && <span className="badge ref">{s.reference_year} 參考</span>}</h3>
+              <h3>
+                {s.name}
+                <button className="lnk" title="複製這所學校放榜・遞補資訊的連結" aria-label={`複製${s.short}放榜與遞補資訊的連結`}
+                  onClick={() => copyLink(`af-${s.id}`)}>{copied === `af-${s.id}` ? <span className="lnk-ok">已複製</span> : <Icon name="link" />}</button>
+                {ref && <span className="badge ref">{s.reference_year} 參考</span>}
+              </h3>
               {w?.alert && <p className="after-alert"><Icon name="warn" /> {w.alert}</p>}
               <ul className="after-ev">
                 {evs.map((e, i) => {

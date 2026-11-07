@@ -34,7 +34,7 @@ Deadlines, exam dates, quotas, subjects and score weights from each school's off
 | 📬 | **Results & waitlist** — deadlines you lose your place for missing | 放榜・遞補：不做就喪失資格的期限 |
 | 📈 | **History (113–115)** — applicants, admitted, minimum scores from official statistics | 歷年數據：報名、錄取、最低錄取分數 |
 | 🔔 | **Change markers** — brochure corrections highlighted for 45 days | 簡章更正標記 |
-| 🔗 | **Link to one program** — the 🔗 button next to a school copies a link that opens the compare table at that program (also on each school's history card) | 單一系所連結：比較表學校名稱旁的連結按鈕，複製後打開會直接捲到該系所組；歷年數據每所學校的標題旁也有 |
+| 🔗 | **Link to one program** — the 🔗 button next to a school copies a link that opens the compare table at that program (also on each school's history and results/waitlist cards) | 單一系所連結：比較表學校名稱旁的連結按鈕，複製後打開會直接捲到該系所組；歷年數據、放榜・遞補每所學校的標題旁也有 |
 | ⏳ | **Countdown** — the next registration opening, deadline or exam for each school, with 今天 on the day itself | 倒數：各校下一個開放報名／截止／考試，當天標「今天」 |
 | 📱 | **Phone-friendly** — the compare table and past-exam index become one card per program; works in light and dark mode | 手機好讀：比較表、考古題在手機上改成一張張卡片，支援深色模式 |
 | 🖨 | **Print / PDF** — prints in light colors without buttons and filters; wide tables fit the page | 列印／存 PDF：淺色、去掉按鈕與篩選、寬表格縮到紙寬 |
