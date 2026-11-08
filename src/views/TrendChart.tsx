@@ -3,7 +3,7 @@ import type { Data } from "../types";
 import type { Sel } from "../lib";
 
 // 顏色跟著學校走（不因篩選改變）；順序依 dataviz 參考色盤，已驗證色盲可辨
-const SLOT: Record<string, number> = { ntu: 1, ntnu: 2, nccu: 3, nchu: 4, nycu: 5, ncku: 6 };
+const SLOT: Record<string, number> = { ntu: 1, ntnu: 2, nccu: 3, nchu: 4, nycu: 5, ncku: 6, ccu: 7 };
 const YEARS = [113, 114, 115];
 
 interface Pt { year: number; v: number; grade: "A" | "B"; label: string; note?: string }
@@ -120,7 +120,7 @@ export default function TrendChart({ data, sel }: { data: Data; sel: Sel }) {
       <ul className="trend-notes hint">
         <li>台大 113 是資工系單獨招生；114 起資工與 AI 碩士班聯招，報名數含 AI。</li>
         <li>台師大 113 公布的是「資審合格人數」，114 起是報考人數。</li>
-        <li>中興以系為單位（甲乙組合計）；陽明交大是資訊聯招合計（含多個所）；成大 115 只有新聞數字。</li>
+        <li>中興、中正以系為單位（甲乙組合計）；陽明交大是資訊聯招合計（含多個所）；成大 115 只有新聞數字。</li>
       </ul>
     </figure>
   );
