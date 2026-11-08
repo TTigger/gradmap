@@ -149,7 +149,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
                 const gap = i ? (+toDate(x.day) - +toDate(arr[i - 1].day)) / DAY : null;
                 return (
                   <tr key={x.s.id}>
-                    <td className="nowrap"><b>{fmtDayW(x.day)}</b>{gap != null && <div className="hint">距上一場 {gap} 天</div>}</td>
+                    <td className="nowrap"><b>{fmtDayW(x.day)}</b>{gap != null && <div className="hint">{gap === 0 ? "和上一場同一天" : gap === 1 ? "上一場的隔天" : `距上一場 ${gap} 天`}</div>}</td>
                     <td className="nowrap"><b>{x.s.short}</b></td>
                     <td>
                       {x.s.venue ? <><b>{x.s.venue.city}</b>　{x.s.venue.place}<span className="hint"> · 簡章 {x.s.venue.src}</span></> : <span className="hint">考場待公告</span>}

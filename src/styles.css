@@ -564,7 +564,7 @@ tr.flash td { animation: flash 2.2s ease-out; }
   .pe td.pe-range::before { content: attr(data-label) "："; }
   .pe td.pe-note { grid-column: 1 / -1; }
   .trip-t, .trip-t tbody { display: block; }
-  .trip-t tr { display: grid; grid-template-columns: auto 1fr; column-gap: 14px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .trip-t tr { display: grid; grid-template-columns: 6.5em 1fr; column-gap: 14px; padding: 12px 0; border-top: 1px solid var(--line); }
   .trip-t td, .trip-t.freeze td:first-child { padding: 0; border: 0; position: static; box-shadow: none; background: none; }
   .trip-t td:nth-child(3) { grid-column: 1 / -1; margin-top: 6px; }
 }
