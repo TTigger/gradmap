@@ -3,7 +3,7 @@
 # unsure：範圍內還沒確認的年度
 # access：online 線上下載 / onsite 只有館內紙本 / database 資料庫查詢 / unknown
 # 只列考試入學（筆試）試題；甄試、轉學考不列
-checked: "2026-11-01"
+checked: "2026-11-08"
 schools:
   - school: ntu
     url: https://exam.lib.ntu.edu.tw/graduate/term/82
@@ -16,7 +16,7 @@ schools:
     url: https://www.lib.nthu.edu.tw/library/department/lrs/exam/eecs/cs.html
     label: 清華圖書館考古題・資訊工程學系
     access: unknown
-    note: 圖書館只放近五年試題，部分科目標示「不公開」；可下載的年度請點連結查看
+    note: 圖書館只列近五年（目前 110–114 年），資工系各科試題都標示「不公開」，頁面上沒有可下載的檔案
   - school: nycu
     url: https://www.cs.nycu.edu.tw/admission/graduate?locale=zh
     label: 陽明交大資工系招生頁（考古題說明）
@@ -48,7 +48,7 @@ schools:
     years: [83, 115]
     note: 93 年起為現行三科（資料結構與演算法、作業系統與計算機組織、離散數學與線性代數）；英文試題自 93 年起不提供
   - school: nchu
-    url: http://histud.nchu.edu.tw:8082/PastExamsSearch
+    url: https://histud.nchu.edu.tw:8082/PastExamsSearch
     label: 中興招生考試歷屆試題資料庫
     access: database
     note: 只提供近 5 年；部分試題出題者未授權公開。在頁面選「資訊工程學系」查詢

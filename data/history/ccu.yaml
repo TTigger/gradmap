@@ -1,7 +1,23 @@
 school: ccu
-sources: {}
-records: []
+sources:
+  r113: { title: 113學年度碩士班招生各系所報名人數統計表, url: "https://exams.ccu.edu.tw/var/file/32/1032/img/1131/signup_no_gs113.pdf", grade: A, checked: "2026-11-08" }
+  r114: { title: 114學年度碩士班招生報名人數一覽表, url: "https://exams.ccu.edu.tw/var/file/32/1032/img/1131/signup_no_gs114.pdf", grade: A, checked: "2026-11-08" }
+  r115: { title: 115學年度碩士班招生報名人數一覽表, url: "https://exams.ccu.edu.tw/var/file/32/1032/img/1131/signup_no_gs115.pdf", grade: A, checked: "2026-11-08" }
+records:
+  - { main: true, year: 115, program: 資訊工程學系, applicants: 1461, src: r115 p1, note: 嘉義、臺北兩考區合計，含在職生 1 人 }
+  - { year: 115, program: 電機工程學系（近親所）, group: 計算機工程組, applicants: 244, src: r115 p1 }
+  - { year: 115, program: 電機工程學系（近親所）, group: 信號與智慧計算組, applicants: 296, src: r115 p1 }
+  - { main: true, year: 114, program: 資訊工程學系, group: 甲乙組合計, applicants: 743, src: r114 p1, note: 官方表分列甲組 696、乙組 47，合計為兩組相加 }
+  - { year: 114, program: 資訊工程學系, group: 甲組, applicants: 696, src: r114 p1 }
+  - { year: 114, program: 資訊工程學系, group: 乙組, applicants: 47, src: r114 p1 }
+  - { year: 114, program: 電機工程學系（近親所）, group: 計算機工程組, applicants: 136, src: r114 p1 }
+  - { year: 114, program: 電機工程學系（近親所）, group: 信號與智慧計算組, applicants: 261, src: r114 p1 }
+  - { main: true, year: 113, program: 資訊工程學系, group: 甲乙組合計, applicants: 1273, src: r113 p1, note: 含在職生 1 人 }
+  - { year: 113, program: 資訊工程學系, group: 甲組, applicants: 1162, src: r113 p1 }
+  - { year: 113, program: 資訊工程學系, group: 乙組, applicants: 111, src: r113 p1 }
+  - { year: 113, program: 電機工程學系（近親所）, group: 計算機工程組, applicants: 150, src: r113 p2 }
+  - { year: 113, program: 電機工程學系（近親所）, group: 信號與智慧計算組, applicants: 189, src: r113 p2 }
 # published：給使用者看的一句話（官方公開了什麼）；todo：給排程查核看的待辦，不會出現在網站上
-published: 目前沒有找到官方公開的碩士班考試統計。
+published: 中正公布各系所組的碩士班考試報名人數（分嘉義、臺北考區），沒有公布錄取人數與分數。
 todo:
-  - 找官方「碩士班考試 報名人數統計」或「錄取統計」：113–115 報名人數、名額、錄取人數、備取人數、最低錄取分數。位置提示見 data/registry.yaml 的 watch。
+  - 113–115 名額可從當年簡章補；錄取人數、最低錄取分數官方未公布（考試頁只有報名人數）

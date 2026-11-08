@@ -10,7 +10,7 @@ resources:
     publisher: 臺大圖書館
     schools: [ntu]
     note: 依年度與系所查詢歷屆碩士班入學考試試題 PDF。
-    checked: "2026-11-01"
+    checked: "2026-11-08"
   - title: 中興大學招生考試歷屆試題資料庫
     url: https://histud.nchu.edu.tw:8082/
     grade: A
@@ -18,7 +18,7 @@ resources:
     publisher: 中興大學
     schools: [nchu]
     note: 中興碩士班考試頁面「考古題」連結指向這裡。
-    checked: "2026-11-01"
+    checked: "2026-11-08"
   - title: 資工熱！台師大碩班報考人數暴增四成
     url: https://udn.com/news/story/6928/8545319
     grade: B
@@ -26,7 +26,7 @@ resources:
     publisher: 聯合新聞網
     schools: [ntnu]
     note: 114 學年度台師大資工碩班報名 985 人（與官方統計表一致）。
-    checked: "2026-11-01"
+    checked: "2026-11-08"
   - title: 陽明交大碩招增 2 成！AI 半導體領軍 錄取率僅 2%
     url: https://www.1111.com.tw/news/jobns/163757
     grade: B
@@ -34,7 +34,7 @@ resources:
     publisher: 1111 產經新聞網
     schools: [nycu]
     note: 115 學年度資訊科學與工程研究所 2,167 人搶 56 個名額；智能系統研究所聯招 391 人搶 10 個名額。
-    checked: "2026-11-01"
+    checked: "2026-11-08"
   - title: 成大碩招近 1.8 萬人冠全國
     url: https://www.1111.com.tw/news/jobns/163866
     grade: B
@@ -42,39 +42,39 @@ resources:
     publisher: 1111 產經新聞網
     schools: [ncku]
     note: 115 學年度成大資訊聯招（資工系＋人工智慧科技碩士學位學程）報名 1,956 人。
-    checked: "2026-11-01"
+    checked: "2026-11-08"
   - title: 十週考上台清交資工所的那些小事
     url: https://hackmd.io/@kangchunhung/things_of_getting_admitted_by_CSIE_Department
     grade: C
     kind: experience
     publisher: HackMD 個人筆記
     schools: [ntu, nthu, nycu]
-    checked: "2026-11-01"
+    checked: "2026-11-08"
   - title: 113 資工所考試上榜心得（重考）＋是否補大碩心得
     url: https://hackmd.io/@CvXjhAT1Q7WWB84ITUmIHA/S1Z5cTCa6
     grade: C
     kind: experience
     publisher: HackMD 個人筆記
     note: 比較補習與自學，內容涉及特定補習班，請自行判斷。
-    checked: "2026-11-01"
+    checked: "2026-11-08"
   - title: 111 年跨考資工所一堆備取 Story
     url: https://hackmd.io/@dtseng89/csstory
     grade: C
     kind: experience
     publisher: HackMD 個人筆記
     note: 非本科系跨考經驗。
-    checked: "2026-11-01"
+    checked: "2026-11-08"
   - title: PTT Grad-ProbAsk 板（研究所考試討論）
     url: https://www.ptt.cc/bbs/Grad-ProbAsk/index.html
     grade: C
     kind: forum
     publisher: PTT
     note: 考後解答討論、上榜心得、備取遞補動態。可在板上搜尋「資工」「心得」。
-    checked: "2026-11-01"
+    checked: "2026-11-08"
   - title: 陽明交大開放式課程 NYCU OCW
     url: https://ocw.nycu.edu.tw/
     grade: A
     kind: course
     publisher: 陽明交通大學
     note: 免費課程影片，可找資料結構、演算法、作業系統、計算機組織等科目。
-    checked: "2026-11-01"
+    checked: "2026-11-08"

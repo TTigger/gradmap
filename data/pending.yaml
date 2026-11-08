@@ -1,6 +1,6 @@
 # 116 簡章尚未公告、也還沒收到可用參考資料的學校
 # 每次查核後更新 checked 日期；簡章一公告就移到 data/schools/<id>.yaml
-checked: "2026-11-06"
+checked: "2026-11-08"
 schools:
   - id: ncku
     name: 國立成功大學
