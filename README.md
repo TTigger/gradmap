@@ -36,7 +36,7 @@ Deadlines, exam dates, quotas, subjects and score weights from each school's off
 | 🔔 | **Change markers** — brochure corrections highlighted for 45 days | 簡章更正標記 |
 | 🔗 | **Link to one program** — the 🔗 button next to a school copies a link that opens the compare table at that program (also on each school's history and results/waitlist cards) | 單一系所連結：比較表學校名稱旁的連結按鈕，複製後打開會直接捲到該系所組；歷年數據、放榜・遞補每所學校的標題旁也有 |
 | ⏳ | **Countdown** — the next registration opening, deadline or exam for each school, with 今天 on the day itself | 倒數：各校下一個開放報名／截止／考試，當天標「今天」 |
-| 📱 | **Phone-friendly** — the compare table and past-exam index become one card per program; works in light and dark mode | 手機好讀：比較表、考古題在手機上改成一張張卡片，支援深色模式 |
+| 📱 | **Phone- and tablet-friendly** — the compare table becomes one card per program on phones and tablets, the past-exam index on phones; works in light and dark mode | 手機、平板好讀：比較表在手機和平板上改成一系所一張卡片，考古題在手機上也是卡片，支援深色模式 |
 | 🖨 | **Print / PDF** — prints in light colors without buttons and filters; wide tables fit the page | 列印／存 PDF：淺色、去掉按鈕與篩選、寬表格縮到紙寬 |
 | ⌨️ | **Accessible** — arrow keys switch tabs, contrast meets WCAG AA, screen-reader labels | 無障礙：方向鍵切換分頁、文字對比符合 AA、螢幕報讀標籤 |
 
