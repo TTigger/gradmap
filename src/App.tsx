@@ -1,5 +1,6 @@
 import Icon from "./Icon";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import raw from "./generated/data.json";
 import type { Data } from "./types";
@@ -50,7 +51,7 @@ function readAnalyticsOff(): boolean {
   } catch { return false; }
 }
 const analyticsOff = readAnalyticsOff();
-const dropIfOff = (e: { type: "pageview" | "event"; url: string }) => (analyticsOff ? null : e);
+const dropIfOff = <E,>(e: E) => (analyticsOff ? null : e);
 
 function load<T>(key: string, fallback: T): T {
   try {
@@ -324,6 +325,7 @@ export default function App() {
       </main>
 
       <Analytics route="/[tab]" path={`/${tab}`} beforeSend={dropIfOff} />
+      <SpeedInsights route={`/${tab}`} beforeSend={dropIfOff} />
       <footer className="foot">
         <p>
           每筆資料都附官方簡章頁碼（例：<code>p42 / 38</code> = PDF 第 42 頁／簡章印刷頁 38）。
@@ -336,7 +338,7 @@ export default function App() {
           <a href="https://github.com/TTigger/gradmap/issues/new/choose" target="_blank" rel="noreferrer">GitHub Issues</a>。
         </p>
         <p>資料採 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hant" target="_blank" rel="noreferrer">CC BY-NC 4.0</a> 授權：非商業使用請標示出處「GradMap」，商業使用須事先同意。</p>
-        <p>本站使用 Vercel 匿名流量統計（不使用 cookie、不追蹤個人），只用來了解網站使用情況與各分頁的瀏覽次數。{analyticsOff && "（這台裝置已設定不計入統計）"}</p>
+        <p>本站使用 Vercel 匿名流量統計（不使用 cookie、不追蹤個人），只用來了解網站使用情況、各分頁的瀏覽次數與頁面載入速度。{analyticsOff && "（這台裝置已設定不計入統計）"}</p>
         <p>資料建置：{new Date(data.generated).toLocaleString("zh-TW", { hour12: false })}</p>
       </footer>
     </div>
