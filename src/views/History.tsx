@@ -2,7 +2,7 @@ import Icon from "../Icon";
 import type { Data, HistoryRecord, HistorySchool } from "../types";
 import { fmtMD, type Sel } from "../lib";
 import TrendChart from "./TrendChart";
-import { useCopyLink } from "../useCopyLink";
+import { useCopyLink, linkVerb } from "../useCopyLink";
 
 const fmtN = (n?: number) => (n == null ? "—" : n.toLocaleString());
 const YEARS = [115, 114, 113];
@@ -88,8 +88,8 @@ export default function History({ data, sel, go }: { data: Data; sel: Sel; go: (
           <div key={r.id} className="hist" data-focus={`hd-${r.id}`}>
             <h3>
               {r.name}
-              <button className="lnk" title="複製這所學校歷年數據的連結" aria-label={`複製${r.short}歷年數據的連結`}
-                onClick={() => copyLink(`hd-${r.id}`)}>{copied === `hd-${r.id}` ? <span className="lnk-ok">已複製</span> : <Icon name="link" />}</button>
+              <button className="lnk" title={`${linkVerb}這所學校歷年數據的連結`} aria-label={`${linkVerb}${r.short}歷年數據的連結`}
+                onClick={() => copyLink(`hd-${r.id}`, `${r.short} 歷年報名・錄取數據｜上岸地圖`)}>{copied === `hd-${r.id}` ? <span className="lnk-ok">已複製</span> : <Icon name="link" />}</button>
             </h3>
             <div className="table-wrap">
               <table className="hist-t freeze">

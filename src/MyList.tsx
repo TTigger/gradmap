@@ -1,3 +1,4 @@
+import { shareOrCopy, linkVerb } from "./useCopyLink";
 import Icon from "./Icon";
 import { useState } from "react";
 import type { Data } from "./types";
@@ -70,11 +71,11 @@ function ShareLink({ mine }: { mine: string[] }) {
   const [done, setDone] = useState(false);
   const url = `${location.origin}${location.pathname}?mine=${mine.join(",")}#timeline`;
   const copy = async () => {
-    try { await navigator.clipboard.writeText(url); setDone(true); setTimeout(() => setDone(false), 1600); } catch { /* 不支援就略過 */ }
+    if ((await shareOrCopy(url, "我的志願清單｜上岸地圖")) === "copied") { setDone(true); setTimeout(() => setDone(false), 1600); }
   };
   return (
     <div className="share">
-      <button className="btn" onClick={copy}>{done ? "已複製 ✓" : "🔗 複製志願清單連結"}</button>
+      <button className="btn" onClick={copy}>{done ? "已複製 ✓" : `🔗 ${linkVerb}志願清單連結`}</button>
       <p className="hint">清單只存在這台裝置的瀏覽器。在手機或其他電腦打開這個連結，就會帶入同一份清單；也可以傳給一起準備的朋友。</p>
     </div>
   );

@@ -1,7 +1,7 @@
 import Icon from "../Icon";
 import type { Data, School } from "../types";
 import { TYPE_META, fmtWhen, toDate, type Sel } from "../lib";
-import { useCopyLink } from "../useCopyLink";
+import { useCopyLink, linkVerb } from "../useCopyLink";
 
 const TYPES = ["result", "regrade", "enroll", "waitlist"] as const;
 
@@ -28,8 +28,8 @@ export default function After({ data, now, sel }: { data: Data; now: Date; sel: 
             <article key={s.id} className={`after ${ref ? "ref" : ""}`} data-focus={`af-${s.id}`}>
               <h3>
                 {s.name}
-                <button className="lnk" title="複製這所學校放榜・遞補資訊的連結" aria-label={`複製${s.short}放榜與遞補資訊的連結`}
-                  onClick={() => copyLink(`af-${s.id}`)}>{copied === `af-${s.id}` ? <span className="lnk-ok">已複製</span> : <Icon name="link" />}</button>
+                <button className="lnk" title={`${linkVerb}這所學校放榜・遞補資訊的連結`} aria-label={`${linkVerb}${s.short}放榜與遞補資訊的連結`}
+                  onClick={() => copyLink(`af-${s.id}`, `${s.short} 放榜・遞補｜上岸地圖`)}>{copied === `af-${s.id}` ? <span className="lnk-ok">已複製</span> : <Icon name="link" />}</button>
                 {ref && <span className="badge ref">{s.reference_year} 參考</span>}
               </h3>
               {w?.alert && <p className="after-alert"><Icon name="warn" /> {w.alert}</p>}

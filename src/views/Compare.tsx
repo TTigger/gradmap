@@ -1,6 +1,6 @@
 import Icon from "../Icon";
 import { useState } from "react";
-import { useCopyLink } from "../useCopyLink";
+import { useCopyLink, linkVerb } from "../useCopyLink";
 import type { Data, Row } from "../types";
 import { rows, findEvent, fmtDay, fmtWhen, fmtMD, fmtTime, weightLabel, changesAt, changeTip, regStatus, type Sel } from "../lib";
 
@@ -67,8 +67,8 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                       <button className={`star ${star ? "on" : ""}`} title={star ? "從我的志願移除" : "加入我的志願"} aria-pressed={star}
                         onClick={() => setMine(star ? mine.filter((x) => x !== s.id) : [...mine, s.id])}><Icon name="star" fill={star} /></button>
                       {s.short}
-                      <button className="lnk" title="複製這個系所組的連結" aria-label={`複製${s.short}${p.name}${g.name !== "—" ? g.name : ""}的連結`}
-                        onClick={() => copyLink(`cmp-${g.id}`)}>{copied === `cmp-${g.id}` ? <span className="lnk-ok">已複製</span> : <Icon name="link" />}</button>
+                      <button className="lnk" title={`${linkVerb}這個系所組的連結`} aria-label={`${linkVerb}${s.short}${p.name}${g.name !== "—" ? g.name : ""}的連結`}
+                        onClick={() => copyLink(`cmp-${g.id}`, `${s.short} ${p.name}${g.name !== "—" ? " " + g.name : ""}｜上岸地圖`)}>{copied === `cmp-${g.id}` ? <span className="lnk-ok">已複製</span> : <Icon name="link" />}</button>
                       {fresh.has(s.id) && <span className="badge new">新加入</span>}
                       {ref && <span className="badge ref">{s.reference_year} 參考</span>}
                       {p.kind === "near_kin" && <span className="badge nk">近親所</span>}
