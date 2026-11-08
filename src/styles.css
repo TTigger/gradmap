@@ -284,6 +284,7 @@ details[open] > summary::after { transform: rotate(90deg); }
 /* ---------- 表格（參考 Apple 比較頁：只留淺灰橫線） ---------- */
 .table-wrap { overflow-x: auto; }
 .sortbar { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; color: var(--text-2); font-size: 15px; margin-bottom: 16px; }
+.sortbar .count { margin-left: auto; font-size: 13px; color: var(--text-3); }
 table { border-collapse: collapse; width: 100%; font-size: 15px; }
 th { text-align: left; font-size: 12px; color: var(--text-2); font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--line-2); white-space: nowrap; letter-spacing: 0; }
 td { padding: 16px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }

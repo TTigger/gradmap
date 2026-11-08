@@ -35,6 +35,11 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
         {([["exam", "考試日"], ["deadline", "報名截止"], ["quota", "名額"], ["school", "學校"]] as const).map(([k, l]) => (
           <button key={k} className={sort === k ? "chipbtn on" : "chipbtn"} onClick={() => setSort(k)}>{l}</button>
         ))}
+        {sorted.length > 0 && (() => {
+          const all = new Set(sorted.map((r) => r.school.id)).size;
+          const refs = new Set(sorted.filter((r) => r.school.status === "pending").map((r) => r.school.id)).size;
+          return <span className="count">共 {sorted.length} 個系所組・{all} 所學校{refs > 0 && `（${refs} 所為往年參考）`}</span>;
+        })()}
       </div>
       {sorted.length === 0 && <p className="empty">這所學校的 116 簡章還沒公告，也還沒有參考資料。請看「待公告」分頁。</p>}
       <div className="table-wrap">
