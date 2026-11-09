@@ -107,11 +107,11 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                         </li>
                       ))}
                     </ul>
-                    {g.papers.length > 0 && (g.papers_note || g.notes?.length || g.scoring) && (
+                    {((g.papers.length > 0 && g.papers_note) || g.notes?.length || g.scoring || p.notes?.length || g.calculator) && (
                       <details className="more">
                         <summary>計分與備註</summary>
                         {g.scoring && <div className="hint">· {g.scoring}</div>}
-                        {g.papers_note && <div className="hint">· {g.papers_note}</div>}
+                        {g.papers.length > 0 && g.papers_note && <div className="hint">· {g.papers_note}</div>}
                         {g.calculator && <div className="hint">· 計算機：{g.calculator}</div>}
                         {g.notes?.map((n) => <div key={n} className="hint">· {n}</div>)}
                         {p.notes?.map((n) => <div key={n} className="hint">· {n}</div>)}

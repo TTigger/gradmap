@@ -22,7 +22,9 @@ function dateForms(iso) {
   const [y, m, d] = iso.slice(0, 10).split("-").map(Number);
   const roc = y - 1911;
   return [`${roc}年${m}月${d}日`, `${m}月${d}日`, `${roc}.${m}.${d}`, `${roc}/${m}/${d}`, `${m}/${d}`,
-    `${roc}.${String(m).padStart(2, "0")}.${String(d).padStart(2, "0")}`, `${String(m).padStart(2, "0")}/${String(d).padStart(2, "0")}`];
+    `${roc}.${String(m).padStart(2, "0")}.${String(d).padStart(2, "0")}`, `${String(m).padStart(2, "0")}/${String(d).padStart(2, "0")}`,
+    // 補零寫法（例：海大「116 年02 月01 日」）
+    `${String(m).padStart(2, "0")}月${String(d).padStart(2, "0")}日`];
 }
 function check(label, text, forms) {
   if (text == null) { skipped++; return; }
