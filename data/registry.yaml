@@ -126,4 +126,4 @@ schools:
     aliases: [海洋大學, 臺灣海洋大學, 台灣海洋大學, NTOU]
     links:
       - { label: 招生資訊, url: "https://admission.ntou.edu.tw/Default.aspx?u=4", kind: admission }
-    watch: 往年 11 月中旬公告簡章、12/1 開始報名。官方統計未找到。
+    watch: 116 碩士班考試入學簡章 115/11/09 公告（公告頁 https://admission.ntou.edu.tw/info.aspx?v=2955；sources/116/ntou.pdf）。附件下載是 ASP.NET 表單送出（__doPostBack，帶頁面的 __VIEWSTATE／__EVENTVALIDATION 與 cookie POST 回同一頁），回應裡的 window.open('download1.aspx?downloadcode=…') 才是實際檔案，downloadcode 每次不同，不能當固定網址。更正公告看招生資訊網首頁「碩士班考試入學招生考試」類別公告。資工系 116 不考筆試（資料審查 40%＋面試 60%），電資院 9 系組聯招。官方統計未找到。
