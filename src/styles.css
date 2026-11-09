@@ -601,3 +601,4 @@ tr.flash td { animation: flash 2.2s ease-out; }
   .freeze td:first-child, .freeze th:first-child { position: static !important; box-shadow: none !important; }
   .mx-cell b { font-size: 12px; }
 }
+td.num details.more .hint { text-align: left; }

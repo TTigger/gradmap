@@ -11,8 +11,7 @@ brochure:
   published: "2026-11-04"
   verified: "2026-11-04"
   page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」；p2 重要日程表沒有印刷頁碼
-fee: { amount: 1500, note: 每報名一系所組；複試不另收費, src: "p11 / 3" }
-
+fee: { amount: 1500, note: 每報名一系所組；複試不另收費, src: "p11 / 3" , waiver: "低收入戶免繳（報名後不必繳費，12/1 17:00 前 email 證明文件）", waiver_src: "p11 / 3" }
 schedule:
   - { type: register, start: "2026-11-24T10:00", end: "2026-12-01T17:00", label: 網路報名及繳費, note: 在職生、同等學力、境外學歷的報名資格審查資料也要在 12/1 前上傳或寄出, src: "p11 / 3" }
   - { type: admit_card, start: "2027-01-08", label: 查詢報名結果、自行列印准考證明, src: "p2 / 日程表" }

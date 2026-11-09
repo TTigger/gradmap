@@ -124,6 +124,12 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                   <td className="num" data-label="報名費">
                     {s.fee ? `$${s.fee.amount.toLocaleString()}` : "—"}
                     {s.fee?.note && <div className="hint">{s.fee.note}</div>}
+                    {s.fee?.waiver && (
+                      <details className="more">
+                        <summary>報名費減免</summary>
+                        <div className="hint">{s.fee.waiver}</div>
+                      </details>
+                    )}
                   </td>
                 </tr>
               );

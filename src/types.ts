@@ -63,7 +63,7 @@ export interface School {
   status_note?: string;
   reference_year?: number;
   brochure: { title: string; url: string; verified: string; published?: string; url_note?: string; page_note?: string };
-  fee?: { amount: number; note?: string; src?: string };
+  fee?: { amount: number; note?: string; src?: string; waiver?: string; waiver_src?: string };
   joint_admission?: { name: string; rule: string; src: string };
   schedule: ScheduleEvent[];
   programs: Program[];

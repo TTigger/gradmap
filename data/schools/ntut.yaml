@@ -11,8 +11,7 @@ brochure:
   published: "2026-11-05"
   verified: "2026-11-05"
   page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」（這份簡章兩者相同）
-fee: { amount: 1500, note: 每一系所組分別繳費；低收入戶全免（限報一個系所組）；面試不另收費, src: "p10 / 10" }
-
+fee: { amount: 1500, note: 每一系所組分別繳費；面試不另收費, src: "p10 / 10" , waiver: "低收入戶全免（限一系所組；12/7 前限時掛號寄申請表與證明正本）", waiver_src: "p9、p13 / 13" }
 schedule:
   - { type: register, start: "2026-12-01T09:00", end: "2026-12-10T17:00", label: 網路報名, note: 報名時要選臺北考區或高雄分區，送出後不能改, src: "p15 / 15" }
   - { type: payment, start: "2026-12-01T09:00", end: "2026-12-10T23:59", label: 繳報名費, note: 逾時未繳視同放棄報名, src: "p15 / 15" }
