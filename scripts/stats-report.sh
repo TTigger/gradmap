@@ -49,7 +49,9 @@ tabs_t=$(q vercel.analytics_pageview.count --since "$SINCE_T" --group-by request
 dev_t=$(q vercel.analytics_pageview.count --since "$SINCE_T" --group-by device_type | top 2 mobile=手機 desktop=電腦)
 br_t=$(q vercel.analytics_pageview.count --since "$SINCE_T" --group-by browser_name | top 5)
 ref_t=$(q vercel.analytics_pageview.count --since "$SINCE_T" --group-by referrer_hostname | top 3 "-=直接開啟")
-lcp=$(q vercel.speed_insights.lcp_ms -a p75 --since "$(date -v-7d +%Y-%m-%d)T00:00:00+08:00" | total)
+lcp_raw=$(q vercel.speed_insights.lcp_ms -a p75 --since "$(date -v-7d +%Y-%m-%d)T00:00:00+08:00")
+lcp=$(print -r -- "$lcp_raw" | total)
+lcp_denied=""; [[ "$lcp_raw" == *payment_required* ]] && lcp_denied=1
 lcp_n=$(q vercel.speed_insights.lcp_count --since "$(date -v-30d +%Y-%m-%d)T00:00:00+08:00" | total)
 
 # 網站是否正常
@@ -66,6 +68,9 @@ if [[ "$lcp" != "?" && "$lcp" != 0 ]]; then
   lcp_s=$(python3 -c "print(f'{$lcp/1000:.1f}')")
   msg+="
 速度（近 7 天 p75）：主要內容 ${lcp_s} 秒"
+elif [[ -n "$lcp_denied" ]]; then
+  msg+="
+速度：Vercel 拒絕這次查詢（免費方案限制），可到 Vercel 後台 Speed Insights 看"
 else
   msg+="
 速度：資料還在累積"
