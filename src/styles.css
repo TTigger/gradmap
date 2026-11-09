@@ -226,6 +226,8 @@ ul.warn li { padding: 2px 0; }
 
 /* ---------- 時間軸 ---------- */
 .tl { overflow-x: auto; }
+.tl-swipe { display: none; margin: 0 0 6px; font-size: 13px; color: var(--text-2); text-align: right; }
+@media (max-width: 779px) { .tl-swipe { display: block; } }
 .tl-head, .tl-row { display: grid; grid-template-columns: 76px minmax(640px, 1fr); align-items: center; }
 .tl-head .tl-track { height: 24px; }
 .tl-row { border-top: 1px solid var(--line); }

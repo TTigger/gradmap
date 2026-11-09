@@ -72,6 +72,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
         <span><i className="sw bar" style={{ background: TYPE_META.enroll.color }} />報到／備取</span>
       </div>
 
+      <p className="tl-swipe" aria-hidden="true">往右滑，看考試、放榜和報到 →</p>
       <div className="tl" role="table" aria-label="各校時間軸">
         <div className="tl-head" role="row">
           <div className="tl-name" role="columnheader"><span className="sr-only">學校</span></div>
