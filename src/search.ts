@@ -12,7 +12,7 @@ export interface Target {
 }
 
 export interface Hit {
-  kind: "學校" | "日程" | "系所組" | "科目" | "歷年" | "情報" | "考古題" | "遞補";
+  kind: "學校" | "日程" | "系所組" | "科目" | "歷年" | "情報" | "考古題" | "遞補" | "報名費";
   title: string;
   sub: string;
   target: Target;
@@ -79,6 +79,19 @@ export function buildIndex(data: Data): Entry[] {
         target: ref ? { tab: "compare", school: s.id } : calTarget(s.id, i, e.type, e.start, e.end),
       });
     }
+  }
+
+  // 報名費與減免（簡章規定）
+  for (const s of data.schools.filter((x) => x.fee)) {
+    const ref = s.status !== "verified";
+    out.push({
+      kind: "報名費",
+      title: `${s.short} 報名費 $${s.fee!.amount.toLocaleString()}${ref ? `（${s.reference_year} 參考）` : ""}`,
+      sub: s.fee!.waiver ? `減免：${s.fee!.waiver.split("（")[0]}` : s.fee!.note ?? "",
+      sort: "06" + s.short,
+      text: [schoolWords(s.id), "報名費 費用 多少錢", s.fee!.note ?? "", s.fee!.waiver ? `報名費減免 減免 優待 ${s.fee!.waiver}` : ""].join(" "),
+      target: { tab: "compare", school: s.id },
+    });
   }
 
   // 系所組
