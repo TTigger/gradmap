@@ -11,6 +11,7 @@ brochure:
   verified: "2026-11-03"
   page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」；115/10/30 勘誤（中文系科目、第13頁表頭）與 115/11/3 修訂（電機系甄試考生沿用審查資料的說明）已併入此版，資工系不受影響
 fee: { amount: 1500, note: 每一系所組（通訊系、電機系為 900 元）, src: "p10 / 9" , waiver: "低收入戶全免、中低收入戶減免 60%（限一系所組；先繳費，12/2 前郵寄申請退費）", waiver_src: "p12 / 11" }
+apply: { url: "https://new.ntpu.edu.tw/admission/ntpu", how: "招生資訊 →「日間學制招生」→「碩士班一般入學考試」→「報考系統」", src: "p1；p10 / 9" }
 schedule:
   - { type: register, start: "2026-11-18T10:00", end: "2026-12-02T13:00", label: 網路報考系統登錄, src: "p4 / 3" }
   - { type: payment, start: "2026-11-18T10:00", end: "2026-12-02T15:30", label: 繳交報名費, src: "p4 / 3" }

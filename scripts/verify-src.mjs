@@ -61,6 +61,8 @@ for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".yaml"))) {
       check(`${g.id} ${pp.name} ${pp.weight_pct}%`, t, [`${pp.weight_pct}%`, `${pp.weight_pct}％`]);
     }
   }
+  // 報名入口網址：簡章該頁要寫著同一個網址（不比 https:// 與結尾斜線）
+  if (s.apply?.src) { const u = s.apply.url.replace(/^https?:\/\//, "").replace(/\/$/, ""); check(`報名網址 ${u}（${s.apply.src}）`, page(s.id, s.year, s.apply.src), [u]); }
   if (s.fee?.src) check(`報名費 ${s.fee.amount}（${s.fee.src}）`, page(s.id, s.year, s.fee.src), [String(s.fee.amount), s.fee.amount.toLocaleString()]);
 }
 if (weak.length) console.log(`\n個位數名額請人工看一眼：\n  ${weak.join("\n  ")}`);

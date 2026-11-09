@@ -64,6 +64,8 @@ export interface School {
   reference_year?: number;
   brochure: { title: string; url: string; verified: string; published?: string; url_note?: string; page_note?: string };
   fee?: { amount: number; note?: string; src?: string; waiver?: string; waiver_src?: string };
+  /** 網路報名入口（簡章寫的網址）；how 是網址進去後要點哪裡 */
+  apply?: { url: string; how?: string; src: string };
   joint_admission?: { name: string; rule: string; src: string };
   schedule: ScheduleEvent[];
   programs: Program[];

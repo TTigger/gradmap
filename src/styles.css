@@ -607,6 +607,8 @@ tr.flash td { animation: flash 2.2s ease-out; }
   .mx-cell b { font-size: 12px; }
 }
 td.num details.more .hint { text-align: left; }
+.apply { margin-top: 6px; font-size: 13px; white-space: normal; }
+.apply .hint { max-width: 220px; }
 .mx-cell[role="button"] { cursor: pointer; }
 .mx-cell[role="button"]:focus-visible { outline: 2px solid var(--link); outline-offset: -2px; }
 .mx-cell.on { box-shadow: inset 0 -3px 0 var(--text-2); }

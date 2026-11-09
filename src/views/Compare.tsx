@@ -92,7 +92,11 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                   </td>
                   <td className="nowrap" data-label="報名">{reg ? fmtWhen(reg).split(" – ").map((x, i) => <div key={i}>{i ? "– " : ""}{x}</div>) : "—"}
                     {rs?.state === "open" && <div className="regst open">報名中・{rs.days === 0 ? `今天 ${fmtTime(rs.end)} 截止` : `${rs.days} 天後截止`}</div>}
-                    {rs?.state === "closed" && <div className="regst closed">報名已截止</div>}</td>
+                    {rs?.state === "closed" && <div className="regst closed">報名已截止</div>}
+                    {!ref && s.apply && rs?.state !== "closed" && (
+                      <div className="apply"><a href={s.apply.url} target="_blank" rel="noreferrer">報名入口<Icon name="out" /></a>
+                        {s.apply.how && <div className="hint">{s.apply.how}</div>}</div>
+                    )}</td>
                   <td className="nowrap" data-label="考試">{g.exam_day ? fmtDay(g.exam_day) : exam?.start ? fmtWhen(exam) : "—"}
                     {s.venue && <div className="hint" title={s.venue.place}><Icon name="pin" /> {s.venue.city}{s.venue.choose ? "（可選）" : ""}</div>}</td>
                   <td className="nowrap" data-label="放榜">{res?.start ? fmtDay(res.start) : "—"}</td>

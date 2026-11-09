@@ -23,6 +23,7 @@ joint_admission:
     取消後面志願的正取與備取資格，保留前面志願的備取資格。錄取後只能擇一報到。
   src: "p13"
 
+apply: { url: "https://cis.ncu.edu.tw/ExamRegister/", src: "p10" }
 schedule:
   - { type: register, start: "2026-11-17T09:00", end: "2026-11-26T15:30", label: 網路報名及繳費, src: "p2" }
   - { type: upload, end: "2026-11-26T17:00", label: 報名資格審查資料上傳（僅同等學力、境外學歷等需要）, src: "p2" }

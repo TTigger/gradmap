@@ -12,6 +12,7 @@ brochure:
   verified: "2026-10-31"
   page_note: 政大 PDF 頁碼與印刷頁碼相同
 fee: { amount: 1300, note: 每報考一個系所組各自取得一組繳費帳號, src: "p6" , waiver: "低收入戶全免、中低收入戶減免 60%（限一系所；先繳費，12/29 前上網申請退費）", waiver_src: "p12" }
+apply: { url: "https://www.nccu.edu.tw/", how: "政大首頁 →「招生專區」→「招生網路報名系統」", src: "p11" }
 schedule:
   - { type: payment, start: "2026-11-24T09:00", end: "2026-12-08T12:00", label: 取得繳費帳號, note: 中午12時截止，比報名登錄早3小時, src: "p2" }
   - { type: register, start: "2026-11-24T09:00", end: "2026-12-08T15:00", label: 網路報名登錄資料, src: "p2" }
