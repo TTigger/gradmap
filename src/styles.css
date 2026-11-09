@@ -537,6 +537,9 @@ tr.flash td { animation: flash 2.2s ease-out; }
   .who .school { font-size: 15px; }
   .who .prog, .who .grp { font-size: 12px; }
   .who .badge { margin-left: 0; margin-right: 4px; }
+  /* 考科表：手機上縮窄左側學校欄，多露出一欄科目 */
+  .mx { min-width: 640px; }
+  .mx td.who { min-width: 0; width: 104px; max-width: 104px; padding-right: 6px; }
   .cmp td.num > b { font-size: 17px; }
   td { padding: 12px 10px; }
   .res, .pp-result { grid-template-columns: 1fr; }
