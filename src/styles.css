@@ -513,7 +513,7 @@ tr.flash td { animation: flash 2.2s ease-out; }
   .top h1 { font-size: 28px; }
   .sub { font-size: 15px; margin-top: 4px; }
   .stats b { font-size: 22px; }
-  .next { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; margin: 0 -16px 16px; padding: 0 16px 4px; scrollbar-width: none; }
+  .next { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 16px; gap: 10px; margin: 0 -16px 16px; padding: 0 16px 4px; scrollbar-width: none; }
   .next::-webkit-scrollbar { display: none; }
   .next-item { flex: 0 0 78%; scroll-snap-align: start; padding: 14px 16px; }
   .next-days b { font-size: 28px; }
