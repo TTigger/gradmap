@@ -13,7 +13,7 @@ import PastExams from "./views/PastExams";
 import After from "./views/After";
 import PrepPlanner from "./views/PrepPlanner";
 import Resources from "./views/Resources";
-import { daysUntil, fmtDay, fmtDayW, fmtMD, fmtTime, makeSel, nextDeadlines, PHASES, recentChanges, type Phase } from "./lib";
+import { daysUntil, fmtDay, fmtDayW, fmtMD, fmtTime, makeSel, nextDeadlines, regStatus, PHASES, recentChanges, type Phase } from "./lib";
 import Timeline from "./views/Timeline";
 import Calendar from "./views/Calendar";
 import Compare from "./views/Compare";
@@ -155,6 +155,12 @@ export default function App() {
   }, []);
 
   const upcoming = nextDeadlines(data, now, 4, sel);
+  // 現在報名中的學校（依截止時間排序）
+  const openNow = data.schools
+    .filter((s) => sel(s.id))
+    .map((s) => ({ s, rs: regStatus(s, now) }))
+    .flatMap(({ s, rs }) => (rs?.state === "open" ? [{ s, end: rs.end }] : []))
+    .sort((a, b) => a.end.localeCompare(b.end));
   const verified = data.schools.filter((s) => s.status === "verified").length;
   const tabsRef = useRef<HTMLDivElement>(null);
   const [tabFade, setTabFade] = useState({ l: false, r: false });
@@ -246,6 +252,20 @@ export default function App() {
               </div>
             );
           })}
+        </section>
+      )}
+
+      {openNow.length > 0 && (
+        <section className="open-now" aria-label="現在報名中">
+          <b>報名中</b>
+          <ul>
+            {openNow.map(({ s, end }) => (
+              <li key={s.id}>
+                <span className="pill">{s.short}</span> 到 {fmtDay(end)} {fmtTime(end)}
+                {s.apply && <> ・<a href={s.apply.url} target="_blank" rel="noreferrer">報名入口<Icon name="out" /></a></>}
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 

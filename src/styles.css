@@ -579,6 +579,11 @@ tr.flash td { animation: flash 2.2s ease-out; }
 .verified a:hover { text-decoration: underline; }
 
 /* 最近更新 */
+.open-now { display: flex; gap: 6px 14px; flex-wrap: wrap; align-items: baseline; background: var(--surface); border-radius: var(--radius); padding: 12px 20px; margin-bottom: 12px; font-size: 15px; }
+.open-now > b { color: var(--c-register); }
+.open-now ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.open-now li { color: var(--text-2); }
+.open-now .pill { color: var(--text); }
 .updates { background: var(--surface); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; font-size: 15px; }
 .updates ul { margin: 6px 0 0; padding: 0; list-style: none; }
 .updates li { display: flex; gap: 12px; padding: 3px 0; }
@@ -591,7 +596,7 @@ tr.flash td { animation: flash 2.2s ease-out; }
 @media print {
   @page { margin: 12mm; }
   body { background: #fff; }
-  .lnav, .finder, .filters, .scope-note, .sortbar, .star, .lnk, .next, .updates { display: none !important; }
+  .lnav, .finder, .filters, .scope-note, .sortbar, .star, .lnk, .next, .open-now, .updates { display: none !important; }
   main#panel > h2.sr-only { position: static; width: auto; height: auto; margin: 0 0 8px; clip: auto; overflow: visible; white-space: normal; font-size: 20px; font-weight: 600; }
   .card { box-shadow: none; border: 1px solid var(--line); }
   .table-wrap { overflow: visible; }
