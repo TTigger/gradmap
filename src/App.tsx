@@ -31,7 +31,7 @@ const TABS = [
   { id: "past", label: "考古題" },
   { id: "after", label: "放榜・遞補" },
   { id: "resources", label: "備考情報" },
-  { id: "pending", label: "待公告" },
+  { id: "pending", label: "各校簡章" },
 ] as const satisfies readonly { id: TabId; label: string }[];
 
 
@@ -226,7 +226,7 @@ export default function App() {
         </div>
         <div className="stats">
           <span><b>{verified}</b> 校已查證</span>
-          <span><b>{data.schools.length - verified + data.pending.schools.length}</b> 校待公告</span>
+          {data.schools.length - verified + data.pending.schools.length > 0 && <span><b>{data.schools.length - verified + data.pending.schools.length}</b> 校待公告</span>}
         </div>
       </header>
 

@@ -83,9 +83,10 @@ schools:
     short: 中山
     aliases: [中山大學, NSYSU]
     links:
-      - { label: 教務處（招生日程）, url: "https://oaa.nsysu.edu.tw/", kind: admission }
+      - { label: 簡章網頁（碩士班考試入學）, url: "https://exam-acad.nsysu.edu.tw/exam_netlist/netlist_main.php?ExmNo=41", kind: admission }
+      - { label: 教務處, url: "https://oaa.nsysu.edu.tw/", kind: admission }
       - { label: 資工系, url: "https://cse.nsysu.edu.tw", kind: dept }
-    watch: 舊招生網站 exam-acad.nsysu.edu.tw 已停用（115 簡章連結 404）。116 預定日程一覽表在教務處 oaa.nsysu.edu.tw（sources/116/nsysu-schedule.pdf）；簡章預定 115/11/11 公告，用 WebSearch「中山大學 116學年度 碩士班考試入學 招生簡章」找新位置。官方碩士班考試統計未找到。
+    watch: 116 簡章 115/11/11 前後公告（PDF 修改日 11/4）。公告列表在教務處「碩士班招生考試-最新消息」（頁面由 JavaScript 載入；可直接 POST https://exam-oaa.nsysu.edu.tw/app/showmodule.php?&Lang=zh-tw&Mobile=1&rs=sajaxSubmit&O=1003&F=/3/1003/modules/mobile_rcg_mstr/8/mobile_rcg_mstr-881.htm.zh-tw&Mo=13423&Type=mobile_rcg_mstr&Nbr=881&Seq=881&Cg=cmb 取得列表，更正公告看這裡）。簡章網頁 https://exam-acad.nsysu.edu.tw/exam_netlist/netlist_main.php?ExmNo=41（整份 PDF 連結在頁面上，sources/116/nsysu.pdf；系所筆試節次一覽表 dpt_examdate.php、系所報到日期一覽表 dpt_regdate.php）。電機系丙組（人工智慧與網路組）考資料結構＋離散數學，列為 near_kin。官方碩士班考試統計：最新消息列表有「115學年度《碩士班考試入學》招生考試報名人數表」（/p/406-1003-368306,r881.php）可補 history。
 
   - id: ccu
     name: 國立中正大學

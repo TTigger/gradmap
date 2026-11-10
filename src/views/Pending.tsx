@@ -19,6 +19,11 @@ export default function Pending({ data }: { data: Data }) {
         ))}
       </ul>
     </section>
+    {refs.length + data.pending.schools.length === 0 ? (
+      <section className="card">
+        <p className="lead">目前追蹤的 {out.length} 所學校，116 學年度考試入學簡章都已公告並查證。之後若有簡章更正，會標在比較表和首頁「最近的簡章更正」。</p>
+      </section>
+    ) : (
     <section className="card">
       <p className="lead">
         下列學校的 116 學年度考試入學簡章還沒公告（最後查核：{data.pending.checked}）。
@@ -45,6 +50,7 @@ export default function Pending({ data }: { data: Data }) {
         ))}
       </ul>
     </section>
+    )}
     </>
   );
 }

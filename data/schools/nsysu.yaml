@@ -1,0 +1,106 @@
+id: nsysu
+name: 國立中山大學
+short: 中山
+year: 116
+exam_type: 一般考試
+status: verified
+brochure:
+  title: 國立中山大學116學年度研究所招生考試簡章《碩士班考試入學》
+  url: https://exam-acad.nsysu.edu.tw/exam_netlist/pdf_file/aca_master/TXpNME1URXhObVZzWlY5aWNtbGxabDloWTJGZmJXRnpkR1Z5TWpBeU5qRXhNRFE9.pdf
+  url_note: 簡章網頁 https://exam-acad.nsysu.edu.tw/exam_netlist/netlist_main.php?ExmNo=41 （可分章節下載，另有系所筆試節次一覽表）
+  verified: "2026-11-11"
+  page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」；p1 是重要日程表（沒有印刷頁碼）
+fee: { amount: 1300, note: 每一系所（組）, src: "p37 / 34", waiver: "低收入戶、中低收入戶、特殊境遇家庭學生免繳（12/16 17:00 取號截止前在報名系統選「免繳生」報名專用碼，每人最多 3 組；填報名費免繳申請表連同證明傳真或拍照 email，審核通過後才能登錄報名）", waiver_src: "p114 / 111；p118 / 115" }
+apply: { url: "https://oaa.nsysu.edu.tw/", how: "教務處網站點「招生考試報名系統」→ 碩士班 → 碩士班考試入學", src: "p1" }
+
+schedule:
+  - { type: register, start: "2026-12-01T12:00", end: "2026-12-16T17:00", label: 上網取號（取得繳費帳號與報名專用碼）, note: 12/16 17:00 前取號的人，繳費、上傳照片、登錄報名資料等其餘步驟可補到 12/17 17:00；完成後要到報名系統確認資料並留存流水號才算報名完成, src: "p1" }
+  - { type: payment, end: "2026-12-17T17:00", label: 繳費、上傳照片、登錄報名資料截止（補登錄）, note: 限 12/16 17:00 前已取號者, src: "p1" }
+  - { type: admit_card, start: "2026-12-28T17:00", label: 應考證開放列印（預定；不另寄發）, src: "p1" }
+  - { type: exam, start: "2027-02-03", label: 筆試（臺北、高雄考區）, note: 第一節 08:30–10:10、第二節 11:00–12:40、第三節 14:00–15:40；試場座位考前三天公告在教務處網頁, src: "p1；p120 / 117" }
+  - { type: result, start: "2027-03-05T12:00", label: 放榜（資工系等一階段系所，預定）, src: "p1" }
+  - { type: regrade, start: "2027-03-06T12:00", end: "2027-03-08T12:00", label: 成績複查（上網申請）, src: "p1" }
+  - { type: enroll, start: "2027-03-17", end: "2027-03-19", label: 正取生報到（一階段系所）, note: 逾期未報到視同放棄錄取資格，缺額由系所依序通知備取生遞補, src: "p1；p123 / 120" }
+
+programs:
+  - id: nsysu-cse
+    name: 資訊工程學系碩士班
+    kind: main
+    url: https://cse.nsysu.edu.tw/
+    groups:
+      - id: nsysu-cse-a
+        name: 甲組
+        quota: { general: 28 }
+        quota_src: "p37 / 34"
+        exam_day: "2027-02-03"
+        papers:
+          - { name: 作業系統與資料結構, covers: [OS, DS], weight_x: 1.0, period: "第一節 08:30–10:10" }
+          - { name: 離散數學與線性代數, covers: [DM, LA], weight_x: 1.0, period: "第二節 11:00–12:40" }
+        scoring: 兩科成績相加
+        papers_note: 節次時間見簡章「考試」章（p120 / 117）
+        second_stage: 無
+        tie_break: [作業系統與資料結構]
+        calculator: 兩科都不可使用計算機
+      - id: nsysu-cse-b
+        name: 乙組
+        quota: { general: 10 }
+        quota_src: "p37 / 34"
+        exam_day: "2027-02-03"
+        papers:
+          - { name: 計算機組織, covers: [CO], weight_x: 1.0, period: "第一節 08:30–10:10" }
+          - { name: 工程數學（含常微分方程、傅立葉級數與積分、拉氏變換、線性代數）, covers: [], weight_x: 1.0, period: "第二節 11:00–12:40" }
+        scoring: 兩科成績相加
+        papers_note: 工程數學範圍除了線性代數，還有常微分方程、傅立葉級數與積分、拉氏變換
+        second_stage: 無
+        tie_break: [計算機組織]
+        calculator: 兩科都不可使用計算機
+  - id: nsysu-isec
+    name: 資訊工程學系資訊安全碩士班
+    kind: near_kin
+    url: https://cse.nsysu.edu.tw/
+    groups:
+      - id: nsysu-isec-general
+        name: 不分組
+        quota: { general: 5 }
+        quota_src: "p38 / 35"
+        exam_day: "2027-02-03"
+        papers:
+          - { name: 作業系統（含 20% 資訊安全）, covers: [OS, SEC], weight_x: 1.0, period: "第二節 11:00–12:40" }
+          - { name: 離散數學與演算法, covers: [DM, ALG], weight_x: 1.0, period: "第三節 14:00–15:40" }
+        scoring: 兩科成績相加
+        second_stage: 無
+        tie_break: [離散數學與演算法]
+        calculator: 兩科都不可使用計算機
+  - id: nsysu-ee
+    name: 電機工程學系碩士班
+    kind: near_kin
+    url: https://web.ee.nsysu.edu.tw/
+    groups:
+      - id: nsysu-ee-c
+        name: 丙組（人工智慧與網路組）
+        quota: { general: 5 }
+        quota_src: "p30 / 27"
+        exam_day: "2027-02-03"
+        papers:
+          - { name: 資料結構, covers: [DS], weight_x: 1.0, period: "第一節 08:30–10:10" }
+          - { name: 離散數學, covers: [DM], weight_x: 1.0, period: "第二節 11:00–12:40" }
+        scoring: 兩科成績相加
+        second_stage: 無
+        tie_break: [資料結構]
+        calculator: 資料結構可使用計算器（廠牌、功能不拘）；離散數學不可使用
+
+rules:
+  min_standard: 招生委員會決定最低錄取標準，未達者雖有缺額也不錄取；有缺考或零分的科目不錄取
+  min_standard_src: "p122 / 119"
+  tie_break_general: 依各系所（組）的同分參酌標準；比到最後一科仍同分且超過名額時，同分者都錄取
+
+near_kin:
+  - { name: 資訊管理學系碩士班, quota: 18, note: 甲組（資訊管理組）考計算機概論＋管理資訊系統，乙組（商業智慧組）考計算機概論＋資料結構；兩組共 18 名，依報名人數比例分配（p55 / 52） }
+
+venue: { city: 高雄／臺北, place: 報名時勾選考區：高雄（高雄高中或道明高中）、臺北（臺大）；試場座位與平面圖考前三天公告在教務處網頁, src: "p120 / 117", choose: true }
+waitlist_info:
+  alert: 正取生要在 3/17–3/19 報到（依簡章網頁的系所報到日期一覽表），逾期未報到視同放棄錄取資格
+  how: 正取生有缺額時，由系所依序通知備取生遞補
+  where: { label: 中山大學教務處, url: "https://oaa.nsysu.edu.tw/" }
+  deadline: 遞補至 116 學年度第一學期開始上課日
+  src: "p123 / 120；p1"

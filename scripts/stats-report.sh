@@ -37,7 +37,7 @@ try:
   print("、".join(out) or "—")
 except Exception: print("?")' "$@"; }
 
-TABS="/=首頁 /timeline=時間軸 /calendar=行事曆 /compare=比較表 /matrix=考科 /history=歷年數據 /past=考古題 /after=放榜遞補 /resources=備考情報 /pending=待公告"
+TABS="/=首頁 /timeline=時間軸 /calendar=行事曆 /compare=比較表 /matrix=考科 /history=歷年數據 /past=考古題 /after=放榜遞補 /resources=備考情報 /pending=各校簡章"
 TZ_OPT=(--bucket-timezone Asia/Taipei)
 SINCE_T="${TODAY}T00:00:00+08:00"
 SINCE_Y="${YDAY}T00:00:00+08:00"

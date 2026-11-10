@@ -43,8 +43,8 @@ Deadlines, exam dates, quotas, subjects and score weights from each school's off
 Scope 範圍: **exam-based admission only** (no 甄試/推甄). Near-kin programs (網媒、網工、資安…) are included, labeled, and can be hidden.
 
 Schools 學校: 台大、清大、陽明交大、成大、政大、台師大、中央、中興、中山、中正、台科大、北科大、台北大學、海大.
-A school appears once its 116 brochure is published and checked; until then the site shows last year's (115) data marked as reference, or lists it under 待公告 (awaiting brochure). The site header shows the current count.
-簡章公布並核對後才收錄；還沒公布的學校標「115 參考」或列在「待公告」，目前數量以網站上方顯示為準。
+A school appears once its 116 brochure is published and checked; until then the site shows last year's (115) data marked as reference, or lists it on the 各校簡章 (brochures) tab as awaiting publication. The site header shows the current count.
+簡章公布並核對後才收錄；還沒公布的學校標「115 參考」或列在「各校簡章」分頁的待公告清單，目前數量以網站上方顯示為準。
 
 <table>
 <tr>

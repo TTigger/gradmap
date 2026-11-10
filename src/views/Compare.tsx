@@ -41,7 +41,7 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
           return <span className="count">共 {sorted.length} 個系所組・{all} 所學校{refs > 0 && `（${refs} 所為往年參考）`}</span>;
         })()}
       </div>
-      {sorted.length === 0 && <p className="empty">這所學校的 116 簡章還沒公告，也還沒有參考資料。請看「待公告」分頁。</p>}
+      {sorted.length === 0 && <p className="empty">這所學校的 116 簡章還沒公告，也還沒有參考資料。請看「各校簡章」分頁。</p>}
       <div className="table-wrap">
         <table className="cmp freeze">
           <thead>

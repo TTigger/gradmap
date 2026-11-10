@@ -1,10 +1,4 @@
 # 116 簡章尚未公告、也還沒收到可用參考資料的學校
 # 每次查核後更新 checked 日期；簡章一公告就移到 data/schools/<id>.yaml
 checked: "2026-11-09"
-schools:
-  - id: nsysu
-    name: 國立中山大學
-    short: 中山
-    site: https://oaa.nsysu.edu.tw/
-    note: 官方預定日程（仍以簡章為準）：11/11 公告簡章，12/1–12/16 報名，116/2/3 筆試，放榜一階段 3/5、二階段 3/24。
-    note_src: https://oaa.nsysu.edu.tw/static/file/3/1003/attach/28/pta_246397_7587552_11872.pdf
+schools: []

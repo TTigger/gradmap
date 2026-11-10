@@ -11,7 +11,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
     return (
       <section className="card">
         <p className="empty">
-          {school === "all" ? "選取的學校 116 簡章都還沒公告，時間軸只放已查證的日期。可以到「比較表」看參考年度的資料，或到「待公告」看預計公告時間。" : "這所學校的 116 簡章還沒查證，時間軸只放已查證的日期。可以到「比較表」看參考年度的資料。"}
+          {school === "all" ? "選取的學校 116 簡章都還沒公告，時間軸只放已查證的日期。可以到「比較表」看參考年度的資料，或到「各校簡章」看預計公告時間。" : "這所學校的 116 簡章還沒查證，時間軸只放已查證的日期。可以到「比較表」看參考年度的資料。"}
         </p>
       </section>
     );

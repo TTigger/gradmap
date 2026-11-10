@@ -29,7 +29,9 @@ function dateForms(iso) {
   return [`${roc}年${m}月${d}日`, `${m}月${d}日`, `${roc}.${m}.${d}`, `${roc}/${m}/${d}`, `${m}/${d}`,
     `${roc}.${String(m).padStart(2, "0")}.${String(d).padStart(2, "0")}`, `${String(m).padStart(2, "0")}/${String(d).padStart(2, "0")}`,
     // 補零寫法（例：海大「116 年02 月01 日」）
-    `${String(m).padStart(2, "0")}月${String(d).padStart(2, "0")}日`];
+    `${String(m).padStart(2, "0")}月${String(d).padStart(2, "0")}日`,
+    // 區間結尾省略年份（例：中山「115.12.1（二）12:00～12.16（三）17:00」）；前後要有「～」「（」才算，避免誤認小數
+    `～${m}.${d}（`];
 }
 function check(label, text, forms) {
   if (text == null) { skipped++; return; }
