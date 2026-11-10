@@ -97,8 +97,18 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                       <div className="apply"><a href={s.apply.url} target="_blank" rel="noreferrer">報名入口<Icon name="out" /></a>
                         {s.apply.how && <div className="hint">{s.apply.how}</div>}</div>
                     )}</td>
-                  <td className="nowrap" data-label="考試">{g.exam_day ? fmtDay(g.exam_day) : exam?.start ? fmtWhen(exam) : "—"}
-                    {s.venue && <div className="hint" title={s.venue.place}><Icon name="pin" /> {s.venue.city}{s.venue.choose ? "（可選）" : ""}</div>}</td>
+                  <td className="nowrap" data-label="考試">{p.review_only ? (
+                    // 不考筆試：不顯示學校的筆試日與考區，改顯示口試／面試安排
+                    <>
+                      {g.exam_day ? <>{fmtDay(g.exam_day)} <span className="hint">{/面試/.test(p.review_method ?? "") ? "面試" : "口試"}</span></> : <span className="hint">不考筆試</span>}
+                      {g.second_stage && !/^無$/.test(g.second_stage) && <div className="hint stage">{g.second_stage}</div>}
+                    </>
+                  ) : (
+                    <>
+                      {g.exam_day ? fmtDay(g.exam_day) : exam?.start ? fmtWhen(exam) : "—"}
+                      {s.venue && <div className="hint" title={s.venue.place}><Icon name="pin" /> {s.venue.city}{s.venue.choose ? "（可選）" : ""}</div>}
+                    </>
+                  )}</td>
                   <td className="nowrap" data-label="放榜">{res?.start ? fmtDay(res.start) : "—"}</td>
                   <td data-label="筆試科目與配分">
                     {g.papers.length === 0 && <span className="hint">{g.papers_note ?? "待整理"}</span>}

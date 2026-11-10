@@ -303,6 +303,7 @@ tbody tr:last-child td { border-bottom: 0; }
 .cmp td:nth-child(2) { min-width: 100px; }
 .cmp td:nth-child(2) .hint { text-align: left; }
 .cmp td.nowrap .hint { white-space: normal; }
+.cmp .stage { max-width: 220px; margin-top: 4px; font-size: 13px; }
 .cmp .who { min-width: 180px; }
 .cmp td.num > b { font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
 .who { min-width: 200px; }
