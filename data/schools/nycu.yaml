@@ -3,26 +3,28 @@ name: 國立陽明交通大學
 short: 陽明交大
 year: 116
 exam_type: 碩士班考試入學
-status: pending          # 116 簡章尚未公告
-status_note: 116 學年度碩士班考試入學簡章尚未公告（2026-11-01 查核）；115 年度於 114/11/7 公告。以下為 115 年度參考
-reference_year: 115
+status: verified
 brochure:
-  title: 國立陽明交通大學115學年度碩士班考試入學招生簡章（參考）
-  url: https://exam.nycu.edu.tw/ma-me.html
-  verified: "2026-11-01"
+  title: 國立陽明交通大學116學年度碩士班考試入學招生簡章
+  url: https://exam.nycu.edu.tw/apfiles/action.aspx?id=1f82a6dd-19b2-4982-bb0c-427f8908bd3a
+  published: "2026-11-09"
+  verified: "2026-11-10"
   page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」
-fee: { amount: 1300, note: 115 年度；聯招選 1 個志願 1,300 元，2 個以上 1,800 元, src: "p161 / 155", year: 115 }
+fee: { amount: 1300, note: "聯招選 1 個志願 1,300 元，2 個以上 1,800 元", src: "p193 / 187", waiver: "低收入戶免繳、中低收入戶打六折（12/15 17:00 前上傳證明；繳費後不能退費）", waiver_src: "p10 / 4；p11 / 5" }
+apply: { url: "https://apply.nycu.edu.tw/", how: "申請報名及報到系統，點右上角登入", src: "p9 / 3" }
 
 schedule:
-  - { type: register, start: "2025-12-09T09:00", end: "2025-12-16T17:00", label: 網路報名（115 年度）, src: "p2", year: 115 }
-  - { type: exam, start: "2026-02-04", end: "2026-02-05", label: 筆試（115 年度；資訊聯招 2/4）, src: "p15 / 9", year: 115 }
-  - { type: result, start: "2026-03-06", label: 第一梯次放榜（115 年度；資訊聯招屬第一梯次）, src: "p2；p161 / 155 列資訊聯招為第一梯次", year: 115 }
-  - { type: enroll, start: "2026-03-17T10:00", end: "2026-03-17T15:00", label: 正取生報到（115 年度）, src: "p163 / 157", year: 115 }
+  - { type: register, start: "2026-12-08T09:00", end: "2026-12-15T17:00", label: 網路報名、上傳審查資料, note: 推薦函由推薦人在 12/16 17:00 前填寫, src: "p2" }
+  - { type: admit_card, start: "2027-01-20", label: 准考證自行下載列印, src: "p2" }
+  - { type: exam, start: "2027-01-27", label: 筆試（資訊聯招 1/27）, src: "p15 / 9；p16 / 10" }
+  - { type: result, start: "2027-03-05", label: 第一梯次放榜（資訊聯招、智能系統所聯招屬第一梯次）, src: "p2" }
+  - { type: regrade, end: "2027-03-11", label: 成績複查截止（第一梯次）, src: "p2" }
+  - { type: enroll, start: "2027-03-16T10:00", end: "2027-03-16T15:00", label: 正取生報到（資訊聯招、智能系統所）, src: "p194 / 188" }
 
 joint_admission:
   name: 資訊聯招（代碼 810）
-  rule: 一次考試可填 1–9 個志願（資科工、網工、多媒體、數據、智慧計算、智慧系統與應用、智慧與綠能產學、資安甲乙），依志願序分發；某志願正取後，後面志願的正備取資格取消
-  src: "p161 / 155"
+  rule: 一次考試可填 1–8 個志願（資科工、網工、多媒體、數據、智慧計算、人工智慧與綠能、資安甲乙），依志願序分發；某志願正取後，後面志願的正備取資格取消
+  src: "p193 / 187"
 
 programs:
   - id: nycu-cs
@@ -33,11 +35,10 @@ programs:
       - id: nycu-cs-811
         name: 資訊科學與工程研究所甲組
         code: "811"
-        quota: { general: 56 }
-        quota_note: 一般生及在職生合計 56 名
-        quota_src: "p161 / 155"
-        exam_day: "2026-02-04"
-        year: 115
+        quota: { general: 54 }
+        quota_note: 一般生及在職生合計 54 名（115 年度 56）
+        quota_src: "p193 / 187"
+        exam_day: "2027-01-27"
         papers:
           - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.5, period: "第1節 08:25–10:05" }
           - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.0, period: "第2節 10:50–12:30" }
@@ -50,109 +51,91 @@ programs:
     name: 資訊聯招－其他所（同一份考卷）
     kind: near_kin
     url: https://www.cs.nycu.edu.tw/
-    notes: [與資科工所同一場考試、同一份考卷，填志願時一起排序]
+    notes: [與資科工所同一場考試、同一份考卷，填志願時一起排序, "116 年度智慧系統與應用研究所、智慧與綠能產學研究所整併為一所（招生表寫「人工智慧與綠能科技研究所」，備註寫「人工智慧與綠能產學研究所」，p193–p195）"]
     groups:
       - id: nycu-cs-812
         name: 網路工程研究所
         code: "812"
-        quota: { general: 18 }
-        quota_note: 一般生及在職生合計
-        quota_src: "p161 / 155"
-        exam_day: "2026-02-04"
-        year: 115
+        quota: { general: 16 }
+        quota_note: 一般生及在職生合計（115 年度 18）
+        quota_src: "p193 / 187"
+        exam_day: "2027-01-27"
         papers:
-          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0 }
-          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.0 }
-          - { name: 計算機系統（含作業系統及計算機組織）, covers: [OS, CO], weight_x: 1.0 }
+          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0, period: "第1節 08:25–10:05" }
+          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.0, period: "第2節 10:50–12:30" }
+          - { name: 計算機系統（含作業系統及計算機組織）, covers: [OS, CO], weight_x: 1.0, period: "第3節 13:30–15:10" }
         tie_break: [資料結構與演算法, 線性代數與離散數學, 計算機系統]
       - id: nycu-cs-813
         name: 多媒體工程研究所
         code: "813"
-        quota: { general: 21 }
-        quota_note: 一般生及在職生合計；只考兩科
-        quota_src: "p161 / 155"
-        exam_day: "2026-02-04"
-        year: 115
+        quota: { general: 19 }
+        quota_note: 一般生及在職生合計（115 年度 21）；只考兩科
+        quota_src: "p193 / 187"
+        exam_day: "2027-01-27"
         papers:
-          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0 }
-          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.0 }
-        papers_note: 不考計算機系統（p162 / 156）
+          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0, period: "第1節 08:25–10:05" }
+          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.0, period: "第2節 10:50–12:30" }
+        papers_note: 不考計算機系統（p193 / 187、p194 / 188）
         tie_break: [資料結構與演算法, 線性代數與離散數學]
       - id: nycu-cs-814
         name: 數據科學與工程研究所
         code: "814"
         quota: { general: 14 }
         quota_note: 一般生及在職生合計；只考兩科
-        quota_src: "p161 / 155"
-        exam_day: "2026-02-04"
-        year: 115
+        quota_src: "p193 / 187"
+        exam_day: "2027-01-27"
         papers:
-          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0 }
-          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.2 }
-        papers_note: 不考計算機系統（p162 / 156）
+          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0, period: "第1節 08:25–10:05" }
+          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.2, period: "第2節 10:50–12:30" }
+        papers_note: 不考計算機系統（p194 / 188）
         tie_break: [線性代數與離散數學, 資料結構與演算法]
       - id: nycu-cs-815
         name: 智慧計算與科技研究所（台南歸仁校區）
         code: "815"
-        quota: { general: 12 }
-        quota_note: 一般生及在職生合計；上課在台南歸仁校區
-        quota_src: "p161 / 155"
-        exam_day: "2026-02-04"
-        year: 115
+        quota: { general: 18 }
+        quota_note: 一般生及在職生合計（115 年度 12）；上課在台南歸仁校區
+        quota_src: "p193 / 187"
+        exam_day: "2027-01-27"
         papers:
-          - { name: 計算機系統（含作業系統及計算機組織）, covers: [OS, CO], weight_x: 1.0 }
-          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0 }
-          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.2 }
+          - { name: 計算機系統（含作業系統及計算機組織）, covers: [OS, CO], weight_x: 1.0, period: "第3節 13:30–15:10" }
+          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0, period: "第1節 08:25–10:05" }
+          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.2, period: "第2節 10:50–12:30" }
         tie_break: [線性代數與離散數學, 資料結構與演算法, 計算機系統]
       - id: nycu-cs-816
-        name: 智慧系統與應用研究所（台南歸仁校區）
+        name: 人工智慧與綠能科技研究所（台南歸仁校區）
         code: "816"
         quota: { general: 6 }
-        quota_note: 一般生及在職生合計；上課在台南歸仁校區
-        quota_src: "p161 / 155"
-        exam_day: "2026-02-04"
-        year: 115
+        quota_note: 一般生及在職生合計；上課在台南歸仁校區；116 年度由智慧系統與應用所、智慧與綠能產學所整併
+        quota_src: "p193 / 187"
+        exam_day: "2027-01-27"
         papers:
-          - { name: 計算機系統（含作業系統及計算機組織）, covers: [OS, CO], weight_x: 1.0 }
-          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0 }
-          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.2 }
+          - { name: 計算機系統（含作業系統及計算機組織）, covers: [OS, CO], weight_x: 1.0, period: "第3節 13:30–15:10" }
+          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0, period: "第1節 08:25–10:05" }
+          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.2, period: "第2節 10:50–12:30" }
         tie_break: [資料結構與演算法, 線性代數與離散數學, 計算機系統]
-      - id: nycu-cs-817
-        name: 智慧與綠能產學研究所（台南歸仁校區）
-        code: "817"
-        quota: { general: 6 }
-        quota_note: 一般生及在職生合計；上課在台南歸仁校區
-        quota_src: "p161 / 155"
-        exam_day: "2026-02-04"
-        year: 115
-        papers:
-          - { name: 計算機系統（含作業系統及計算機組織）, covers: [OS, CO], weight_x: 1.0 }
-          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0 }
-          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.2 }
-        tie_break: [資料結構與演算法, 計算機系統, 線性代數與離散數學]
       - id: nycu-cs-818
         name: 資訊安全研究所甲組
-        code: "818"
+        code: "817"
         quota: { general: 5 }
-        quota_src: "p161 / 155"
-        exam_day: "2026-02-04"
-        year: 115
+        quota_note: 一般生（116 年度代碼改為 817）
+        quota_src: "p193 / 187"
+        exam_day: "2027-01-27"
         papers:
-          - { name: 計算機系統（含作業系統及計算機組織）, covers: [OS, CO], weight_x: 1.5 }
-          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0 }
-          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.0 }
+          - { name: 計算機系統（含作業系統及計算機組織）, covers: [OS, CO], weight_x: 1.5, period: "第3節 13:30–15:10" }
+          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0, period: "第1節 08:25–10:05" }
+          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.0, period: "第2節 10:50–12:30" }
         tie_break: [計算機系統, 資料結構與演算法, 線性代數與離散數學]
       - id: nycu-cs-819
         name: 資訊安全研究所乙組
-        code: "819"
+        code: "818"
         quota: { general: 2 }
-        quota_src: "p161 / 155"
-        exam_day: "2026-02-04"
-        year: 115
+        quota_note: 一般生（116 年度代碼改為 818）
+        quota_src: "p193 / 187"
+        exam_day: "2027-01-27"
         papers:
-          - { name: 計算機系統（含作業系統及計算機組織）, covers: [OS, CO], weight_x: 1.0 }
-          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0 }
-          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.0 }
+          - { name: 計算機系統（含作業系統及計算機組織）, covers: [OS, CO], weight_x: 1.0, period: "第3節 13:30–15:10" }
+          - { name: 資料結構與演算法, covers: [DS, ALG], weight_x: 1.0, period: "第1節 08:25–10:05" }
+          - { name: 線性代數與離散數學, covers: [LA, DM], weight_x: 1.0, period: "第2節 10:50–12:30" }
         tie_break: [資料結構與演算法, 線性代數與離散數學, 計算機系統]
   - id: nycu-iais
     name: 產學創新研究學院 智能系統研究所碩士班聯招（代碼 850）
@@ -161,14 +144,13 @@ programs:
     review_method: "書審 100%"
     url: https://iais.nycu.edu.tw/
     exclusive_groups: false
-    notes: [四組合計 10 名，可選 1–4 個志願；正取生 115/3/16 在新竹光復校區報到]
+    notes: [四組合計 10 名，可選 1–4 個志願；正取生 116/3/16 在新竹光復校區電資大樓 101 室報到（p202 / 196）]
     groups:
       - id: nycu-iais-851
         name: 甲組（主修人工智慧、資料科學、運算與應用）
         code: "851"
         quota: { general: 3 }
-        quota_src: "p171 / 165"
-        year: 115
+        quota_src: "p202 / 196"
         papers: []
         papers_note: ⚠️ 書面審查佔 100%，不考筆試（成績單、學習資料表、自傳）
         second_stage: 無
@@ -176,8 +158,7 @@ programs:
         name: 乙組（主修資安與資訊工程）
         code: "852"
         quota: { general: 2 }
-        quota_src: "p171 / 165"
-        year: 115
+        quota_src: "p202 / 196"
         papers: []
         papers_note: ⚠️ 書面審查佔 100%，不考筆試（成績單、學習資料表、自傳）
         second_stage: 無
@@ -185,8 +166,7 @@ programs:
         name: 丙組（主修寬頻通訊與物聯網）
         code: "853"
         quota: { general: 2 }
-        quota_src: "p171 / 165"
-        year: 115
+        quota_src: "p202 / 196"
         papers: []
         papers_note: ⚠️ 書面審查佔 100%，不考筆試（成績單、學習資料表、自傳）
         second_stage: 無
@@ -194,10 +174,14 @@ programs:
         name: 丁組（產學創新組，主修人工智慧與資通訊網路）
         code: "854"
         quota: { general: 3 }
-        quota_src: "p171 / 165"
-        year: 115
+        quota_src: "p202 / 196"
         papers: []
         papers_note: ⚠️ 書面審查佔 100%，不考筆試（成績單、學習資料表、自傳）
         second_stage: 無
 
-venue: { city: 新竹, place: 新竹光復校區（115 年度資訊聯招）, src: "p15 / 9；p16 / 10", year: 115 }
+venue: { city: 新竹, place: 新竹光復校區（資訊聯招）, src: "p15 / 9；p16 / 10" }
+waitlist_info:
+  how: 備取生依名次遞補；錄取生及遞補生報到狀況在「申請報名及報到系統」查詢
+  where: { label: 陽明交大申請報名及報到系統, url: "https://apply.nycu.edu.tw/" }
+  deadline: 遞補至 116 學年度第 1 學期開學日止
+  src: "p2；p21 / 15"

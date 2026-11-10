@@ -12,7 +12,7 @@ schools:
       - { label: 歷年報名人數與錄取情況（同一頁下方）, url: "https://www.aca.ntu.edu.tw/w/aca/LocalAdmissionClass_21072014071675661", kind: stats }
       - { label: 資工系, url: "https://www.csie.ntu.edu.tw", kind: dept }
       - { label: 臺大考古題, url: "https://exam.lib.ntu.edu.tw/graduate", kind: past_exam }
-    watch: 116 簡章約 11 月中公告（115 年度為 114/11/12）。錄取情況一覽表約 4 月公告，含最低錄取分數與備取人數。
+    watch: 116 簡章已於 115/11/10 公告（https://exam.aca.ntu.edu.tw/grab/Brochure/main 導覽列會寫「116 學年度」；系所分則在 detail.aspx，檔名 116/<代碼>.pdf）。考科節次 11/10 中午起公告於教務處「招生訊息」。錄取情況一覽表約 4 月公告，含最低錄取分數與備取人數。
 
   - id: nthu
     name: 國立清華大學
@@ -29,7 +29,7 @@ schools:
     links:
       - { label: 碩士班考試入學（簡章、報名人數統計表、榜單）, url: "https://exam.nycu.edu.tw/ma-me.html", kind: admission }
       - { label: 資工系, url: "https://www.cs.nycu.edu.tw", kind: dept }
-    watch: 伺服器沒有送完整憑證鏈，curl 要加 --cacert sources/certs/bundle-with-twca.pem（系統根憑證＋TWCA 中繼憑證，仍完整驗證）。檔案網址 /apfiles/action.aspx?id=… 是包裝頁，實際檔案是 /apfiles/getFile.aspx?type=1&id=…。資訊聯招統計表只公布聯招總數，不分所。
+    watch: 伺服器沒有送完整憑證鏈，curl 要加 --cacert sources/certs/bundle-with-twca.pem（系統根憑證＋TWCA 中繼憑證，仍完整驗證）。檔案網址 /apfiles/action.aspx?id=… 是包裝頁，實際檔案是 /apfiles/getFile.aspx?type=1&id=…。資訊聯招統計表只公布聯招總數，不分所。**ma-me.html 的「簡章、統計表與榜單」清單由 JavaScript 載入，要直接讀 https://exam.nycu.edu.tw/ap/FuncItem/GetExamNewsJSON?sn=ma-me（JSON，第一筆是最新學年度；116 簡章 115/11/9 公告），只看頁面上的重要日程不準。**
 
   - id: ncku
     name: 國立成功大學

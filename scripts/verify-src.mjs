@@ -12,6 +12,12 @@ const weak = [];
 
 const norm = (s) => s.replace(/\s+/g, "").replace(/臺/g, "台");
 function page(sid, year, src) {
+  // 分檔簡章（例：台大）寫「ntu-905 p1」→ sources/<年>/text/ntu-905/p001.txt
+  const f2 = /^([a-z]+-[\w-]+)\s+p(\d+)/.exec(String(src ?? "").trim());
+  if (f2) {
+    const f = path.join(root, `sources/${year}/text/${f2[1]}/p${f2[2].padStart(3, "0")}.txt`);
+    return fs.existsSync(f) ? norm(fs.readFileSync(f, "utf8")) : null;
+  }
   const m = /^p(\d+)/.exec(String(src ?? "").trim());
   if (!m) return null;
   const f = path.join(root, `sources/${year}/text/${sid}/p${m[1].padStart(3, "0")}.txt`);

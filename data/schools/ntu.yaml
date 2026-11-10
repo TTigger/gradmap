@@ -3,21 +3,23 @@ name: 國立臺灣大學
 short: 台大
 year: 116
 exam_type: 一般考試
-status: pending          # 116 簡章尚未公告
-status_note: 116 學年度碩士班考試簡章尚未公告（2026-10-31 查核）；115 年度於 114/11/12 公告。以下系所資料為 115 年度參考
-reference_year: 115
+status: verified
 brochure:
-  title: 國立臺灣大學115學年度碩士班招生簡章（參考）
+  title: 國立臺灣大學116學年度碩士班招生簡章
   url: https://exam.aca.ntu.edu.tw/grab/Brochure/main.aspx
-  verified: "2026-10-31"
-  page_note: 台大簡章按系所分檔，src 寫「檔名」
-fee: { amount: 1500, note: 115 年度筆試及審查報名費, src: "ntu-schedule", year: 115 }
+  published: "2026-11-10"
+  verified: "2026-11-10"
+  page_note: 台大簡章按系所分檔，src 寫「檔名 頁」（ntu-905＝905 系所分則，ntu-common＝簡章前頁共同規定，ntu-schedule＝重要日程表）
+fee: { amount: 1500, note: 筆試及審查報名費；有口試的系所另繳口試報名費 500 元, src: "ntu-schedule p1", waiver: "低收入戶免繳、中低收入戶減免十分之三（限一系所組；11/25 起上網列印申請書，12/2 前限時掛號寄出；申請者先不要繳費）", waiver_src: "ntu-common p3" }
+apply: { url: "https://exam.aca.ntu.edu.tw/grab/", how: "先索取繳款帳號繳費，再用帳號與通行碼登入填報名資料", src: "ntu-common p4" }
 
 schedule:
-  - { type: register, start: "2025-12-02T09:00", end: "2025-12-09T23:59", label: 繳費及報名（115 年度）, src: "ntu-schedule", year: 115 }
-  - { type: exam, start: "2026-02-01", end: "2026-02-02", label: 筆試（115 年度）, src: "ntu-schedule", year: 115 }
-  - { type: result, start: "2026-03-09T12:00", label: 第1梯次放榜（115 年度）, src: "ntu-schedule", year: 115 }
-  - { type: enroll, start: "2026-03-30T10:00", end: "2026-04-01T23:59", label: 正、備取生網路報到（115 年度）, src: "ntu-schedule", year: 115 }
+  - { type: register, start: "2026-12-01T09:00", end: "2026-12-08T23:59", label: 繳費及上網登錄報名資料, note: 報名系統每天 8–9 時備份不開放；有審查的系所 12/9 17:00 前上傳資料, src: "ntu-schedule p1" }
+  - { type: upload, end: "2026-12-09T17:00", label: 上傳審查資料（有審查的系所、在職生）, src: "ntu-schedule p1" }
+  - { type: admit_card, start: "2027-01-13", label: 准考證開放列印（不寄發）, src: "ntu-schedule p1" }
+  - { type: exam, start: "2027-01-30", end: "2027-01-31", label: 筆試, note: 各系所考科節次 11/10 中午起公告, src: "ntu-schedule p1" }
+  - { type: result, start: "2027-03-10T12:00", label: 第1梯次放榜（資工、網媒、資安、人工智慧所）, src: "ntu-schedule p1" }
+  - { type: enroll, start: "2027-03-30T10:00", end: "2027-04-01T23:59", label: 正、備取生網路報到, src: "ntu-schedule p1" }
 
 programs:
   - id: ntu-csie
@@ -30,8 +32,7 @@ programs:
         code: "905"
         quota: { general: 66 }
         quota_note: 正取 66、備取 75；其中資工碩士班 60（備取 60）、人工智慧碩士班 6（備取 15）。最多選兩個志願，依總分及志願序分所錄取
-        quota_src: "ntu-905"
-        year: 115
+        quota_src: "ntu-905 p1"
         papers:
           - { name: 英文(A), covers: [EN], weight_pct: 10, note: 以100分命題，成績以10%計算 }
           - { name: 數學(A)（含線性代數、離散數學）, covers: [LA, DM] }
@@ -50,8 +51,7 @@ programs:
         code: "914"
         quota: { general: 18 }
         quota_note: 正取 18、備取 18
-        quota_src: "ntu-914"
-        year: 115
+        quota_src: "ntu-914 p1"
         papers:
           - { name: 英文(A), covers: [EN], weight_pct: 10, note: 以100分命題，成績以10%計算 }
           - { name: 計算機結構與作業系統, covers: [CO, OS] }
@@ -68,11 +68,28 @@ programs:
         name: 不分組
         code: "904"
         quota: { general: 12 }
-        quota_note: 正取 12、備取 30
-        quota_src: "ntu-904"
-        year: 115
+        quota_note: 正取 12、備取 30；審查成績未達 70 分不錄取
+        quota_src: "ntu-904 p1"
         papers: []
-        papers_note: ⚠️ 書面審查佔100%，不考筆試
+        papers_note: ⚠️ 書面審查佔100%，不考筆試；考生審查資料表要先到電機系網站填寫
         second_stage: 無
+  - id: ntu-giai
+    name: 人工智慧研究所碩士班
+    kind: near_kin
+    review_only: true
+    review_method: "書審 40%＋口試 60%"
+    url: https://eecs.ntu.edu.tw/giai
+    notes: [116 年 8 月起成立運作（ntu-919 p1）；與資工系聯招裡的 905B「人工智慧碩士班」分開招生、各自報名]
+    groups:
+      - id: ntu-giai-919
+        name: 不分組
+        code: "919"
+        quota: { general: 12 }
+        quota_note: 正取 12、備取 60
+        quota_src: "ntu-919 p1"
+        papers: []
+        papers_note: ⚠️ 不考筆試：審查 40%＋口試 60%（審查達 80 分才能口試，口試 2/15，名單 1/29 12 時公告；口試未達 80 分不錄取）
+        second_stage: 口試 2/15（口試內容可含線性代數、機率與統計、資料結構與演算法、人工智慧基礎）
+        tie_break: [口試成績, 審查成績]
 
-venue: { city: 臺北／臺南, place: 報名時選臺北或臺南考區（115 年度）, src: "ntu-schedule", year: 115, choose: true }
+venue: { city: 臺北／臺南, place: 報名時選臺北或臺南考區（臺南考區座位有限，中部以北建議選臺北）, src: "ntu-common p1", choose: true }
