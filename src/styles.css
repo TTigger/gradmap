@@ -616,6 +616,14 @@ tr.flash td { animation: flash 2.2s ease-out; }
   .cov td.who { min-width: 0 !important; white-space: nowrap; font-size: 13px; }
   .freeze td:first-child, .freeze th:first-child { position: static !important; box-shadow: none !important; }
   .mx-cell b { font-size: 12px; }
+  /* 比較表：紙張寬度會套到手機的兩欄大字卡片，一個系所幾乎佔一頁；紙上改成四欄小字，一頁放得下好幾個 */
+  .cmp tr { grid-template-columns: repeat(4, 1fr); gap: 6px 14px; padding: 10px 0; font-size: 12px; }
+  .cmp td.who { grid-column: 1 / -1; }
+  .cmp td:nth-child(6) { grid-column: span 3; }
+  .cmp td:nth-child(7) { grid-column: auto; }
+  .cmp td[data-label]::before { font-size: 10px; margin-bottom: 0; }
+  .cmp .hint, .cmp .stage, .cmp .apply { font-size: 11px; }
+  .cmp td.num > b { font-size: 16px; }
 }
 td.num details.more .hint { text-align: left; }
 .apply { margin-top: 6px; font-size: 13px; white-space: normal; }
