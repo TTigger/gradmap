@@ -2,11 +2,6 @@
 # 每次查核後更新 checked 日期；簡章一公告就移到 data/schools/<id>.yaml
 checked: "2026-11-09"
 schools:
-  - id: ncku
-    name: 國立成功大學
-    short: 成大
-    site: https://adms-acad.ncku.edu.tw/
-    note: 116 學年度碩士班考試入學簡章尚未公告。
   - id: nsysu
     name: 國立中山大學
     short: 中山

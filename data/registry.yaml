@@ -37,7 +37,7 @@ schools:
     aliases: [成功大學, NCKU]
     links:
       - { label: 招生組, url: "https://adms-acad.ncku.edu.tw/", kind: admission }
-    watch: 招生組網頁由 JavaScript 載入。查新簡章改看資工系「研究所招生」公告 https://www.csie.ncku.edu.tw/zh-hant/news/masterAdmission（可直接讀取，會轉貼招生組公告）；另用 WebSearch「成功大學 116學年度 碩士班 招生簡章」。116 年人工智慧科技學位學程碩士班改採審查與面試（系網 news/13601），簡章公告後確認是否列為只書審近親所。資訊聯招＝資訊工程學系＋人工智慧科技碩士學位學程。
+    watch: 116 簡章 115/11/06 公告於招生組「碩士班(含在職專班)」頁 https://adms-acad.ncku.edu.tw/p/406-1044-227148,r3265.php?Lang=zh-tw（這頁可直接 curl 讀取，表格「116 報名」列的「整本簡章內容」連到 PDF /var/file/44/1044/img/4427/868509778.pdf；sources/116/ncku.pdf）。⚠️ 這頁同時保留 115 年度列，查核時要找「116」那列，不要只看到 115 就判斷還沒出（11/6–11/10 因此漏抓）。更正公告看同一頁。系所分則在簡章本體（資工 p30 / 25，智慧資安 p29 / 24，筆試時間 p50–51 / 45–46，面試日期附件三 p54 / 49）。資訊工程學系一般生代碼 690；人工智慧科技學程 116 改為審查＋面試、不再和資工聯招，列為只書審近親所。
 
   - id: ntnu
     name: 國立臺灣師範大學

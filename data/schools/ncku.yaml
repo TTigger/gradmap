@@ -1,0 +1,108 @@
+id: ncku
+name: 國立成功大學
+short: 成大
+year: 116
+exam_type: 一般考試
+status: verified
+brochure:
+  title: 國立成功大學116學年度碩士班(含在職專班)研究生招生簡章
+  url: https://adms-acad.ncku.edu.tw/var/file/44/1044/img/4427/868509778.pdf
+  published: "2026-11-06"
+  verified: "2026-11-10"
+  page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」；p2 是簡章前面的重要日程表（沒有印刷頁碼）
+fee: { amount: 1300, note: 每一系所組；複試不另收費, src: "p7 / 2", waiver: "低收入戶免繳、中低收入戶報名費 520 元（限 1 系所組；12/7 12:00 前把申請表和證明 email 給招生單位，審核通過後再繳費；已繳費的不退）", waiver_src: "p7 / 2；p8 / 3；p57 / 52" }
+apply: { url: "https://campus4.ncku.edu.tw/door/", how: "點選「碩士班(含在職專班)」→ 第一次登入填報名資料", src: "p7 / 2" }
+
+schedule:
+  - { type: register, start: "2026-11-30T09:00", end: "2026-12-07T12:00", label: 網路登錄報名資料（含繳費帳號取號）, src: "p2；p7 / 2" }
+  - { type: payment, start: "2026-11-30T09:00", end: "2026-12-07T16:00", label: 繳交報名費, note: 臺銀臨櫃 15:30 止；ATM、信用卡 16:00 止（信用卡加收 25 元）, src: "p2" }
+  - { type: upload, start: "2026-11-30T09:00", end: "2026-12-07T23:59", label: 上傳審查資料（不考筆試的系所、智慧資安學程等）, note: 資工系一般生不用上傳，報名並繳費即完成報名, src: "p2；p8 / 3" }
+  - { type: admit_card, start: "2026-12-30T09:00", label: 准考證開放列印, src: "p2" }
+  - { type: exam, start: "2027-01-28", label: 筆試（資工系）, note: 智慧資訊安全學程的筆試在 1/27, src: "p51 / 46；p2" }
+  - { type: result, start: "2027-03-02", label: 第一梯次放榜（筆試系所與不考筆試的系所）, src: "p2" }
+  - { type: regrade, end: "2027-03-05", label: 成績複查申請截止（郵戳為憑）, src: "p2" }
+  - { type: enroll, start: "2027-03-03T09:00", end: "2027-03-09T23:59", label: 就讀意願登記＋線上報到, note: 正、備取生都要在期限內上網登記就讀意願，沒登記視同放棄；資工系、人工智慧科技學程、智慧資安學程都是線上報到, src: "p2；p12 / 7；p55 / 50" }
+
+programs:
+  - id: ncku-csie
+    name: 資訊工程學系碩士班
+    kind: main
+    url: https://www.csie.ncku.edu.tw/zh-hant/ncku_csie/
+    groups:
+      - id: ncku-csie-690
+        name: 一般生
+        code: "690"
+        quota: { general: 142 }
+        quota_note: 不含甄試名額（甄試甲組 85、乙組 5）
+        quota_src: "p30 / 25"
+        exam_day: "2027-01-28"
+        papers:
+          - { name: 程式設計（資料結構及演算法）, covers: [DS, ALG], period: "第二節 10:40–12:20" }
+          - { name: 計算機數學（線性代數及離散數學）, covers: [LA, DM], period: "第三節 13:40–15:20" }
+          - { name: 計算機組織與系統（計算機組織及作業系統）, covers: [CO, OS], period: "第一節 08:20–10:00" }
+        papers_note: 系所分則沒有列各科比例（簡章規定未註明者以應考科目加權平均計算）。節次見筆試時間表（p51 / 46），三科都在 1/28
+        second_stage: 無
+        tie_break: [程式設計, 計算機數學, 計算機組織與系統]
+        calculator: 考科都不可使用計算機
+        notes:
+          - 錄取後未修過計算機組織、資料結構、離散數學者，要在電資學院或工學院補修，才能畢業（p30 / 25）
+          - 考試要帶 2B 鉛筆和原子筆
+  - id: ncku-aim
+    name: 人工智慧科技碩士學位學程
+    kind: near_kin
+    review_only: true
+    review_method: "書審 50%＋面試 50%"
+    url: https://aim.ncku.edu.tw/
+    groups:
+      - id: ncku-aim-070
+        name: 一般生
+        code: "070"
+        quota: { general: 15 }
+        quota_note: 不含甄試名額 9 名
+        quota_src: "p30 / 25"
+        exam_day: "2027-01-15"
+        papers: []
+        papers_note: ⚠️ 不考筆試：審查 50%（在校成績、資訊能力證明、專題與研究、外語、讀書計畫、學程考生資料表）＋面試 50%。審查資料 12/7 23:59 前上傳；學程考生資料表要另外到學程網頁登打，沒做會影響審查分數
+        second_stage: 審查通過才通知面試；面試 1/15（12/30 前在學程網頁公告名單）；審查成績優異者可免面試優先錄取（最多招生名額 2/3）
+        tie_break: [面試, 審查]
+        notes:
+          - 錄取後未修過計算機組織、資料結構、線性代數者要補修（p30 / 25）
+  - id: ncku-isec
+    name: 智慧資訊安全碩士學位學程
+    kind: near_kin
+    url: https://www.ee.ncku.edu.tw/
+    groups:
+      - id: ncku-isec-140
+        name: 一般生
+        code: "140"
+        quota: { general: 13 }
+        quota_note: 不含甄試名額 7 名
+        quota_src: "p29 / 24"
+        exam_day: "2027-01-27"
+        papers:
+          - { name: 資訊安全, covers: [SEC], weight_pct: 50, period: "1/27 第一節 08:20–10:00" }
+        papers_note: 審查 50%（成績單、研究計畫、自傳等，12/7 23:59 前上傳）＋筆試資訊安全 50%；考試科目有一科零分不錄取
+        second_stage: 無
+        tie_break: [筆試, 審查]
+        calculator: 資訊安全可使用計算機（不具儲存程式功能）
+        notes:
+          - 指導教授限本學程專任老師
+
+rules:
+  min_standard: 招生委員會訂定最低錄取標準，未達者雖有名額亦不錄取
+  min_standard_src: "p11 / 6"
+  tie_break_general: 依各系所分則的同分參酌順序；筆試科目依排列順序比較；比完仍同分且超過名額時增額錄取
+  interview: 面試缺考或零分、未具面試資格者不予錄取
+  interview_src: "p11 / 6"
+
+near_kin:
+  - { name: 醫學資訊研究所, code: "270", quota: 14, note: 不考筆試，審查 50%＋面試 50%（面試 1/15） }
+  - { name: 製造資訊與系統研究所, code: "711–713", quota: 31, note: 不考筆試，審查 40%＋面試 60%（面試 1/14 下午），只能報考一組 }
+
+venue: { city: 臺南／臺北, place: 報名時選臺南或臺北考區；考試地點與試場考前兩週公告在成大招生網頁, src: "p10 / 5", choose: true }
+waitlist_info:
+  alert: 正、備取生都要在 3/3 9:00–3/9 23:59 上網登記就讀意願，沒登記或登記無意願，視同放棄錄取或遞補資格
+  how: 正取生有缺額時，由系所依序通知備取生遞補；要自己留意報名網頁的新生報到狀況查詢，以及電話、email 通知
+  where: { label: 成大碩士班報名網頁, url: "https://campus4.ncku.edu.tw/door/" }
+  deadline: 遞補至 116 學年度第 1 學期開學日
+  src: "p12 / 7；p13 / 8"

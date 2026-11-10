@@ -11,17 +11,16 @@ let bad = 0, ok = 0, skipped = 0;
 const weak = [];
 
 const norm = (s) => s.replace(/\s+/g, "").replace(/臺/g, "台");
-function page(sid, year, src) {
+function page(sid, year, src, raw = false) {
+  const read = (f) => (fs.existsSync(f) ? (raw ? fs.readFileSync(f, "utf8") : norm(fs.readFileSync(f, "utf8"))) : null);
   // 分檔簡章（例：台大）寫「ntu-905 p1」→ sources/<年>/text/ntu-905/p001.txt
   const f2 = /^([a-z]+-[\w-]+)\s+p(\d+)/.exec(String(src ?? "").trim());
   if (f2) {
-    const f = path.join(root, `sources/${year}/text/${f2[1]}/p${f2[2].padStart(3, "0")}.txt`);
-    return fs.existsSync(f) ? norm(fs.readFileSync(f, "utf8")) : null;
+    return read(path.join(root, `sources/${year}/text/${f2[1]}/p${f2[2].padStart(3, "0")}.txt`));
   }
   const m = /^p(\d+)/.exec(String(src ?? "").trim());
   if (!m) return null;
-  const f = path.join(root, `sources/${year}/text/${sid}/p${m[1].padStart(3, "0")}.txt`);
-  return fs.existsSync(f) ? norm(fs.readFileSync(f, "utf8")) : null;
+  return read(path.join(root, `sources/${year}/text/${sid}/p${m[1].padStart(3, "0")}.txt`));
 }
 // 2027-01-26 → 民國 116 年 1 月 26 日的各種寫法
 function dateForms(iso) {
@@ -53,9 +52,11 @@ for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".yaml"))) {
     const n = g.quota?.general;
     // 名額：數字前後不能接其他數字（避免 50 被 150 誤判）；個位數仍可能巧合，報告會提醒人工看
     if (n != null && g.quota_src) {
-      const t = page(s.id, s.year, g.quota_src);
+      // 表格的代碼和名額相鄰（例「690 142」），去掉空白後會黏在一起，所以也用原文（空白算分隔）比對
+      const t = page(s.id, s.year, g.quota_src), raw = page(s.id, s.year, g.quota_src, true);
+      const re = new RegExp(`(^|[^\\d])${n}([^\\d]|$)`);
       if (t == null) skipped++;
-      else if (new RegExp(`(^|[^\\d])${n}([^\\d]|$)`).test(t)) { ok++; if (n < 10) weak.push(`${g.id} 名額 ${n}（${g.quota_src}）`); }
+      else if (re.test(t) || re.test(raw)) { ok++; if (n < 10) weak.push(`${g.id} 名額 ${n}（${g.quota_src}）`); }
       else { bad++; console.log(`  ✗ ${g.id} 名額 ${n}（${g.quota_src}）`); }
     }
     // 考科比例：寫在系所頁上（同 quota_src 那頁，或下一頁）
