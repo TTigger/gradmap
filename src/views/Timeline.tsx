@@ -39,20 +39,22 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
     .map((s) => ({ s, day: s.schedule.find((e) => e.type === "exam")?.start?.slice(0, 10) }))
     .filter((x): x is { s: School; day: string } => !!x.day)
     .sort((a, b) => a.day.localeCompare(b.day));
-  const warnings: string[] = [];
+  // 同一天＝只能選一間（一定顯示）；連續兩天＝提醒考區（多的時候收起來）
+  const sameDay: string[] = [];
+  const nextDay: string[] = [];
   for (let i = 0; i < examDays.length; i++) {
     for (let j = i + 1; j < examDays.length; j++) {
       if (school !== "all" ? examDays[i].s.id !== school && examDays[j].s.id !== school : !(sel(examDays[i].s.id) && sel(examDays[j].s.id))) continue;
       const diff = (+toDate(examDays[j].day) - +toDate(examDays[i].day)) / DAY;
       const a = examDays[i].s, b = examDays[j].s;
-      if (diff === 0) warnings.push(`${a.short}、${b.short} 同一天考試（${fmtDay(examDays[i].day)}），只能選一間`);
+      if (diff === 0) sameDay.push(`${a.short}、${b.short} 同一天考試（${fmtDay(examDays[i].day)}），只能選一間`);
       else if (diff === 1) {
         const ca = a.venue?.city, cb = b.venue?.city;
         let tip = "";
         if (b.venue?.choose) tip = `；${b.short}報名時可選考區（${cb}），可以選離前一天考場近的`;
         else if (a.venue?.choose) tip = `；${a.short}報名時可選考區（${ca}）`;
         else if (ca && cb && ca !== cb) tip = `；兩地不同城市，建議前一晚就到${cb}`;
-        warnings.push(`連續兩天考試：${a.short}${ca ? `（${ca}）` : ""} ${fmtDay(examDays[i].day)} → ${b.short}${cb ? `（${cb}）` : ""} ${fmtDay(examDays[j].day)}${tip}`);
+        nextDay.push(`${a.short}${ca ? `（${ca}）` : ""} ${fmtDay(examDays[i].day)} → ${b.short}${cb ? `（${cb}）` : ""} ${fmtDay(examDays[j].day)}${tip}`);
       }
     }
   }
@@ -134,10 +136,18 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
         ))}
       </div>
 
-      {warnings.length > 0 && (
-        <ul className="warn">
-          {warnings.map((w) => <li key={w}><Icon name="warn" /> {w}</li>)}
-        </ul>
+      {sameDay.length + nextDay.length > 0 && (
+        <div className="warn">
+          {sameDay.length > 0 && (
+            <ul>{sameDay.map((w) => <li key={w}><Icon name="warn" /> {w}</li>)}</ul>
+          )}
+          {nextDay.length > 0 && (
+            <details open={nextDay.length <= 3}>
+              <summary>連續兩天考試 {nextDay.length} 組（看考區建議）</summary>
+              <ul>{nextDay.map((w) => <li key={w}>{w}</li>)}</ul>
+            </details>
+          )}
+        </div>
       )}
 
       {examDays.filter((x) => sel(x.s.id)).length > 0 && (
