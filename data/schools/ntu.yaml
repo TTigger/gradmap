@@ -17,7 +17,7 @@ schedule:
   - { type: register, start: "2026-12-01T09:00", end: "2026-12-08T23:59", label: 繳費及上網登錄報名資料, note: 報名系統每天 8–9 時備份不開放；有審查的系所 12/9 17:00 前上傳資料, src: "ntu-schedule p1" }
   - { type: upload, end: "2026-12-09T17:00", label: 上傳審查資料（有審查的系所、在職生）, src: "ntu-schedule p1" }
   - { type: admit_card, start: "2027-01-13", label: 准考證開放列印（不寄發）, src: "ntu-schedule p1" }
-  - { type: exam, start: "2027-01-30", end: "2027-01-31", label: 筆試, note: 各系所考科節次 11/10 中午起公告, src: "ntu-schedule p1" }
+  - { type: exam, start: "2027-01-30", end: "2027-01-31", label: 筆試, note: 資工聯招、網媒所的筆試都在第一天 1/30（六）, src: "ntu-schedule p1；ntu-periods p4" }
   - { type: result, start: "2027-03-10T12:00", label: 第1梯次放榜（資工、網媒、資安、人工智慧所）, src: "ntu-schedule p1" }
   - { type: enroll, start: "2027-03-30T10:00", end: "2027-04-01T23:59", label: 正、備取生網路報到, src: "ntu-schedule p1" }
 
@@ -34,11 +34,11 @@ programs:
         quota_note: 正取 66、備取 75；其中資工碩士班 60（備取 60）、人工智慧碩士班 6（備取 15）。最多選兩個志願，依總分及志願序分所錄取
         quota_src: "ntu-905 p1"
         papers:
-          - { name: 英文(A), covers: [EN], weight_pct: 10, note: 以100分命題，成績以10%計算 }
-          - { name: 數學(A)（含線性代數、離散數學）, covers: [LA, DM] }
-          - { name: 計算機結構與作業系統, covers: [CO, OS] }
-          - { name: 資料結構與演算法, covers: [DS, ALG] }
-        papers_note: 筆試佔100%；只明列英文以10%計算，其餘三科比例簡章未明列
+          - { name: 英文(A), covers: [EN], weight_pct: 10, note: 以100分命題，成績以10%計算, period: "1/30 第三節 13:40–15:20" }
+          - { name: 數學(A)（含線性代數、離散數學）, covers: [LA, DM], period: "1/30 第四節 16:00–17:40" }
+          - { name: 計算機結構與作業系統, covers: [CO, OS], period: "1/30 第二節 10:30–12:10" }
+          - { name: 資料結構與演算法, covers: [DS, ALG], period: "1/30 第一節 08:10–09:50" }
+        papers_note: 筆試佔100%；只明列英文以10%計算，其餘三科比例簡章未明列。四科都在 1/30（六），節次見筆試科目節次分配表（ntu-periods p4）
         second_stage: 無（審查、口試皆 0%）
         tie_break: [數學(A), 計算機結構與作業系統, 資料結構與演算法]
   - id: ntu-inm
@@ -53,10 +53,10 @@ programs:
         quota_note: 正取 18、備取 18
         quota_src: "ntu-914 p1"
         papers:
-          - { name: 英文(A), covers: [EN], weight_pct: 10, note: 以100分命題，成績以10%計算 }
-          - { name: 計算機結構與作業系統, covers: [CO, OS] }
-          - { name: 資料結構與演算法, covers: [DS, ALG] }
-        papers_note: 不考數學；其餘兩科比例簡章未明列
+          - { name: 英文(A), covers: [EN], weight_pct: 10, note: 以100分命題，成績以10%計算, period: "1/30 第三節 13:40–15:20" }
+          - { name: 計算機結構與作業系統, covers: [CO, OS], period: "1/30 第二節 10:30–12:10" }
+          - { name: 資料結構與演算法, covers: [DS, ALG], period: "1/30 第一節 08:10–09:50" }
+        papers_note: 不考數學；其餘兩科比例簡章未明列。三科都在 1/30（六），節次見筆試科目節次分配表（ntu-periods p4）
         second_stage: 無
   - id: ntu-ee-sec
     name: 電機工程學系資訊安全碩士班

@@ -12,7 +12,7 @@ schools:
       - { label: 歷年報名人數與錄取情況（同一頁下方）, url: "https://www.aca.ntu.edu.tw/w/aca/LocalAdmissionClass_21072014071675661", kind: stats }
       - { label: 資工系, url: "https://www.csie.ntu.edu.tw", kind: dept }
       - { label: 臺大考古題, url: "https://exam.lib.ntu.edu.tw/graduate", kind: past_exam }
-    watch: 116 簡章已於 115/11/10 公告（https://exam.aca.ntu.edu.tw/grab/Brochure/main 導覽列會寫「116 學年度」；系所分則在 detail.aspx，檔名 116/<代碼>.pdf）。考科節次 11/10 中午起公告於教務處「招生訊息」。錄取情況一覽表約 4 月公告，含最低錄取分數與備取人數。
+    watch: 116 簡章已於 115/11/10 公告（https://exam.aca.ntu.edu.tw/grab/Brochure/main 導覽列會寫「116 學年度」；系所分則在 detail.aspx，檔名 116/<代碼>.pdf）。考科節次表 115/11/10 公告（https://www.aca.ntu.edu.tw/WebUPD/aca/LocalAdmissionClass/116筆試科目節次分配表.pdf；sources/116/ntu-periods.pdf，資工類在第 4 頁）。錄取情況一覽表約 4 月公告，含最低錄取分數與備取人數。
 
   - id: nthu
     name: 國立清華大學
