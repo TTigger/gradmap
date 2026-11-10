@@ -6,8 +6,9 @@ import type { Sel } from "../lib";
 const COLS = ["LA", "DM", "DS", "ALG", "CO", "OS", "EN", "SEC"];
 
 export default function Matrix({ data, nearKin, sel }: { data: Data; nearKin: boolean; sel: Sel }) {
-  const examOf = (r: { school: { status: string; schedule: { type: string; start?: string }[] }; group: { exam_day?: string } }) =>
-    (r.school.status === "verified" ? "0" : "1") + (r.group.exam_day ?? r.school.schedule.find((e) => e.type === "exam")?.start ?? "9");
+  // 不考筆試的組別（exam_day 可能是面試日）照學校筆試日排，和同校其他組放在一起
+  const examOf = (r: { school: { status: string; schedule: { type: string; start?: string }[] }; group: { exam_day?: string }; program: { review_only?: boolean } }) =>
+    (r.school.status === "verified" ? "0" : "1") + ((r.program.review_only ? undefined : r.group.exam_day) ?? r.school.schedule.find((e) => e.type === "exam")?.start ?? "9");
   const list = rows(data, nearKin)
     .filter((r) => sel(r.school.id))
     .filter((r) => r.group.papers.length > 0 || r.program.review_only)
@@ -45,7 +46,7 @@ export default function Matrix({ data, nearKin, sel }: { data: Data; nearKin: bo
                     {p.kind === "near_kin" && <span className="badge nk">近親所</span>}
                   </div>
                   <div className="grp">
-                    {p.kind === "near_kin" || p.name.includes("聯合") || multiProgram(s.id) ? p.name.replace(/^資訊工程學系/, "資工系 ") : g.name}
+                    {p.kind === "near_kin" || p.name.includes("聯合") || multiProgram(s.id) || /^(不分組|一般生|—)$/.test(g.name) ? p.name.replace(/^資訊工程學系/, "資工系 ") : g.name}
                   </div>
                   {!p.review_only && g.papers.filter((pp) => pp.covers.length === 0).map((pp) => (
                     <div key={pp.name} className="mx-broad" title={pp.period}>另考 {pp.name} <b>{weightLabel(pp)}</b></div>

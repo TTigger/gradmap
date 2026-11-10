@@ -33,7 +33,7 @@ export default function PrepPlanner({ data, nearKin, sel, go }: { data: Data; ne
   const Chip = ({ r, extra, note }: { r: Row; extra?: string; note?: string }) => (
     <button className={`pp-chip ${r.program.kind === "near_kin" ? "nk" : ""}`} onClick={() => go({ tab: "compare", focusId: `cmp-${r.group.id}` })}
       title="到比較表看這一組">
-      <b>{r.school.short}</b> {/^(不分組|—)/.test(r.group.name) ? r.program.name : r.group.name}
+      <b>{r.school.short}</b> {/^(不分組|一般生|—)/.test(r.group.name) ? r.program.name : r.group.name}
       {r.school.status === "pending" && <span className="badge ref">{r.school.reference_year} 參考</span>}
       {extra && <small className="pp-miss">差 {extra}</small>}
       {note && <small className="pp-miss">{note}</small>}
