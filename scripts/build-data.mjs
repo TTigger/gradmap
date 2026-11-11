@@ -53,6 +53,8 @@ for (const s of schools) {
       name: nk.name,
       kind: "near_kin",
       stub: true,
+      // 近親所清單寫了 review_method 就是不考筆試：比較表不顯示學校的筆試日與考區
+      ...(nk.review_method ? { review_only: true, review_method: nk.review_method } : {}),
       groups: [{ id: `${s.id}-nk-${nk.name}-g`, name: "—", quota: nk.quota ? { general: nk.quota } : {}, papers: [], papers_note: nk.note }],
     });
   }

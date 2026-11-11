@@ -75,7 +75,7 @@ export default function PrepPlanner({ data, nearKin, sel, go }: { data: Data; ne
         )}
         {reviewOnly.length > 0 && (
           <details>
-            <summary>不考筆試（書審，部分加口試）（{reviewOnly.length}）</summary>
+            <summary>不考筆試（書審，部分加口試或面試）（{reviewOnly.length}）</summary>
             {reviewOnly.map((r) => <Chip key={r.group.id} r={r} note={r.program.review_method} />)}
           </details>
         )}

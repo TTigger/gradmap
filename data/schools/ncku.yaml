@@ -96,8 +96,8 @@ rules:
   interview_src: "p11 / 6"
 
 near_kin:
-  - { name: 醫學資訊研究所, code: "270", quota: 14, note: 不考筆試，審查 50%＋面試 50%（面試 1/15） }
-  - { name: 製造資訊與系統研究所, code: "711–713", quota: 31, note: 不考筆試，審查 40%＋面試 60%（面試 1/14 下午），只能報考一組 }
+  - { name: 醫學資訊研究所, code: "270", quota: 14, review_method: "審查 50%＋面試 50%", note: 不考筆試，審查 50%＋面試 50%（面試 1/15） }
+  - { name: 製造資訊與系統研究所, code: "711–713", quota: 31, review_method: "審查 40%＋面試 60%", note: 不考筆試，審查 40%＋面試 60%（面試 1/14 下午），只能報考一組 }
 
 venue: { city: 臺南／臺北, place: 報名時選臺南或臺北考區；考試地點與試場考前兩週公告在成大招生網頁, src: "p10 / 5", choose: true }
 waitlist_info:
