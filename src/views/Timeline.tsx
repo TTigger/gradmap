@@ -82,6 +82,13 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
             {months.map((mo) => (
               <span key={mo.label + mo.left} className="tl-month" style={{ left: `${mo.left}%` }}>{mo.label}</span>
             ))}
+            {/* 「今天」放在月份列，不會和第一列學校的日期標籤疊在一起 */}
+            {todayLeft >= 0 && todayLeft <= 100 && (
+              <>
+                <span className="tl-today head" style={{ left: `${todayLeft}%` }} />
+                <span className="tl-today-label" style={{ left: `${todayLeft}%` }}>今天 {fmtDayW(toLocalDay(now))}</span>
+              </>
+            )}
           </div>
         </div>
         {sorted.map((s) => (
@@ -90,9 +97,6 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
             <div className="tl-track" role="cell">
               {months.map((mo) => <span key={mo.left} className="tl-grid" style={{ left: `${mo.left}%` }} />)}
               {todayLeft >= 0 && todayLeft <= 100 && <span className="tl-today" style={{ left: `${todayLeft}%` }} />}
-              {s === sorted[0] && todayLeft >= 0 && todayLeft <= 100 && (
-                <span className="tl-today-label" style={{ left: `${todayLeft}%` }}>今天 {fmtDayW(toLocalDay(now))}</span>
-              )}
               {s.schedule.map((e, i) => {
                 if (!show(e.type)) return null;
                 const meta = TYPE_META[e.type];
