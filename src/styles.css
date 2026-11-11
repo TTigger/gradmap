@@ -375,6 +375,7 @@ tr.flash td { animation: flash 2.2s ease-out; }
 .regst { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 6px; white-space: nowrap; }
 .regst.open { background: color-mix(in srgb, var(--c-register) 14%, var(--surface)); color: var(--c-register); }
 .regst.closed { background: var(--fill); color: var(--text-2); }
+.hint.pay-early { color: var(--warn-text); white-space: normal; margin-top: 4px; }
 .mx-broad { margin-top: 4px; font-size: 12px; color: var(--text-2); }
 .mx-broad b { color: var(--text); font-weight: 600; }
 .hist-t { min-width: 820px; }

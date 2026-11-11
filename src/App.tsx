@@ -13,7 +13,7 @@ import PastExams from "./views/PastExams";
 import After from "./views/After";
 import PrepPlanner from "./views/PrepPlanner";
 import Resources from "./views/Resources";
-import { daysUntil, fmtDay, fmtDayW, fmtMD, fmtTime, makeSel, nextDeadlines, regStatus, PHASES, recentChanges, toDate, type Phase } from "./lib";
+import { daysUntil, fmtDay, fmtDayW, fmtMD, fmtTime, makeSel, nextDeadlines, regStatus, PHASES, recentChanges, earlyPayNote, type Phase } from "./lib";
 import Timeline from "./views/Timeline";
 import Calendar from "./views/Calendar";
 import Compare from "./views/Compare";
@@ -161,9 +161,7 @@ export default function App() {
     .map((s) => ({ s, rs: regStatus(s, now) }))
     .flatMap(({ s, rs }) => {
       if (rs?.state !== "open") return [];
-      // 有些學校繳費（取號）比報名登錄早截止，要另外提醒
-      const pay = s.schedule.find((e) => e.type === "payment" && e.end && toDate(e.end) < toDate(rs.end));
-      return [{ s, end: rs.end, days: rs.days, pay }];
+      return [{ s, end: rs.end, days: rs.days, payNote: earlyPayNote(s, rs.end, now) }];
     })
     .sort((a, b) => a.end.localeCompare(b.end));
   const verified = data.schools.filter((s) => s.status === "verified").length;
@@ -264,13 +262,13 @@ export default function App() {
         <section className="open-now" aria-label="現在報名中">
           <b>報名中（{openNow.length} 校）</b>{openNow.length > 1 && <> <span className="on-note">依報名截止時間排序</span></>}
           <ul>
-            {openNow.map(({ s, end, days, pay }) => (
+            {openNow.map(({ s, end, days, payNote }) => (
               <li key={s.id}>
                 <span className="pill">{s.short}</span>
                 <span className="on-end">{fmtDayW(end)} {fmtTime(end)}</span>
                 <span className={days <= 1 ? "on-days soon" : "on-days"}>{days === 0 ? "今天截止" : days === 1 ? "明天截止" : `剩 ${days} 天`}</span>
                 {s.apply ? <a href={s.apply.url} target="_blank" rel="noreferrer">報名入口<Icon name="out" /></a> : <span />}
-                {pay?.end && <span className="on-pay">{pay.label}{toDate(pay.end) < now ? "已截止" : "較早截止"}：{fmtDay(pay.end) === fmtDay(end) ? "當天" : fmtDayW(pay.end)} {fmtTime(pay.end)}</span>}
+                {payNote && <span className="on-pay">{payNote}</span>}
               </li>
             ))}
           </ul>

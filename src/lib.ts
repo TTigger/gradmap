@@ -123,6 +123,14 @@ export function regStatus(s: School, now: Date): { state: "open"; days: number; 
   return { state: "open", days: daysUntil(b, now), end: reg.end };
 }
 
+/** 繳費（取號）步驟比報名登錄早截止時，回傳提醒文字，用簡章原本的步驟名稱；沒有就回傳 null */
+export function earlyPayNote(s: School, regEnd: string, now: Date): string | null {
+  const pay = s.schedule.find((e) => e.type === "payment" && e.end && toDate(e.end) < toDate(regEnd));
+  if (!pay?.end) return null;
+  const day = fmtDay(pay.end) === fmtDay(regEnd) ? "當天" : fmtDayW(pay.end);
+  return `${pay.label}${toDate(pay.end) < now ? "已截止" : "較早截止"}：${day} ${fmtTime(pay.end)}`;
+}
+
 /** 節點篩選：把細的日程類型歸成四大類 */
 export const PHASES = {
   all: { label: "全部節點", types: [] as string[] },

@@ -2,7 +2,7 @@ import Icon from "../Icon";
 import { useState } from "react";
 import { useCopyLink, linkVerb } from "../useCopyLink";
 import type { Data, Row } from "../types";
-import { rows, findEvent, fmtDay, fmtWhen, fmtMD, fmtTime, weightLabel, changesAt, changeTip, regStatus, type Sel } from "../lib";
+import { rows, findEvent, fmtDay, fmtWhen, fmtMD, fmtTime, weightLabel, changesAt, changeTip, regStatus, earlyPayNote, type Sel } from "../lib";
 
 type SortKey = "exam" | "deadline" | "quota" | "school";
 
@@ -65,6 +65,7 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
               const ch = changesAt(s, [`group:${g.id}`, "schedule.register", "schedule.exam", "schedule.result", "fee", "school"], now);
               const star = mine.includes(s.id);
               const rs = regStatus(s, now);
+              const payNote = rs?.state === "open" ? earlyPayNote(s, rs.end, now) : null;
               return (
                 <tr key={g.id} data-focus={`cmp-${g.id}`} className={`${p.kind === "near_kin" ? "nk" : ""} ${ref ? "ref" : ""}`}>
                   <td className="who">
@@ -91,7 +92,8 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                     {g.quota_note && <div className="hint">{g.quota_note}</div>}
                   </td>
                   <td className="nowrap" data-label="報名">{reg ? fmtWhen(reg).split(" – ").map((x, i) => <div key={i}>{i ? "– " : ""}{x}</div>) : "—"}
-                    {rs?.state === "open" && <div className="regst open">報名中・{rs.days === 0 ? `今天 ${fmtTime(rs.end)} 截止` : `${rs.days} 天後截止`}</div>}
+                    {rs?.state === "open" && <div className="regst open">報名中・{rs.days === 0 ? `今天 ${fmtTime(rs.end)} 截止` : rs.days === 1 ? `明天 ${fmtTime(rs.end)} 截止` : `${rs.days} 天後截止`}</div>}
+                    {payNote && <div className="hint pay-early">{payNote}</div>}
                     {rs?.state === "closed" && <div className="regst closed">報名已截止</div>}
                     {!ref && s.apply && rs?.state !== "closed" && (
                       <div className="apply"><a href={s.apply.url} target="_blank" rel="noreferrer">報名入口<Icon name="out" /></a>
