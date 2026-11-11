@@ -86,7 +86,7 @@ schools:
       - { label: 簡章網頁（碩士班考試入學）, url: "https://exam-acad.nsysu.edu.tw/exam_netlist/netlist_main.php?ExmNo=41", kind: admission }
       - { label: 教務處, url: "https://oaa.nsysu.edu.tw/", kind: admission }
       - { label: 資工系, url: "https://cse.nsysu.edu.tw", kind: dept }
-    watch: 116 簡章 115/11/11 前後公告（PDF 修改日 11/4）。公告列表在教務處「碩士班招生考試-最新消息」（頁面由 JavaScript 載入；可直接 POST https://exam-oaa.nsysu.edu.tw/app/showmodule.php?&Lang=zh-tw&Mobile=1&rs=sajaxSubmit&O=1003&F=/3/1003/modules/mobile_rcg_mstr/8/mobile_rcg_mstr-881.htm.zh-tw&Mo=13423&Type=mobile_rcg_mstr&Nbr=881&Seq=881&Cg=cmb 取得列表，更正公告看這裡）。簡章網頁 https://exam-acad.nsysu.edu.tw/exam_netlist/netlist_main.php?ExmNo=41（整份 PDF 連結在頁面上，sources/116/nsysu.pdf；系所筆試節次一覽表 dpt_examdate.php、系所報到日期一覽表 dpt_regdate.php）。電機系丙組（人工智慧與網路組）考資料結構＋離散數學，列為 near_kin。歷年報名人數：最新消息列表有各年度「《碩士班考試入學》招生考試報名人數表」（113–115 已收進 data/history/nsysu.yaml，sources/history/nsysu/）。
+    watch: 116 簡章 115/11/11 前後公告（PDF 修改日 11/4）。公告列表在教務處「碩士班招生考試-最新消息」（頁面由 JavaScript 載入；可直接 POST https://exam-oaa.nsysu.edu.tw/app/showmodule.php?&Lang=zh-tw&Mobile=1&rs=sajaxSubmit&O=1003&F=/3/1003/modules/mobile_rcg_mstr/8/mobile_rcg_mstr-881.htm.zh-tw&Mo=13423&Type=mobile_rcg_mstr&Nbr=881&Seq=881&Cg=cmb 取得列表，更正公告看這裡）。簡章網頁 https://exam-acad.nsysu.edu.tw/exam_netlist/netlist_main.php?ExmNo=41（整份 PDF 連結在頁面上，sources/116/nsysu.pdf；系所筆試節次一覽表 dpt_examdate.php、系所報到日期一覽表 dpt_regdate.php）。電機系丙組（人工智慧與網路組）考資料結構＋離散數學，列為 near_kin。歷年報名人數：最新消息列表有各年度「《碩士班考試入學》招生考試報名人數表」（113–115 已收進 data/history/nsysu.yaml，sources/history/nsysu/）；113、114 名額取自當年簡章 aca_master/<年>ele_brief_41.pdf（115 的已 404）。
 
   - id: ccu
     name: 國立中正大學
