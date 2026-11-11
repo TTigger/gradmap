@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Data } from "../types";
-import { TYPE_META, fmtWhen, verifiedEvents, dayKey, fmtTime, phaseOk, changesAt, changeTip, type Phase, type Sel } from "../lib";
+import { TYPE_META, fmtWhen, verifiedEvents, dayKey, fmtTime, phaseOk, changesAt, changeTip, type Phase, type Sel, srcLabel } from "../lib";
 
 interface Chip { key: string; focus: string; text: string; color: string; tip: string; strong: boolean; changed: boolean }
 
@@ -20,7 +20,7 @@ export default function Calendar({ data, now, sel, phase, focusDate, focusN }: P
       const color = TYPE_META[e.type].color;
       const ch = changesAt(e.school, `schedule.${e.type}`, now);
       const changed = ch.length > 0;
-      const tip = `${e.school.short}｜${e.label}\n${fmtWhen(e)}${e.note ? "\n" + e.note : ""}\n來源 ${e.src}${changed ? "\n⚠️ " + changeTip(ch) : ""}`;
+      const tip = `${e.school.short}｜${e.label}\n${fmtWhen(e)}${e.note ? "\n" + e.note : ""}\n來源 ${srcLabel(e.src)}${changed ? "\n⚠️ " + changeTip(ch) : ""}`;
       const strong = e.type === "exam" || e.type === "result";
       const t = (s: string) => (fmtTime(s) && fmtTime(s) !== "00:00" ? ` ${fmtTime(s)}` : "");
       if (e.start && e.end && dayKey(e.start) !== dayKey(e.end)) {

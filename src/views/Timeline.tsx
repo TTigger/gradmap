@@ -1,6 +1,6 @@
 import Icon from "../Icon";
 import type { Data, School } from "../types";
-import { TYPE_META, fmtWhen, toDate, fmtDay, fmtDayW, fmtMD, phaseOk, changesAt, changeTip, type Phase, type Sel } from "../lib";
+import { TYPE_META, fmtWhen, toDate, fmtDay, fmtDayW, fmtMD, phaseOk, changesAt, changeTip, type Phase, type Sel, srcLabel } from "../lib";
 
 const DAY = 86400000;
 
@@ -97,7 +97,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
                 if (!show(e.type)) return null;
                 const meta = TYPE_META[e.type];
                 const ch = changesAt(s, `schedule.${e.type}`, now);
-                const tip = `${s.short}｜${e.label}\n${fmtWhen(e)}${e.note ? "\n" + e.note : ""}\n來源 ${e.src}${ch.length ? "\n⚠️ " + changeTip(ch) : ""}`;
+                const tip = `${s.short}｜${e.label}\n${fmtWhen(e)}${e.note ? "\n" + e.note : ""}\n來源 ${srcLabel(e.src)}${ch.length ? "\n⚠️ " + changeTip(ch) : ""}`;
                 const cc = ch.length ? " changed" : "";
                 if (e.type === "register" && e.start && e.end) {
                   return (
@@ -163,7 +163,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
                     <td className="nowrap"><b>{fmtDayW(x.day)}</b>{gap != null && <div className="hint">{gap === 0 ? "和上一場同一天" : gap === 1 ? "上一場的隔天" : `距上一場 ${gap} 天`}</div>}</td>
                     <td className="nowrap"><b>{x.s.short}</b></td>
                     <td>
-                      {x.s.venue ? <><b>{x.s.venue.city}</b>　{x.s.venue.place}<span className="hint"> · 簡章 {x.s.venue.src}</span></> : <span className="hint">考場待公告</span>}
+                      {x.s.venue ? <><b>{x.s.venue.city}</b>　{x.s.venue.place}<span className="hint"> · 簡章 {srcLabel(x.s.venue.src)}</span></> : <span className="hint">考場待公告</span>}
                     </td>
                   </tr>
                 );
@@ -187,7 +187,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
                     <span className="tag" style={{ borderColor: TYPE_META[e.type].color, color: TYPE_META[e.type].color }}>{TYPE_META[e.type].label}</span>
                     <span className="when">{fmtWhen(e)}</span>
                     <span className="what">{e.label}{e.note && <small> · {e.note}</small>}</span>
-                    <a className="src" href={s.brochure.url} target="_blank" rel="noreferrer" title={s.brochure.title}>{e.src}</a>
+                    <a className="src" href={s.brochure.url} target="_blank" rel="noreferrer" title={s.brochure.title}>{srcLabel(e.src)}</a>
                   </li>
                 ))}
               </ul>

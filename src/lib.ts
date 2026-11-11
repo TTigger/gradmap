@@ -123,6 +123,12 @@ export function regStatus(s: School, now: Date): { state: "open"; days: number; 
   return { state: "open", days: daysUntil(b, now), end: reg.end };
 }
 
+/** 頁碼來源給人看：台大簡章按檔案分，資料裡用檔名（ntu-common p1），顯示時換成檔案名稱 */
+const SRC_FILES: Record<string, string> = { "ntu-schedule": "重要日程表", "ntu-common": "共同規定", "ntu-periods": "筆試節次表" };
+export function srcLabel(src: string): string {
+  return src.replace(/\bntu-([a-z]+|\d{3})\b/g, (m, x: string) => SRC_FILES[m] ?? (/^\d{3}$/.test(x) ? `${x} 系所分則` : m));
+}
+
 /** 繳費（取號）步驟比報名登錄早截止時，回傳提醒文字，用簡章原本的步驟名稱；沒有就回傳 null */
 export function earlyPayNote(s: School, regEnd: string, now: Date): string | null {
   const pay = s.schedule.find((e) => e.type === "payment" && e.end && toDate(e.end) < toDate(regEnd));

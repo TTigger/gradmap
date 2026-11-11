@@ -38,7 +38,7 @@ programs:
           - { name: 數學(A)（含線性代數、離散數學）, covers: [LA, DM], period: "1/30 第四節 16:00–17:40" }
           - { name: 計算機結構與作業系統, covers: [CO, OS], period: "1/30 第二節 10:30–12:10" }
           - { name: 資料結構與演算法, covers: [DS, ALG], period: "1/30 第一節 08:10–09:50" }
-        papers_note: 筆試佔100%；只明列英文以10%計算，其餘三科比例簡章未明列。四科都在 1/30（六），節次見筆試科目節次分配表（ntu-periods p4）
+        papers_note: 筆試佔100%；只明列英文以10%計算，其餘三科比例簡章未明列。四科都在 1/30（六），節次見筆試科目節次分配表（p4）
         second_stage: 無（審查、口試皆 0%）
         tie_break: [數學(A), 計算機結構與作業系統, 資料結構與演算法]
   - id: ntu-inm
@@ -56,7 +56,7 @@ programs:
           - { name: 英文(A), covers: [EN], weight_pct: 10, note: 以100分命題，成績以10%計算, period: "1/30 第三節 13:40–15:20" }
           - { name: 計算機結構與作業系統, covers: [CO, OS], period: "1/30 第二節 10:30–12:10" }
           - { name: 資料結構與演算法, covers: [DS, ALG], period: "1/30 第一節 08:10–09:50" }
-        papers_note: 不考數學；其餘兩科比例簡章未明列。三科都在 1/30（六），節次見筆試科目節次分配表（ntu-periods p4）
+        papers_note: 不考數學；其餘兩科比例簡章未明列。三科都在 1/30（六），節次見筆試科目節次分配表（p4）
         second_stage: 無
   - id: ntu-ee-sec
     name: 電機工程學系資訊安全碩士班
@@ -79,7 +79,7 @@ programs:
     review_only: true
     review_method: "書審 40%＋口試 60%"
     url: https://eecs.ntu.edu.tw/giai
-    notes: [116 年 8 月起成立運作（ntu-919 p1）；與資工系聯招裡的 905B「人工智慧碩士班」分開招生、各自報名]
+    notes: [116 年 8 月起成立運作（919 系所分則 p1）；與資工系聯招裡的 905B「人工智慧碩士班」分開招生、各自報名]
     groups:
       - id: ntu-giai-919
         name: 不分組

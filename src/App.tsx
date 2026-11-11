@@ -13,7 +13,7 @@ import PastExams from "./views/PastExams";
 import After from "./views/After";
 import PrepPlanner from "./views/PrepPlanner";
 import Resources from "./views/Resources";
-import { daysUntil, fmtDay, fmtDayW, fmtMD, fmtTime, makeSel, nextDeadlines, regStatus, PHASES, recentChanges, earlyPayNote, type Phase } from "./lib";
+import { daysUntil, fmtDay, fmtDayW, fmtMD, fmtTime, makeSel, nextDeadlines, regStatus, PHASES, recentChanges, earlyPayNote, type Phase, srcLabel } from "./lib";
 import Timeline from "./views/Timeline";
 import Calendar from "./views/Calendar";
 import Compare from "./views/Compare";
@@ -299,7 +299,7 @@ export default function App() {
                 {lastSeen && c.date > lastSeen && <span className="badge new">新</span>}
                 <span className="pill">{c.school.short}</span> {fmtDayW(c.date)}：{c.what}
                 {c.before && <small>（原：{c.before}{c.after ? ` → ${c.after}` : ""}）</small>}
-                <a href={c.school.brochure.url} target="_blank" rel="noreferrer" className="src"> 來源 {c.src}<Icon name="out" /></a>
+                <a href={c.school.brochure.url} target="_blank" rel="noreferrer" className="src"> 來源 {srcLabel(c.src)}<Icon name="out" /></a>
               </li>
             ))}
           </ul>

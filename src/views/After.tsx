@@ -1,6 +1,6 @@
 import Icon from "../Icon";
 import type { Data, School } from "../types";
-import { TYPE_META, fmtWhen, toDate, type Sel } from "../lib";
+import { TYPE_META, fmtWhen, toDate, type Sel, srcLabel } from "../lib";
 import { useCopyLink, linkVerb } from "../useCopyLink";
 
 const TYPES = ["result", "regrade", "enroll", "waitlist"] as const;
@@ -50,7 +50,7 @@ export default function After({ data, now, sel }: { data: Data; now: Date; sel: 
                   <p>{w.how}</p>
                   {w.deadline && <p className="hint">遞補截止：{w.deadline}</p>}
                   {w.where && <a href={w.where.url} target="_blank" rel="noreferrer">{w.where.label}<Icon name="out" /></a>}
-                  <span className="hint"> · 簡章 {w.src}</span>
+                  <span className="hint"> · 簡章 {srcLabel(w.src)}</span>
                 </div>
               ) : (
                 <p className="hint">{ref ? "116 簡章公告後補上遞補規則。" : "簡章沒有另外寫遞補方式，請看系所網頁。"}</p>
