@@ -116,6 +116,8 @@ const updates = fs.existsSync(updatesPath) ? yaml.load(fs.readFileSync(updatesPa
     if (!/^\d{4}-\d{2}-\d{2}$/.test(u.date ?? "")) bad.push(`updates.yaml: 日期格式應為 YYYY-MM-DD（${u.text}）`);
     if (!["new", "change", "info"].includes(u.kind)) bad.push(`updates.yaml: kind 只能是 new／change／info（${u.text}）`);
     if (!u.text) bad.push("updates.yaml: 有一筆沒有 text");
+    // 不加引號的 text 裡若有半形逗號（如 1,376），YAML 會把後半段切成另一個空的欄位，網站上文字被截斷
+    for (const k of Object.keys(u)) if (!["date", "kind", "schools", "text"].includes(k)) bad.push(`updates.yaml: 多出欄位「${k}」（text 有半形逗號時要加引號）：${u.text}`);
     for (const id of u.schools ?? []) if (!ids.has(id)) bad.push(`updates.yaml: 未知學校 ${id}`);
   }
   if (bad.length) { console.error(bad.join("\n")); process.exit(1); }

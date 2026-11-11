@@ -108,8 +108,6 @@ export default function History({ data, sel, go }: { data: Data; sel: Sel; go: (
                 <tbody>
                   {recs.map((x, i) => {
                     const rt = rate(x);
-                    const sid = x.src.split(" ")[0];
-                    const src = h.sources[sid];
                     return (
                       <tr key={i} className={x.program.includes("近親所") ? "nk" : ""}>
                         <td className="who">
@@ -129,12 +127,22 @@ export default function History({ data, sel, go }: { data: Data; sel: Sel; go: (
                           {x.min_score_note && <div className="hint">{x.min_score_note}</div>}
                         </td>
                         <td>
-                          {src ? (
-                            <a href={src.url} target="_blank" rel="noreferrer" title={src.title}>
-                              <span className={`grade g${src.grade}`}>{src.grade}</span> {x.src.slice(sid.length).trim() || "原始資料"}<Icon name="out" />
-                            </a>
-                          ) : x.src}
-                          {src?.checked && <span className="verified"> 查證 {fmtMD(src.checked)}</span>}
+                          {/* 一筆資料可引用多個來源，用「；」分開，例如報名人數表＋當年簡章 */}
+                          {x.src.split("；").map((part, j, all) => {
+                            const id = part.trim().split(" ")[0];
+                            const so = h.sources[id];
+                            const where = part.trim().slice(id.length).trim();
+                            return (
+                              <div key={j} className="src-ref">
+                                {so ? (
+                                  <a href={so.url} target="_blank" rel="noreferrer" title={so.title}>
+                                    <span className={`grade g${so.grade}`}>{so.grade}</span> {all.length > 1 && so.label ? `${so.label} ` : ""}{where || "原始資料"}<Icon name="out" />
+                                  </a>
+                                ) : part}
+                                {so?.checked && <span className="verified"> 查證 {fmtMD(so.checked)}</span>}
+                              </div>
+                            );
+                          })}
                           {x.note && <div className="hint">{x.note}</div>}
                         </td>
                       </tr>

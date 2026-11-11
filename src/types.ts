@@ -154,7 +154,7 @@ export interface HistoryRecord {
 }
 export interface HistorySchool {
   school: string;
-  sources: Record<string, { title: string; url: string; grade: "A" | "B"; checked?: string }>;
+  sources: Record<string, { title: string; url: string; grade: "A" | "B"; checked?: string; /** 一筆資料引用多個來源時，連結前的短名稱（如「簡章」） */ label?: string }>;
   records: HistoryRecord[];
   published: string; // 這所學校官方公開了哪些統計（給使用者看）
 }
