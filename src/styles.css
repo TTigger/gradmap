@@ -585,11 +585,24 @@ tr.flash td { animation: flash 2.2s ease-out; }
 .verified a:hover { text-decoration: underline; }
 
 /* 最近更新 */
-.open-now { display: flex; gap: 6px 14px; flex-wrap: wrap; align-items: baseline; background: var(--surface); border-radius: var(--radius); padding: 12px 20px; margin-bottom: 12px; font-size: 15px; }
+.open-now { background: var(--surface); border-radius: var(--radius); padding: 12px 20px; margin-bottom: 12px; font-size: 15px; }
 .open-now > b { color: var(--c-register); }
-.open-now ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 16px; }
-.open-now li { color: var(--text-2); }
-.open-now .pill { color: var(--text); }
+.open-now .on-note { font-size: 13px; color: var(--text-2); }
+/* 多校同時報名時對齊成欄：校名｜截止｜剩幾天｜入口 */
+.open-now ul { list-style: none; margin: 6px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 0 16px; align-items: baseline; }
+.open-now li { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: baseline; padding: 3px 0; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.open-now li + li { border-top: 1px solid var(--line); }
+.open-now .pill { color: var(--text); font-weight: 600; white-space: nowrap; }
+.open-now .on-end, .open-now .on-days { white-space: nowrap; }
+.open-now .on-days { font-size: 13px; }
+.open-now .on-days.soon { color: var(--c-register); font-weight: 600; }
+.open-now li > a { white-space: nowrap; justify-self: end; }
+.open-now .on-pay { grid-column: 2 / -1; contain: inline-size; font-size: 13px; color: var(--warn-text); }
+@media (max-width: 420px) {
+  .open-now { padding: 12px 16px; }
+  .open-now ul { gap: 0 8px; }
+  .open-now .on-end { font-size: 14px; }
+}
 .updates { background: var(--surface); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; font-size: 15px; }
 .updates ul { margin: 6px 0 0; padding: 0; list-style: none; }
 .updates li { display: flex; gap: 12px; padding: 3px 0; }
