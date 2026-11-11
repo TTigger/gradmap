@@ -33,6 +33,7 @@ programs:
         quota: { general: 66 }
         quota_note: 正取 66、備取 75；其中資工碩士班 60（備取 60）、人工智慧碩士班 6（備取 15）。最多選兩個志願，依總分及志願序分所錄取
         quota_src: "ntu-905 p1"
+        exam_day: "2027-01-30"
         papers:
           - { name: 英文(A), covers: [EN], weight_pct: 10, note: 以100分命題，成績以10%計算, period: "1/30 第三節 13:40–15:20" }
           - { name: 數學(A)（含線性代數、離散數學）, covers: [LA, DM], period: "1/30 第四節 16:00–17:40" }
@@ -52,6 +53,7 @@ programs:
         quota: { general: 18 }
         quota_note: 正取 18、備取 18
         quota_src: "ntu-914 p1"
+        exam_day: "2027-01-30"
         papers:
           - { name: 英文(A), covers: [EN], weight_pct: 10, note: 以100分命題，成績以10%計算, period: "1/30 第三節 13:40–15:20" }
           - { name: 計算機結構與作業系統, covers: [CO, OS], period: "1/30 第二節 10:30–12:10" }

@@ -107,7 +107,7 @@ export default function Compare({ data, now, nearKin, sel, mine, setMine }: {
                     </>
                   ) : (
                     <>
-                      {g.exam_day ? fmtDay(g.exam_day) : exam?.start ? fmtWhen(exam) : "—"}
+                      {g.exam_day ? fmtDay(g.exam_day) : exam?.start ? fmtWhen(exam).split(" – ").map((x, i) => <div key={i}>{i ? "– " : ""}{x}</div>) : "—"}
                       {s.venue && <div className="hint" title={s.venue.place}><Icon name="pin" /> {s.venue.city}{s.venue.choose ? "（可選）" : ""}</div>}
                     </>
                   )}</td>
