@@ -1,7 +1,24 @@
 school: nsysu
-sources: {}
-records: []
+sources:
+  r113: { title: 國立中山大學113學年度碩士班考試入學招生考試報名人數表, url: "https://oaa.nsysu.edu.tw/static/file/3/1003/attach/54/pta_201209_2139506_37603.pdf", grade: A, checked: "2026-11-11" }
+  r114: { title: 國立中山大學114學年度碩士班考試入學招生考試報名人數表, url: "https://oaa.nsysu.edu.tw/static/file/3/1003/attach/78/pta_219489_1482804_19917.pdf", grade: A, checked: "2026-11-11" }
+  r115: { title: 國立中山大學115學年度碩士班考試入學招生考試報名人數表, url: "https://oaa.nsysu.edu.tw/static/file/3/1003/attach/94/pta_236860_1850500_62490.pdf", grade: A, checked: "2026-11-11" }
+# 報名人數表分高雄、臺北考區；這裡取「各組分計」與「各組總計」。組名沿用當年表上的甲組／乙組
+records:
+  - { main: true, year: 115, program: 資訊工程學系, group: 甲乙組合計, applicants: 1440, src: r115 p1, note: 甲組 1376、乙組 64 }
+  - { year: 115, program: 資訊工程學系, group: 甲組, applicants: 1376, src: r115 p1, note: 高雄考區 369、臺北考區 1007 }
+  - { year: 115, program: 資訊工程學系, group: 乙組, applicants: 64, src: r115 p1 }
+  - { year: 115, program: 資訊工程學系資訊安全碩士班（近親所）, applicants: 43, src: r115 p1 }
+  - { main: true, year: 114, program: 資訊工程學系, group: 甲乙組合計, applicants: 1698, src: r114 p1, note: 甲組 1575、乙組 123 }
+  - { year: 114, program: 資訊工程學系, group: 甲組, applicants: 1575, src: r114 p1, note: 高雄考區 512、臺北考區 1063 }
+  - { year: 114, program: 資訊工程學系, group: 乙組, applicants: 123, src: r114 p1 }
+  - { year: 114, program: 資訊工程學系資訊安全碩士班（近親所）, applicants: 52, src: r114 p1 }
+  - { main: true, year: 113, program: 資訊工程學系, group: 甲乙組合計, applicants: 1583, src: r113 p1, note: 甲組 1386、乙組 197 }
+  - { year: 113, program: 資訊工程學系, group: 甲組, applicants: 1386, src: r113 p1, note: 高雄考區 511、臺北考區 875 }
+  - { year: 113, program: 資訊工程學系, group: 乙組, applicants: 197, src: r113 p1 }
+  - { year: 113, program: 資訊工程學系資訊安全碩士班（近親所）, applicants: 66, src: r113 p1 }
 # published：給使用者看的一句話（官方公開了什麼）；todo：給排程查核看的待辦，不會出現在網站上
-published: 目前沒有找到官方公開的碩士班考試統計。
+published: 中山公布各系所組的碩士班考試報名人數（分高雄、臺北考區）；目前沒有找到官方公布的錄取人數與最低錄取分數。
 todo:
-  - 找官方「碩士班考試 報名人數統計」或「錄取統計」：113–115 報名人數、名額、錄取人數、備取人數、最低錄取分數。位置提示見 data/registry.yaml 的 watch。
+  - 113–115 名額可從當年簡章補；錄取人數、最低錄取分數官方未公布（教務處「碩士班招生考試-最新消息」只有報名人數表，112 以前也有）
+  - 116 報名截止後（12/17 之後）看最新消息的「116學年度《碩士班考試入學》招生考試報名人數表」
