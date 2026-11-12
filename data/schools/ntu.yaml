@@ -19,7 +19,9 @@ schedule:
   - { type: admit_card, start: "2027-01-13", label: 准考證開放列印（不寄發）, src: "ntu-schedule p1" }
   - { type: exam, start: "2027-01-30", end: "2027-01-31", label: 筆試, note: 資工聯招、網媒所的筆試都在第一天 1/30（六）, src: "ntu-schedule p1；ntu-periods p4" }
   - { type: result, start: "2027-03-10T12:00", label: 第1梯次放榜（資工、網媒、資安、人工智慧所）, src: "ntu-schedule p1" }
-  - { type: enroll, start: "2027-03-30T10:00", end: "2027-04-01T23:59", label: 正、備取生網路報到, src: "ntu-schedule p1" }
+  - { type: regrade, end: "2027-03-12", label: 成績複查申請截止（第1梯次放榜者，郵戳為憑）, src: "ntu-common p9；ntu-schedule p1" }
+  - { type: enroll, start: "2027-03-30T10:00", end: "2027-04-01T23:59", label: 正、備取生網路報到, note: 到「碩士班招生考試報到系統」辦理；同時正（備）取多個系所組要登記分發志願順序，送出後不能改, src: "ntu-schedule p1；ntu-common p8" }
+  - { type: waitlist, start: "2027-04-09", label: 公布正取生報到及備取生遞補錄取情況（掛號寄遞補錄取通知書）, src: "ntu-common p9" }
 
 programs:
   - id: ntu-csie
@@ -95,3 +97,9 @@ programs:
         tie_break: [口試成績, 審查成績]
 
 venue: { city: 臺北／臺南, place: 報名時選臺北或臺南考區（臺南考區座位有限，中部以北建議選臺北）, src: "ntu-common p1", choose: true }
+waitlist_info:
+  alert: 正、備取生都要在 3/30 10:00–4/1 23:59 上網報到；沒報到的正取生取消入學資格、備取生取消遞補資格
+  how: 4/9 的遞補結果公布在教務處網站「招生訊息」；之後再有缺額，依考生登記的志願順序再遞補並個別通知。新生註冊截止後改用電話、email 或簡訊通知，24 小時沒回應視同放棄。資工聯招（905）兩所的缺額，只由把該所填為第一志願的備取生依總分遞補
+  where: { label: 台大碩士班招生網, url: "https://exam.aca.ntu.edu.tw/grab/" }
+  deadline: 依序遞補至開學日前
+  src: "ntu-common p8；ntu-common p9；ntu-905 p1"
