@@ -75,6 +75,7 @@ venue: { city: 臺中／臺北, place: 報名時選考區：臺中考區（中�
 waitlist_info:
   alert: 正取、備取生都要在 3/8–3/15 上網登記入學意願，學校不另通知，沒登記就取消資格
   how: 3/17 公告【新生名單】及【遞補順序名單】；之後有人放棄，依遞補順序名單遞補並在系所網頁公告
-  where: { label: 中興招生資訊網, url: "https://recruit.nchu.edu.tw/" }
+  # where：簡章 p14 寫遞補期間要自己到各招生系所網頁查最新遞補訊息
+  where: { label: 中興資工系・招生公告（碩博）, url: "https://cs.nchu.edu.tw/p/403-1002-62.php?Lang=zh-tw" }
   deadline: 遞補至 116 學年度第 1 學期開始上課日
   src: "p3 / 4；p14"
