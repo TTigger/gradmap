@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef, useState } from "react";
 import Icon from "../Icon";
 import type { Data, School } from "../types";
 import { TYPE_META, fmtWhen, toDate, fmtDay, fmtDayW, fmtMD, phaseOk, changesAt, changeTip, type Phase, type Sel, srcLabel } from "../lib";
@@ -5,6 +6,18 @@ import { TYPE_META, fmtWhen, toDate, fmtDay, fmtDayW, fmtMD, phaseOk, changesAt,
 const DAY = 86400000;
 
 export default function Timeline({ data, now, school, sel, phase }: { data: Data; now: Date; school: string; sel: Sel; phase: Phase }) {
+  // 手機寬度時間軸要左右滑：今天已經離開開頭那一段（1 月後），開啟時自動捲到今天附近，左邊留一點前面的日期
+  const tlRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const dayKey = now.toDateString();
+  useLayoutEffect(() => {
+    const el = tlRef.current, mark = el?.querySelector<HTMLElement>(".tl-head .tl-today");
+    if (!el || !mark || el.scrollWidth <= el.clientWidth) { setScrolled(false); return; }
+    const name = el.querySelector<HTMLElement>(".tl-head .tl-name")?.offsetWidth ?? 0;
+    const x = mark.getBoundingClientRect().left - el.getBoundingClientRect().left + el.scrollLeft - name;
+    const target = Math.round(x - (el.clientWidth - name) * 0.25);
+    if (target > 0) { el.scrollLeft = target; setScrolled(true); } else setScrolled(false);
+  }, [school, dayKey]);
   const allVerified = data.schools.filter((s) => s.status === "verified");
   const schools = allVerified.filter((s) => sel(s.id));
   if (!schools.length)
@@ -74,8 +87,8 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
         <span><i className="sw bar" style={{ background: TYPE_META.enroll.color }} />報到／備取</span>
       </div>
 
-      <p className="tl-swipe" aria-hidden="true">往右滑，看考試、放榜和報到 →</p>
-      <div className="tl" role="table" aria-label="各校時間軸">
+      <p className="tl-swipe" aria-hidden="true">{scrolled ? "← 往左滑看前面的日期，往右滑看後面的日期 →" : "往右滑，看考試、放榜和報到 →"}</p>
+      <div className="tl" ref={tlRef} role="table" aria-label="各校時間軸">
         <div className="tl-head" role="row">
           <div className="tl-name" role="columnheader"><span className="sr-only">學校</span></div>
           <div className="tl-track" role="columnheader" aria-label="月份">
