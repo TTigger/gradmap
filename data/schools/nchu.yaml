@@ -6,8 +6,10 @@ exam_type: 一般考試
 status: verified
 brochure:
   title: 國立中興大學116學年度碩士班考試入學招生簡章
-  url: https://recruit.nchu.edu.tw/grade-exam/master/116/116M_PAPER.pdf
-  verified: "2026-10-31"
+  url: https://recruit.nchu.edu.tw/grade-exam/master/116/116M_PAPER1031.pdf
+  url_note: 簡章網頁 https://recruit.nchu.edu.tw/grade-exam/master/116/116M_PAPER.aspx （另有重要日程表、筆試時間表）
+  # 原檔 116M_PAPER.pdf 已撤下（11/13 起 404）；新檔已併入 11/4 更正（有招在職生的系所要繳工作年資證明），資工系頁面（p42）與本檔引用的其他頁文字相同
+  verified: "2026-11-13"
   page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」
 fee: { amount: 1500, note: 每報考一個系組各自報名、各自繳費, src: "p7 / 3" , waiver: "低收入戶全免、中低收入戶減免 60%（限一系所；先繳費，12/31 前郵寄申請退費）", waiver_src: "p8 / 4、p71 / 67" }
 apply: { url: "https://recruit.nchu.edu.tw/", how: "招生資訊網（報名網址同招生資訊網）", src: "p3；p6 / 2" }
