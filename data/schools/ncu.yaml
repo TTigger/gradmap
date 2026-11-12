@@ -33,7 +33,7 @@ schedule:
   - { type: exam, start: "2027-01-29", label: 筆試（資工類）, src: "p8 / 4" }
   - { type: result, start: "2027-02-18T16:00", label: 初試放榜（資工無複試）, src: "p2" }
   - { type: regrade, start: "2027-02-18", end: "2027-02-24", label: 成績複查, src: "p2" }
-  - { type: waitlist, end: "2027-03-05", label: 備取意願調查回覆表寄出截止（郵戳為憑）, src: "p30 / 26",
+  - { type: waitlist, end: "2027-03-05", label: 備取意願調查回覆表寄出截止（郵戳為憑）, short: 備取意願回覆表寄出截止, src: "p30 / 26",
       note: 沒寄回視同放棄備取資格 }
   - { type: enroll, start: "2027-03-15", end: "2027-03-19", label: 正取生報到, src: "p30 / 26" }
 

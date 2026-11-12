@@ -91,15 +91,21 @@ function untilOf(s: string): Date {
 }
 
 export function nextDeadlines(data: Data, now: Date, n = 4, sel: (id: string) => boolean = () => true) {
-  const perSchool: { when: Date; text: string; school: School; kind: "open" | "close" | "exam" }[] = [];
+  type Kind = "open" | "close" | "exam" | "result";
+  const perSchool: { when: Date; text: string; school: School; kind: Kind }[] = [];
   for (const s of data.schools.filter((x) => x.status === "verified" && sel(x.id))) {
     const reg = s.schedule.find((e) => e.type === "register");
     const exam = s.schedule.find((e) => e.type === "exam");
+    const result = s.schedule.find((e) => e.type === "result");
+    // 考完以後：放榜，以及放榜後要自己完成的報到／意願登記（有截止時間的才算）
+    const steps = s.schedule.filter((e) => (e.type === "enroll" || e.type === "waitlist") && e.end);
     const cands = [
       reg?.start && { when: toDate(reg.start), until: untilOf(reg.start), text: "開放報名", kind: "open" as const },
       reg?.end && { when: toDate(reg.end), until: untilOf(reg.end), text: "報名截止", kind: "close" as const },
       exam?.start && { when: toDate(exam.start), until: untilOf(exam.start), text: "考試", kind: "exam" as const },
-    ].filter(Boolean) as { when: Date; until: Date; text: string; kind: "open" | "close" | "exam" }[];
+      result?.start && { when: toDate(result.start), until: untilOf(result.start), text: "放榜", kind: "result" as const },
+      ...steps.map((e) => ({ when: toDate(e.end!), until: untilOf(e.end!), text: e.short ?? (e.type === "enroll" ? "報到截止" : "備取手續截止"), kind: "close" as const })),
+    ].filter(Boolean) as { when: Date; until: Date; text: string; kind: Kind }[];
     const next = cands.filter((c) => c.until >= now).sort((a, b) => +a.when - +b.when)[0];
     if (next) perSchool.push({ when: next.when, text: next.text, kind: next.kind, school: s });
   }

@@ -7,6 +7,8 @@ export interface ScheduleEvent {
   start?: string;
   end?: string;
   label: string;
+  /** 首頁倒數卡片用的短名稱（放榜後的報到／意願登記；不寫就用「報到截止」「備取手續截止」） */
+  short?: string;
   note?: string;
   src: string;
   year?: number;

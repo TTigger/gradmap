@@ -21,9 +21,9 @@ schedule:
   - { type: exam, start: "2027-02-13", label: 筆試（資工系只考 2/13）, note: 全校筆試 2/13–2/14, src: "p7 / 6" }
   - { type: result, start: "2027-03-09T12:00", label: 放榜（資工屬第一梯次）, src: "p52 / 51" }
   - { type: regrade, start: "2027-03-09T12:00", end: "2027-03-18T17:00", label: 成績複查（第一梯次）, src: "p4 / 3" }
-  - { type: enroll, start: "2027-03-25T12:00", end: "2027-04-08T17:00", label: 正取生上網填報到資料、備取生填候補意願, src: "p4 / 3" }
+  - { type: enroll, start: "2027-03-25T12:00", end: "2027-04-08T17:00", label: 正取生上網填報到資料、備取生填候補意願, short: 報到資料／候補意願截止, src: "p4 / 3" }
   - { type: waitlist, start: "2027-04-13", label: 備取生候補名單公告, src: "p22 / 21" }
-  - { type: enroll, end: "2027-04-15", label: 正取生通訊報到, src: "p4 / 3" }
+  - { type: enroll, end: "2027-04-15", label: 正取生通訊報到, short: 正取生通訊報到截止, src: "p4 / 3" }
   - { type: waitlist, start: "2027-04-20", label: 第一次遞補公告（之後依簡章日期，最後一次 8/10）, src: "p22 / 21" }
 
 programs:

@@ -21,9 +21,9 @@ schedule:
   - { type: exam, start: "2027-01-27", label: 筆試（資工所：數學、軟體設計、計算機系統）, note: 嘉義考區（中正大學）或臺北考區（政治大學）, src: "p2 / 日程表" }
   - { type: result, start: "2027-03-12", label: 放榜（第二次榜示：只考筆試的系所，含資工所）, src: "p2 / 日程表" }
   - { type: regrade, start: "2027-03-16T17:00", label: 筆試成績複查申請截止（上網申請）, src: "p2 / 日程表" }
-  - { type: waitlist, start: "2027-03-18T09:00", end: "2027-03-22T17:00", label: 正、備取生上網登記報到意願（沒登記視同放棄）, src: "p2 / 日程表" }
+  - { type: waitlist, start: "2027-03-18T09:00", end: "2027-03-22T17:00", label: 正、備取生上網登記報到意願（沒登記視同放棄）, short: 報到意願登記截止, src: "p2 / 日程表" }
   - { type: other, start: "2027-03-25", label: 公告「可報到考生名單」與「待遞補名單」, src: "p2 / 日程表" }
-  - { type: enroll, start: "2027-04-08", end: "2027-04-09", label: 可報到名單內的正、備取生到系所現場驗證、報到（擇一日）, src: "p2 / 日程表" }
+  - { type: enroll, start: "2027-04-08", end: "2027-04-09", label: 可報到名單內的正、備取生到系所現場驗證、報到（擇一日）, short: 現場驗證報到截止, src: "p2 / 日程表" }
 
 programs:
   - id: ccu-cs

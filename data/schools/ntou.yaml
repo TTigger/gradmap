@@ -20,7 +20,7 @@ schedule:
   - { type: exam, start: "2027-03-06T09:00", label: 面試（資工系不考筆試）, note: 地點資工系系館；面試順序前一天在系網公告, src: "p17 / 13；p7 / 3；p31 / 27" }
   - { type: result, start: "2027-03-25T12:00", label: 放榜, src: "p18 / 14；p5 / 1" }
   - { type: regrade, end: "2027-03-29", label: 成績複查截止（郵戳為憑）, src: "p19 / 15；p5 / 1" }
-  - { type: enroll, start: "2027-03-26T08:00", end: "2027-04-09T17:00", label: 正備取生網路登記就讀意願（正取生並簽署就讀意願書）, src: "p19 / 15；p5 / 1" }
+  - { type: enroll, start: "2027-03-26T08:00", end: "2027-04-09T17:00", label: 正備取生網路登記就讀意願（正取生並簽署就讀意願書）, short: 就讀意願登記截止, src: "p19 / 15；p5 / 1" }
   - { type: waitlist, start: "2027-04-15T12:00", label: 公告遞補順序名單, src: "p19 / 15；p5 / 1" }
   - { type: other, start: "2027-06-29", label: 錄取生向系所繳驗學歷證件, src: "p19 / 15；p5 / 1" }
 

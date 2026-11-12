@@ -113,6 +113,7 @@ input[type="checkbox"] { accent-color: var(--link); width: 16px; height: 16px; m
 .next-item.first .next-days b { color: var(--link); }
 .next-item.exam .next-days b { color: var(--c-exam); }
 .next-item.close .next-days b { color: var(--warn-text); }
+.next-item.result .next-days b { color: var(--c-result); }
 .next-text { font-size: 15px; line-height: 1.35; }
 .next-date { color: var(--text-2); font-size: 13px; margin-top: 2px; }
 .pill { display: inline; font-weight: 600; }

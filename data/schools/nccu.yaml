@@ -20,9 +20,9 @@ schedule:
   - { type: exam, start: "2027-02-01", label: 筆試（資工三科都在2/1）, src: "p165" }
   - { type: result, start: "2027-02-25T14:00", label: 放榜（資工屬第一梯次）, src: "p18；p103 列資工為第一梯次" }
   - { type: regrade, end: "2027-03-04", label: 成績複查截止, src: "p2" }
-  - { type: enroll, end: "2027-04-13T17:00", label: 正、備取生上網登記報到意願截止, src: "p2" }
+  - { type: enroll, end: "2027-04-13T17:00", label: 正、備取生上網登記報到意願截止, short: 報到意願登記截止, src: "p2" }
   - { type: waitlist, start: "2027-05-04", label: 公告錄取生報到及遞補結果, src: "p2" }
-  - { type: enroll, start: "2027-07-21T10:00", end: "2027-07-21T14:00", label: 現場驗證, src: "p2" }
+  - { type: enroll, start: "2027-07-21T10:00", end: "2027-07-21T14:00", label: 現場驗證, short: 現場驗證, src: "p2" }
 
 programs:
   - id: nccu-cs

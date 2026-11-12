@@ -22,7 +22,7 @@ schedule:
   - { type: exam, start: "2027-02-19", end: "2027-02-21", label: 口試（資工系不考筆試）, note: 實際日期時間由系所自訂、2/15 公告；口試只在台科大校內, src: "p2 / 日程表" }
   - { type: regrade, start: "2027-03-02", end: "2027-03-03", label: 口試成績複查, note: 有口試系所組的審查成績複查是 2/15–2/16, src: "p2 / 日程表" }
   - { type: result, start: "2027-03-12T11:00", label: 放榜, src: "p2 / 日程表" }
-  - { type: enroll, start: "2027-03-12T11:00", end: "2027-03-23T15:00", label: 正取生網路報到、備取生登記遞補意願, src: "p2 / 日程表" }
+  - { type: enroll, start: "2027-03-12T11:00", end: "2027-03-23T15:00", label: 正取生網路報到、備取生登記遞補意願, short: 報到／遞補意願登記截止, src: "p2 / 日程表" }
   - { type: waitlist, start: "2027-03-25T14:00", label: 公告完成報到名單及備取生可遞補名單, src: "p2 / 日程表" }
 
 programs:
