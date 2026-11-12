@@ -13,7 +13,8 @@ const shots = [
   { name: "hero", hash: "timeline", w: 1280, clip: { top: 0, height: 1090 } },
   { name: "compare", hash: "compare", w: 1280, clip: { sel: "main section.card, main .card", height: 560 } },
   { name: "planner", hash: "matrix", w: 1280, clip: { sel: "section.pp" } },
-  { name: "mobile", hash: "compare", w: 390, mobile: true, clip: { sel: "table.cmp", height: 780 } },
+  // 手機版從第一個主要系所（非近親所）的卡片開始拍，固定高度，畫面才有考科與配分
+  { name: "mobile", hash: "compare", w: 390, mobile: true, clip: { sel: "table.cmp tbody tr:not(.nk)", height: 780, fixed: true } },
 ];
 
 const chrome = spawn("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
@@ -43,7 +44,7 @@ for (const s of shots) {
       const r = await evaluate(`(() => { const e = document.querySelector(${JSON.stringify(s.clip.sel)}); if (!e) return null; const b = e.getBoundingClientRect(); return { x: b.x + scrollX, y: b.y + scrollY, w: b.width, h: b.height }; })()`);
       if (!r) throw new Error("no element for " + s.name);
       const pad = 16;
-      clip = { x: r.x - pad, y: r.y - pad, width: r.w + pad * 2, height: Math.min(r.h, s.clip.height ?? 1e9) + pad * 2, scale: 1 };
+      clip = { x: r.x - pad, y: r.y - pad, width: r.w + pad * 2, height: (s.clip.fixed ? s.clip.height : Math.min(r.h, s.clip.height ?? 1e9)) + pad * 2, scale: 1 };
     } else {
       clip = { x: 0, y: s.clip.top, width: s.w, height: s.clip.height, scale: 1 };
     }

@@ -25,17 +25,17 @@ Deadlines, exam dates, quotas, subjects and score weights from each school's off
 
 | | English | 中文 |
 |---|---|---|
-| 🗓 | **Timeline & calendar** — registration, exam, results and enrollment dates, with weekday and conflict warnings | 時間軸與月曆：報名、考試、放榜、報到，標星期幾與撞期提醒 |
+| 🗓 | **Timeline & calendar** — registration, exam, results and enrollment dates, with weekday and conflict warnings; on phones the timeline opens at today | 時間軸與月曆：報名、考試、放榜、報到，標星期幾與撞期提醒；手機上時間軸會開在今天附近 |
 | 📊 | **Compare table** — quotas, papers, weights and tie-breakers across schools, with live registration status (open · N days left / closed) | 比較表：名額、試卷、配分、同分參酌，報名期間顯示「報名中・N 天後截止」 |
 | 🧮 | **Prep planner** — tick the subjects you study, see which programs you can apply to | 一份準備能報幾校：勾選準備科目，列出考科完全涵蓋／只差一科的組別 |
 | ★ | **My list** — pick schools, see total fees, share via link, export `.ics` | 我的志願：報名費合計、分享連結、匯出行事曆 |
 | 📍 | **Itinerary** — exam venues and back-to-back travel warnings | 考場與行程：連考、跨縣市提醒 |
 | 📚 | **Past exams index** — where each school publishes past papers, and which years | 考古題索引：官方位置與可取得年度 |
-| 📬 | **Results & waitlist** — deadlines you lose your place for missing | 放榜・遞補：不做就喪失資格的期限 |
+| 📬 | **Results & waitlist** — deadlines you lose your place for missing, how each school fills waitlist places, and where its brochure says to check | 放榜・遞補：不做就喪失資格的期限、各校遞補方式，以及簡章寫的查詢地方 |
 | 📈 | **History (113–115)** — applicants, admitted, minimum scores from official statistics | 歷年數據：報名、錄取、最低錄取分數 |
 | 🔔 | **Change markers** — brochure corrections highlighted for 45 days | 簡章更正標記 |
 | 🔗 | **Link to one program** — the 🔗 button next to a school copies a link that opens the compare table at that program (also on each school's history and results/waitlist cards) | 單一系所連結：比較表學校名稱旁的連結按鈕，複製後打開會直接捲到該系所組；歷年數據、放榜・遞補每所學校的標題旁也有 |
-| ⏳ | **Countdown** — the next registration opening, deadline or exam for each school, with 今天 on the day itself | 倒數：各校下一個開放報名／截止／考試，當天標「今天」 |
+| ⏳ | **Countdown** — the next step for each school: registration opening or deadline, exam, then results day and post-result deadlines (check-in, intention registration, named as in each brochure), with 今天 on the day itself | 倒數：各校下一個開放報名／報名截止／考試，考完接著倒數放榜和報到、意願登記截止（名稱照各校簡章），當天標「今天」 |
 | 📱 | **Phone- and tablet-friendly** — the compare table becomes one card per program on phones and tablets, the past-exam index on phones; works in light and dark mode | 手機、平板好讀：比較表在手機和平板上改成一系所一張卡片，考古題在手機上也是卡片，支援深色模式 |
 | 🖨 | **Print / PDF** — prints in light colors without buttons and filters; wide tables fit the page | 列印／存 PDF：淺色、去掉按鈕與篩選、寬表格縮到紙寬 |
 | ⌨️ | **Accessible** — arrow keys switch tabs, contrast meets WCAG AA, screen-reader labels | 無障礙：方向鍵切換分頁、文字對比符合 AA、螢幕報讀標籤 |
