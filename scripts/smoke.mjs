@@ -8,6 +8,7 @@ import { join } from "node:path";
 
 const CHROME = process.env.CHROME ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const TABS = ["timeline", "calendar", "compare", "matrix", "history", "past", "after", "resources", "pending"];
+const FAKE_DATES = ["2026-12-20T10:00:00+08:00", "2027-01-30T09:00:00+08:00", "2027-03-20T10:00:00+08:00", "2027-08-01T10:00:00+08:00"];
 const PORT = 4300 + Math.floor(Math.random() * 500);
 const DEBUG = PORT + 1000;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -57,6 +58,25 @@ async function main() {
     const ok = errors.length === 0 && len > 200;
     console.log(`${ok ? "OK  " : "FAIL"} #${tab}  ${len} 字${errors.length ? "  錯誤：" + errors.join(" | ") : ""}`);
     if (!ok) failed.push(tab);
+  }
+  // 換成考季其他時間點再開一次每個分頁（報名後、考試當天、放榜報到期、全部結束後），抓只有特定日期才會出現的錯誤
+  for (const when of FAKE_DATES) {
+    const fake = `(() => { const R = Date, off = R.parse(${JSON.stringify(when)}) - R.now(); class D extends R { constructor(...a) { a.length ? super(...a) : super(R.now() + off); } static now() { return R.now() + off; } } window.Date = D; })()`;
+    const { result } = await send("Page.addScriptToEvaluateOnNewDocument", { source: fake });
+    const bad = [];
+    for (const tab of TABS) {
+      errors = [];
+      await send("Page.navigate", { url: `http://localhost:${PORT}/?smoke=${Date.now()}#${tab}` });
+      await sleep(900);
+      const r = await send("Runtime.evaluate", { expression: "document.getElementById('root')?.innerText.trim().length ?? 0", returnByValue: true });
+      const len = r.result?.result?.value ?? 0;
+      const today = (await send("Runtime.evaluate", { expression: "new Date().toISOString().slice(0, 10)", returnByValue: true })).result?.result?.value;
+      if (today !== when.slice(0, 10)) bad.push(`#${tab}（假日期沒有生效：${today}）`);
+      if (errors.length || len <= 200) bad.push(`#${tab}（${len} 字${errors.length ? "，錯誤：" + errors.join(" | ") : ""}）`);
+    }
+    await send("Page.removeScriptToEvaluateOnNewDocument", { identifier: result.identifier });
+    console.log(`${bad.length ? "FAIL" : "OK  "} 假設今天是 ${when.slice(0, 10)}：${bad.length ? bad.join("、") : `${TABS.length} 個分頁都正常`}`);
+    if (bad.length) failed.push(when.slice(0, 10));
   }
   ws.close();
   if (failed.length) { console.error(`網頁測試失敗：${failed.join(", ")}`); return 1; }

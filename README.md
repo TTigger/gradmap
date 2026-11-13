@@ -127,7 +127,7 @@ shared/ics.mjs           .ics generator (used by build and browser)
 scripts/
   build-data.mjs         YAML → JSON + .ics, with validation
   verify-src.mjs         cross-check data against brochure text
-  smoke.mjs              open every tab of the built site in headless Chrome; fail on errors
+  smoke.mjs              open every tab of the built site in headless Chrome (today + 4 later dates in the season); fail on errors
   extract.sh             PDF → per-page text (local only)
   daily-check.sh         daily re-check on branch check/<date>, auto-publish if checks pass
   schedule.sh            install / uninstall / run the daily job (macOS launchd)
@@ -139,7 +139,7 @@ docs/images/             README screenshots
 
 ## Daily check 每日查核
 
-`scripts/schedule.sh install` runs a check every day at 12:10 and 17:40 Taiwan time (2026-11-02 → 2027-04-30) and posts the result as a macOS notification and a phone push (ntfy; topic kept in the untracked `.env.ntfy`). It looks for newly published 116 brochures and corrections on a branch `check/<date>-<time>`. Changes go live automatically **only if** they touch data files only, `npm run build` passes, `verify-src.mjs` finds every date / quota / weight on its cited brochure page, and every tab of the built site opens without errors in headless Chrome (`scripts/smoke.mjs`); otherwise the branch is kept for manual review. Sunday's midday run also refreshes history stats, past exams and resource links. A GitHub Actions watchdog (`.github/workflows/check-watchdog.yml`) fails around 21:17 if no check ran that day, which triggers GitHub's failure email.
+`scripts/schedule.sh install` runs a check every day at 12:10 and 17:40 Taiwan time (2026-11-02 → 2027-04-30) and posts the result as a macOS notification and a phone push (ntfy; topic kept in the untracked `.env.ntfy`). It looks for newly published 116 brochures and corrections on a branch `check/<date>-<time>`. Changes go live automatically **only if** they touch data files only, `npm run build` passes, `verify-src.mjs` finds every date / quota / weight on its cited brochure page, and every tab of the built site opens without errors in headless Chrome, today and at four later points in the season (`scripts/smoke.mjs`); otherwise the branch is kept for manual review. Sunday's midday run also refreshes history stats, past exams and resource links. A GitHub Actions watchdog (`.github/workflows/check-watchdog.yml`) fails around 21:17 if no check ran that day, which triggers GitHub's failure email.
 
 每天自動查新簡章與更正公告。只改資料檔、建置通過、簡章頁碼全數核對成功、網站每個分頁都能正常打開，才會自動推上 main 並更新網站；否則留在分支等人工確認。週日另外補歷年數據、考古題與備考連結。
 
