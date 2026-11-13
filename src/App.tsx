@@ -15,6 +15,7 @@ import PrepPlanner from "./views/PrepPlanner";
 import Resources from "./views/Resources";
 import { daysUntil, fmtDay, fmtDayW, fmtMD, fmtTime, makeSel, nextDeadlines, regStatus, PHASES, recentChanges, earlyPayNote, type Phase, srcLabel } from "./lib";
 import Timeline from "./views/Timeline";
+import { useOverflowX } from "./useOverflowX";
 import Calendar from "./views/Calendar";
 import Compare from "./views/Compare";
 import Matrix from "./views/Matrix";
@@ -166,6 +167,8 @@ export default function App() {
     .sort((a, b) => a.end.localeCompare(b.end));
   const verified = data.schools.filter((s) => s.status === "verified").length;
   const tabsRef = useRef<HTMLDivElement>(null);
+  const nextRef = useRef<HTMLElement>(null);
+  const nextScroll = useOverflowX(nextRef);
   const [tabFade, setTabFade] = useState({ l: false, r: false });
   const updFade = () => {
     const el = tabsRef.current;
@@ -234,7 +237,7 @@ export default function App() {
       </header>
 
       {upcoming.length > 0 && (
-        <section className="next" aria-label="接下來的截止日">
+        <section className="next" ref={nextRef} aria-label="接下來的截止日" tabIndex={nextScroll ? 0 : undefined}>
           {/* 手機上橫向滑動 */}
           {upcoming.map((u, i) => {
             const d = daysUntil(u.when, now);

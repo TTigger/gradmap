@@ -1,3 +1,4 @@
+import { useOverflowX } from "../useOverflowX";
 import { useLayoutEffect, useRef, useState } from "react";
 import Icon from "../Icon";
 import type { Data, School } from "../types";
@@ -18,16 +19,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
     const target = Math.round(x - (el.clientWidth - name) * 0.25);
     if (target > 0) { el.scrollLeft = target; setScrolled(true); } else setScrolled(false);
   }, [school, dayKey]);
-  // 會左右捲時讓鍵盤也能進來用方向鍵捲（裡面沒有可聚焦的東西）；寬螢幕不捲就不多一個 Tab 停留點
-  const [canScroll, setCanScroll] = useState(false);
-  useLayoutEffect(() => {
-    const el = tlRef.current;
-    if (!el) return;
-    const check = () => setCanScroll(el.scrollWidth > el.clientWidth);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, [school]);
+  const canScroll = useOverflowX(tlRef);
   const allVerified = data.schools.filter((s) => s.status === "verified");
   const schools = allVerified.filter((s) => sel(s.id));
   if (!schools.length)
