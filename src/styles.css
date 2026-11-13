@@ -241,6 +241,10 @@ div.warn details li { padding: 4px 0 4px 12px; border-left: 2px solid currentCol
 .tl-row { border-top: 1px solid var(--line); }
 .tl-name { font-weight: 600; font-size: 15px; padding-right: 8px; position: sticky; left: 0; background: var(--surface); z-index: 2; align-self: stretch; display: flex; align-items: center; }
 .tl-track { position: relative; height: 56px; }
+/* 捲動後：校名欄自己畫分隔線（避免被藏在底下的日期標籤蓋掉），右緣淡出半截標籤 */
+.tl-row .tl-name { box-shadow: 0 -1px 0 var(--line); }
+.tl.is-scrolled .tl-row .tl-name::after { content: ""; position: absolute; top: -1px; bottom: 0; right: -16px; width: 16px; border-top: 1px solid var(--line); background: linear-gradient(to right, var(--surface), transparent); pointer-events: none; }
+.tl.is-scrolled .tl-head .tl-name::after { content: ""; position: absolute; top: 0; bottom: 0; right: -16px; width: 16px; background: linear-gradient(to right, var(--surface), transparent); pointer-events: none; }
 .tl-month { position: absolute; top: 2px; font-size: 12px; color: var(--text-3); padding-left: 4px; }
 .tl-grid { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--line); }
 .tl-today { position: absolute; top: 0; bottom: 0; border-left: 2px solid var(--accent); }

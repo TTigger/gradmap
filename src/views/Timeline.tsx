@@ -88,7 +88,8 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
       </div>
 
       <p className="tl-swipe" aria-hidden="true">{scrolled ? "← 往左滑看前面的日期，往右滑看後面的日期 →" : "往右滑，看考試、放榜和報到 →"}</p>
-      <div className="tl" ref={tlRef} role="table" aria-label="各校時間軸">
+      <div className="tl" ref={tlRef} role="table" aria-label="各校時間軸"
+        onScroll={(e) => e.currentTarget.classList.toggle("is-scrolled", e.currentTarget.scrollLeft > 2)}>
         <div className="tl-head" role="row">
           <div className="tl-name" role="columnheader"><span className="sr-only">學校</span></div>
           <div className="tl-track" role="columnheader" aria-label="月份">
