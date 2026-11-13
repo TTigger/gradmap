@@ -6,9 +6,11 @@ exam_type: 一般考試
 status: verified
 brochure:
   title: 國立臺灣師範大學116學年度碩士班招生簡章
-  url: https://www.aa.ntnu.edu.tw/uploads/bulletin_file/file/6ad5bee9843f751d488c4a71/116%E7%A2%A9%E5%A3%AB%E7%8F%AD%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0.pdf
+  url: https://www.aa.ntnu.edu.tw/uploads/bulletin_file/file/6ad5bee9843f751d488c4a71/116%E7%A2%A9%E5%A3%AB%E7%8F%AD%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0-115.11.10_%E4%BF%AE%E6%AD%A3%E5%85%89%E9%9B%BB%E5%90%8D%E9%A1%8D_.pdf
+  url_note: 公告頁 https://www.aa.ntnu.edu.tw/zh_tw/admission/116%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%A2%A9%E5%A3%AB%E7%8F%AD%E8%80%83%E8%A9%A6%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0%E6%9A%A8%E9%99%84%E4%BB%B6-7478625
+  # 原檔 116碩士班招生簡章.pdf 已撤下（11/13 起轉回教務處首頁）；11/10 新檔只改 p61 / 54 光電所一般生名額 14→11，其餘 121 頁文字與原檔相同，資工系、AI 跨域應用研究所不受影響
   published: "2026-10-20"
-  verified: "2026-10-31"
+  verified: "2026-11-13"
   page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」
 fee: { amount: 1300, note: 一階段考試報名費, src: "p9 / 2" , waiver: "低收入戶免繳（報名期間內 email 申請書與證明，審核通過後再完成報名）", waiver_src: "p10" }
 apply: { url: "https://enroll.itc.ntnu.edu.tw/Enroll/MsEntry", how: "碩士班招生專區 → 點【點我報名】", src: "p8 / 1" }
