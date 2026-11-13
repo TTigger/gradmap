@@ -18,6 +18,16 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
     const target = Math.round(x - (el.clientWidth - name) * 0.25);
     if (target > 0) { el.scrollLeft = target; setScrolled(true); } else setScrolled(false);
   }, [school, dayKey]);
+  // 會左右捲時讓鍵盤也能進來用方向鍵捲（裡面沒有可聚焦的東西）；寬螢幕不捲就不多一個 Tab 停留點
+  const [canScroll, setCanScroll] = useState(false);
+  useLayoutEffect(() => {
+    const el = tlRef.current;
+    if (!el) return;
+    const check = () => setCanScroll(el.scrollWidth > el.clientWidth);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [school]);
   const allVerified = data.schools.filter((s) => s.status === "verified");
   const schools = allVerified.filter((s) => sel(s.id));
   if (!schools.length)
@@ -88,7 +98,7 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
       </div>
 
       <p className="tl-swipe" aria-hidden="true">{scrolled ? "← 往左滑看前面的日期，往右滑看後面的日期 →" : "往右滑，看考試、放榜和報到 →"}</p>
-      <div className="tl" ref={tlRef} role="table" aria-label="各校時間軸"
+      <div className="tl" ref={tlRef} role="table" aria-label="各校時間軸" tabIndex={canScroll ? 0 : undefined}
         onScroll={(e) => e.currentTarget.classList.toggle("is-scrolled", e.currentTarget.scrollLeft > 2)}>
         <div className="tl-head" role="row">
           <div className="tl-name" role="columnheader"><span className="sr-only">學校</span></div>
