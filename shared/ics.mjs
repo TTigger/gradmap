@@ -20,9 +20,11 @@ export function buildIcs(schools, name = "上岸地圖 GradMap") {
     "BEGIN:VTIMEZONE", "TZID:Asia/Taipei", "BEGIN:STANDARD", "DTSTART:19700101T000000",
     "TZOFFSETFROM:+0800", "TZOFFSETTO:+0800", "TZNAME:CST", "END:STANDARD", "END:VTIMEZONE",
   ];
-  const add = (uid, when, summary, desc, alarm) => {
+  // until：跨好幾天的整段活動（例如連考兩天的筆試）做成一筆橫跨這幾天的全天事件
+  const add = (uid, when, summary, desc, alarm, until) => {
     lines.push("BEGIN:VEVENT", `UID:${uid}@gradmap`, `DTSTAMP:${stamp}`);
-    if (hasTime(when)) lines.push(`DTSTART;TZID=Asia/Taipei:${icsDateTime(when)}`, `DTEND;TZID=Asia/Taipei:${icsDateTime(when)}`);
+    if (until) lines.push(`DTSTART;VALUE=DATE:${icsDate(when)}`, `DTEND;VALUE=DATE:${nextDay(until)}`);
+    else if (hasTime(when)) lines.push(`DTSTART;TZID=Asia/Taipei:${icsDateTime(when)}`, `DTEND;TZID=Asia/Taipei:${icsDateTime(when)}`);
     else lines.push(`DTSTART;VALUE=DATE:${icsDate(when)}`, `DTEND;VALUE=DATE:${nextDay(when)}`);
     lines.push(`SUMMARY:${esc(summary)}`, `DESCRIPTION:${esc(desc)}`);
     if (alarm) lines.push("BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${esc(summary)}`, "TRIGGER:-P1D", "END:VALARM");
@@ -33,7 +35,10 @@ export function buildIcs(schools, name = "上岸地圖 GradMap") {
     s.schedule.forEach((e, i) => {
       const desc = `${e.label}${e.note ? "\n" + e.note : ""}\n來源：${s.brochure.title} ${e.src}`;
       const isRange = e.start && e.end && e.start.slice(0, 10) !== e.end.slice(0, 10);
-      if (isRange) {
+      if (isRange && e.type === "exam") {
+        // 考試沒有「截止」：一筆橫跨考試期間的事件，前一天提醒
+        add(`${s.id}-${i}`, e.start, `【${s.short}】${e.label}`, desc, true, e.end);
+      } else if (isRange) {
         // 繳費、上傳通常和報名同一天開始，只放截止，避免行事曆太吵
         if (!["payment", "upload"].includes(e.type)) add(`${s.id}-${i}-start`, e.start, `【${s.short}】${e.label}開始`, desc, false);
         add(`${s.id}-${i}-end`, e.end, `【${s.short}】${e.label}截止`, desc, DEADLINE_TYPES.has(e.type));
