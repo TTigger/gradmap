@@ -78,6 +78,19 @@ async function main() {
     console.log(`${bad.length ? "FAIL" : "OK  "} 假設今天是 ${when.slice(0, 10)}：${bad.length ? bad.join("、") : `${TABS.length} 個分頁都正常`}`);
     if (bad.length) failed.push(when.slice(0, 10));
   }
+  // 最窄的手機（寬 320）：每個分頁都不能比螢幕寬（寬表格在自己的捲動框裡捲，不算）
+  const NARROW = 320;
+  await send("Emulation.setDeviceMetricsOverride", { width: NARROW, height: 800, deviceScaleFactor: 2, mobile: true });
+  const wide = [];
+  for (const tab of TABS) {
+    await send("Page.navigate", { url: `http://localhost:${PORT}/?smoke=${Date.now()}#${tab}` });
+    await sleep(900);
+    const w = (await send("Runtime.evaluate", { expression: "document.documentElement.scrollWidth", returnByValue: true })).result?.result?.value ?? 0;
+    if (w > NARROW) wide.push(`#${tab}（${w}px）`);
+  }
+  await send("Emulation.clearDeviceMetricsOverride");
+  console.log(`${wide.length ? "FAIL" : "OK  "} 手機寬 ${NARROW}：${wide.length ? "比螢幕寬 " + wide.join("、") : `${TABS.length} 個分頁都沒有左右溢出`}`);
+  if (wide.length) failed.push(`寬 ${NARROW}`);
   ws.close();
   if (failed.length) { console.error(`網頁測試失敗：${failed.join(", ")}`); return 1; }
   console.log("網頁測試通過");

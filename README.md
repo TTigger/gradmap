@@ -127,7 +127,7 @@ shared/ics.mjs           .ics generator (used by build and browser)
 scripts/
   build-data.mjs         YAML → JSON + .ics, with validation
   verify-src.mjs         cross-check data against brochure text
-  smoke.mjs              open every tab of the built site in headless Chrome (today + 4 later dates in the season); fail on errors
+  smoke.mjs              open every tab of the built site in headless Chrome (today + 4 later dates in the season, plus a 320px phone width); fail on errors or sideways overflow
   extract.sh             PDF → per-page text (local only)
   daily-check.sh         daily re-check on branch check/<date>, auto-publish if checks pass
   schedule.sh            install / uninstall / run the daily job (macOS launchd)
