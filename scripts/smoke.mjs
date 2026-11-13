@@ -2,7 +2,7 @@
 // 有 JavaScript 錯誤或畫面是空的就失敗（exit 1）。
 // 用法：npm run build && node scripts/smoke.mjs
 import { spawn } from "node:child_process";
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -17,7 +17,19 @@ const profile = mkdtempSync(join(tmpdir(), "gm-smoke-"));
 const chrome = spawn(CHROME, ["--headless=new", `--remote-debugging-port=${DEBUG}`, "--no-first-run", `--user-data-dir=${profile}`, "about:blank"], { stdio: "ignore" });
 const cleanup = () => { try { chrome.kill(); } catch {} try { server.kill(); } catch {} try { rmSync(profile, { recursive: true, force: true }); } catch {} };
 
+// 404 頁的分頁連結要和網站分頁（src/App.tsx 的 TABS）一致：分頁改名或增減時別忘了 public/404.html
+function check404() {
+  const app = readFileSync(new URL("../src/App.tsx", import.meta.url), "utf8");
+  const page = readFileSync(new URL("../public/404.html", import.meta.url), "utf8");
+  const want = [...app.matchAll(/\{ id: "(\w+)", label: "([^"]+)" \}/g)].map((m) => `${m[1]}=${m[2]}`).join(" ");
+  const got = [...page.matchAll(/<a href="\/#(\w+)">([^<]+)<\/a>/g)].map((m) => `${m[1]}=${m[2]}`).join(" ");
+  if (!want) throw new Error("讀不到 src/App.tsx 的分頁清單");
+  if (want !== got) throw new Error(`404 頁的分頁連結和網站不一致\n  網站：${want}\n  404：${got}`);
+  console.log("OK   404 頁分頁連結");
+}
+
 async function main() {
+  check404();
   // 等網站與 Chrome 都起來
   for (let i = 0; i < 60; i++) { try { await fetch(`http://localhost:${PORT}/`); break; } catch { await sleep(250); } }
   let targets;
