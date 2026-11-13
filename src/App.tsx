@@ -175,7 +175,12 @@ export default function App() {
     if (el) setTabFade({ l: el.scrollLeft > 4, r: el.scrollLeft + el.clientWidth < el.scrollWidth - 4 });
   };
   useEffect(() => {
-    tabsRef.current?.querySelector<HTMLElement>(".tab.on")?.scrollIntoView({ block: "nearest", inline: "center" });
+    // 把目前分頁捲到分頁列中間。用直接定位、不用平滑捲動：平滑捲動會被換分頁時的重繪打斷，分頁停在畫面外
+    const el = tabsRef.current, on = el?.querySelector<HTMLElement>(".tab.on");
+    if (el && on) {
+      const left = on.getBoundingClientRect().left - el.getBoundingClientRect().left + el.scrollLeft - (el.clientWidth - on.offsetWidth) / 2;
+      el.scrollTo({ left: Math.max(0, left), behavior: "instant" });
+    }
     updFade();
     window.addEventListener("resize", updFade);
     return () => window.removeEventListener("resize", updFade);
