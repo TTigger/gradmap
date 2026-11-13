@@ -23,7 +23,16 @@ export default function Calendar({ data, now, sel, phase, focusDate, focusN }: P
       const tip = `${e.school.short}｜${e.label}\n${fmtWhen(e)}${e.note ? "\n" + e.note : ""}\n來源 ${srcLabel(e.src)}${changed ? "\n⚠️ " + changeTip(ch) : ""}`;
       const strong = e.type === "exam" || e.type === "result";
       const t = (s: string) => (fmtTime(s) && fmtTime(s) !== "00:00" ? ` ${fmtTime(s)}` : "");
-      if (e.start && e.end && dayKey(e.start) !== dayKey(e.end)) {
+      if (e.type === "exam" && e.start && e.end && dayKey(e.start) !== dayKey(e.end)) {
+        // 連考好幾天：每個考試日都標出來（考試沒有「截止」）
+        const [y, m, d] = dayKey(e.start).split("-").map(Number);
+        for (let n = 0; n < 31; n++) {
+          const t = new Date(Date.UTC(y, m - 1, d + n));
+          const k = `${t.getUTCFullYear()}-${String(t.getUTCMonth() + 1).padStart(2, "0")}-${String(t.getUTCDate()).padStart(2, "0")}`;
+          if (k > dayKey(e.end)) break;
+          add(k, { key: `${i}d${n}`, focus: n ? `${focus}-d${n}` : `${focus}-s`, text: `${e.school.short} ${e.label}・第${n + 1}天`, color, tip, strong, changed });
+        }
+      } else if (e.start && e.end && dayKey(e.start) !== dayKey(e.end)) {
         if (!["payment", "upload"].includes(e.type)) add(e.start, { key: `${i}s`, focus: focus + "-s", text: `${e.school.short} ${e.label}開始`, color, tip, strong, changed });
         add(e.end, { key: `${i}e`, focus, text: `${e.school.short} ${e.label}截止${t(e.end)}`, color, tip, strong: true, changed });
       } else if (e.end && !e.start) {
