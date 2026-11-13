@@ -6,6 +6,14 @@ export function useOverflowX(ref: RefObject<HTMLElement | null>): boolean {
   const [over, setOver] = useState(false);
   const check = () => { const el = ref.current; setOver(!!el && el.scrollWidth > el.clientWidth + 1); };
   useLayoutEffect(check); // 每次重繪都量（內容多寡會變），值沒變 React 不會再重繪
-  useEffect(() => { window.addEventListener("resize", check); return () => window.removeEventListener("resize", check); });
+  // 版面晚一點才排好（字型、樣式）或視窗改變時再量一次
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    if (el.firstElementChild) ro.observe(el.firstElementChild);
+    return () => ro.disconnect();
+  });
   return over;
 }
