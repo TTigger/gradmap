@@ -45,9 +45,16 @@ export default function Matrix({ data, nearKin, sel }: { data: Data; nearKin: bo
                     {s.status === "pending" && <span className="badge ref">{s.reference_year} 參考</span>}
                     {p.kind === "near_kin" && <span className="badge nk">近親所</span>}
                   </div>
-                  <div className="grp">
-                    {p.kind === "near_kin" || p.name.includes("聯合") || multiProgram(s.id) || /^(不分組|一般生|—)$/.test(g.name) ? p.name.replace(/^資訊工程學系/, "資工系 ") : g.name}
-                  </div>
+                  {p.groups.length > 1 && (p.kind === "near_kin" || p.name.includes("聯合") || multiProgram(s.id)) ? (
+                    <>
+                      <div className="grp mx-gname">{g.name}</div>
+                      <div className="mx-prog">{p.name}</div>
+                    </>
+                  ) : (
+                    <div className="grp">
+                      {p.kind === "near_kin" || p.name.includes("聯合") || multiProgram(s.id) || /^(不分組|一般生|—)$/.test(g.name) ? p.name.replace(/^資訊工程學系/, "資工系 ") : g.name}
+                    </div>
+                  )}
                   {!p.review_only && g.papers.filter((pp) => pp.covers.length === 0).map((pp) => (
                     <div key={pp.name} className="mx-broad" title={pp.period}>另考 {pp.name} <b>{weightLabel(pp)}</b></div>
                   ))}
