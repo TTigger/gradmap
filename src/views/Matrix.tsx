@@ -36,7 +36,11 @@ export default function Matrix({ data, nearKin, sel }: { data: Data; nearKin: bo
             </tr>
           </thead>
           <tbody>
-            {list.map(({ school: s, program: p, group: g }) => (
+            {list.map(({ school: s, program: p, group: g }) => {
+              const useProg = p.kind === "near_kin" || p.name.includes("聯合") || multiProgram(s.id);
+              const split = useProg && p.groups.length > 1;
+              const rowName = split ? g.name : useProg || /^(不分組|一般生|—)$/.test(g.name) ? p.name.replace(/^資訊工程學系/, "資工系 ") : g.name;
+              return (
               <Fragment key={g.id}>
               <tr data-focus={`mx-${g.id}`} className={s.status === "pending" ? "ref" : ""}>
                 <td className="who">
@@ -45,15 +49,13 @@ export default function Matrix({ data, nearKin, sel }: { data: Data; nearKin: bo
                     {s.status === "pending" && <span className="badge ref">{s.reference_year} 參考</span>}
                     {p.kind === "near_kin" && <span className="badge nk">近親所</span>}
                   </div>
-                  {p.groups.length > 1 && (p.kind === "near_kin" || p.name.includes("聯合") || multiProgram(s.id)) ? (
+                  {split ? (
                     <>
                       <div className="grp mx-gname">{g.name}</div>
                       <div className="mx-prog">{p.name}</div>
                     </>
                   ) : (
-                    <div className="grp">
-                      {p.kind === "near_kin" || p.name.includes("聯合") || multiProgram(s.id) || /^(不分組|一般生|—)$/.test(g.name) ? p.name.replace(/^資訊工程學系/, "資工系 ") : g.name}
-                    </div>
+                    <div className="grp">{rowName}</div>
                   )}
                   {!p.review_only && g.papers.filter((pp) => pp.covers.length === 0).map((pp) => (
                     <div key={pp.name} className="mx-broad" title={pp.period}>另考 {pp.name} <b>{weightLabel(pp)}</b></div>
@@ -69,7 +71,7 @@ export default function Matrix({ data, nearKin, sel }: { data: Data; nearKin: bo
                     const sub = paper.sub_weights?.[c];
                     return (
                       <td key={c} className={`mx-cell p${idx % 5}${open === g.id ? " on" : ""}`} title={`${paper.name}${paper.period ? "｜" + paper.period : ""}`}
-                        tabIndex={0} role="button" aria-expanded={open === g.id} aria-label={`${s.short} ${paper.name} ${weightLabel(paper)}，顯示這組的考卷`}
+                        tabIndex={0} role="button" aria-expanded={open === g.id} aria-label={`${s.short} ${rowName} ${paper.name} ${weightLabel(paper)}，顯示這組的考卷`}
                         onClick={() => setOpen(open === g.id ? null : g.id)}
                         onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen(open === g.id ? null : g.id); } }}>
                         <b>{weightLabel(paper)}</b>
@@ -94,7 +96,8 @@ export default function Matrix({ data, nearKin, sel }: { data: Data; nearKin: bo
                 </tr>
               )}
               </Fragment>
-            ))}
+              );
+            })}
           </tbody>
         </table>
       </div>
