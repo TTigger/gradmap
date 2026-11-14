@@ -1,4 +1,4 @@
-import Icon from "../Icon";
+import { OutLabel } from "../Icon";
 import type { Data } from "../types";
 import { fmtMD } from "../lib";
 
@@ -13,7 +13,7 @@ export default function Pending({ data }: { data: Data }) {
         {out.map((s) => (
           <li key={s.id}>
             <div className="p-head"><b>{s.name}</b></div>
-            <a href={s.brochure.url} target="_blank" rel="noreferrer">{s.brochure.title}<Icon name="out" /></a>
+            <a href={s.brochure.url} target="_blank" rel="noreferrer"><OutLabel text={s.brochure.title} /></a>
             <p className="verified">{s.brochure.published && `${fmtMD(s.brochure.published)} 公告・`}查證 {fmtMD(s.brochure.verified)}</p>
           </li>
         ))}
@@ -37,15 +37,15 @@ export default function Pending({ data }: { data: Data }) {
               <span className="badge ref">已有 {s.reference_year} 參考資料</span>
             </div>
             <p>{s.status_note}</p>
-            <a href={s.brochure.url} target="_blank" rel="noreferrer">{s.brochure.title}<Icon name="out" /></a>
+            <a href={s.brochure.url} target="_blank" rel="noreferrer"><OutLabel text={s.brochure.title} /></a>
           </li>
         ))}
         {data.pending.schools.map((s) => (
           <li key={s.id} data-focus={`pd-${s.id}`}>
             <div className="p-head"><b>{s.name}</b></div>
             <p>{s.note}</p>
-            <a href={s.site} target="_blank" rel="noreferrer">招生網站<Icon name="out" /></a>
-            {s.note_src && <> · <a href={s.note_src} target="_blank" rel="noreferrer">公告來源<Icon name="out" /></a></>}
+            <a href={s.site} target="_blank" rel="noreferrer"><OutLabel text="招生網站" /></a>
+            {s.note_src && <> · <a href={s.note_src} target="_blank" rel="noreferrer"><OutLabel text="公告來源" /></a></>}
           </li>
         ))}
       </ul>

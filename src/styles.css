@@ -70,6 +70,7 @@ body {
 a { color: var(--link); text-decoration: none; }
 a:hover { text-decoration: underline; }
 a .ico { width: .9em; height: .9em; margin-left: 2px; vertical-align: -.08em; }
+.out-end { white-space: nowrap; }
 code { font-size: .88em; color: var(--text); background: var(--fill); padding: 1px 6px; border-radius: 6px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .ico { width: 1em; height: 1em; flex: none; vertical-align: -.14em; }

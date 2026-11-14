@@ -1,4 +1,4 @@
-import Icon from "../Icon";
+import Icon, { OutLabel } from "../Icon";
 import type { Data, School } from "../types";
 import { TYPE_META, fmtWhen, toDate, type Sel, srcLabel } from "../lib";
 import { useCopyLink, linkVerb } from "../useCopyLink";
@@ -49,7 +49,7 @@ export default function After({ data, now, sel }: { data: Data; now: Date; sel: 
                 <div className="after-how">
                   <p>{w.how}</p>
                   {w.deadline && <p className="hint">遞補截止：{w.deadline}</p>}
-                  {w.where && <a href={w.where.url} target="_blank" rel="noreferrer">{w.where.label}<Icon name="out" /></a>}
+                  {w.where && <a href={w.where.url} target="_blank" rel="noreferrer"><OutLabel text={w.where.label} /></a>}
                   <span className="hint"> · 簡章 {srcLabel(w.src)}</span>
                 </div>
               ) : (

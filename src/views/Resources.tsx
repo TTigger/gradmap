@@ -1,4 +1,4 @@
-import Icon from "../Icon";
+import { OutLabel } from "../Icon";
 import type { Data, Resource } from "../types";
 
 const KINDS: { id: Resource["kind"]; label: string; desc: string }[] = [
@@ -36,7 +36,7 @@ export default function Resources({ data, school }: { data: Data; school: string
                 <li key={i} data-focus={`rs-${i}`}>
                   <div className="res-head">
                     <span className={`grade g${x.grade}`} title={GRADE[x.grade]}>{x.grade}</span>
-                    <a href={x.url} target="_blank" rel="noreferrer">{x.title}<Icon name="out" /></a>
+                    <a href={x.url} target="_blank" rel="noreferrer"><OutLabel text={x.title} /></a>
                   </div>
                   <div className="hint">
                     {x.publisher}

@@ -23,3 +23,10 @@ export default function Icon({ name, fill, className = "" }: { name: IconName; f
     </svg>
   );
 }
+
+// 外部連結文字＋↗：最後一個字和箭頭黏在一起，換行時箭頭不會自己掉到下一行
+export function OutLabel({ text }: { text: string }) {
+  const chars = Array.from(text);
+  const last = chars.pop() ?? "";
+  return <>{chars.join("")}<span className="out-end">{last}<Icon name="out" /></span></>;
+}
