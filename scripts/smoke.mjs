@@ -88,8 +88,19 @@ async function main() {
     const w = (await send("Runtime.evaluate", { expression: "document.documentElement.scrollWidth", returnByValue: true })).result?.result?.value ?? 0;
     if (w > NARROW) wide.push(`#${tab}（${w}px）`);
   }
+  // 報名截止潮（12/8 有 9 校同時報名中）：首頁「報名中」卡片的內容也不能超出卡片
+  {
+    const busy = "2026-12-08T10:00:00+08:00";
+    const { result } = await send("Page.addScriptToEvaluateOnNewDocument", { source: `(() => { const R = Date, off = R.parse(${JSON.stringify(busy)}) - R.now(); class D extends R { constructor(...a) { a.length ? super(...a) : super(R.now() + off); } static now() { return R.now() + off; } } window.Date = D; })()` });
+    await send("Page.navigate", { url: `http://localhost:${PORT}/?smoke=${Date.now()}#timeline` });
+    await sleep(900);
+    const v = (await send("Runtime.evaluate", { expression: "(() => { const u = document.querySelector('.open-now ul'); return u ? [document.documentElement.scrollWidth, u.scrollWidth, u.clientWidth, u.children.length] : null; })()", returnByValue: true })).result?.result?.value;
+    await send("Page.removeScriptToEvaluateOnNewDocument", { identifier: result.identifier });
+    if (!v || v[3] < 2) wide.push(`${busy.slice(0, 10)} 首頁沒有「報名中」清單`);
+    else if (v[0] > NARROW || v[1] > v[2] + 1) wide.push(`${busy.slice(0, 10)} 首頁「報名中」卡片（內容 ${v[1]}px／卡片 ${v[2]}px）`);
+  }
   await send("Emulation.clearDeviceMetricsOverride");
-  console.log(`${wide.length ? "FAIL" : "OK  "} 手機寬 ${NARROW}：${wide.length ? "比螢幕寬 " + wide.join("、") : `${TABS.length} 個分頁都沒有左右溢出`}`);
+  console.log(`${wide.length ? "FAIL" : "OK  "} 手機寬 ${NARROW}：${wide.length ? "比螢幕寬 " + wide.join("、") : `${TABS.length} 個分頁和報名截止潮的首頁都沒有左右溢出`}`);
   if (wide.length) failed.push(`寬 ${NARROW}`);
   ws.close();
   if (failed.length) { console.error(`網頁測試失敗：${failed.join(", ")}`); return 1; }

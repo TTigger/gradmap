@@ -275,7 +275,7 @@ export default function App() {
                 <span className="pill">{s.short}</span>
                 <span className="on-end">{fmtDayW(end)} {fmtTime(end)}</span>
                 <span className={days <= 1 ? "on-days soon" : "on-days"}>{days === 0 ? "今天截止" : days === 1 ? "明天截止" : `剩 ${days} 天`}</span>
-                {s.apply ? <a href={s.apply.url} target="_blank" rel="noreferrer">報名入口<Icon name="out" /></a> : <span />}
+                {s.apply ? <a href={s.apply.url} target="_blank" rel="noreferrer" aria-label={`${s.short}報名入口`}>報名<span className="on-wide">入口</span><Icon name="out" /></a> : <span />}
                 {payNote && <span className="on-pay">{payNote}</span>}
               </li>
             ))}

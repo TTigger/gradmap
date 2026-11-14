@@ -614,6 +614,12 @@ tr.flash td { animation: flash 2.2s ease-out; }
   .open-now ul { gap: 0 8px; }
   .open-now .on-end { font-size: 14px; }
 }
+@media (max-width: 374px) {
+  .open-now { padding: 12px; }
+  .open-now ul { gap: 0 6px; }
+  .open-now .on-end { font-size: 13px; }
+  .open-now .on-wide, .open-now li > a svg { display: none; }
+}
 .updates { background: var(--surface); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; font-size: 15px; }
 .updates ul { margin: 6px 0 0; padding: 0; list-style: none; }
 .updates li { display: flex; gap: 12px; padding: 3px 0; }
