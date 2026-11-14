@@ -100,8 +100,8 @@ export default function Calendar({ data, now, sel, phase, focusDate, focusN }: P
       <div className="cal-list">
         {monthList.length === 0 && <p className="empty">這個月沒有事件。</p>}
         {monthList.map(([k, chips]) => (
-          <div key={k} className="cal-list-day">
-            <b>{Number(k.slice(5, 7))}/{Number(k.slice(8, 10))}<small>（{"日一二三四五六"[new Date(k + "T00:00:00+08:00").getDay()]}）</small></b>
+          <div key={k} className={`cal-list-day ${k < todayKey ? "past" : ""} ${k === todayKey ? "today" : ""}`}>
+            <b>{Number(k.slice(5, 7))}/{Number(k.slice(8, 10))}<small>（{"日一二三四五六"[new Date(k + "T00:00:00+08:00").getDay()]}）</small>{k === todayKey && <span className="cal-today">今天</span>}</b>
             <div>
               {chips.map((c) => (
                 <span key={c.key} data-focus={c.focus} className={`chip ${c.strong ? "strong" : ""} ${c.changed ? "changed" : ""}`} title={c.tip} style={{ ["--chip" as string]: c.color }}>{c.text}</span>

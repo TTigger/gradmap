@@ -298,6 +298,8 @@ details[open] > summary::after { transform: rotate(90deg); }
 .cal-list-day { display: grid; grid-template-columns: 52px 1fr; gap: 8px; padding: 10px 0; border-top: 1px solid var(--line); }
 .cal-list-day .chip { white-space: normal; margin-bottom: 4px; }
 .cal-list-day small { font-weight: 400; color: var(--text-2); font-size: 12px; }
+.cal-list-day.past { opacity: .5; }
+.cal-list-day .cal-today { display: block; width: fit-content; margin-top: 4px; padding: 1px 6px; border-radius: 6px; background: var(--accent-fill); color: #fff; font-size: 12px; font-weight: 600; }
 
 /* ---------- 表格（參考 Apple 比較頁：只留淺灰橫線） ---------- */
 .table-wrap { overflow-x: auto; }
