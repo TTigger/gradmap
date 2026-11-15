@@ -56,7 +56,7 @@ schools:
     links:
       - { label: 116 碩士班招生簡章, url: "https://www.nccu.edu.tw/p/406-1000-24245,r125.php?Lang=zh-tw", kind: brochure }
       - { label: 資工系, url: "https://www.cs.nccu.edu.tw/", kind: dept }
-    watch: 報名人數統計表放在 impis.nccu.edu.tw/upload/68/doc/…（每年路徑不同，用網頁搜尋「碩士班招生考試報名人數統計表」）。115 年度起系名由資訊科學系改為資訊工程學系。
+    watch: 報名人數統計表放在 impis.nccu.edu.tw/upload/68/doc/…（每年路徑不同，用網頁搜尋「碩士班招生考試報名人數統計表」）。115 年度起系名由資訊科學系改為資訊工程學系。教務處另有「碩士班招生情況統計表」（名額、報名、正取、備取、遞補數與遞補末序，考試入學）：113 年度在 https://aca.nccu.edu.tw/exam/113/stat/04_113碩士班招生情況統計.pdf（已收進 data/history/nccu.yaml）；114、115 同路徑會轉址，位置待找。
 
   - id: ncu
     name: 國立中央大學
