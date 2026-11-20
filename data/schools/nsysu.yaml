@@ -6,9 +6,9 @@ exam_type: 一般考試
 status: verified
 brochure:
   title: 國立中山大學116學年度研究所招生考試簡章《碩士班考試入學》
-  url: https://exam-acad.nsysu.edu.tw/exam_netlist/pdf_file/aca_master/TXpNME1URXhObVZzWlY5aWNtbGxabDloWTJGZmJXRnpkR1Z5TWpBeU5qRXhNRFE9.pdf
+  url: https://exam-acad.nsysu.edu.tw/exam_netlist/pdf_file/aca_master/TXpNME1URXhObVZzWlY5aWNtbGxabDloWTJGZmJXRnpkR1Z5TWpBeU5qRXhNakE9.pdf
   url_note: 簡章網頁 https://exam-acad.nsysu.edu.tw/exam_netlist/netlist_main.php?ExmNo=41 （可分章節下載，另有系所筆試節次一覽表）
-  verified: "2026-11-11"
+  verified: "2026-11-20"
   page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」；p1 是重要日程表（沒有印刷頁碼）
 fee: { amount: 1300, note: 每一系所（組）, src: "p37 / 34", waiver: "低收入戶、中低收入戶、特殊境遇家庭學生免繳（12/16 17:00 取號截止前在報名系統選「免繳生」報名專用碼，每人最多 3 組；填報名費免繳申請表連同證明傳真或拍照 email，審核通過後才能登錄報名）", waiver_src: "p114 / 111；p118 / 115" }
 apply: { url: "https://oaa.nsysu.edu.tw/", how: "教務處網站點「招生考試報名系統」→ 碩士班 → 碩士班考試入學", src: "p1" }
