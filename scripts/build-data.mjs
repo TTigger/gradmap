@@ -69,6 +69,8 @@ const history = fs.existsSync(histDir)
   : [];
 const resources = read("data/resources.yaml").resources ?? [];
 const pastExams = read("data/past_exams.yaml");
+// 去年各校資工筆試日期（列出「去年同一天考試」）
+const pastExamDays = read("data/past_exam_days.yaml");
 const ids = new Set(registry.map((r) => r.id));
 for (const s of schools) if (!ids.has(s.id)) errors.push(`registry 缺少 ${s.id}`);
 for (const h of history) {
@@ -81,6 +83,12 @@ for (const h of history) {
 for (const x of pastExams.schools) {
   if (!ids.has(x.school)) errors.push(`past_exams: 未知學校 ${x.school}`);
   if (!x.url || !x.access) errors.push(`past_exams ${x.school}: 缺少 url 或 access`);
+}
+for (const x of pastExamDays.schools ?? []) {
+  if (!ids.has(x.school)) errors.push(`past_exam_days: 未知學校 ${x.school}`);
+  for (const d of x.days ?? []) if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) errors.push(`past_exam_days ${x.school}: 日期格式應為 YYYY-MM-DD（${d}）`);
+  if (!x.unverifiable && (!x.src || !x.quote || !x.url)) errors.push(`past_exam_days ${x.school}: 缺少 src、quote 或 url`);
+  if (!x.unverifiable && !x.days?.length && !x.note) errors.push(`past_exam_days ${x.school}: 沒有日期時要寫 note`);
 }
 for (const s of schools) {
   if (s.venue && (!s.venue.city || !s.venue.src)) errors.push(`${s.id} venue: 缺少 city 或 src`);
@@ -125,7 +133,7 @@ const updates = fs.existsSync(updatesPath) ? yaml.load(fs.readFileSync(updatesPa
   if (bad.length) { console.error(bad.join("\n")); process.exit(1); }
   updates.sort((a, b) => b.date.localeCompare(a.date));
 }
-const out = { generated: new Date().toISOString(), lastCheck, updates, subjects, schools, pending, registry, history, resources, pastExams };
+const out = { generated: new Date().toISOString(), lastCheck, updates, subjects, schools, pending, registry, history, resources, pastExams, pastExamDays };
 fs.mkdirSync(path.join(root, "src/generated"), { recursive: true });
 fs.writeFileSync(path.join(root, "src/generated/data.json"), JSON.stringify(out, null, 2));
 

@@ -74,6 +74,18 @@ for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".yaml"))) {
   if (s.apply?.src) { const u = s.apply.url.replace(/^https?:\/\//, "").replace(/\/$/, ""); check(`報名網址 ${u}（${s.apply.src}）`, page(s.id, s.year, s.apply.src), [u]); }
   if (s.fee?.src) check(`報名費 ${s.fee.amount}（${s.fee.src}）`, page(s.id, s.year, s.fee.src), [String(s.fee.amount), s.fee.amount.toLocaleString()]);
 }
+// 去年各校資工筆試日期：quote 要出現在標的那頁，日期也要出現在同一頁（新聞稿只寫「於 11 日」的用 date_on_page: false 略過日期比對）
+{
+  const pe = yaml.load(fs.readFileSync(path.join(root, "data/past_exam_days.yaml"), "utf8"));
+  console.log(`去年筆試日期（${pe.year} 簡章）`);
+  for (const x of pe.schools) {
+    if (x.unverifiable || !x.src) continue;
+    const [file, pg] = String(x.src).trim().split(/\s+/);
+    const t = file.includes("-") ? page(x.school, pe.year, x.src) : page(file, pe.year, pg);
+    check(`${x.school} 原文「${x.quote}」（${x.src}）`, t, [x.quote]);
+    if (x.date_on_page !== false) for (const d of x.days ?? []) check(`${x.school} ${d}（${x.src}）`, t, dateForms(d));
+  }
+}
 if (weak.length) console.log(`\n個位數名額請人工看一眼：\n  ${weak.join("\n  ")}`);
 console.log(`\n通過 ${ok}、找不到 ${bad}、沒有對應文字檔 ${skipped}`);
 process.exit(bad ? 1 : 0);

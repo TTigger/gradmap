@@ -74,6 +74,25 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
     }
   }
 
+  // 去年同一天考試（各校 115 簡章的資工筆試日期）；報名人數取「歷年數據」的主要系所，讓人看出撞期那年的變化
+  const pastYear = data.pastExamDays.year;
+  const shortOf = (id: string) => data.schools.find((s) => s.id === id)?.short ?? data.registry.find((r) => r.id === id)?.short ?? id;
+  const pastDays = data.pastExamDays.schools.filter((x) => x.days.length);
+  const pastClash: { day: string; ids: string[] }[] = [];
+  for (const day of [...new Set(pastDays.flatMap((x) => x.days))].sort()) {
+    const ids = pastDays.filter((x) => x.days.includes(day)).map((x) => x.school);
+    if (ids.length < 2) continue;
+    if (school !== "all" ? !ids.includes(school) : ids.filter((id) => sel(id)).length < 2) continue;
+    pastClash.push({ day, ids: school !== "all" ? ids : ids.filter((id) => sel(id)) });
+  }
+  const applicants = (id: string) => {
+    const recs = data.history.find((h) => h.school === id)?.records.filter((r) => r.main) ?? [];
+    const cur = recs.find((r) => r.year === pastYear), prev = recs.find((r) => r.year === pastYear - 1);
+    if (cur?.applicants == null) return null;
+    return `${shortOf(id)} ${cur.group && !/^\d/.test(cur.group) ? cur.group : cur.program}：報名 ${cur.applicants.toLocaleString()} 人${prev?.applicants != null ? `（${pastYear - 1} 年 ${prev.applicants.toLocaleString()} 人）` : ""}`;
+  };
+  const pastNotes = data.pastExamDays.schools.filter((x) => (x.unverifiable || !x.days.length || x.days.length > 1) && (school === "all" ? sel(x.school) : x.school === school));
+
   const sorted = [...schools].sort((a, b) => {
     const ea = a.schedule.find((e) => e.type === "exam")?.start ?? "";
     const eb = b.schedule.find((e) => e.type === "exam")?.start ?? "";
@@ -168,6 +187,26 @@ export default function Timeline({ data, now, school, sel, phase }: { data: Data
             </details>
           )}
         </div>
+      )}
+
+      {pastClash.length + pastNotes.length > 0 && (
+        <details className="past-clash">
+          <summary>去年（{pastYear} 學年度）同一天考試：{pastClash.length ? `${pastClash.length} 組` : "沒有"}</summary>
+          {pastClash.length > 0 && (
+            <ul>
+              {pastClash.map((c) => (
+                <li key={c.day}>
+                  <b>{fmtDay(c.day)}</b> {c.ids.map(shortOf).join("、")}
+                  {c.ids.map(applicants).filter(Boolean).map((t) => <div key={t} className="hint">{t}</div>)}
+                </li>
+              ))}
+            </ul>
+          )}
+          <p className="hint">
+            只比對資工（主要系所）的筆試日期，日期來自各校 {pastYear} 學年度簡章。報名人數來自「歷年數據」的官方統計；人數增減也可能和名額、考科改變等有關，僅供參考。
+          </p>
+          {pastNotes.map((x) => <p key={x.school} className="hint">{shortOf(x.school)}：{x.note}。</p>)}
+        </details>
       )}
 
       {examDays.filter((x) => sel(x.s.id)).length > 0 && (

@@ -217,6 +217,13 @@ div.warn ul + details { margin-top: 8px; }
 div.warn summary { cursor: pointer; font-weight: 600; }
 div.warn details ul { margin-top: 6px; }
 div.warn details li { padding: 4px 0 4px 12px; border-left: 2px solid currentColor; margin-bottom: 4px; }
+details.past-clash { margin: 12px 0 0; padding: 12px 18px; background: var(--fill); border-radius: var(--radius-s); font-size: 15px; }
+details.past-clash summary { cursor: pointer; font-weight: 600; }
+details.past-clash ul { list-style: none; padding: 0; margin: 8px 0 0; }
+details.past-clash li { padding: 6px 0 6px 12px; border-left: 2px solid var(--line-2); margin-bottom: 6px; }
+details.past-clash li .hint { margin-top: 2px; }
+details.past-clash > p.hint { margin: 8px 0 0; }
+details.past-clash > p.hint + p.hint { margin-top: 4px; }
 .chip.changed { outline: 2px dashed var(--warn-text); outline-offset: -1px; }
 .tl-bar.changed, .tl-mark.changed { outline: 2px dashed var(--warn-text); outline-offset: 2px; }
 .sched li.changed { background: var(--warn-bg); border-radius: 8px; }

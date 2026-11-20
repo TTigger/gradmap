@@ -1,0 +1,20 @@
+# 去年（115 學年度）各校資工（主要系所）筆試日期，用來列出「去年同一天考試」的學校。
+# 每筆都要有官方來源：src 是 sources/115/text 裡的檔名＋頁碼（PDF 第幾頁），quote 是該頁上的原文（verify-src 會核對）。
+# days 只放主要系所真的有考筆試的日子；考兩天的學校若資工考科集中在一天，只放那一天（note 寫明）。
+# 不考筆試的學校 days 留空、note 寫明；官方檔案已下架、無法核對的學校標 unverifiable: true（不列日期）。
+year: 115
+schools:
+  - { school: ntu, days: ["2026-02-01", "2026-02-02"], note: 全校筆試 2/1–2/2 兩天，資工考哪一天已無法再查證（官方節次表已移除）, src: ntu-schedule p1, quote: "2月1日(星期日)、2月2日(星期一)兩天", url: "https://www.aca.ntu.edu.tw/WebUPD/aca/LocalAdmissionClass/115%E7%A2%A9%E6%8B%9B%E9%87%8D%E8%A6%81%E6%97%A5%E7%A8%8B%E8%A1%A8.pdf" }
+  - { school: ntust, days: ["2026-02-01"], src: ntust p11, quote: "筆試日期：115年2月1日", url: "https://www.admission.ntust.edu.tw/var/file/52/1052/img/2674/112677060.pdf" }
+  - { school: ncku, days: ["2026-02-03"], note: 資訊聯招, src: ncku p51, quote: "資訊聯招2月3日", url: "https://adms-acad.ncku.edu.tw/var/file/44/1044/img/4427/260644079.pdf" }
+  - { school: nycu, days: [], unverifiable: true, note: 去年簡章已從學校網站移除，無法再查證資訊聯招的筆試日期，所以沒有列入 }
+  - { school: nthu, days: ["2026-02-05"], src: nthu p35, quote: "日期：2月5日(星期四)", url: "https://adms.site.nthu.edu.tw/p/406-1207-297604,r1259.php?Lang=zh-tw" }
+  - { school: nccu, days: ["2026-02-05"], note: 資訊科學系三科都在 2/5（全校筆試 2/5–2/6）, src: nccu p164, quote: "8611資訊科學系資訊科學與工程組一般生", url: "https://law.nccu.edu.tw/uploads/asset/data/68ff2a15dca3a33fdb04daf3/115_%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%A2%A9%E5%A3%AB%E7%8F%AD%E6%8B%9B%E7%94%9F%E8%80%83%E8%A9%A6%E7%B0%A1%E7%AB%A0.pdf" }
+  - { school: nchu, days: ["2026-02-06"], src: nchu p3, quote: "筆試115年2月6日", url: "https://recruit.nchu.edu.tw/grade-exam/master/115/115M_PAPER.pdf" }
+  - { school: nsysu, days: ["2026-02-07"], src: nsysu p1, quote: "115.2.7", url: "https://exam-acad.nsysu.edu.tw/exam_netlist/pdf_file/aca_master/TXpNME1URXhOV1ZzWlY5aWNtbGxabDloWTJGZmJXRnpkR1Z5TWpBeU5URXlNalE9.pdf" }
+  - { school: ncu, days: ["2026-02-08"], note: 資工類, src: ncu p2, quote: "115年2月8日：資工類", url: "https://art.ncu.edu.tw/word/115%E7%A2%A9%E8%80%83%E7%B0%A1%E7%AB%A0(%E5%85%AC%E5%91%8A).pdf" }
+  - { school: ntnu, days: ["2026-02-08"], src: ntnu p15, quote: "考試日期：115年2月8日", url: "https://www.ace.ntnu.edu.tw/wp-content/uploads/2025/11/115%E7%A2%A9%E5%A3%AB%E7%8F%AD%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0-%E5%85%AC%E5%91%8A%E7%89%881103%E4%BF%AE%E6%AD%A3.pdf" }
+  - { school: ntpu, days: ["2026-02-10"], note: 資工兩科都在 2/10（全校筆試 2/10–2/11）, src: ntpu p7, quote: "115年2月10日", url: "https://cms-carrier.ntpu.edu.tw/uploads/V2_115_cb15457536.pdf" }
+  - { school: ccu, days: ["2026-02-11"], note: 學校 2/11 新聞稿寫「於 11 日」舉行, date_on_page: false, src: ccu-news p1, quote: "中正大學115學年度碩士班招生筆試於11日", url: "https://www.ccu.edu.tw/p/406-1000-85159,r981.php?Lang=zh-tw" }
+  - { school: ntut, days: ["2026-03-08"], src: ntut p24, quote: "115年03月08日", url: "https://graduate.ntut.edu.tw/var/file/135/1135/img/4117/434608592.pdf" }
+  - { school: ntou, days: [], note: 資工系不考筆試（書審＋面試）, src: ntou p7, quote: "※無筆試※", url: "https://cse.ntou.edu.tw/var/file/63/1063/attach/68/pta_75381_4321774_02629.pdf" }

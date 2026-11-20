@@ -108,6 +108,19 @@ export interface Data {
   history: HistorySchool[];
   resources: Resource[];
   pastExams: { checked: string; schools: PastExam[] };
+  /** data/past_exam_days.yaml：去年各校資工筆試日期 */
+  pastExamDays: { year: number; schools: PastExamDay[] };
+}
+
+export interface PastExamDay {
+  school: string;
+  /** 主要系所有考筆試的日子（YYYY-MM-DD）；不考筆試或無法核對時是空的 */
+  days: string[];
+  note?: string;
+  unverifiable?: boolean;
+  src?: string;
+  quote?: string;
+  url?: string;
 }
 
 /** data/past_exams.yaml：各校官方考古題位置 */
