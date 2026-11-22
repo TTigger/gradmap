@@ -3,7 +3,7 @@
 # unsure：範圍內還沒確認的年度
 # access：online 線上下載 / onsite 只有館內紙本 / database 資料庫查詢 / unknown
 # 只列考試入學（筆試）試題；甄試、轉學考不列
-checked: "2026-11-15"
+checked: "2026-11-22"
 schools:
   - school: ntu
     url: https://exam.lib.ntu.edu.tw/graduate/term/82
