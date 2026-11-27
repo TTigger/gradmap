@@ -6,9 +6,9 @@ exam_type: 一般考試
 status: verified
 brochure:
   title: 國立成功大學116學年度碩士班(含在職專班)研究生招生簡章
-  url: https://adms-acad.ncku.edu.tw/var/file/44/1044/img/4427/868509778.pdf
+  url: https://adms-acad.ncku.edu.tw/var/file/44/1044/img/4427/339878807.pdf
   published: "2026-11-06"
-  verified: "2026-11-10"
+  verified: "2026-11-27"
   page_note: 頁碼寫「PDF 第幾頁 / 簡章印刷頁碼」；p2 是簡章前面的重要日程表（沒有印刷頁碼）
 fee: { amount: 1300, note: 每一系所組；複試不另收費, src: "p7 / 2", waiver: "低收入戶免繳、中低收入戶報名費 520 元（限 1 系所組；12/7 12:00 前把申請表和證明 email 給招生單位，審核通過後再繳費；已繳費的不退）", waiver_src: "p7 / 2；p8 / 3；p57 / 52" }
 apply: { url: "https://campus4.ncku.edu.tw/door/", how: "點選「碩士班(含在職專班)」→ 第一次登入填報名資料", src: "p7 / 2" }
